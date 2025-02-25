@@ -1,0 +1,664 @@
+[
+  {
+    "question_id": "q_c6873eb75783",
+    "question": "Which method is used in the described framework?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "Which {category} is used in {context}?",
+      "template_slots": {
+        "category": "method",
+        "context": "the described framework"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Functions",
+        "text": "This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it."
+      }
+    ]
+  },
+  {
+    "question_id": "q_1311fdb9bd95",
+    "question": "What is MHA?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L2",
+      "special_categories": [
+        "impossible"
+      ],
+      "template": "What is {entity}?",
+      "template_slots": {
+        "entity": "MHA"
+      }
+    },
+    "contexts": [
+      {
+        "section": "It is evident that the max operation is determined by a",
+        "text": "To preserve the vertex information without dilution, These state vectors assist the decision network in making\nthe output at each layer of the GAT is concatenated with informed decisions, where d is a hyper-parameter.\nthe original feature vector x . The formulation of encoder is\ni (cid:18)(cid:20) (cid:21) (cid:19)\ndetailed as follows: s =σ c W + MHA (c W ) W , (30)\ni i 1 j 1 2\nj=1,...,n\ne =[x ∥σ(GAT ([x ∥σ(GAT (x ,D))],D))], (22)\ni i 2 i 1 i where W and W are learnable parameter matrices, MHA\n1 2\nwhere “∥” is the concatenation operation, σ is the ReLU denotes the multi-head attention layer [50], and s represents\ni\nactivationfunction,D =A∪E isthesetofedgesforinstance theimpactofthescheduledoperationsonsubsequentdecision-\nI, and e describes the instance I in Eq."
+      }
+    ]
+  },
+  {
+    "question_id": "q_0f64f37e708c",
+    "question": "Which model is used in this paper?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "Which {category} is used in {context}?",
+      "template_slots": {
+        "category": "model",
+        "context": "this paper"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Functions",
+        "text": "This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step)."
+      },
+      {
+        "section": "End The last operation of the job that operation",
+        "text": "[25] explored a self-supervised training\nan advantage over comparative algorithms, demonstrating its\nstrategyfortheJSSP,wherethemodelwastrainedbysampling\nefficacy in solving the FJSSP.\nmultiplesolutionsandthebestsolutionwasusedasapseudo-\nlabel according to the objective of the problem. Wang et al. The remainder of this paper is organized as follows. In\n[26] introduced a pioneering end-to-end learning framework Section II, we introduce fuzzy numbers, outline their oper-\nthat harmoniously combines self-attention models for deep ational properties, and define the characteristics of the FJSSP."
+      }
+    ]
+  },
+  {
+    "question_id": "q_cbab758f6db5",
+    "question": "Which technique is used in this study?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "Which {category} is used in {context}?",
+      "template_slots": {
+        "category": "technique",
+        "context": "this study"
+      }
+    },
+    "contexts": [
+      {
+        "section": "M Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set",
+        "text": "hierarchicalestimationtechniques,addressingthechallengeof"
+      }
+    ]
+  },
+  {
+    "question_id": "q_27a51cda8fbd",
+    "question": "When was FJSSP first introduced?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [
+        "temporal"
+      ],
+      "template": "When was {concept} first introduced?",
+      "template_slots": {
+        "concept": "FJSSP"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Functions",
+        "text": "This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it."
+      }
+    ]
+  },
+  {
+    "question_id": "q_8c5923942667",
+    "question": "Which method is used in this study?",
+    "answer": "Based on the information provided in the paper, it is not possible to answer this question definitively.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "Which {category} is used in {context}?",
+      "template_slots": {
+        "category": "method",
+        "context": "this study"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Functions",
+        "text": "This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it."
+      }
+    ]
+  },
+  {
+    "question_id": "q_9884a38f2c08",
+    "question": "What is meant by this term in this paper?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "What is meant by {term} in this paper?",
+      "template_slots": {
+        "term": "this term"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      }
+    ]
+  },
+  {
+    "question_id": "q_c41dc2a9c1b5",
+    "question": "How would you explain A˜ to someone new to the field?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "How would you explain {concept} to someone new to the field?",
+      "template_slots": {
+        "concept": "A˜"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Definition",
+        "text": "While exact durations may not be predictable, Z(A˜)=Vβ(A˜)+ωS(A˜), (5)\nexperts can often draw on historical data to provide estimated\nwhereω isaweightrangingfrom[0,1].Vβ(A˜)representsthe\ndurations [40]."
+      }
+    ]
+  },
+  {
+    "question_id": "q_881352283a3e",
+    "question": "What constitutes a their outputs?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What constitutes a {concept}?",
+      "template_slots": {
+        "concept": "their outputs"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Definition",
+        "text": "In GAT 1, 20×20 0.768 6.196 10.190 22.430 9.477\nthe size of each head is set to 64 and their outputs are 30×20 1.225 18.471 19.490 41.520 18.940\nconcatenated.InGAT ,thesizeofeachheadissetto128and\n2\ntheir outputs are averaged."
+      }
+    ]
+  },
+  {
+    "question_id": "q_195b7397bb14",
+    "question": "How would you explain EMARM to someone new to the field?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "How would you explain {concept} to someone new to the field?",
+      "template_slots": {
+        "concept": "EMARM"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Definition",
+        "text": "maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it."
+      }
+    ]
+  },
+  {
+    "question_id": "q_43a9b05c967d",
+    "question": "What steps are involved in this process?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "procedural",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "What steps are involved in {process}?",
+      "template_slots": {
+        "process": "this process"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      },
+      {
+        "section": "Itisaniterativemethoddesignedforestimatingparametersin the benchmarks are not exactly the same size as those in the",
+        "text": "statistical models that include latent variables. When the true training set, which helps to demonstrate the generalization\nvalues of these latent variables remain unknown, traditional ability of EMARM.\n(cid:90) (cid:90) p (y,x)\nlogp (y)=log p (y,x)dx≥ p (x|y)log θ dx\nθ θ θ p (x|y)\nθ\n(cid:90) (cid:90)\n= p (x|y)logp (y,x)dx− p (x|y)logp (x|y)dx (32)\nθ θ θ θ\n=E [logp (y|x)+logp (x)−logp (x|y)]≜L(θ).\nx∼pθ(x|y) θ θ θ\n\nJOURNALOFLATEXCLASSFILES 7"
+      }
+    ]
+  },
+  {
+    "question_id": "q_aad8912efdab",
+    "question": "How is EM implemented?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "procedural",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "How is {concept} implemented?",
+      "template_slots": {
+        "concept": "EM"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      },
+      {
+        "section": "Itisaniterativemethoddesignedforestimatingparametersin the benchmarks are not exactly the same size as those in the",
+        "text": "statistical models that include latent variables. When the true training set, which helps to demonstrate the generalization\nvalues of these latent variables remain unknown, traditional ability of EMARM.\n(cid:90) (cid:90) p (y,x)\nlogp (y)=log p (y,x)dx≥ p (x|y)log θ dx\nθ θ θ p (x|y)\nθ\n(cid:90) (cid:90)\n= p (x|y)logp (y,x)dx− p (x|y)logp (x|y)dx (32)\nθ θ θ θ\n=E [logp (y|x)+logp (x)−logp (x|y)]≜L(θ).\nx∼pθ(x|y) θ θ θ\n\nJOURNALOFLATEXCLASSFILES 7"
+      }
+    ]
+  },
+  {
+    "question_id": "q_44527ce58cbb",
+    "question": "How does this process work?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "procedural",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "How does {process} work?",
+      "template_slots": {
+        "process": "this process"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      },
+      {
+        "section": "Itisaniterativemethoddesignedforestimatingparametersin the benchmarks are not exactly the same size as those in the",
+        "text": "statistical models that include latent variables. When the true training set, which helps to demonstrate the generalization\nvalues of these latent variables remain unknown, traditional ability of EMARM.\n(cid:90) (cid:90) p (y,x)\nlogp (y)=log p (y,x)dx≥ p (x|y)log θ dx\nθ θ θ p (x|y)\nθ\n(cid:90) (cid:90)\n= p (x|y)logp (y,x)dx− p (x|y)logp (x|y)dx (32)\nθ θ θ θ\n=E [logp (y|x)+logp (x)−logp (x|y)]≜L(θ).\nx∼pθ(x|y) θ θ θ\n\nJOURNALOFLATEXCLASSFILES 7"
+      }
+    ]
+  },
+  {
+    "question_id": "q_aebb676f1c9b",
+    "question": "How is Eq implemented?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "procedural",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "How is {concept} implemented?",
+      "template_slots": {
+        "concept": "Eq"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      },
+      {
+        "section": "Itisaniterativemethoddesignedforestimatingparametersin the benchmarks are not exactly the same size as those in the",
+        "text": "statistical models that include latent variables. When the true training set, which helps to demonstrate the generalization\nvalues of these latent variables remain unknown, traditional ability of EMARM.\n(cid:90) (cid:90) p (y,x)\nlogp (y)=log p (y,x)dx≥ p (x|y)log θ dx\nθ θ θ p (x|y)\nθ\n(cid:90) (cid:90)\n= p (x|y)logp (y,x)dx− p (x|y)logp (x|y)dx (32)\nθ θ θ θ\n=E [logp (y|x)+logp (x)−logp (x|y)]≜L(θ).\nx∼pθ(x|y) θ θ θ\n\nJOURNALOFLATEXCLASSFILES 7"
+      }
+    ]
+  },
+  {
+    "question_id": "q_9ed1ef3c8a5b",
+    "question": "How do the results of experiment 1 differ from experiment 2?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "comparative",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "How do the results of {experiment1} differ from {experiment2}?",
+      "template_slots": {
+        "experiment1": "experiment 1",
+        "experiment2": "experiment 2"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      }
+    ]
+  },
+  {
+    "question_id": "q_9d9511aa7f3a",
+    "question": "What is the difference between current state and deep reinforcement learning?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "comparative",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "What is the difference between {concept1} and {concept2}?",
+      "template_slots": {
+        "concept1": "current state",
+        "concept2": "deep reinforcement learning"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      }
+    ]
+  },
+  {
+    "question_id": "q_a1a7ac8c7357",
+    "question": "What are the trade-offs between the first approach and the second approach?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "comparative",
+      "complexity": "L3",
+      "special_categories": [
+        "impossible"
+      ],
+      "template": "What are the trade-offs between {approach1} and {approach2}?",
+      "template_slots": {
+        "approach1": "the first approach",
+        "approach2": "the second approach"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      }
+    ]
+  },
+  {
+    "question_id": "q_a98957e09964",
+    "question": "What are the implications of The primary advantage of e i over Second, these context vectors are further integrated by\nx i lies in its ability to complement the relationship between Eq.?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "causal",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "What are the implications of {finding}?",
+      "template_slots": {
+        "finding": "The primary advantage of e i over Second, these context vectors are further integrated by\nx i lies in its ability to complement the relationship between Eq."
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      }
+    ]
+  },
+  {
+    "question_id": "q_a63c9bf2f841",
+    "question": "What causes this effect?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "causal",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "What causes {effect}?",
+      "template_slots": {
+        "effect": "this effect"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      }
+    ]
+  },
+  {
+    "question_id": "q_6c39b0c0062e",
+    "question": "Why does this phenomenon occur?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "causal",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "Why does {phenomenon} occur?",
+      "template_slots": {
+        "phenomenon": "this phenomenon"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      }
+    ]
+  },
+  {
+    "question_id": "q_95197f6f6ce2",
+    "question": "What is the relationship between the independent variable and the dependent variable?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "causal",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What is the relationship between {variable1} and {variable2}?",
+      "template_slots": {
+        "variable1": "the independent variable",
+        "variable2": "the dependent variable"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      }
+    ]
+  },
+  {
+    "question_id": "q_4c1ae8b2ff0e",
+    "question": "How does the performance vary with changes in the parameter?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "quantitative",
+      "complexity": "L1",
+      "special_categories": [
+        "impossible"
+      ],
+      "template": "How does the {metric} vary with changes in {parameter}?",
+      "template_slots": {
+        "metric": "performance",
+        "parameter": "the parameter"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      }
+    ]
+  },
+  {
+    "question_id": "q_198d21d81086",
+    "question": "What is the performance of this method reported in the paper?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "quantitative",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What is the {metric} of {method} reported in the paper?",
+      "template_slots": {
+        "metric": "performance",
+        "method": "this method"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      }
+    ]
+  },
+  {
+    "question_id": "q_ce6c2c76fce9",
+    "question": "What ethical considerations are relevant to this research?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "open_ended",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "What ethical considerations are relevant to this research?",
+      "template_slots": {}
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      }
+    ]
+  },
+  {
+    "question_id": "q_40a1ec095349",
+    "question": "How might the findings be applied to engineering?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "open_ended",
+      "complexity": "L2",
+      "special_categories": [
+        "ambiguous"
+      ],
+      "template": "How might the findings be applied to {domain}?",
+      "template_slots": {
+        "domain": "engineering"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      }
+    ]
+  },
+  {
+    "question_id": "q_ab3b31f2e715",
+    "question": "What alternative approaches could address the same problem?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "open_ended",
+      "complexity": "L3",
+      "special_categories": [
+        "ambiguous"
+      ],
+      "template": "What alternative approaches could address the same problem?",
+      "template_slots": {}
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      }
+    ]
+  },
+  {
+    "question_id": "q_7ada892443c7",
+    "question": "What are the main contributions of this paper?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "open_ended",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What are the main contributions of this paper?",
+      "template_slots": {}
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      }
+    ]
+  },
+  {
+    "question_id": "q_af8a177f30bb",
+    "question": "What are the limitations of the approach presented?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "open_ended",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What are the limitations of the approach presented?",
+      "template_slots": {}
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      }
+    ]
+  },
+  {
+    "question_id": "q_6213c287fb24",
+    "question": "How does this work advance the field of engineering?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "open_ended",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "How does this work advance the field of {domain}?",
+      "template_slots": {
+        "domain": "engineering"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      }
+    ]
+  },
+  {
+    "question_id": "q_48ed6618de04",
+    "question": "What future research directions are suggested?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00018v1",
+    "metadata": {
+      "query_type": "open_ended",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "What future research directions are suggested?",
+      "template_slots": {}
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra"
+      }
+    ]
+  }
+]

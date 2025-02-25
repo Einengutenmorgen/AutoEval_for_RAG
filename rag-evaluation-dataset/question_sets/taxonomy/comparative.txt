@@ -1,0 +1,20 @@
+What is the difference between {concept1} and {concept2}?
+How does {method1} compare to {method2}?
+What are the advantages of {concept} over {alternative}?
+How do the results of {experiment1} differ from {experiment2}?
+What are the trade-offs between {approach1} and {approach2}?
+Which performs better, {method1} or {method2}, and why?
+In what ways is {concept1} similar to {concept2}?
+How did the authors compare {method1} with {method2}?
+What metrics were used to compare {concept1} and {concept2}?
+Which has higher accuracy, {method1} or {method2}?
+How do the computational requirements of {approach1} compare to {approach2}?
+What limitations does {concept1} have that {concept2} addresses?
+How does the scalability of {method1} compare to {method2}?
+What are the key differences in implementation between {concept1} and {concept2}?
+How does the efficiency of {method1} compare with {method2}?
+Under what conditions does {concept1} outperform {concept2}?
+What historical developments led from {concept1} to {concept2}?
+How do error rates compare between {method1} and {method2}?
+What are the contrasting assumptions made by {approach1} and {approach2}?
+Which is more robust to noise, {method1} or {method2}?

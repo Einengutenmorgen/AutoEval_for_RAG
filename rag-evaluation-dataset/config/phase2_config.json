@@ -1,0 +1,19 @@
+{
+    "processing": {
+      "process_all_pdfs": true,
+      "overwrite_existing": false
+    },
+    "questions": {
+      "questions_per_paper": 30,
+      "seed_questions_per_type": 3,
+      "generate_seed_only": false
+    },
+    "validation": {
+      "interactive": true,
+      "validate_all": true
+    },
+    "answers": {
+      "interactive": true,
+      "generate_for_all": true
+    }
+  }

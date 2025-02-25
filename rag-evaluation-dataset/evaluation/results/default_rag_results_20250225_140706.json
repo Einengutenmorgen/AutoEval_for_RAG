@@ -1,0 +1,6 @@
+{
+  "system": {
+    "name": "default_rag",
+    "description": "Default RAG System with REST API Endpoint",
+    "api_endpoint": "connector",
+    "connector": 

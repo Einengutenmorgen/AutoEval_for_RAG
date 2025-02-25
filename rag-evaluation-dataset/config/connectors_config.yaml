@@ -1,0 +1,27 @@
+target_systems:
+  - name: "default_rag"
+    type: "rest_api"
+    description: "Default RAG System with REST API Endpoint"
+    api_endpoint: "http://localhost:8000/query"
+    request_format: "json"
+    authentication:
+      type: "none"
+    timeout: 30
+    retry:
+      attempts: 3
+      backoff_factor: 2
+
+  # Example of a second system - uncomment if needed
+  # - name: "advanced_rag"
+  #   type: "rest_api"
+  #   description: "Advanced RAG System with API Key Auth"
+  #   api_endpoint: "http://localhost:8001/query"
+  #   request_format: "json"
+  #   authentication:
+  #     type: "api_key"
+  #     key: "${API_KEY}"
+  #     header_name: "X-API-Key"
+  #   timeout: 60
+  #   retry:
+  #     attempts: 5
+  #     backoff_factor: 2

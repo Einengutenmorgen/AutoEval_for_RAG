@@ -1,0 +1,20 @@
+What is {concept}?
+Who developed {concept}?
+When was {concept} first introduced in this paper?
+Where is {entity} typically used in {context}?
+How many {entities} are mentioned in the paper?
+Which {category} is used in {context}?
+What is the main function of {entity}?
+What does {concept} represent in this research?
+How is {concept} defined in the paper?
+What are the key components of {entity}?
+Who are the authors that contributed to {concept}?
+What dataset was used to evaluate {concept}?
+How was {entity} implemented in the system?
+What techniques were used to improve {concept}?
+What is the architecture of {entity}?
+What materials were used to create {entity}?
+In what year was {concept} proposed?
+Which algorithm forms the basis of {concept}?
+What is the purpose of {entity} in the model?
+What metrics were used to evaluate {concept}?

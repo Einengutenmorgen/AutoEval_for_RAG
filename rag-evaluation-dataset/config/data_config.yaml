@@ -1,0 +1,81 @@
+# RAG Evaluation Dataset - Data Configuration
+
+# File paths
+paths:
+  raw_data_dir: "data/raw"
+  processed_data_dir: "data/processed"
+  splits_dir: "data/splits"
+  metadata_dir: "data/metadata"
+
+# Data sources configuration
+data_sources:
+  type: "files"  # Options: files, database, api
+  main_source_path: "/path/to/your/source/documents"
+  file_extensions:
+    - "txt"
+    - "pdf"
+    - "md"
+    - "html"
+    - "docx"
+    - "csv"
+    - "json"
+  include_patterns:
+    - "**/*.txt"
+  exclude_patterns:
+    - "**/temp/**"
+    - "**/draft/**"
+  max_documents: 10000  # Limit number of documents to process
+
+# Database source configuration (if type is "database")
+database:
+  connection_string: "postgresql://user:password@localhost:5432/docdb"
+  query: "SELECT id, title, content, date FROM documents WHERE status = 'approved'"
+  limit: 10000
+
+# API source configuration (if type is "api")
+api:
+  endpoint: "https://api.example.com/documents"
+  auth_token: "YOUR_API_TOKEN"
+  method: "GET"
+  params:
+    status: "published"
+    type: "article"
+  results_path: "data.documents"
+  max_pages: 100
+  rate_limit: 10  # requests per second
+
+# Preprocessing options
+preprocessing:
+  target_format: "txt"  # Target format for all documents
+  clean_text: true
+  remove_special_chars: false
+  normalize_whitespace: true
+  chunk_documents: true
+  chunk_size: 1000  # Characters or tokens depending on chunk_by
+  chunk_overlap: 200
+  chunk_by: "chars"  # Options: chars, sentences, tokens
+  use_nltk: true
+  language: "english"
+  min_chunk_size: 100  # Minimum size of a chunk to keep
+
+# Data splits configuration
+data_splits:
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15
+  stratify_by: "document_type"  # Metadata field to stratify by
+  random_seed: 42
+  create_split_dirs: true  # Whether to create train/val/test directories with copies
+  overlapping_documents: false  # Whether documents can appear in multiple splits
+  
+# Domain-specific settings
+domain_specific:
+  medical:
+    normalize_terms: true
+    term_mapping_file: "config/medical_term_mapping.json"
+  legal:
+    extract_citations: true
+    citation_pattern: "\\d+ [A-Za-z]+ \\d+"
+  technical:
+    code_extraction: true
+    preserve_formatting: true

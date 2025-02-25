@@ -1,0 +1,2100 @@
+{
+  "paper_id": "2502.00145v1",
+  "metadata": {
+    "title": "Speck1, Hecher2, Gnad3, Fichte3, David Markus Daniel Johannes K. and Augusto B.",
+    "authors": [
+      "Speck",
+      "Hecher",
+      "Gnad",
+      "Fichte",
+      "David Markus Daniel Johannes K.",
+      "Augusto B."
+    ],
+    "publication_date": null,
+    "journal": "",
+    "abstract": "Classical planning asks for a sequence of operators reaching a given goal. While the most\ncommon case is to computea plan, many scenarios require more than that. However, quantitative\nreasoning on theplan space remains mostly unexplored. A fundamentalproblem is to count plans,\nwhichrelatestotheconditionalprobabilityontheplanspace. Indeed,qualitativeandquantitative\napproaches are well-established in various other areas of automated reasoning.\nWe present the first study to quantitative and qualitative reasoning on the plan space. In\nparticular,wefocusonpolynomiallyboundedplans. Onthetheoreticalside,westudyitscomplexity,\nwhich givesrisetorichreasoning modes. Sincecountingishard ingeneral, weintroducetheeasier\nnotion of facets, which enables understanding the significance of operators. On the practical side,\nwe implement quantitative reasoning for planning. Thereby, we transform a planning task into\na propositional formula and use knowledge compilation to count different plans. This framework\nscales well to large plan spaces, while enabling rich reasoning capabilities such as learning pruning\nfunctions and explainable planning.\n1 Introduction\nThe overarching objective of classical planning is to find a plan, i.e., a sequence of operators, that\ntransforms the current state into a goal state. While in some scenarios a single plan is sufficient, in\nothers, it may not be clear which plan is preferable based on the description of the planning task. To\naddressthis,solverslike top-kortop-qualityplannershavebeen developedto enumeratethe k shortest\nplans or all plans up to a certain length bound allowing for post hoc consideration of the plan space\nandselection[Katzet al.,2018;KatzandSohrabi,2020;Specket al.,2020;vonTschammeret al.,2022;\nChakrabortiet al., 2024]. Although this paradigmhas been successfully applied in practicalareassuch\nas malware detection [Boddy et al., 2005] and scenario planning for risk management [Sohrabi et al.,\n2018], it remains an indirect method for reasoning about the plan space of a planning task.\nConsidering fundamental problems in computer science, such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are anchored around counting. The most prominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula. While #SAT is considered computationally harder than asking whether a single\n∗Thisisanauthor self-archivedandextended versionofapaperthathasbeenaccepted forpublicationatAAAI’25.\n(cid:0)\n: davidjakob.speck@unibas.ch, hecher@cril.fr, daniel.gnad@liu.se, johannes.fichte@liu.se,\naugusto.blaascorrea@chch.ox.ac.uk\n1",
+    "keywords": []
+  },
+  "sections": [
+    {
+      "heading": "Counting and Reasoning with Plans",
+      "level": 1,
+      "content": "David Speck1, Markus Hecher2, Daniel Gnad3, Johannes K. Fichte3, and Augusto B.\nCorrˆea4\n1University of Basel, Switzerland\n2 Univ. Artois, CNRS, UMR 8188, CRIL, F-62300 Lens, France\n3Link¨oping University, Sweden\n4University of Oxford, United Kingdom\nFebruary 4, 2025",
+      "start_offset": 74,
+      "end_offset": 343
+    },
+    {
+      "heading": "Abstract",
+      "level": 1,
+      "content": "Classical planning asks for a sequence of operators reaching a given goal. While the most\ncommon case is to computea plan, many scenarios require more than that. However, quantitative\nreasoning on theplan space remains mostly unexplored. A fundamentalproblem is to count plans,\nwhichrelatestotheconditionalprobabilityontheplanspace. Indeed,qualitativeandquantitative\napproaches are well-established in various other areas of automated reasoning.\nWe present the first study to quantitative and qualitative reasoning on the plan space. In\nparticular,wefocusonpolynomiallyboundedplans. Onthetheoreticalside,westudyitscomplexity,\nwhich givesrisetorichreasoning modes. Sincecountingishard ingeneral, weintroducetheeasier\nnotion of facets, which enables understanding the significance of operators. On the practical side,\nwe implement quantitative reasoning for planning. Thereby, we transform a planning task into\na propositional formula and use knowledge compilation to count different plans. This framework\nscales well to large plan spaces, while enabling rich reasoning capabilities such as learning pruning\nfunctions and explainable planning.",
+      "start_offset": 351,
+      "end_offset": 1494
+    },
+    {
+      "heading": "1 Introduction",
+      "level": 1,
+      "content": "The overarching objective of classical planning is to find a plan, i.e., a sequence of operators, that\ntransforms the current state into a goal state. While in some scenarios a single plan is sufficient, in\nothers, it may not be clear which plan is preferable based on the description of the planning task. To\naddressthis,solverslike top-kortop-qualityplannershavebeen developedto enumeratethe k shortest\nplans or all plans up to a certain length bound allowing for post hoc consideration of the plan space\nandselection[Katzet al.,2018;KatzandSohrabi,2020;Specket al.,2020;vonTschammeret al.,2022;\nChakrabortiet al., 2024]. Although this paradigmhas been successfully applied in practicalareassuch\nas malware detection [Boddy et al., 2005] and scenario planning for risk management [Sohrabi et al.,\n2018], it remains an indirect method for reasoning about the plan space of a planning task.\nConsidering fundamental problems in computer science, such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are anchored around counting. The most prominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula. While #SAT is considered computationally harder than asking whether a single\n∗Thisisanauthor self-archivedandextended versionofapaperthathasbeenaccepted forpublicationatAAAI’25.\n(cid:0)\n: davidjakob.speck@unibas.ch, hecher@cril.fr, daniel.gnad@liu.se, johannes.fichte@liu.se,\naugusto.blaascorrea@chch.ox.ac.uk\n1\n\nmodel exists (SAT), it also allows for automated reasoning about the solution space [Darwiche, 2001a;\nDarwiche and Marquis, 2002]. Recent competitions illustrate that, despite high computational com-\nplexity, state-of-the-art solvers are effective in practice [Fichte et al., 2021]. Due favorable reasoning\npower and vast applications, counting techniques have been extended to other fields [Aziz et al., 2015;\nFichte et al., 2017; Hahn et al., 2022; Eiter et al., 2024b].\nInthispaper,webridgethegapbetweenmodelcountingandclassicalplanningbyintroducinganew\nframeworkfor reasoningand analyzing plan space. To do so, we consider all plans for a givenplanning\ntaskwithpolynomiallyboundedlength,consistentwiththeapproachusedintop-qualityplanning[Katz\nand Sohrabi, 2020].",
+      "start_offset": 1508,
+      "end_offset": 3883
+    },
+    {
+      "heading": "Contributions Our main contributions are as follows:",
+      "level": 1,
+      "content": "1. We introduce a taxonomy of counting and reasoning problems for classical planning with polyno-\nmially bounded plan lengths and establish the computational complexity of these problems.\n2. We identify a class of reasoning problems on the plan space, called facet reasoning, that are as\nhard as polynomially bounded planning and thus can be solved more efficiently than counting\nproblems.\n3. We present a practical tool, Planalyst, that builds on existing planning and knowledge compila-\ntion techniques to answer plan-space reasoning queries and demonstrate its practical feasibility.\nIn more detail, on the theoretical side, we formally define a taxonomy of counting and reasoning\nproblems for planning and analyze the computational complexity of these problems. Among other\nresults, we show that the problem of probabilistic reasoning about the plan space such as determining\nhow many plans contain a given operator is CP-complete, which is considered computationally harder\n=\nthan counting the number of plans, known to be #P-complete [Speck et al., 2020]. We also introduce\nthe notionoffacet reasoning inthe contextofplanning, whichhas originsin computationalcomplexity\n[Papadimitriou and Yannakakis, 1982] and is well studied in ASP [Alrabbaa et al., 2018; Fichte et al.,\n2022a]. We show that facet reasoning in planning is NP-complete, and thus probably much simpler\nthancounting the number ofplans. This theoreticalresultis significantbecause itallowsmore efficient\nanswers to complex reasoning queries about the plan space, such as identifying which operators can\ncomplement a given partial plan and which provide more flexibility for further complementation.\nOn the practical side, we present a solution to the studied counting and reasoning problems by\ntransforming a planning task into a propositional formula, where satisfying assignments correspond\none-to-one to plans, followed by subsequent knowledge compilation into a d-DNNF [Darwiche and\nMarquis, 2002]. We implement this as a tool called Planalyst, which builds on existing tools from\nplanning [Rintanen, 2014] and knowledge compilation [Lagniez and Marquis, 2017; Sundermann et al.,\n2024] and thus readily allows plan counting and automated reasoning in plan space. Empirically, we\ncomparePlanalysttostate-of-the-arttop-qualityplannersonthecomputationallychallengingproblem\nof counting plans, and show that our tool performs favorably, especially when the plan space is large\nand reasoning over trillions of plans is critical. Finally, by constructing a d-DNNF, our approach not\nonly supports plan counting, but can also answer reasoning questions such as conditional probability,\nfaceted reasoning,and unbiased uniform plan sampling, all through efficient d-DNNF queries.",
+      "start_offset": 3935,
+      "end_offset": 6681
+    },
+    {
+      "heading": "Related Work",
+      "level": 1,
+      "content": "Darwiche and Marquis [2002] detailed the theoretical capabilities and limitations of normal forms in\nknowledgecompilation. Establishedpropositionalknowledgecompilersarec2d[Darwiche,2004]andd4,\nnewdevelopmentsareextensionsofSharpSAT-TD[KieselandEiter,2023]. Incrementalandapproximate\ncounting has been considered for ASP [Kabir et al., 2022; Fichte et al., 2024]. In SAT and ASP,\nadvanced enumeration techniques have also been studied [Masina et al., 2023; Spallitta et al., 2024;\nGebseret al., 2009;Alvianoet al.,2023],whichcanbebeneficialforcountingifthenumberofsolutions\nis sufficiently low or when (partial) solutions need to be materialized. Exact uniform sampling using\n2\n\nName Given Task Compl. Ref.\nPoly-Bounded-Plan-Exist Π, ℓ π ∈Plans (Π) NP-c [1]\nℓ\nPoly-Brave-Plan-Exist Π, ℓ, o ∃π ∈Plans (Π):o∈π NP-c Lem. 6\nℓ\nPoly-Cautious-Plan-Exist Π, ℓ, o ∀π ∈Plans (Π):o∈π coNP-c Lem. 6\nℓ\nPoly-Bounded-Top-k-Exist Π, ℓ |Plans |≥k PP-h [2]\nℓ\n#Poly-Bounded-Plan Π, ℓ |Plans | #P-c [2]\nℓ\nPoly-Probabilistic-Reason Π, ℓ, Q, p P [Π,Q]=p CP-c Thm. 9\nℓ =\nFacetReason Π, ℓ, o o∈F (Π) NP-c Thm. 10\nℓ\nAtLeast-k-Facets Π, ℓ, k |F (Π)|≥k NP-c Lem. 11\nℓ\nAtMost-k-Facets Π, ℓ, k |F (Π)|≤k coNP-c Cor. 12\nℓ\nP\nExact-k-Facets Π, ℓ, k |F (Π)|=k D -c Thm. 13\nℓ\nTable 1: Computational Complexity of Qualitative and Quantitative Reasoning Problems. We let Π be\na planning task, ℓ ∈ N with ℓ ≤ poly(Π), o ∈ O, k ∈ N , 0 ≤ p ≤ 1, and Q a query. [1]: [Bylander,\n0 o\n1994], [2]: [Speck et al., 2020].\nknowledgecompilationhasalsobeenimplemented[Laietal.,2021]. Modelcountinghasbeenappliedto\nprobabilisticplanninginthepast[DomshlakandHoffmann,2007]. Inclassicalplanningandgrounding,\nCorrˆeaet al. [2023] argued that grounding is infeasible for some domains if the number of operators in\na planning task is too high. Therefore, they manually employed model counting, but did not develop\nextendedreasoningtechniques orcounting toolsfor planning. Fine-grainedreasoningmodes andfacets\nhave been studied for ASP [Alrabbaa et al., 2018;Fichte et al., 2022a;Fichte et al., 2022b; Rusovac et\nal., 2024;Eiter et al., 2024a] and significance notions based on facets [B¨ohl et al., 2023].",
+      "start_offset": 6693,
+      "end_offset": 8844
+    },
+    {
+      "heading": "2 Preliminaries",
+      "level": 1,
+      "content": "We assume that the reader is familiar with basics of propositional logic [Kleine Bu¨ning and Lettmann,\n1999]and computationalcomplexity [Papadimitriou,1994]. Below, we follow standard definitions [By-\nlander, 1994; Speck et al., 2020] to summarize basic notations for planning.\nBasics For an integer i, we define [i] := {0,1,...,i}. We abbreviate the domain of a function f :\nD →R by dom(f). By f−1 : R → D we denote the inverse function f−1 := {f(d) →d | d∈ dom(f)}\nof function f, if it exists. Let σ = hs ,s ,...,s i be a sequence, then we write s ∈ σ if s = s for\n1 2 ℓ i\nsome 1 ≤ i ≤ ℓ and `(σ) the set of elements that occur in σ, i.e., `(σ) := {s | s ∈ σ}. For a\npropositional formula F, we abbreviate by vars(F) the variables that occur in F and by Mod(F) the\nset of all models of F and the number of models by #(F):=|Mod(F)|.\nComputational Complexity We follow standard terminology in computational complexity [Pa-\npadimitriou,1994]andthePolynomialHierarchy(PH)[StockmeyerandMeyer,1973;Stockmeyer,1976;\nWrathall,1976]. ThecomplexityclassDP capturesthe(independent)combinationofanNPandacoNP\nproblem, i.e., DP := {L ∩L | L ∈ NP,L ∈ coNP} [Papadimitriou and Yannakakis, 1982]. Class\n1 2 1 2\nPP [Gill, 1977] refers to those decision problems that can be characterized by a nondeterministic Tur-\ning machine, such that the positive instances are those where at least 1/2 of the machine’s paths are\naccepting. Counting class #P captures counting problems that can be solved by counting the num-\nber of accepting paths of a nondeterministic Turing machine [Valiant, 1979]. Class CP [Fenner et al.,\n=\n1999]referstodecisionproblemsthatcanbecharacterizedvianondeterministicTuringmachineswhere\npositive instances are those with the same number of accepting and rejecting paths.\nClassicalPlanning Aplanningtask isatupleΠ=hA,O,I,Gi,whereAisafinitesetofpropositional\nstatevariables. A(partial) state sisatotal(partial)mappings:A→{0,1}. Forastatesandapartial\n3\n\ns\ns 2\n⊥ y g\nsleep\net-read o-\nt o-",
+      "start_offset": 8859,
+      "end_offset": 10849
+    },
+    {
+      "heading": "A\ng A\nAI",
+      "level": 1,
+      "content": "wake-up go-to-AAAI give-talk\ns s s s\n0 1 3 ∗\nFigure 1: State space ofourrunning exampletask Π . The initialstate is denotedby s ; the goalstate\n1 0\nis denoted by s .\n∗\nstatep,wewrites|=pifssatisfies p,moreformally,p−1(0)⊆s−1(0)andp−1(1)⊆s−1(1). Oisafinite\nsetofoperators,whereeachoperatorisatupleo=hpre ,eff iofpartialstates,calledpreconditions and\no o\neffects. An operatoro∈O is applicable in a state s if s|=pre . Applying operatoro to state s, s o for\no",
+      "start_offset": 10857,
+      "end_offset": 11315
+    },
+    {
+      "heading": "J K",
+      "level": 1,
+      "content": "short, yields state s′, where s′(a):=eff (a), if a∈dom(eff ) and s′(a):=s(a), otherwise. Finally, I is\no o\nthe initial state ofΠandG apartialstate calledgoal condition. Astates is agoal state ifs |=G. Let\n∗ ∗\nΠ be a planning task. A plan π =ho ,...,o i is a sequence of applicable operators that generates a\n0 n−1\nsequence of states s ,...,s , where s = I, s is a goal state, and s = s o for every i ∈ [n−1].\n0 n 0 n i+1 i i",
+      "start_offset": 11318,
+      "end_offset": 11744
+    },
+    {
+      "heading": "J K",
+      "level": 1,
+      "content": "Furthermore, we let π(i):=o and denote by |π| the length of a plan π. We denote the set of all plans\ni\nby Plans(Π)andthe setofallplans oflengthatmostℓby Plans (Π) andcallitoccasionallyplan space\nℓ\nas done in the literature [Russell and Norvig, 1995].\nA plan π is optimal if there is no plan π′ ∈ Plans(Π) where |π′| < |π|. The notion naturally\nextends to bounded-length plans. Deciding or counting plans is computationally hard. More precisely,\nthe Bounded-Plan-Exist problem, which asks to decide whether there exists a plan of length at\nmost ℓ, is PSPACE-complete [Bylander, 1994]. The #Bounded-Plan problem, which asks to output\nthe number of plans of length at most ℓ, remains PSPACE-complete [Speck et al., 2020]. We say that\na plan is polynomially bounded if we restrict the length to be polynomial in the instance size, i.e., the\nlength ℓ of Π is bounded by ℓ ≤ kΠkc for some constant c, where kΠk is the encoding size of Π. For\na planning problem P with input ℓ that bounds the length of a plan, we abbreviate by Poly-P the\nproblem P where ℓ is polynomially bounded. Then, the complexity drops. Poly-Bounded-Plan-\nExistis NP-complete[Bylander,1994]and#Poly-Bounded-Planis #P-complete, andthe decision\nproblemPoly-Bounded-Top-k-ExistisPP-hard,whichaskstodecide,giveninadditionanintegerk,\nwhether there are at least k different plans of length up to ℓ [Speck et al., 2020].\nExample 1 (Running Example). Consider a planning task Π consisting of a scenario with a slightly\n1\nchaotic researcher, who has to wake up and give a talk at AAAI. Depending on how late they are, they\ncan go straight to the talk without any preparation. However, they could also spend time getting ready.\nLess pleasant to the audience, they could also continue sleeping and not give the talk at all. Figure 1\nillustrates the state space. The initial state is s , and the single goal state is s . The labels in each edge\n0 ∗\nidentify the operator being applied. We can easily identify two plans:\n(i) wake-up; get-ready; go-to-AAAI; give-talk.\n(ii) wake-up; go-to-AAAI; give-talk.\nPlan (i) has length 4, while Plan (ii) has length 3. Observe that action sleep does not appear in any\nplan.\nLandmarks A fact landmark is a state variable that occurs in every plan [Porteouset al., 2001]. An\noperator landmark is anoperatorthat occursin everyplan [Richter et al., 2008;Karpasand Domshlak,\n2009]. We can extend these notions to bounded landmarks where we assume bounded length ℓ.\nExample 2. Consider planning task Π from Example 1. We observe that wake-up, go-to-AAAI, and\n1\ngive-talk are operator landmarks.\n4\n\nPlanning as Satisfiability (SAT) Let Π=hA,O,I,Gi be a planning task and ℓ>0 an integer to\nboundthelengthofapotentialplan. Wecanemployastandardtechniquetoencodefindingaplaninto\na propositional formula and ask for its satisfiability (SAT) [Kautz and Selman, 1992; Rintanen, 2012].\nIn more detail, we can construct a formula Fplan[Π] whose models are in one-to-one correspondence\n≤ℓ\nwith the ℓ-bounded plans of Π. For space reasons, we present only the core idea. The variables are\nas follows: vars(Fplan) = {ai | a ∈ A,i ∈ [ℓ]}}∪{oi | o ∈ O,i ∈ [ℓ]}. Variable ai indicates the value\n≤ℓ\nof state variable a at the i-th step of the plan. Hence, if M ∈ Mod(Fplan[Π]) and aℓ ∈ M, then state\n≤ℓ\nvariable a has value 1 after applying operators o0,...,oℓ−1 to the initial state. We assume sequential\nencodings, where the following constraints hold.\n1. a set of clauses encoding the value of each state variable at the initial state;\n2. a set of clauses encoding the value of each state variable in the goal condition;\n3. a set of clauses guaranteeing that no two operators are chosen at the same step; and\n4. a set of clauses guaranteeing the consistency of state variables after an operator is applied. If oi\nis true and the effect of operator o makes a true, then ai+1 must be true.\nSinceplansmightbeshorterthanℓ,wemove“unused”stepstotheendusingtheformulaV (V ¬oi →\ni∈[ℓ] o∈O\nV\n¬oi+1),whichencodesthatifnooperatorwasassignedatstepi,thennooperatorcanbeassigned\no∈O\nat step i+1. Thereby, we obtain a one-to-one mapping between models of Fplan[Π] and l-bounded\n≤ℓ\nplans for the task.",
+      "start_offset": 11747,
+      "end_offset": 15906
+    },
+    {
+      "heading": "3 From Qualitative to Quantitative Reasoning",
+      "level": 1,
+      "content": "Classical planning aims at finding one plan or enumerating certain plans. But what if we want plans\nthat contain a certainoperator,or to count the number of possible plans givencertain assumptions, or\nif we want to identify the frequency of an operator among all possible plans? Currently, there is no\nunified reasoning tool to deal with these types of questions. We introduce more detailed qualitative\nand quantitative reasoning modes for planning and analyze its complexity. We start with two extreme\nreasoning modes that consider whether an operator is part of some or all plans.\nDefinition 3. Let Π=hA,O,I,Gi be a planning task, o∈O an operator, and ℓ an integer. We define\nthe\n• brave operator by BO ℓ(Π):=S π∈Plansℓ(Π)`(π) and\n• cautious operator by CO ℓ(Π):=T π∈Plansℓ(Π)`(π).\nThe problem Poly-Brave-Plan-Exist asks to decide whether o ∈ BO (Π). The problem Poly-\nℓ\nCautious-Plan-Exist asks to decide whether o∈CO (Π).\nℓ\nNote that we use `(·) to convert sequences into sets, as we aim only for an operator occurring at\nany time-point.\nRemark 4. Our definition of cautious operators is similar to operator landmarks [Zhu and Givan,\n2003], but for plans with up to a given bounded length.\nExample 5. Consider task Π from Example 1 and Plans (i) and (ii). Furthermore, let ℓ=4. Then,\n1\nthe brave and cautious operators of our task are the following:\nBO (Π )={wake-up, get-ready, go-to-AAAI, give-talk},\nℓ 1\nCO (Π )={wake-up, go-to-AAAI, give-talk}.\nℓ 1\nOperator get-ready is brave but not cautious, as it appears in Plan (i) but not in Plan (ii). Operator\nsleep is neither brave nor cautious, as it does not appear in any plan.\n5\n\nbrave probability cautious\n0<p≤1 p∈[0,1] p=1\nFigure2: Quantitativereasoningisafine-grainedreasoningmodebetweenbraveandcautiousreasoning.\nIt asks whether a literal matches ≥p·100% of the plans for planning task Π.\nLemma6(⋆1). Theproblem Poly-Brave-Plan-ExistisNP-completeandtheproblem Poly-Cautious-\nPlan-Exist is coNP-complete.\nTofind braveoperatorsinpractice,wecanemploya standardSAT [AudemardandSimon, 2018]or\nASP solver [Gebser et al., 2011; Gebser et al., 2014; Alviano et al., 2015]. For cautious operators, we\ncan employ a dedicated backbone solver [Biere et al., 2023] or again ASP solvers.\n3.1 Probability Reasoning\nBoth problems Poly-Brave-Plan-Existand Poly-Cautious-Plan-Existgive rise to extreme rea-\nsoning modes on plans. Cautious reasoning is quite strict and so unlikely to hold in general. Brave\nreasoning is too general and permissive, and thus quite weak in practice. Figure 2 illustrates the two\nreasoningmodesandamorefine-grainedmode,whichweintroducebelow. Thisnewmodeaskswhether\nthe conditional probability of an operator is above a given threshold. It generalizes the known Poly-\nBounded-Top-k-Existplanningproblem,whichonlyaskswhetheratleastkplansexists. Thecrucial\ningredient is counting the number of possible plans and relating them to the number of possible plans\nwhich contain a given operator. More formally: Let Π=hA,O,I,Gi be a planning task, o be an oper-\nator. We abbreviate the set of allplans of Π containing o by Plans (Π,o):={π |π ∈Plans (Π),o∈π}.\nℓ ℓ\nThen, we define the conditional probability of o in plans of Π by\n|Plans (Π,o)|\nP [Π,o]:= ℓ .\nℓ\nmax(1,|Plans (Π)|)\nℓ\nNote that the usage of max prevents division by zero in case of no possible plan. Analogously, we can\ntalk about operator o in position i by replacing o ∈ π with o = π(i). With the help of conditional\nprobability, we can define a fine-grained reasoning mode.\nTo be more flexible, we define a query Q as a propositional formula in conjunctive normal form\n(CNF) and assume its meaning as expected. We let Q contain variables corresponding to the set A of\nstate variables, the set O of operators,as well as of states and operators in position i (similar to Fplan).\n≤ℓ\nLet π ∈ Plans (Π) be a plan with π = ho ,...,o i that generates sequence s ,...,s . π satisfies\nℓ 0 n−1 0 n\na variable v ∈ A if there is some i ∈ [ℓ] such that s (v) = 1; satisfies an operator o ∈ O if there is\ni\nsome i ∈ [ℓ] such that π(i) = o, analogously for fixed time-points i. Then, π satisfies ¬v if π does not\nsatisfyv. Aplanπ satisfiesaclauseC inQ,ifπ satisfiesoneofitsliterals;π satisfiesQ,denotedπ |=Q,\nif it satisfies every clause in Q. We define Plans (Π,Q):={π |π ∈Plans (Π),π |=Q}.\nℓ ℓ\nDefinition 7 (Probability Reasoning). Let Π=hA,O,I,Gi be a planning task, ℓ>0 be an integer, Q\nbe a query, and 0≤p≤1 with p∈Q. Then, probability reasoning on Q asks if P [Π,Q]=p, where\nℓ\n|Plans (Π,Q)|\nP [Π,Q]:= ℓ .\nℓ\nmax(1,|Plans (Π)|)\nℓ\nExample 8 (Probability Reasoning). Again, consider planning task Π from Example 1 and let ℓ=4.\n1\nTake the following probability reasoning queries: (i) P [Π ,wake-up] = 1, (ii) P [Π ,get-ready] = 0.5,\nℓ 1 ℓ 1\nand (iii) P [Π ,sleep]=0. Reasoning (i) illustrates that the researcher must always use operator wake-\nℓ 1\nup to reach a goal; (ii) indicates that get-ready occurs in half of the plans; (iii) allows us to conclude\n1Weprovestatements markedby“⋆”intheappendix.\n6\n\nthatnoplan usesoperator sleep. Morecomplex queries might askfor theprobability of aplan containing\nboth wake-up and sleep, or at least one of them:\nP [Π ,wake-up∧sleep]=0,\nℓ 1\nP [Π ,wake-up∨sleep]=1.\nℓ 1\nProbability reasoning can be achieved by counting twice, which is computationally hard. In more\ndetail, we obtain:\nTheorem 9 (⋆). The problem Poly-Probabilistic-Reason is CP-complete.\n=",
+      "start_offset": 15950,
+      "end_offset": 21357
+    },
+    {
+      "heading": "4 Faceted Reasoning",
+      "level": 1,
+      "content": "Above, we introduced three different reasoning modes, namely brave, probability, cautious reasoning.\nUnfortunately the most precise reasoning mode —the probability mode— is the computational most\nexpensive one and requires to count plans. Therefore, we turn our attention to reasoning that is less\nhardthanprobabilisticreasoningandallowsusstilltofilterplansandquantifyuncertaintyamongplans.\nWe call this reasoning faceted reasoning following terminology from combinatorics [Papadimitriou and\nYannakakis, 1982] and ASP [Alrabbaa et al., 2018]. At the heart of these tasks is a combination of\nbrave and cautious reasoning. These are particularly useful if we want to develop plans gradually/in-\ncrementally to see at a given time point, which operators are still possible or have the biggest effect.\nWe focus on operators that belong to some (brave) but not to all plans (cautious).\nMore formally, for a planning task Π and an integer ℓ, we let F+(Π) := BO (Π)\\CO (Π) and\nℓ ℓ ℓ\ncall the elements of F+(Π) inclusive facets. In addition, we distinguish excluding facets F−(Π), which\nℓ ℓ\nindicate that operators are not part of a plan. More formally, we let F− := {¬o | o ∈ F+(Π)} and\nℓ\ndefine the set F (Π) of all facets by F (Π) := F+(Π)∪F−(Π). Interestingly, a facet p ∈ {o,¬o} is\nℓ ℓ ℓ ℓ\ndirectly related to uncertainty, since the operator o can either be included in or be excluded from a\nplan. When we enforce that a facet p ∈ {o,¬o} is present in a plan, which we abbreviate by Π[p], we\nimmediately reduce uncertainty on operatorsamong the plans. Basedonthis understanding, we define\nthe notion of significance for a planning task Π=hA,O,I,Gi and an operator o∈O:\n|F (Π)|−|F (Π[o])|\nS (Π,o):= ℓ ℓ .\nℓ\n|F (Π)|\nℓ\nNote that the notion of significance is particularly interesting when we already have a prefix ω =\nk\nho ,...,o iandareinterestedinplansthatcompletetheprefix. Here,facetscanassistinunderstanding\n0 k\nwhich operator is the most significant for the next step or some step in the future. Furthermore, we\ncan include state variables into significance notations without effect on the complexity. We omit these\ncases from the presentation due to space constraints and readability of our introduced notion.\n4.1 Computational Aspects of Facets\nNext, we study the computational complexity for problems related to facets. We limit ourselves to\nincluding facets, assume the case where an operator occurs in some step, and we omit prefixes in the\nfollowing. These restrictions have only a negligible effect on the complexity. We start with a natural\nreasoning problem: The FacetReason problem asks, given a planning task Π and an operator o∈O,\nto decide whether o∈F(Π). We start with a lower and upper bound on the FacetReason problem.\nTheorem 10 (⋆). Let Π be a planning task and o∈O. The problem FacetReason is NP-complete.\nNext, we look into counting facets and first observe that the number of facets is bound by 0 ≤\n|F(Π)| ≤ |O| for a planning task Π. Therefore, we consider a parameterized version by taking a\nboundk onthe numberoffacetsasinput. Then, the problemExact-k-Facets asks,givenaplanning\ntask Π and an integer k, to decide whether |F(Π)| = k. Before, we look into upper and lower bounds\nby the problems AtLeast-k-Facets and AtMost-k-Facets, which ask whether |F(Π)| ≥ k and\n|F(Π)|≤k, respectively.\n7\n\nLemma 11 (⋆). Let Π be a planning task, and ℓ ∈ N, k ∈ N be integers. AtLeast-k-Facets is\n0\nNP-complete.\nCorollary 12 (⋆). Let Π be a planning task, ℓ∈N, k ∈N . Then, the problem AtMost-k-Facets is\n0\ncoNP-complete.\nP\nBoth results together yield D -completeness.\nTheorem 13 (⋆). Let Π be a program, and ℓ∈N, k ∈N be integers. The problem Exact-k-Facets\n0\nP\nis D -complete.\n5 Discussion: Applications of Plan Reasoning\nOur new reasoning modes offer a rich framework to query the solution space of planning tasks. In\nRemark 4, we discussed the connection between landmarks and cautious reasoning. Similarly, with\nbrave and cautious reasoning it is easy to answer questions such as “does operator o appear on any\nplan?”, or “does partial state p occur on any trajectory?”",
+      "start_offset": 21376,
+      "end_offset": 25461
+    },
+    {
+      "heading": "The expressiveness of the queries goes way beyond and can be leveragedin many existing planning",
+      "level": 1,
+      "content": "techniques. For example, determining the set of operators that are always or never part of a plan\nis important for learning pruning functions [Gnad et al., 2019]. We can generalize these more global\nqueries to reason about operators being only (never) applied in states that satisfy certain conditions,\nwhichis essentialfor learningpolicies [Krajnansky´ et al., 2014;BonetandGeffner, 2015]. Furthermore,\nbraveand cautious reasoningcan be helpful for model debugging, offering a convenienttool to find out\nif an operator expected to occur in a plan does in fact never appear [Lin et al., 2023; Gragera et al.,\n2023]. In over-subscription planning [Smith, 2004], we can determine the achievability of soft goals or\ncompute the achievable maximum set of soft goals by answering multiple queries. This can be utilized\nin explainable planning, providing reasons for the absence of solutions that achieve the desired set of\nsoft goals [Eifler et al., 2020; Krarup et al., 2021]. We can even generalize the notion of soft goals to\ndesired state atoms that are achieved along a plan, but which might no longer hold in the goal.\nWith faceted reasoning, we are able to answer plan-space queries without actually counting the\nnumber of solutions. This reduces the complexity of answering queries to NP-completeness, making\nreasoning much more practically usable. What makes facet reasoning particularly interesting is that it\nallows to efficiently answer conditional queries, such as “if I want operator o to occur at step k, how\nmuch choice is left for the remaining operators?”. Similar to previous work in ASP, facet reasoning\nallows for an interactive querying mode in which users can gain insights about the particular solution\nspaceofaplanningtask[Fichteetal.,2022a]. Fortaskswithalargesetofplansthatcannotpossiblybe\nnavigatedmanually,facets offerthe possibilityto systematicallynavigatethe solutionspace,narrowing\ndown the set of plans by committing to desired operators. The Planalyst tool, which we describe in\nmore detail in the next section, enables this form of interactive exploration in the context of classical\nplanning.",
+      "start_offset": 25556,
+      "end_offset": 27682
+    },
+    {
+      "heading": "6 Empirical Evaluation",
+      "level": 1,
+      "content": "We implemented our reasoning framework for classical planning as a tool called Planalyst. Therefore,\nwe transform planning tasks into SAT formulas based on the Madagascar planner [Rintanen, 2011;\nRintanen, 2014]. To efficiently carry out counting, we use d4 [Lagniez and Marquis, 2017; Audemard\net al., 2022], whichcompiles (potentially large)formulasinto a specializednormalformcalled d-DNNF\n[Darwiche and Marquis, 2002], enabling fast reasoning. Finally, we reason over the plan space via\ncounting queries using the ddnnife reasoner [Sundermann et al., 2024], which works in poly-time on\nd-DNNFs.\n8\n\nCoverage #Plans",
+      "start_offset": 27704,
+      "end_offset": 28323
+    },
+    {
+      "heading": "Length",
+      "level": 1,
+      "content": "Bound ∗K",
+      "start_offset": 28329,
+      "end_offset": 28339
+    },
+    {
+      "heading": "KmyS munE tnuoC xaM naeM\nnaideM",
+      "level": 1,
+      "content": "× 1.0 351 309 253 335 >1015 >1013 >102\n× 1.1 289 231 182 300 >1015 >1013 >104\n× 1.2 212 173 130 251 >1015 >1013 >105\n× 1.3 177 135 101 210 >1018 >1015 >105\n× 1.4 142 112 77 189 >1021 >1018 >106\n× 1.5 112 91 61 170 >1021 >1018 >106\nTable 2: (Left): Coverage,i.e., the number of tasks where the number of plans within a multiplicative\nfactorofalengthboundwasfoundbyK∗,SymK,andourSAT-basedapproaches,CountandEnum. Count\nonlycountsplans,whileEnumadditionallyenumeratesthem. (Right): Statisticsonthenumberofplans\nin the benchmark set, considering the length bound determined by the four solvers.\n6.1 Experimental Setup\nWefocusonsolving#Bounded-Plan,i.e.,countingthenumberofplans,whichisthecomputationally\nhardest problem studied above. This allows us to address all reasoning questions discussed, including\ncomputing conditional probabilities. For each task of the benchmark set, we defined an upper bound\nby collecting known bounds from planning.domains[Muise, 2016] and running winning planners from\nthe most recent International Planning Competitions (IPC) [Taitler et al., 2024]. In the experiments,\nwe count plans of length up to a multiplicative factor c ∈ {1.0,1.1,1.2,1.3,1.4,1.5} of the collected\nupper bounds. We consider two different configurations for our approach: Count, which only counts\nthenumberofplans,andEnum,whichadditionallyenumeratesallplans,resultinginanoveltop-quality\nplannerforclassicalplanningwithunitoperatorcosts. Forcomparison,wehavechosentwotop-quality\nplanners, K∗ [Katz et al., 2018] and SymK [Speck et al., 2020], both of which can be readily used to\ncount the number of plans as they enumerate them, and both of which are considered to scale well\nto large numbers of plans. We ran both baseline planners in their recommended configurations2: K∗,\nwhich implements orbit-space search [Katz and Lee, 2023] with the landmark-cut heuristic [Helmert\nand Domshlak, 2009], and SymK, which implements a variant of bidirectional symbolic search[Torralba\net al., 2017]. For enumeration approaches (K∗, SymK, Enum), we let these solvers enumerate the plans\nonly internally to avoid writing billions (or more) of plans to the disk. All experiments ran on Intel\nXeon Silver 4114 processors running at 2.2 GHz. We used a time limit of 30 minutes and a memory\nlimit of 6 GiB per task. Our benchmarks include all optimal planning domains from IPCs 1998-2023\nwith unitoperatorcostsandwithout conditionaleffects oraxioms. Sourcecode,benchmarks,anddata\nare available online [Speck et al., 2024].\n6.2 Overall Performance\nTable 2 (left) compares the coverage, i.e., the number of tasks for which different approaches can\ndetermine the number of plans, for different multiplicative length bounds. K∗ has the best coveragefor\nalengthboundof1.0. Ourenumerationapproach,Enum,ranksoveralllast,althoughbeingabletosolve\na notable number of tasks by first creating a d-DNNF, followed by a subsequent enumeration query\nfor all models, and finally mapping them to actual plans. For the 1.0 bound, our counting approach\nCountperformsworsethanK∗,buthasbettercoveragethantheSymKplanner. Whenconsideringhigher\nlength bounds, the counting approach, Count, has the highest coverage. The gap between Count and\nthe otherapproachesgetslargerasthelengthboundincreases. Thiscanbe explainedbytheincreasing\nnumber of plans, see Table 2 (right), where enumeration becomes less feasible due to the large plan\n2Wedisabledadefaultoptimizationthatremovesoperators causallyirrelevanttothegoal,asitprunesvalidplans.\n9\n\nBound: ×1 Bound: ×1.5\nDomains ∗K",
+      "start_offset": 28370,
+      "end_offset": 31902
+    },
+    {
+      "heading": "KmyS munE tnuoC",
+      "level": 1,
+      "content": "∗K",
+      "start_offset": 31917,
+      "end_offset": 31921
+    },
+    {
+      "heading": "KmyS munE tnuoC",
+      "level": 1,
+      "content": "airport (49) 7 7 7 11 7 7 6 11\nbarman (14) 3 0 0 0 0 0 0 0\nblocks (35) 28 31 29 33 9 8 7 15\nchildsnack (20) 0 0 0 0 0 0 0 0\ndepot (22) 4 2 2 3 0 0 0 1\ndriverlog (20) 10 8 6 8 1 1 1 2\nfreecell (80) 15 13 5 5 0 0 0 0\ngrid (5) 2 2 1 1 1 0 0 1\ngripper (20) 3 2 2 3 1 1 0 2\nhiking (20) 4 3 1 7 0 0 0 1\nlogistics (63) 9 6 4 13 1 1 0 3\nmiconic (150) 39 35 31 39 14 13 10 24\nmovie (30) 2 2 0 30 0 0 0 30\nmprime (35) 22 20 22 23 12 7 2 9\nmystery (19) 16 14 14 15 11 8 7 9\nnomystery (20) 14 13 8 8 5 2 1 4\norganic (16) 7 7 0 0 7 7 0 0\nparking (40) 3 1 0 0 0 0 0 0\npipes-nt (46) 16 11 10 12 2 1 1 3\npipe-t (45) 9 7 5 8 2 1 1 2\npsr-small (50) 46 44 41 48 14 14 8 24\nquantum (20) 10 8 9 9 2 1 1 2\nrovers (40) 4 4 4 4 0 0 0 4\nsatellite (36) 5 5 5 6 1 1 0 1\nsnake (20) 6 5 1 1 2 0 0 0\nstorage (29) 16 15 12 12 7 6 5 7\ntermes (20) 5 6 2 2 0 0 0 0\ntidybot (40) 20 10 4 5 1 1 1 1\ntpp (30) 5 4 4 5 3 3 3 4\nvisitall (40) 12 16 16 16 5 5 5 6\nzenotravel (20) 9 8 8 8 4 3 2 4\nSum (1094) 351 309 253 335 112 91 61 170\nTable 3: Coverage per domain, i.e., number of tasks per domain where the number of plans within a\nfactor 1.0 or 1.5 of a cost bound was found by K∗, SymK, and our SAT-based approaches, Count and\nEnum. Count only counts plans, while Enum outputs each plan.\nspace. This highlights the usefulness ofour approachfor samplingor reasoningintasks with huge plan\nspaces. For example, in scenarios where end-users want to understand the plan space, enumerating\novera sextillion(1021) differentplansis infeasible, butcounting them(and usingthe relatedreasoning)\nis possible. Moreover, a decent performance with larger bounds gives us more flexibility for problems\nwhere a good bound is not easily available but an over-approximation is, e.g., using a non-admissible\nheuristic to come up with a bound.\n6.3 Domain-Wise Performance\nTable 3 showsa domain-wise comparisonof the different approachesfor the two extreme bounds in our\nexperiments, 1.0 and 1.5. For both bounds, the performance differs a lot depending on the domain.\nOur SAT-based approach performs particularly well in the blocksworld and psr-small domains in both\ncases. In blocksworld, the largest task that we could still solve had 1.5·109 plans, while in psr-small\nthe largestsolvedtask had 8.9·1012. In contrast, K∗ could only count up to a 10 million plans in these\n10\n\ndomains.\nThe SAT-based approach is less effective in other domains. One reason is that they are less spe-\ncialized than heuristic and symbolic search approaches to optimal planning. Among other factors, the\nsequentialencodingisnotconciseenoughforsometasksandbounds(e.g.,airport),orthegroundingal-\ngorithmofMadagascarisinferiortothoseofotherplannersbuiltontopofthe FastDownwardgrounder\n[Helmert, 2006; Helmert, 2009], making it impossible to ground certain tasks (e.g., organic-synthesis).\nIt would be interesting to evaluate how other encodings perform [Rintanen, 2012], but that brings the\nadditional problem of losing the one-to-one correspondence between plans and SAT models.\nFor 1.5, counting is more feasible than enumeration in many domains: as the number of plans\nincreases, enumeration becomes less practical. Counting works for many reasoning tasks, e.g., those\nbased on conditional probabilities.\n6.4 Beyond Counting\nAs illustrated above, our Planalyst tool effectively counts plans by compiling into a d-DNNF and\nperforming a counting query. This method cannot only answer conditional probability questions, such\nas the quantity of an operator in plans, but also addresses other reasoning questions more directly\nand efficiently through d-DNNF queries using ddnnife [Sundermann et al., 2024]. Consider reasoning\nquestions about the plan space of a given planning task, while respecting a cost bound. Given the\nd-DNNF representing the plan space, questions about brave and cautious operators can be answered\ndirectly, evenwithout traversingthe entire d-DNNF, when the number ofplans is known[Sundermann\net al., 2024]. This can be achieved by traversing the literal nodes of the d-DNNF and collecting the\nbackbone variables,i.e., the variables thatare alwaystrue (core)or false (dead). In addition, giventhe\nd-DNNF,itispossibletouniformlysampleplanswithoutenumeratingthefullsetbyd-DNNFtraversing\nwith ddnnife. This allows to address planning biases when selecting plans [Paredes et al., 2024;Frank\net al., 2024] and thus collect unbiased training data for different learning approaches[Shen et al., 2020;\nAreces et al., 2023; Chen et al., 2024; Bachor and Behnke, 2024]. We omit empirical results for these\nqueries,astheiroverheadisnegligibleoncethed-DNNFisconstructed. OurexperimentswiththeCount\nconfiguration of Planalysthave shown that this construction is feasible for many planning tasks.",
+      "start_offset": 31936,
+      "end_offset": 36660
+    },
+    {
+      "heading": "7 Conclusion and Future Work",
+      "level": 1,
+      "content": "Wecountplansandreasoninthesolutionspace,whichisorthogonaltopreviousworksinplanning[Katz\netal.,2018;Specketal.,2020;KatzandSohrabi,2020]. Moreover,wereasonabouttheplanspaceinthe\nformofqueriesandintroducefacetedreasoningtoplanningallowingforquestionsonthesignificanceof\noperators. Althoughfacetedreasoningiscomputationallyhard(NP-c),itis,understandardtheoretical\nassumptions,significantlymoreefficientthancountingthe numberofplans (#P-c). Finally, we present\nour new reasoning tool, Planalyst, which can count the number of plans assuming fixed given length.\nIt also supports different plan space queries. In general, Planalystis competitive with state-of-the-art\ntop-k planners and outperforms all other methods when the plan space is too large, i.e., more than 10\nmillion plans.\nIn the future, we will integrate Planalyst into other pipelines, such as goal recognition [Mirsky\net al., 2021], grounding via learning [Gnad et al., 2019], and task rewriting [Areces et al., 2014; Elahi\nand Rintanen, 2024]. We believe counting and facet reasoning are useful for guidance in these areas.\nInterestingtopicsforconsiderationscouldbetodealwithinconsistencies[Ulbricht,2019]andcertifying\nresults[Alvianoetal.,2019;Fichteetal.,2022c]aswellasexplainingreasoningbehinddecisions[Cabalar\net al., 2020]. We will study how our framework extends to other encodings, such as parallel operator\nencodings [Rintanen, 2012] or lifted encodings [Ho¨ller and Behnke, 2022].\n11",
+      "start_offset": 36688,
+      "end_offset": 38143
+    },
+    {
+      "heading": "8 Acknowledgements",
+      "level": 1,
+      "content": "Authorsareorderedinreversealphabeticalorder. DavidSpeckwasfundedbytheSwissNationalScience\nFoundation(SNSF)aspartoftheproject“UnifyingtheTheoryandAlgorithmsofFactoredState-Space\nSearch”(UTA).HecherwassupportedbytheAustrianScienceFund(FWF),grantsJ4656andP32830,\nthe Society for Research Funding in Lower Austria (GFF, Gesellschaft fu¨r Forschungsfo¨rderung NO¨),\ngrantExzF-0004,aswellasthe ViennaScience andTechnologyFund (WWTF),grantICT19-065. The\nworkhasbeencarriedoutwhileHechervisitedthe SimonsInstitute atUC Berkeley. Fichte wasfunded\nby ELLIIT funded by the Swedish government.",
+      "start_offset": 38161,
+      "end_offset": 38744
+    },
+    {
+      "heading": "References",
+      "level": 1,
+      "content": "[Alrabbaa et al., 2018] Christian Alrabbaa, Sebastian Rudolph, and Lukas Schweizer. Faceted answer-\nset navigation. In Proc. RuleML+RR 2018, pages 211–225,2018.\n[Alviano et al., 2015] MarioAlviano,CarmineDodaro,NicolaLeone,andFrancescoRicca. Advancesin\nWASP.InFrancescoCalimeri,GiovambattistaIanni,andMiroslawTruszczynski,editors,Proceedings\nof the Thirteenth Conference on Programming and Nonmonotonic Reasoning (LPNMR 2015), pages\n40–54,2015.\n[Alviano et al., 2019] MarioAlviano,Carmine Dodaro,JohannesKlaus Fichte,MarkusHecher, Tobias\nPhilipp, and Jakob Rath. Inconsistency proofs for ASP: the ASP - DRUPE format. Theory Pract.\nLog. Program., 19(5-6):891–907,2019.\n[Alviano et al., 2023] Mario Alviano, Carmine Dodaro, Salvatore Fiorentino, Alessandro Previti, and\nFrancescoRicca.ASPandsubsetminimality: Enumeration,cautiousreasoningandMUSes. Artificial\nIntelligence, 320:103931,2023.\n[Areces et al., 2014] CarlosAreces,FacundoBustos,Mart´ınArielDominguez,andJ¨orgHoffmann. Op-\ntimizingplanningdomainsbyautomaticactionschemasplitting. InSteveChien,AlanFern,Wheeler\nRuml, and Minh Do, editors, Proceedings of the Twenty-Fourth International Conference on Auto-\nmated Planning and Scheduling (ICAPS 2014), pages 11–19.AAAI Press, 2014.\n[Areces et al., 2023] Felipe Areces, Benjamin Ocampo, Carlos Areces, Mart´ın Dom´ınguez, and Daniel\nGnad. Partial grounding in planning using small language models. In ICAPS 2023 Workshop on\nKnowledge Engineering for Planning and Scheduling, 2023.\n[Audemard and Simon, 2018] Gilles Audemard andLaurentSimon. Onthe glucoseSAT solver. Int. J.\nArtif. Intell. Tools, 27(1):27, 2018.\n[Audemard et al., 2022] Gilles Audemard, Jean-Marie Lagniez, and Marie Miceli. A new exact solver\nfor (weighted) max#sat. In Frisch and Gregory [2022], pages 28:1–28:20.\n[Aziz et al., 2015] RehanAbdul Aziz, GeoffreyChu,ChristianMuise, andPeterStuckey. Stablemodel\ncounting and its application in probabilistic logic programming. In Blai Bonet and Sven Koenig,\neditors, Proceedings of the Twenty-Ninth AAAI Conference on Artificial Intelligence (AAAI 2015),\npages 3468–3474.AAAI Press, 2015.\n[Bachor and Behnke, 2024] Pascal Bachor and Gregor Behnke. Learning planning domains from non-\nredundantfully-observedtraces: Theoreticalfoundationsandcomplexityanalysis. InDyandNatara-\njan [2024], pages 20028–20035.\n[Biere et al., 2023] Armin Biere, Nils Froleyks, and Wenxi Wang. CadiBack: Extracting backbones\nwith CaDiCaL. In Mahajan and Slivovsky [2023], pages 3:1–3:12.\n12\n\n[Boddy et al., 2005] Mark Boddy, Johnathan Gohde, Tom Haigh, and Steven Harp. Course of action\ngenerationfor cyber security using classical planning. In Susanne Biundo, Karen Myers, and Kanna\nRajan, editors, Proceedings of the Fifteenth International Conference on Automated Planning and\nScheduling (ICAPS 2005), pages 12–21.AAAI Press, 2005.\n[B¨ohl et al., 2023] Elisa B¨ohl, Sarah Alice Gaggl, and Dominik Rusovac. Representative answer sets:\nCollecting something ofeverything. In KobiGal, Ann Now´e,GrzegorzJ.Nalepa, RoyFairstein, and\nRoxana Ra˘dulescu, editors, Proceedings of the 26th European Conference on Artificial Intelligence\n(ECAI 2023), pages 271–278.IOS Press, 2023.\n[Bonet and Geffner, 2015] Blai Bonet and Hector Geffner. Policiesthat generalize: Solving many plan-\nning problems with the same policy. In Qiang Yang and Michael Wooldridge, editors, Proceedings\nof the 24th International Joint Conference on Artificial Intelligence (IJCAI 2015), pages 2798–2804.\nAAAI Press, 2015.\n[Bylander, 1994] Tom Bylander. The computational complexity of propositional STRIPS planning.\nArtificial Intelligence, 69(1–2):165–204,1994.\n[Cabalar et al., 2020] Pedro Cabalar, Jorge Fandinno, and Brais Mun˜iz. A system for explainable an-\nswersetprogramming.ElectronicProceedingsinTheoreticalComputerScience,325:124–136,Septem-\nber 2020.\n[Chakraborti et al., 2024] Tathagata Chakraborti, Jungkoo Kang, Francesco Fuggitti, Michael Katz,\nand Shirin Sohrabi. Interactive plan selection using linear temporal logic, disjunctive action land-\nmarks, and natural language instruction. In Dy and Natarajan [2024], pages 23775–23777.\n[Chen et al., 2024] DillonZ.Chen,SylvieThi´ebaux,andFelipeTrevizan.Learningdomain-independent\nheuristics for grounded and lifted planning. In Dy and Natarajan [2024], pages 20078–20086.\n[Conitzer and Sha, 2020] VincentConitzerandFeiSha,editors.ProceedingsoftheThirty-FourthAAAI\nConference on Artificial Intelligence (AAAI 2020). AAAI Press, 2020.\n[Cook, 1971] StephenA.Cook. Thecomplexityoftheorem-provingprocedures. InMichaelA.Harrison,\nRanan B. Banerji, and Jeffrey D. Ullman, editors, Proceedings of the 3rd Annual ACM Symposium\non the Theory of Computing (STOC 1971), pages 151–158.ACM, 1971.\n[Corrˆea et al., 2023] Augusto B. Corrˆea,Markus Hecher,Malte Helmert, Davide Mario Longo,Florian\nPommerening,andStefanWoltran. Groundingplanningtasksusingtreedecompositionsanditerated\nsolving. In Koenig et al. [2023].\n[Darwiche and Marquis, 2002] Adnan Darwiche and Pierre Marquis. A knowledge compilation map.\nJournal of Artificial Intelligence Research, 17:229–264,2002.\n[Darwiche and Marquis, 2024] Adnan Darwiche and Pierre Marquis. Knowledge compilation. Annals\nof Mathematics and Artificial Intelligence, 2024.\n[Darwiche, 1999] Adnan Darwiche. Compiling knowledge into decomposable negation normal form.\nIn Thomas Dean, editor, Proceedings of the Sixteenth International Joint Conference on Artificial\nIntelligence (IJCAI 1999), pages 284–289.Morgan Kaufmann, 1999.\n[Darwiche, 2001a] Adnan Darwiche. Decomposable negation normal form. Journal of the ACM,\n48(4):608–647,2001.\n[Darwiche, 2001b] Adnan Darwiche. On the tractable counting of theory models and its applicationto\ntruth maintenance and belief revision. Journal of Applied Non-Classical Logics, 11(1-2):11–34,2001.\n13\n\n[Darwiche, 2004] AdnanDarwiche.NewadvancesincompilingCNFintodecomposablenegationnormal\nform. In Ramo´n Lo´pez de Ma´ntaras and Lorenza Saitta, editors, Proceedings of the 16th Eureopean\nConference on Artificial Intelligence, (ECAI 2004), Valencia, Spain, August 22-27, 2004, pages 328–\n332. IOS Press, 2004.\n[Domshlak and Hoffmann, 2007] Carmel Domshlak and J¨org Hoffmann. Probabilistic planning via\nheuristic forward search and weighted model counting. Journal of Artificial Intelligence Research,\n30:565–620,2007.\n[Dy and Natarajan, 2024] JenniferDyandSriraamNatarajan,editors.ProceedingsoftheThirty-Eighth\nAAAI Conference on Artificial Intelligence (AAAI 2024). AAAI Press, 2024.\n[Eifler et al., 2020] Rebecca Eifler, MichaelCashmore,J¨orgHoffmann, Daniele Magazzeni,and Marcel\nSteinmetz. A new approach to plan-space explanation: Analyzing plan-property dependencies in\noversubscriptionplanning. In Conitzer and Sha [2020], pages 9818–9826.\n[Eiter et al., 2024a] Thomas Eiter, Johannes Klaus Fichte, Markus Hecher, and Stefan Woltran. Epis-\ntemic logic programs: Non-ground and counting complexity. In Kate Larson, editor, Proceedings of\nthe 32nd International Joint Conference on Artificial Intelligence (IJCAI 2024), pages 3333–3341.\nijcai.org, 2024.\n[Eiter et al., 2024b] ThomasEiter,MarkusHecher,andRafaelKiesel.aspmc: Newfrontiersofalgebraic\nanswer set counting. Artificial Intelligence, 330:104109,2024.\n[Elahi and Rintanen, 2024] MojtabaElahiandJussiRintanen.Optimizingtheoptimizationofplanning\ndomains by automatic action schema splitting. In Dy and Natarajan [2024], pages 20096–20103.\n[Fenner et al., 1999] StephenA.Fenner,FredericGreen,StevenHomer,andRandallPruim. Determin-\ning acceptance possibility for a quantum computation is hard for the polynomial hierarchy. ECCC,\nTR99-003,1999.\n[Fichte et al., 2017] Johannes Klaus Fichte, Markus Hecher, Michael Morak, and Stefan Woltran. An-\nswersetsolvingwithboundedtreewidthrevisited.InMarcelloBalducciniandTomiJanhunen,editors,\nProceedings of the Fourteenth Conference on Programming and Nonmonotonic Reasoning (LPNMR\n2017), pages 132–145,2017.\n[Fichte et al., 2021] Johannes K. Fichte, Markus Hecher, and Florim Hamiti. The model counting\ncompetition 2020. ACM Journal of Experimental Algorithmics, 26(13):1–26,2021.\n[Fichte et al., 2022a] Johannes Klaus Fichte, Sarah Alice Gaggl, and Dominik Rusovac. Rushing and\nstrolling among answer sets – navigationmade easy. In Honavar and Spaan [2022], pages 5651–5659.\n[Fichte et al., 2022b] Johannes Klaus Fichte, Markus Hecher, and Mohamed A. Nadeem. Plausibility\nreasoningviaprojectedanswersetcounting-Ahybridapproach.InLucDeRaedt,editor,Proceedings\nof the 31st International Joint Conference on Artificial Intelligence (IJCAI 2022), pages 2620–2626.\nIJCAI, 2022.\n[Fichte et al., 2022c] Johannes Klaus Fichte, Markus Hecher, and Valentin Roland. Proofs for proposi-\ntional model counting. In Frisch and Gregory [2022], pages 30:1–30:24.\n[Fichte et al., 2024] Johannes Klaus Fichte, Sarah Alice Gaggl, Markus Hecher, and Dominik Rusovac.\nIASCAR: incremental answer set counting by anytime refinement. Theory Pract. Log. Program.,\n24(2):505–532,2024.\n[Frank et al., 2024] Jeremy Frank, Alison Paredes, J. Benton, and Christian Muise. Bias in planning\nalgorithms. In ICAPS Workshop on Reliable Data-Driven Planning and Scheduling (RDDPS), 2024.\n14\n\n[Frisch and Gregory,2022] Alan M. Frisch and Peter Gregory, editors. Proceedings of Twenty-Fifth\nInternational Conference on Theory and Applications of Satisfiability Testing (SAT 2022). Schloss\nDagstuhl – Leibniz-Zentrum fu¨r Informatik, 2022.\n[Gebser et al., 2009] Martin Gebser, Benjamin Kaufmann, and Torsten Schaub. Solution enumeration\nforprojectedbooleansearchproblems.InWillemJanvanHoeveandJohnN.Hooker,editors,Proceed-\nings of the 6th International Conference on Integration of AI and OR Techniques in Constraint Pro-\ngramming for Combinatorial Optimization Problems (CPAIOR 2009), pages 71–86. Springer-Verlag,\n2009.\n[Gebser et al., 2011] Martin Gebser, Roland Kaminski, Arne K¨onig, and Torsten Schaub. Advances\nin gringo series 3. In James P. Delgrande and Wolfgang Faber, editors, Proceedings of the Eleventh\nConference on Programming and Nonmonotonic Reasoning (LPNMR 2011), pages 345–351,2011.\n[Gebser et al., 2014] Martin Gebser, Roland Kaminski, Benjamin Kaufmann, and Torsten Schaub.\nClingo = ASP + control: Preliminary report. arXiv:1405.3694[cs.PL], 2014.\n[Gill, 1977] John Gill. Computational complexity of probabilistic turing machines. SIAM Journal on\nComputing, 6(4):675–695,1977.\n[Gnad et al., 2019] Daniel Gnad, A´lvaro Torralba, Mart´ın Ariel Dom´ınguez, Carlos Areces, and Fa-\ncundo Bustos. Learning how to ground a plan – Partial grounding in classical planning. In Proceed-\nings of the Thirty-Third AAAI Conference on Artificial Intelligence (AAAI 2019), pages 7602–7609.\nAAAI Press, 2019.\n[Gragera et al., 2023] Alba Gragera,RaquelFuentetaja, A´ngelGarc´ıaOlaya,andFernandoFerna´ndez.\nA planning approachto repair domains with incomplete actioneffects. In Koenig et al. [2023], pages\n153–161.\n[Hahn et al., 2022] Susana Hahn, Tomi Janhunen, Roland Kaminski, Javier Romero, Nicolas Ru¨hling,",
+      "start_offset": 38754,
+      "end_offset": 49726
+    },
+    {
+      "heading": "MLN",
+      "level": 1,
+      "content": "andTorstenSchaub. Plingo: ASystemforProbabilisticReasoninginClingoBasedonLP . In\nProc. RuleML+RR 2022, pages 54–62,2022.\n[Helmert and Domshlak, 2009] Malte Helmert and Carmel Domshlak. Landmarks, critical paths and\nabstractions: What’s the difference anyway? In Alfonso Gerevini, Adele Howe, Amedeo Cesta,\nandIoannisRefanidis,editors,Proceedings of the NineteenthInternational Conference on Automated\nPlanning and Scheduling (ICAPS 2009), pages 162–169.AAAI Press, 2009.\n[Helmert, 2006] MalteHelmert. TheFastDownwardplanningsystem. Journal of Artificial Intelligence\nResearch, 26:191–246,2006.\n[Helmert, 2009] Malte Helmert. Concise finite-domain representations for PDDL planning tasks. Arti-\nficial Intelligence, 173:503–535,2009.\n[Ho¨ller and Behnke, 2022] DanielHo¨llerandGregorBehnke.Encodingliftedclassicalplanninginpropo-\nsitional logic. In Thi´ebaux and Yeoh [2022], pages 134–144.\n[Honavar and Spaan, 2022] Vasant Honavar and Matthijs Spaan, editors. Proceedings of the Thirty-\nSixth AAAI Conference on Artificial Intelligence (AAAI 2022). AAAI Press, 2022.\n[Kabir et al., 2022] Mohimenul Kabir, Flavio O. Everardo, Ankit K. Shukla, Markus Hecher, Jo-\nhannes Klaus Fichte, and Kuldeep S. Meel. Approxasp - a scalable approximate answer set counter.\nIn Honavar and Spaan [2022], pages 5755–5764.\n[Karpas and Domshlak, 2009] Erez Karpas and Carmel Domshlak. Cost-optimal planning with land-\nmarks. InCraigBoutilier,editor,Proceedings of the 21st International Joint Conference on Artificial\nIntelligence (IJCAI 2009), pages 1728–1733.AAAI Press, 2009.\n15\n\n[Katz and Lee, 2023] Michael Katz and Junkyu Lee. K* searchover orbit space for top-k planning. In\nEdithElkind,editor,Proceedings of the32ndInternationalJointConferenceonArtificialIntelligence\n(IJCAI 2023). IJCAI, 2023.\n[Katz and Sohrabi, 2020] Michael Katz and Shirin Sohrabi. Reshaping diverse planning. In Conitzer\nand Sha [2020], pages 9892–9899.\n[Katz et al., 2018] Michael Katz, Shirin Sohrabi, Octavian Udrea, and Dominik Winterer. A novel\niterative approach to top-k planning. In Mathijs de Weerdt, Sven Koenig, Gabriele Ro¨ger, and\nMatthijs Spaan, editors, Proceedings of the Twenty-Eighth International Conference on Automated\nPlanning and Scheduling (ICAPS 2018), pages 132–140.AAAI Press, 2018.\n[Kautz and Selman, 1992] HenryKautzandBartSelman.Planningassatisfiability.InBerndNeumann,\neditor, Proceedings of the 10th European Conference on Artificial Intelligence (ECAI 1992), pages\n359–363.John Wiley and Sons, 1992.\n[Kiesel and Eiter, 2023] Rafael Kiesel and Thomas Eiter. Knowledge compilation and more with\nSharpSAT-TD. In Pierre Marquis, Tran Cao Son, and Gabriele Kern-Isberner, editors, Proceedings\nof the Twentieth International Conference on Principles of Knowledge Representation and Reasoning\n(KR 2023), pages 406–416.IJCAI Organization, 2023.\n[Kleine Bu¨ning and Lettmann, 1999] HansKleineBu¨ningandTheodorLettmann. Propositional logic –\ndeduction and algorithms, volume48of Cambridge tracts in theoretical computer science. Cambridge\nUniversity Press, 1999.\n[Koenig et al., 2023] Sven Koenig, Roni Stern, and Mauro Vallati, editors. Proceedings of the Thirty-\nThird International Conference on Automated Planning and Scheduling (ICAPS 2023). AAAI Press,\n2023.\n[Krajnansky´ et al., 2014] Michal Krajnansky´, J¨org Hoffmann, Olivier Buffet, and Alan Fern. Learn-\ning pruning rules for heuristic search planning. In Torsten Schaub, Gerhard Friedrich, and Barry\nO’Sullivan, editors, Proceedings of the 21st European Conference on Artificial Intelligence (ECAI\n2014), pages 483–488.IOS Press, 2014.\n[Krarup et al., 2021] Benjamin Krarup, Senka Krivic, Daniele Magazzeni, Derek Long, Michael Cash-\nmore,andDavidE.Smith. Contrastiveexplanations ofplans throughmodel restrictions. Journal of\nArtificial Intelligence Research, 72:533–612,2021.\n[Lagniez and Marquis, 2017] Jean-Marie Lagniez and Pierre Marquis. An improved decision-DNNF\ncompiler. InCarlesSierra,editor,Proceedings ofthe26thInternationalJointConferenceon Artificial\nIntelligence (IJCAI 2017), pages 667–673.IJCAI, 2017.\n[Lai et al., 2021] Yong Lai, Kuldeep S. Meel, and Roland H. C. Yap. The power of literal equivalence\nin model counting. In Kevin Leyton-Brown and Mausam, editors, Proceedings of the Thirty-Fifth\nAAAI Conference on Artificial Intelligence (AAAI 2021), pages 3851–3859.AAAI Press, 2021.\n[Lin et al., 2023] Songtuan Lin, Alban Grastien, and Pascal Bercher. Towards automated modeling\nassistance: Anefficient approachforrepairingflawedplanningdomains. InYiling ChenandJennifer\nNeville,editors,Proceedings oftheThirty-Seventh AAAIConference on ArtificialIntelligence (AAAI\n2023), pages 12022–12031.AAAI Press, 2023.\n[Mahajan and Slivovsky, 2023] MeenaMahajanandFriedrichSlivovsky,editors.ProceedingsofTwenty-\nSixth International Conference on Theory and Applications of Satisfiability Testing (SAT 2023), vol-\nume 271. Schloss Dagstuhl – Leibniz-Zentrum fu¨r Informatik, 2023.\n[Masina et al., 2023] GabrieleMasina,GiuseppeSpallitta,andRobertoSebastiani. OnCNFconversion\nfor disjoint SAT enumeration. In Mahajan and Slivovsky [2023], pages 15:1–15:16.\n16\n\n[Mirsky et al., 2021] Reuth Mirsky, Sarah Keren, and Christopher W. Geib. Introduction to Symbolic\nPlan and Goal Recognition. Synthesis Lectures on Artificial Intelligence and Machine Learning.Mor-\ngan & Claypool Publishers, 2021.\n[Muise, 2016] Christian Muise. Planning.Domains. In ICAPS 2016 System Demonstrations and Ex-\nhibits, 2016.\n[Papadimitriou and Yannakakis, 1982] Christos H. Papadimitriou and Mihalis Yannakakis. The com-\nplexity of facets (and some facets of complexity). In Harry R. Lewis, Barbara B. Simons, Walter A.\nBurkhard,andLawrence H. Landweber, editors, Proceedings of the Fourteenth Annual ACM Sympo-\nsium on the Theory of Computing (STOC 1982), pages 255–260.ACM, 1982.\n[Papadimitriou, 1994] Christos H. Papadimitriou. Computational Complexity. Addison-Wesley, 1994.\n[Paredes et al., 2024] Alison Paredes, Jeremy Frank, J. Benton, and Christian Muise. Planning bias:\nPlanning as a source of sampling bias. In ICAPS Workshop on Reliable Data-Driven Planning and\nScheduling (RDDPS), 2024.\n[Porteous et al., 2001] JuliePorteous,LauraSebastia,andJ¨orgHoffmann. Ontheextraction,ordering,\nand usage of landmarks in planning. In Amedeo Cesta and Daniel Borrajo, editors, Proceedings of\nthe Sixth European Conference on Planning (ECP 2001), pages 174–182.AAAI Press, 2001.\n[Richter et al., 2008] Silvia Richter, Malte Helmert, and Matthias Westphal. Landmarks revisited. In\nProceedings of the Twenty-Third AAAI Conference on Artificial Intelligence (AAAI 2008), pages\n975–982.AAAI Press, 2008.\n[Rintanen, 2011] Jussi Rintanen. Madagascar: Scalable planning with SAT. In IPC 2011 Planner\nAbstracts, pages 61–64,2011.\n[Rintanen, 2012] JussiRintanen.Planningassatisfiability: Heuristics. ArtificialIntelligence,193:45–86,\n2012.\n[Rintanen, 2014] Jussi Rintanen. Madagascar: Scalable planning with SAT. In Eighth International\nPlanning Competition (IPC-8): Planner Abstracts, pages 66–70,2014.\n[Robinson and Voronkov,2001] John Alan Robinson and Andrei Voronkov, editors. Handbook of Au-\ntomated Reasoning (in 2 volumes). Elsevier and MIT Press, 2001.\n[Rusovac et al., 2024] Dominik Rusovac, Markus Hecher, Martin Gebser, Sarah Alice Gaggl, and Jo-\nhannes K. Fichte. Navigating and Querying Answer Sets: How Hard Is It Really and Why? In\nMagdalenaOrtiz and Maurice Pagnucco,editors, Proceedings of the Twentieth International Confer-\nence on Principles of Knowledge Representation and Reasoning (KR 2024), pages 642–653. IJCAI\nOrganization,2024.\n[Russell and Norvig, 1995] Stuart Russell and Peter Norvig. Artificial Intelligence — A Modern Ap-\nproach. Prentice Hall, 1995.\n[Shen et al., 2020] William Shen, Felipe Trevizan,and Sylvie Thi´ebaux. Learning domain-independent\nplanning heuristics with hypergraph networks. In J. Christopher Beck, Erez Karpas, and Shirin\nSohrabi, editors, Proceedings of the Thirtieth International Conference on Automated Planning and\nScheduling (ICAPS 2020), pages 574–584.AAAI Press, 2020.\n[Smith, 2004] DavidE.Smith.Choosingobjectivesinover-subscriptionplanning.InShlomoZilberstein,\nJana Koehler, and Sven Koenig, editors, Proceedings of the Fourteenth International Conference on\nAutomated Planning and Scheduling (ICAPS 2004), pages 393–401.AAAI Press, 2004.\n[Sohrabi et al., 2018] Shirin Sohrabi, Anton V. Riabov, Michael Katz, and Octavian Udrea. An AI\nplanningsolutiontoscenariogenerationforenterpriseriskmanagement. InProceedings ofthe Thirty-\nSecond AAAI Conference on Artificial Intelligence (AAAI 2018), pages 160–167.AAAI Press, 2018.\n17\n\n[Spallitta et al., 2024] Giuseppe Spallitta, Roberto Sebastiani, and Armin Biere. Disjoint partial enu-\nmeration without blocking clauses. In Dy and Natarajan [2024].\n[Speck et al., 2020] David Speck, Robert Mattmu¨ller, and Bernhard Nebel. Symbolic top-k planning.\nIn Conitzer and Sha [2020], pages 9967–9974.\n[Speck et al., 2024] David Speck, Markus Hecher, Daniel Gnad, Johannes K. Fichte, and Augusto B.\nCorrˆea. Code, benchmarks and data for the aaai 2025 paper “Counting and Reasoning with Plans”.\nZenodo, 2024.\n[Stockmeyer and Meyer, 1973] Larry J. Stockmeyer and Albert R. Meyer. Word problems requiring\nexponentialtime.InAlfredV.Aho,AllanBorodin,RobertL.Constable,RobertW.Floyd,MichaelA.\nHarrison, Richard M. Karp, and H. Raymond Strong, editors, Proceedings of the 5th Annual ACM\nSymposium on the Theory of Computing (STOC 1973), pages 1–9, 1973.\n[Stockmeyer, 1976] LarryJ.Stockmeyer.Thepolynomial-timehierarchy.TheoreticalComputerScience,\n3(1):1–22,1976.\n[Sundermann et al., 2024] ChicoSundermann,HeikoRaab,TobiasHess,ThomasThu¨m,andInaSchae-\nfer. Reusing d-DNNFs forefficient feature-modelcounting. ACM Trans. Softw. Eng. Methodol, 2024.\n[Taitler et al., 2024] Ayal Taitler, Ron Alford, Joan Espasa, Gregor Behnke, Daniel Fiˇser, Michael\nGimelfarb, Florian Pommerening, Scott Sanner, Enrico Scala, Dominik Schreiber, Javier Segovia-\nAguas, and Jendrik Seipp. The 2023 International Planning Competition. AI Magazine, pages 1–17,\n2024.\n[Thi´ebaux and Yeoh, 2022] Sylvie Thi´ebaux and William Yeoh, editors. Proceedings of the Thirty-\nSecondInternational Conferenceon AutomatedPlanning andScheduling (ICAPS2022).AAAIPress,\n2022.\n[Torralba et al., 2017] A´lvaroTorralba,VidalAlca´zar,PeterKissmann,andStefanEdelkamp. Efficient\nsymbolic search for cost-optimal planning. Artificial Intelligence, 242:52–79,2017.\n[Ulbricht, 2019] Markus Ulbricht. Understanding Inconsistency – A Contribution to the Field of Non-\nmonotonic Reasoning. PhD thesis, Universit¨at Leipzig, 2019.\n[Valiant, 1979] Leslie G. Valiant. The complexity of computing the permanent. Theoretical Computer\nScience, 8:189–201,1979.\n[von Tschammer et al., 2022] Julian von Tschammer, Robert Mattmu¨ller, and David Speck. Loopless\ntop-k planning. In Thi´ebaux and Yeoh [2022], pages 380–384.\n[Wrathall, 1976] Celia Wrathall. Complete sets and the polynomial-time hierarchy. Theoretical Com-\nputer Science, 3(1):23–33,1976.\n[Zhu and Givan, 2003] Lin Zhu and Robert Givan. Landmark extraction via planning graph propaga-\ntion. In ICAPS 2003 Doctoral Consortium, pages 156–160,2003.",
+      "start_offset": 49729,
+      "end_offset": 60891
+    },
+    {
+      "heading": "18\n\nA Appendix",
+      "level": 1,
+      "content": "A.1 Additional Preliminaries\nPropositional Logic We define propositional (Boolean) formulas and their evaluation in the usual\nway [Kleine Bu¨ning and Lettmann, 1999; Robinson and Voronkov, 2001]. Literals are propositional\nvariables or their negations. For a propositional formula F, we denote by vars(F) the set of variables\nthat occur in formula F. Logical operators ∧, ∨, ¬ →, ↔ are used in the usual meaning. A term is\na conjunction (∧) of literals and a clause is a disjunction (∨) of literals. Formula F is in conjunctive\nnormal form (CNF) if F is a conjunction of clauses. We abbreviate by Mod(F) the set of all models\nof F and the number of models by #(F):=|Mod(F)|.\nKnowledgeCompilation Knowledgecompilationisasub-areaofautomatedreasoningandartificial\nintelligence where one transforms propositional formulas into certain normal forms on which reason-\ning operations such as counting can be carried out in polynomial time [Darwiche and Marquis, 2002;\nDarwiche and Marquis,2024]. In our case,the generaloutline for a givenplanning task Π is as follows:\n1. We construct the propositional CNF formula Fplan[Π].\n≤ℓ\n2. Then, we compile Fplan[Π] in a computationally expensive step into a formula F in a normal\n≤ℓ NF\nform, so-called d-DNNF by existing knowledge compilers.\n3. Finally, on the formula F counting (and other operations) can be done in polynomial time in",
+      "start_offset": 60905,
+      "end_offset": 62277
+    },
+    {
+      "heading": "NF",
+      "level": 1,
+      "content": "the size of F . We can even count under a set L of propositional assumptions by the technique",
+      "start_offset": 62279,
+      "end_offset": 62374
+    },
+    {
+      "heading": "NF",
+      "level": 1,
+      "content": "known as conditioning.\nInmoredetail: LetF bea(propositional)formula,F isinNNF(negation normalform) ifnegations(¬)\noccuronlydirectlyinfrontofvariablesandtheonlyotheroperatorsareconjunction(∧)anddisjunction\n(∨) [RobinsonandVoronkov,2001]. NNFs canbe representedin terms ofrooted directed acyclic graphs\n(DAGs) where each leaf node is labeled with a literal, and each internal node is labeled with either a\nconjunction(∧-node) oradisjunction(∨-node). Thesize of an NNF F,denotedby|F|,isgivenbythe\nnumber of edges in its DAG. Formula F is in DNNF,if it is in NNF andit satisfies the decomposability\nproperty, that is, for any distinct sub-formulas F ,F in a conjunction F = F ∧···∧F with i 6= j,\ni j 1 n\nwe have vars(F )∩vars(F ) = ∅ [Darwiche, 2004]. Formula F is in d-DNNF, if it is in DNNF and it\ni j\nsatisfies the decision property,that is, disjunctions areof the formF =(x∧F )∨(¬x∧F ). Note that\n1 2\nx does not occur in F and F due to decomposability. F and F may be conjunctions. Formula F is\n1 2 1 2\nin sd-DNNF,if alldisjunctions in F are smooth, meaningfor F =F ∨F we have vars(F )=vars(F ).\n1 2 1 2\nDeterminism and smoothness permit traversal operators on sd-DNNFs to count models of F in linear\ntimein|F|[Darwiche,2001b]. Thetraversaltakesplaceontheso-calledcountinggraphofansd-DNNF.\nThe counting graph G(F) is the DAG of F where each node N is additionally labeled by val(N) := 1,\nif N consists of a literal; labeled by val(N) := Σ val(N ), if N is an ∨-node with children N ; labeled\ni i i\nby val(N) := Π val(N ), if N is an ∧-node. By val(G(F)) we refer to val(N) for the root N of G(F).\ni i\nFunction val can be constructed by traversingG(F) in post-orderin polynomial time. It is well-known\nthat val(G[F]) equals the model count of F. For a set L of literals, counting of FL :=F ∧V ℓ can\nℓ∈L\nbe carriedoutby conditioning ofF onL [Darwiche,1999]. Therefore,the function val onthe counting\ngraph is modified by setting val(N) = 0, if N consists of ℓ and ¬ℓ ∈ L. This corresponds to replacing\neach literal ℓ of the NNF F by constant ⊥ or ⊤, respectively. Similarly, we can enumerate models or\ncompute brave/cautiousoperators.",
+      "start_offset": 62376,
+      "end_offset": 64510
+    },
+    {
+      "heading": "B Omitted Proofs",
+      "level": 1,
+      "content": "Lemma6. The problem Poly-Brave-Plan-Existis NP-completeandtheproblem Poly-Cautious-\nPlan-Exist is coNP-complete.\n19\n\nProof (Sketch). (Membership): Let Π be a planning task, o∈O anoperator,andℓ an integer. We can\nsimplyconjointheformula(cid:0)(W oℓ)→o(cid:1)toformulaFplan[Π],whichensuresthatvariableoistrueif\ni∈[ℓ] ≤ℓ\noperator o occurs in a plan in position i of a plan. (Remember that ℓ is guaranteedto be polynomially\nbounded, so Fplan[Π] is also polynomial.) For brave operators, we conjoin o and ask whether the\n≤ℓ\nresultingformulaissatisfiable,whichgivesNP-membership. Forcautiousoperators,we conjoin¬o, ask\nfor satisfiability, and swap answers, which immediately yields coNP-membership. (Hardness): We can\nvacously extend the existing reduction [Bylander, 1994,The 3.5] and ask for brave (SAT) and cautious\n(UNSAT).\nTheorem 9. The problem Poly-Probabilistic-Reason is CP-complete.\n=\nProof. (Hardness): We reduce from the problem of deciding whether the number of accepting paths of\na non-deterministic Turing machine equals its number of rejecting paths, see, e.g., [Fenner et al., 1999].\nIndeed,wecanencodeTuringmachineacceptanceintoapropositionalformulausingtheCook-Levinre-\nduction[Cook,1971]whichisparsimonious,i.e.,thenumberofsatisfyingassignmentspreciselypreserve\nthe number of accepting paths [Valiant, 1979, Lemma 3.2]. Analogously, one can encode the number\nof rejecting paths in a propositional formula, by inversion and De Morgan’s law (or Tseitin transfor-\nmation). Consequently, we can also construct a formula F having #accpaths satisfying assignments\nif acc is set to true and #rejpaths satisfying assignments in case acc is set to false. Observe that we\ncan solve the Turing machine counting problem by asking whether #accpaths/#accpaths+#rejpaths = 0.5,\nwhich boils down to asking whether #(F∪{acc})/#(F)=0.5. Indeed, this can be solved via probabilistic\nreasoning, by parsimoniously reducing F into a planning problem [Speck et al., 2020] and asking for\nthe probability of operator acc.\n(Membership): We reduce |Plansℓ(Π,Q)|/max(1,|Plansℓ(Π)|) =p=n/d for a given query Q to asking\nwhether d|Plans (Π,Q)| = n|Plans (Π)|. This clearly works in CP by parsimoniously reducing both\nℓ ℓ =\nplanningcountingtaskstoapropositionalformulaandcheckingforequalityoftheirnumberofsatisfying\nassignments.\nTheorem 10. Let Π be a planning task and o∈O. The problem FacetReason is NP-complete.\nProof. (Membership): As in Lemma 6, we encode task Π, operator o∈O, and integer ℓ into a proposi-\ntionalformulaFplan[Π]. Then,weletF :=(cid:0)(W oℓ)→o(cid:1)∧Fplan[Π],whichensuresthatvariableois\n≤ℓ i∈[ℓ] ≤ℓ\ntrue if operatoro occurs in a plan in position i of a plan. Then, we construct a fresh formula F′ where\nevery variable v in F is renamed to a fresh variable v′. Finally, formula F := F ∧o∧F′ ∧¬o′ is\nfacet\nsatisfiable if and only if o∈F(Π).\n(Hardness): TakeanypropositionalformulaF. WeensurethatF is notatautology,byaddingtoF\nthe trivialclause¬v overfreshvariablev,whichresultsinformulaF′. Then,weparsimoniouslyreduce\na propositional formula F′ into a planning problem Π=hA,O,I,Gi [Speck et al., 2020]. In particular,\nthis translation ensures a one-to-one correspondence between the satisfying assignments of F′ and the\nplans of Π. Observe that we can slightly adapt this planning instance, resulting in Π′, where we add\na single goal operator o that is applicable if precondition G holds. Then, F is satisfiable if and only if\no∈F(Π′).\nLemma 11. Let Π be a planning task, and ℓ ∈ N, k ∈ N be integers. AtLeast-k-Facets is NP-\n0\ncomplete.\nProof. (Membership): Follows from the membership of the proof of Theorem 10. Indeed, we take\nthe constructed formula F and conjunctively cojoin it k times (over fresh variables), resulting in a\nfacet\nformula F≥k = F1 ∧...∧Fk . Assume an arbitrary, but fixed, ordering ≺ among the variables\nfacet facet facet\nin F , which we naturally extend over any copy formula Fi . Then, for 2≤i≤k we encode that\nfacet facet\nthe satisfying assignment over copy Fi is ≺-larger than the satisfying assignment over Fi−1. This\nfacet facet\nis the case if there is variable v in Fi that is set to true, but v in Fi−1 is set to false, such that\ni facet i−1 facet\nall ≺-larger variables in Fi−1 are set to false.\nfacet\n20\n\n(Hardness): We reduce fromanarbitrarypropositionalformula F to a planning task Π . We apply\nF\nthe same approach as in Theorem 10, but we need to make every facet candidate into a facet, which\nthen allows us to ask for ≥|O | (all) facets.\nF\nCorollary 12. Let Π be a planning task, ℓ ∈ N, k ∈ N . Then, the problem AtMost-k-Facets is\n0\ncoNP-complete.\nProof. Thisistheco-Problemof|F(Π)|≥k+1;thereforetheresultfollowsdirectlyfromLemma11.\nTheorem 13. Let Π be a program, and ℓ ∈ N, k ∈ N be integers. The problem Exact-k-Facets is\n0\nP\nD -complete.\nProof. (Membership): Follows from memberships of Lemma 11 and Corollary 12.\n(Hardness): FollowsfromhardnessofLemma11andCorollary12. Indeed,we canreducefromarbi-\ntrarypropositionalformulasF ,F to decide whetherF is satisfiableandF is unsatisfiabile,\nsat unsat sat unsat\nif and only if for planning task Π all candidate facets are facets (≥ |O |), but not all candidate",
+      "start_offset": 64526,
+      "end_offset": 69682
+    },
+    {
+      "heading": "Fsat Fsat",
+      "level": 1,
+      "content": "facets (≤|O |−1) for F are facets for Π .",
+      "start_offset": 69691,
+      "end_offset": 69734
+    },
+    {
+      "heading": "Funsat Funsat",
+      "level": 1,
+      "content": "21",
+      "start_offset": 69747,
+      "end_offset": 69752
+    }
+  ],
+  "figures": [
+    {
+      "figure_id": "fig_1",
+      "caption": "Figure 1: State space ofourrunning exampletask Π .",
+      "image_path": null,
+      "reference_count": 1
+    },
+    {
+      "figure_id": "fig_1",
+      "caption": "Figure 1\nillustrates the state space.",
+      "image_path": null,
+      "reference_count": 1
+    },
+    {
+      "figure_id": "fig_1",
+      "caption": "Figure 1: State space ofourrunning exampletask Π .",
+      "image_path": null,
+      "reference_count": 1
+    },
+    {
+      "figure_id": "fig_1",
+      "caption": "Figure 1\nillustrates the state space.",
+      "image_path": null,
+      "reference_count": 1
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "table_1",
+      "caption": "Table 1: Computational Complexity of Qualitative and Quantitative Reasoning Problems.",
+      "data": null,
+      "reference_count": 0
+    },
+    {
+      "table_id": "table_2",
+      "caption": "Table 2: (Left): Coverage,i.",
+      "data": null,
+      "reference_count": 2
+    },
+    {
+      "table_id": "table_2",
+      "caption": "Table 2 (left) compares the coverage, i.",
+      "data": null,
+      "reference_count": 2
+    },
+    {
+      "table_id": "table_3",
+      "caption": "Table 3: Coverage per domain, i.",
+      "data": null,
+      "reference_count": 1
+    }
+  ],
+  "references": [
+    {
+      "id": "1",
+      "text": "Ruml, and Minh Do, editors, Proceedings of the Twenty-Fourth International Conference on Auto-\nmated Planning and Scheduling (ICAPS 2014), pages 11–19.AAAI Press, 2014.\n[Areces et al., 2023] Felipe Areces, Benjamin Ocampo, Carlos Areces, Mart´ın Dom´ınguez, and Daniel\nGnad. Partial grounding in planning using small language models. In ICAPS 2023 Workshop on\nKnowledge Engineering for Planning and Scheduling, 2023.\n[Audemard and Simon, 2018] Gilles Audemard andLaurentSimon. Onthe glucoseSAT solver. Int. J.\nArtif. Intell. Tools, 27(1):27, 2018.\n[Audemard et al., 2022] Gilles Audemard, Jean-Marie Lagniez, and Marie Miceli. A new exact solver\nfor (weighted) max#sat. In Frisch and Gregory [2022], pages 28:1–28:20.\n[Aziz et al., 2015] RehanAbdul Aziz, GeoffreyChu,ChristianMuise, andPeterStuckey. Stablemodel\ncounting and its application in probabilistic logic programming. In Blai Bonet and Sven Koenig,",
+      "parsed": {
+        "authors": [],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "2",
+      "text": "Rajan, editors, Proceedings of the Fifteenth International Conference on Automated Planning and\nScheduling (ICAPS 2005), pages 12–21.AAAI Press, 2005.\n[B¨ohl et al., 2023] Elisa B¨ohl, Sarah Alice Gaggl, and Dominik Rusovac. Representative answer sets:\nCollecting something ofeverything. In KobiGal, Ann Now´e,GrzegorzJ.Nalepa, RoyFairstein, and\nRoxana Ra˘dulescu, editors, Proceedings of the 26th European Conference on Artificial Intelligence\n(ECAI 2023), pages 271–278.IOS Press, 2023.\n[Bonet and Geffner, 2015] Blai Bonet and Hector Geffner. Policiesthat generalize: Solving many plan-\nning problems with the same policy. In Qiang Yang and Michael Wooldridge, editors, Proceedings\nof the 24th International Joint Conference on Artificial Intelligence (IJCAI 2015), pages 2798–2804.\nAAAI Press, 2015.\n[Bylander, 1994] Tom Bylander. The computational complexity of propositional STRIPS planning.\nArtificial Intelligence, 69(1–2):165–204,1994.\n[Cabalar et al., 2020] Pedro Cabalar, Jorge Fandinno, and Brais Mun˜iz. A system for explainable an-\nswersetprogramming.ElectronicProceedingsinTheoreticalComputerScience,325:124–136,Septem-\nber 2020.\n[Chakraborti et al., 2024] Tathagata Chakraborti, Jungkoo Kang, Francesco Fuggitti, Michael Katz,\nand Shirin Sohrabi. Interactive plan selection using linear temporal logic, disjunctive action land-",
+      "parsed": {
+        "authors": [],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "3",
+      "text": "marks, and natural language instruction. In Dy and Natarajan [2024], pages 23775–23777.\n[Chen et al., 2024] DillonZ.Chen,SylvieThi´ebaux,andFelipeTrevizan.Learningdomain-independent\nheuristics for grounded and lifted planning. In Dy and Natarajan [2024], pages 20078–20086.\n[Conitzer and Sha, 2020] VincentConitzerandFeiSha,editors.ProceedingsoftheThirty-FourthAAAI\nConference on Artificial Intelligence (AAAI 2020). AAAI Press, 2020.\n[Cook, 1971] StephenA.Cook. Thecomplexityoftheorem-provingprocedures. InMichaelA.Harrison,\nRanan B. Banerji, and Jeffrey D. Ullman, editors, Proceedings of the 3rd Annual ACM Symposium\non the Theory of Computing (STOC 1971), pages 151–158.ACM, 1971.\n[Corrˆea et al., 2023] Augusto B. Corrˆea,Markus Hecher,Malte Helmert, Davide Mario Longo,Florian",
+      "parsed": {
+        "authors": [
+          "marks",
+          "natural language instruction"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "4",
+      "text": "Sohrabi, editors, Proceedings of the Thirtieth International Conference on Automated Planning and\nScheduling (ICAPS 2020), pages 574–584.AAAI Press, 2020.\n[Smith, 2004] DavidE.Smith.Choosingobjectivesinover-subscriptionplanning.InShlomoZilberstein,\nJana Koehler, and Sven Koenig, editors, Proceedings of the Fourteenth International Conference on\nAutomated Planning and Scheduling (ICAPS 2004), pages 393–401.AAAI Press, 2004.\n[Sohrabi et al., 2018] Shirin Sohrabi, Anton V. Riabov, Michael Katz, and Octavian Udrea. An AI\nplanningsolutiontoscenariogenerationforenterpriseriskmanagement. InProceedings ofthe Thirty-\nSecond AAAI Conference on Artificial Intelligence (AAAI 2018), pages 160–167.AAAI Press, 2018.\n17\n\n[Spallitta et al., 2024] Giuseppe Spallitta, Roberto Sebastiani, and Armin Biere. Disjoint partial enu-\nmeration without blocking clauses. In Dy and Natarajan [2024].\n[Speck et al., 2020] David Speck, Robert Mattmu¨ller, and Bernhard Nebel. Symbolic top-k planning.\nIn Conitzer and Sha [2020], pages 9967–9974.\n[Speck et al., 2024] David Speck, Markus Hecher, Daniel Gnad, Johannes K. Fichte, and Augusto B.\nCorrˆea. Code, benchmarks and data for the aaai 2025 paper “Counting and Reasoning with Plans”.",
+      "parsed": {
+        "authors": [],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "5",
+      "text": "Harrison, Richard M. Karp, and H. Raymond Strong, editors, Proceedings of the 5th Annual ACM\nSymposium on the Theory of Computing (STOC 1973), pages 1–9, 1973.\n[Stockmeyer, 1976] LarryJ.Stockmeyer.Thepolynomial-timehierarchy.TheoreticalComputerScience,\n3(1):1–22,1976.\n[Sundermann et al., 2024] ChicoSundermann,HeikoRaab,TobiasHess,ThomasThu¨m,andInaSchae-\nfer. Reusing d-DNNFs forefficient feature-modelcounting. ACM Trans. Softw. Eng. Methodol, 2024.\n[Taitler et al., 2024] Ayal Taitler, Ron Alford, Joan Espasa, Gregor Behnke, Daniel Fiˇser, Michael",
+      "parsed": {
+        "authors": [
+          "Harrison",
+          "Richard M"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "6",
+      "text": "Gimelfarb, Florian Pommerening, Scott Sanner, Enrico Scala, Dominik Schreiber, Javier Segovia-",
+      "parsed": {
+        "authors": [],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "7",
+      "text": "property, that is, for any distinct sub-formulas F ,F in a conjunction F = F ∧···∧F with i 6= j,\ni j 1 n\nwe have vars(F )∩vars(F ) = ∅ [Darwiche, 2004]. Formula F is in d-DNNF, if it is in DNNF and it\ni j\nsatisfies the decision property,that is, disjunctions areof the formF =(x∧F )∨(¬x∧F ). Note that\n1 2\nx does not occur in F and F due to decomposability. F and F may be conjunctions. Formula F is\n1 2 1 2\nin sd-DNNF,if alldisjunctions in F are smooth, meaningfor F =F ∨F we have vars(F )=vars(F ).\n1 2 1 2\nDeterminism and smoothness permit traversal operators on sd-DNNFs to count models of F in linear\ntimein|F|[Darwiche,2001b]. Thetraversaltakesplaceontheso-calledcountinggraphofansd-DNNF.\nThe counting graph G(F) is the DAG of F where each node N is additionally labeled by val(N) := 1,\nif N consists of a literal; labeled by val(N) := Σ val(N ), if N is an ∨-node with children N ; labeled\ni i i\nby val(N) := Π val(N ), if N is an ∧-node. By val(G(F)) we refer to val(N) for the root N of G(F).\ni i\nFunction val can be constructed by traversingG(F) in post-orderin polynomial time. It is well-known\nthat val(G[F]) equals the model count of F. For a set L of literals, counting of FL :=F ∧V ℓ can\nℓ∈L\nbe carriedoutby conditioning ofF onL [Darwiche,1999]. Therefore,the function val onthe counting\ngraph is modified by setting val(N) = 0, if N consists of ℓ and ¬ℓ ∈ L. This corresponds to replacing\neach literal ℓ of the NNF F by constant ⊥ or ⊤, respectively. Similarly, we can enumerate models or\ncompute brave/cautiousoperators.\nB Omitted Proofs\nLemma6. The problem Poly-Brave-Plan-Existis NP-completeandtheproblem Poly-Cautious-\nPlan-Exist is coNP-complete.\n19\n\nProof (Sketch). (Membership): Let Π be a planning task, o∈O anoperator,andℓ an integer. We can\nsimplyconjointheformula(cid:0)(W oℓ)→o(cid:1)toformulaFplan[Π],whichensuresthatvariableoistrueif\ni∈[ℓ] ≤ℓ\noperator o occurs in a plan in position i of a plan. (Remember that ℓ is guaranteedto be polynomially",
+      "parsed": {
+        "authors": [
+          "property",
+          "that is",
+          "for any distinct sub-formulas F ,F in a conjunction F = F ∧···∧F with i 6= j",
+          "i j 1 n\nwe have vars(F )∩vars(F ) = ∅ [Darwiche",
+          "2004]"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    }
+  ],
+  "citations": [
+    {
+      "text": "[2002]",
+      "ref_ids": [
+        "2002"
+      ],
+      "position": 6715,
+      "context": "d-DNNF queries.\nRelated Work\nDarwiche and Marquis [2002] detailed the theoretical capabilities and limitat"
+    },
+    {
+      "text": "[1]",
+      "ref_ids": [
+        "1"
+      ],
+      "position": 7447,
+      "context": "f.\nPoly-Bounded-Plan-Exist Π, ℓ π ∈Plans (Π) NP-c [1]\nℓ\nPoly-Brave-Plan-Exist Π, ℓ, o ∃π ∈Plans (Π):o∈π"
+    },
+    {
+      "text": "[2]",
+      "ref_ids": [
+        "2"
+      ],
+      "position": 7628,
+      "context": "6\nℓ\nPoly-Bounded-Top-k-Exist Π, ℓ |Plans |≥k PP-h [2]\nℓ\n#Poly-Bounded-Plan Π, ℓ |Plans | #P-c [2]\nℓ\nPol"
+    },
+    {
+      "text": "[2]",
+      "ref_ids": [
+        "2"
+      ],
+      "position": 7672,
+      "context": " PP-h [2]\nℓ\n#Poly-Bounded-Plan Π, ℓ |Plans | #P-c [2]\nℓ\nPoly-Probabilistic-Reason Π, ℓ, Q, p P [Π,Q]=p "
+    },
+    {
+      "text": "[1]",
+      "ref_ids": [
+        "1"
+      ],
+      "position": 8115,
+      "context": "poly(Π), o ∈ O, k ∈ N , 0 ≤ p ≤ 1, and Q a query. [1]: [Bylander,\n0 o\n1994], [2]: [Speck et al., 2020]."
+    },
+    {
+      "text": "[2]",
+      "ref_ids": [
+        "2"
+      ],
+      "position": 8142,
+      "context": " p ≤ 1, and Q a query. [1]: [Bylander,\n0 o\n1994], [2]: [Speck et al., 2020].\nknowledgecompilationhasals"
+    },
+    {
+      "text": "[2023]",
+      "ref_ids": [
+        "2023"
+      ],
+      "position": 8363,
+      "context": "]. Inclassicalplanningandgrounding,\nCorrˆeaet al. [2023] argued that grounding is infeasible for some doma"
+    },
+    {
+      "text": "[0,1]",
+      "ref_ids": [
+        "0",
+        "1"
+      ],
+      "position": 17621,
+      "context": "n any plan.\n5\n\nbrave probability cautious\n0<p≤1 p∈[0,1] p=1\nFigure2: Quantitativereasoningisafine-grained"
+    },
+    {
+      "text": "[2022]",
+      "ref_ids": [
+        "2022"
+      ],
+      "position": 40515,
+      "context": "ver\nfor (weighted) max#sat. In Frisch and Gregory [2022], pages 28:1–28:20.\n[Aziz et al., 2015] RehanAbdul"
+    },
+    {
+      "text": "[2024]",
+      "ref_ids": [
+        "2024"
+      ],
+      "position": 41052,
+      "context": "ndationsandcomplexityanalysis. InDyandNatara-\njan [2024], pages 20028–20035.\n[Biere et al., 2023] Armin Bi"
+    },
+    {
+      "text": "[2023]",
+      "ref_ids": [
+        "2023"
+      ],
+      "position": 41214,
+      "context": " backbones\nwith CaDiCaL. In Mahajan and Slivovsky [2023], pages 3:1–3:12.\n12\n\n[Boddy et al., 2005] Mark Bo"
+    },
+    {
+      "text": "[2024]",
+      "ref_ids": [
+        "2024"
+      ],
+      "position": 42839,
+      "context": "natural language instruction. In Dy and Natarajan [2024], pages 23775–23777.\n[Chen et al., 2024] DillonZ.C"
+    },
+    {
+      "text": "[2024]",
+      "ref_ids": [
+        "2024"
+      ],
+      "position": 43025,
+      "context": "grounded and lifted planning. In Dy and Natarajan [2024], pages 20078–20086.\n[Conitzer and Sha, 2020] Vinc"
+    },
+    {
+      "text": "[2023]",
+      "ref_ids": [
+        "2023"
+      ],
+      "position": 43674,
+      "context": "compositionsanditerated\nsolving. In Koenig et al. [2023].\n[Darwiche and Marquis, 2002] Adnan Darwiche and "
+    },
+    {
+      "text": "[2020]",
+      "ref_ids": [
+        "2020"
+      ],
+      "position": 45469,
+      "context": " in\noversubscriptionplanning. In Conitzer and Sha [2020], pages 9818–9826.\n[Eiter et al., 2024a] Thomas Ei"
+    },
+    {
+      "text": "[2024]",
+      "ref_ids": [
+        "2024"
+      ],
+      "position": 46121,
+      "context": "atic action schema splitting. In Dy and Natarajan [2024], pages 20096–20103.\n[Fenner et al., 1999] Stephen"
+    },
+    {
+      "text": "[2022]",
+      "ref_ids": [
+        "2022"
+      ],
+      "position": 46999,
+      "context": " sets – navigationmade easy. In Honavar and Spaan [2022], pages 5651–5659.\n[Fichte et al., 2022b] Johannes"
+    },
+    {
+      "text": "[2022]",
+      "ref_ids": [
+        "2022"
+      ],
+      "position": 47469,
+      "context": "osi-\ntional model counting. In Frisch and Gregory [2022], pages 30:1–30:24.\n[Fichte et al., 2024] Johannes"
+    },
+    {
+      "text": "[2023]",
+      "ref_ids": [
+        "2023"
+      ],
+      "position": 49605,
+      "context": "s with incomplete actioneffects. In Koenig et al. [2023], pages\n153–161.\n[Hahn et al., 2022] Susana Hahn, "
+    },
+    {
+      "text": "[2022]",
+      "ref_ids": [
+        "2022"
+      ],
+      "position": 50597,
+      "context": "inginpropo-\nsitional logic. In Thi´ebaux and Yeoh [2022], pages 134–144.\n[Honavar and Spaan, 2022] Vasant "
+    },
+    {
+      "text": "[2022]",
+      "ref_ids": [
+        "2022"
+      ],
+      "position": 51009,
+      "context": "roximate answer set counter.\nIn Honavar and Spaan [2022], pages 5755–5764.\n[Karpas and Domshlak, 2009] Ere"
+    },
+    {
+      "text": "[2020]",
+      "ref_ids": [
+        "2020"
+      ],
+      "position": 51619,
+      "context": ". Reshaping diverse planning. In Conitzer\nand Sha [2020], pages 9892–9899.\n[Katz et al., 2018] Michael Kat"
+    },
+    {
+      "text": "[2023]",
+      "ref_ids": [
+        "2023"
+      ],
+      "position": 54815,
+      "context": "isjoint SAT enumeration. In Mahajan and Slivovsky [2023], pages 15:1–15:16.\n16\n\n[Mirsky et al., 2021] Reut"
+    },
+    {
+      "text": "[2024]",
+      "ref_ids": [
+        "2024"
+      ],
+      "position": 58499,
+      "context": "ion without blocking clauses. In Dy and Natarajan [2024].\n[Speck et al., 2020] David Speck, Robert Mattmu¨"
+    },
+    {
+      "text": "[2020]",
+      "ref_ids": [
+        "2020"
+      ],
+      "position": 58626,
+      "context": "bel. Symbolic top-k planning.\nIn Conitzer and Sha [2020], pages 9967–9974.\n[Speck et al., 2024] David Spec"
+    },
+    {
+      "text": "[2022]",
+      "ref_ids": [
+        "2022"
+      ],
+      "position": 60580,
+      "context": "k. Loopless\ntop-k planning. In Thi´ebaux and Yeoh [2022], pages 380–384.\n[Wrathall, 1976] Celia Wrathall. "
+    },
+    {
+      "text": "(SAT)",
+      "ref_ids": [
+        "SAT"
+      ],
+      "position": 2503,
+      "context": " such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint sat"
+    },
+    {
+      "text": "(ASP)",
+      "ref_ids": [
+        "ASP"
+      ],
+      "position": 2533,
+      "context": "isfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more"
+    },
+    {
+      "text": "(CSP)",
+      "ref_ids": [
+        "CSP"
+      ],
+      "position": 2577,
+      "context": "mming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are a"
+    },
+    {
+      "text": "(SAT)",
+      "ref_ids": [
+        "SAT"
+      ],
+      "position": 3129,
+      "context": "augusto.blaascorrea@chch.ox.ac.uk\n1\n\nmodel exists (SAT), it also allows for automated reasoning about the"
+    },
+    {
+      "text": "(partial)",
+      "ref_ids": [
+        "partial"
+      ],
+      "position": 7295,
+      "context": "fthenumberofsolutions\nis sufficiently low or when (partial) solutions need to be materialized. Exact uniform "
+    },
+    {
+      "text": "(f)",
+      "ref_ids": [
+        "f"
+      ],
+      "position": 9247,
+      "context": "bbreviate the domain of a function f :\nD →R by dom(f). By f−1 : R → D we denote the inverse function f−"
+    },
+    {
+      "text": "(d)",
+      "ref_ids": [
+        "d"
+      ],
+      "position": 9307,
+      "context": "1 : R → D we denote the inverse function f−1 := {f(d) →d | d∈ dom(f)}\nof function f, if it exists. Let "
+    },
+    {
+      "text": "(f)",
+      "ref_ids": [
+        "f"
+      ],
+      "position": 9322,
+      "context": "note the inverse function f−1 := {f(d) →d | d∈ dom(f)}\nof function f, if it exists. Let σ = hs ,s ,...,"
+    },
+    {
+      "text": "(F)",
+      "ref_ids": [
+        "F"
+      ],
+      "position": 9575,
+      "context": "r a\npropositional formula F, we abbreviate by vars(F) the variables that occur in F and by Mod(F) the\ns"
+    },
+    {
+      "text": "(F)",
+      "ref_ids": [
+        "F"
+      ],
+      "position": 9619,
+      "context": "y vars(F) the variables that occur in F and by Mod(F) the\nset of all models of F and the number of mode"
+    },
+    {
+      "text": "(F)",
+      "ref_ids": [
+        "F"
+      ],
+      "position": 9679,
+      "context": "t of all models of F and the number of models by #(F):=|Mod(F)|.\nComputational Complexity We follow sta"
+    },
+    {
+      "text": "(F)",
+      "ref_ids": [
+        "F"
+      ],
+      "position": 9688,
+      "context": "models of F and the number of models by #(F):=|Mod(F)|.\nComputational Complexity We follow standard ter"
+    },
+    {
+      "text": "(PH)",
+      "ref_ids": [
+        "PH"
+      ],
+      "position": 9825,
+      "context": "ty [Pa-\npadimitriou,1994]andthePolynomialHierarchy(PH)[StockmeyerandMeyer,1973;Stockmeyer,1976;\nWrathall"
+    },
+    {
+      "text": "(independent)",
+      "ref_ids": [
+        "independent"
+      ],
+      "position": 9919,
+      "context": ";\nWrathall,1976]. ThecomplexityclassDP capturesthe(independent)combinationofanNPandacoNP\nproblem, i.e., DP := {L "
+    },
+    {
+      "text": "(partial)",
+      "ref_ids": [
+        "partial"
+      ],
+      "position": 10738,
+      "context": "hereAisafinitesetofpropositional\nstatevariables. A(partial) state sisatotal(partial)mappings:A→{0,1}. Forasta"
+    },
+    {
+      "text": "(partial)",
+      "ref_ids": [
+        "partial"
+      ],
+      "position": 10763,
+      "context": "itional\nstatevariables. A(partial) state sisatotal(partial)mappings:A→{0,1}. Forastatesandapartial\n3\n\ns\ns 2\n⊥"
+    },
+    {
+      "text": "(a)",
+      "ref_ids": [
+        "a"
+      ],
+      "position": 11351,
+      "context": " s, s o for\no\nJ K\nshort, yields state s′, where s′(a):=eff (a), if a∈dom(eff ) and s′(a):=s(a), otherwi"
+    },
+    {
+      "text": "(a)",
+      "ref_ids": [
+        "a"
+      ],
+      "position": 11360,
+      "context": "or\no\nJ K\nshort, yields state s′, where s′(a):=eff (a), if a∈dom(eff ) and s′(a):=s(a), otherwise. Final"
+    },
+    {
+      "text": "(eff )",
+      "ref_ids": [
+        "eff"
+      ],
+      "position": 11373,
+      "context": "t, yields state s′, where s′(a):=eff (a), if a∈dom(eff ) and s′(a):=s(a), otherwise. Finally, I is\no o\nthe"
+    },
+    {
+      "text": "(a)",
+      "ref_ids": [
+        "a"
+      ],
+      "position": 11386,
+      "context": "te s′, where s′(a):=eff (a), if a∈dom(eff ) and s′(a):=s(a), otherwise. Finally, I is\no o\nthe initial s"
+    },
+    {
+      "text": "(a)",
+      "ref_ids": [
+        "a"
+      ],
+      "position": 11392,
+      "context": " where s′(a):=eff (a), if a∈dom(eff ) and s′(a):=s(a), otherwise. Finally, I is\no o\nthe initial state o"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 11769,
+      "context": "∈ [n−1].\n0 n 0 n i+1 i i\nJ K\nFurthermore, we let π(i):=o and denote by |π| the length of a plan π. We d"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 13722,
+      "context": " being applied. We can easily identify two plans:\n(i) wake-up; get-ready; go-to-AAAI; give-talk.\n(ii) w"
+    },
+    {
+      "text": "(ii)",
+      "ref_ids": [
+        "ii"
+      ],
+      "position": 13769,
+      "context": "s:\n(i) wake-up; get-ready; go-to-AAAI; give-talk.\n(ii) wake-up; go-to-AAAI; give-talk.\nPlan (i) has leng"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 13811,
+      "context": "e-talk.\n(ii) wake-up; go-to-AAAI; give-talk.\nPlan (i) has length 4, while Plan (ii) has length 3. Obser"
+    },
+    {
+      "text": "(ii)",
+      "ref_ids": [
+        "ii"
+      ],
+      "position": 13840,
+      "context": "AAI; give-talk.\nPlan (i) has length 4, while Plan (ii) has length 3. Observe that action sleep does not "
+    },
+    {
+      "text": "(SAT)",
+      "ref_ids": [
+        "SAT"
+      ],
+      "position": 14359,
+      "context": "operator landmarks.\n4\n\nPlanning as Satisfiability (SAT) Let Π=hA,O,I,Gi be a planning task and ℓ>0 an int"
+    },
+    {
+      "text": "(SAT)",
+      "ref_ids": [
+        "SAT"
+      ],
+      "position": 14563,
+      "context": "positional formula and ask for its satisfiability (SAT) [Kautz and Selman, 1992; Rintanen, 2012].\nIn more"
+    },
+    {
+      "text": "(Fplan)",
+      "ref_ids": [
+        "Fplan"
+      ],
+      "position": 14827,
+      "context": " the core idea. The variables are\nas follows: vars(Fplan) = {ai | a ∈ A,i ∈ [ℓ]}}∪{oi | o ∈ O,i ∈ [ℓ]}. Var"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 17197,
+      "context": "ample 5. Consider task Π from Example 1 and Plans (i) and (ii). Furthermore, let ℓ=4. Then,\n1\nthe brave"
+    },
+    {
+      "text": "(ii)",
+      "ref_ids": [
+        "ii"
+      ],
+      "position": 17205,
+      "context": " Consider task Π from Example 1 and Plans (i) and (ii). Furthermore, let ℓ=4. Then,\n1\nthe brave and caut"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 17476,
+      "context": " is brave but not cautious, as it appears in Plan (i) but not in Plan (ii). Operator\nsleep is neither b"
+    },
+    {
+      "text": "(ii)",
+      "ref_ids": [
+        "ii"
+      ],
+      "position": 17496,
+      "context": "utious, as it appears in Plan (i) but not in Plan (ii). Operator\nsleep is neither brave nor cautious, as"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 19360,
+      "context": "ator o in position i by replacing o ∈ π with o = π(i). With the help of conditional\nprobability, we can"
+    },
+    {
+      "text": "(CNF)",
+      "ref_ids": [
+        "CNF"
+      ],
+      "position": 19547,
+      "context": " propositional formula in conjunctive normal form\n(CNF) and assume its meaning as expected. We let Q cont"
+    },
+    {
+      "text": "(v)",
+      "ref_ids": [
+        "v"
+      ],
+      "position": 19920,
+      "context": "riable v ∈ A if there is some i ∈ [ℓ] such that s (v) = 1; satisfies an operator o ∈ O if there is\ni\nso"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 19995,
+      "context": "rator o ∈ O if there is\ni\nsome i ∈ [ℓ] such that π(i) = o, analogously for fixed time-points i. Then, π"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 20644,
+      "context": "Take the following probability reasoning queries: (i) P [Π ,wake-up] = 1, (ii) P [Π ,get-ready] = 0.5,\n"
+    },
+    {
+      "text": "(ii)",
+      "ref_ids": [
+        "ii"
+      ],
+      "position": 20668,
+      "context": "bility reasoning queries: (i) P [Π ,wake-up] = 1, (ii) P [Π ,get-ready] = 0.5,\nℓ 1 ℓ 1\nand (iii) P [Π ,s"
+    },
+    {
+      "text": "(iii)",
+      "ref_ids": [
+        "iii"
+      ],
+      "position": 20709,
+      "context": "up] = 1, (ii) P [Π ,get-ready] = 0.5,\nℓ 1 ℓ 1\nand (iii) P [Π ,sleep]=0. Reasoning (i) illustrates that th"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 20741,
+      "context": " 0.5,\nℓ 1 ℓ 1\nand (iii) P [Π ,sleep]=0. Reasoning (i) illustrates that the researcher must always use o"
+    },
+    {
+      "text": "(ii)",
+      "ref_ids": [
+        "ii"
+      ],
+      "position": 20832,
+      "context": "always use operator wake-\nℓ 1\nup to reach a goal; (ii) indicates that get-ready occurs in half of the pl"
+    },
+    {
+      "text": "(iii)",
+      "ref_ids": [
+        "iii"
+      ],
+      "position": 20891,
+      "context": "cates that get-ready occurs in half of the plans; (iii) allows us to conclude\n1Weprovestatements markedby"
+    },
+    {
+      "text": "(brave)",
+      "ref_ids": [
+        "brave"
+      ],
+      "position": 22217,
+      "context": "effect.\nWe focus on operators that belong to some (brave) but not to all plans (cautious).\nMore formally, f"
+    },
+    {
+      "text": "(cautious)",
+      "ref_ids": [
+        "cautious"
+      ],
+      "position": 22246,
+      "context": " that belong to some (brave) but not to all plans (cautious).\nMore formally, for a planning task Π and an inte"
+    },
+    {
+      "text": "(never)",
+      "ref_ids": [
+        "never"
+      ],
+      "position": 25801,
+      "context": "obal\nqueries to reason about operators being only (never) applied in states that satisfy certain conditions"
+    },
+    {
+      "text": "(Left)",
+      "ref_ids": [
+        "Left"
+      ],
+      "position": 28611,
+      "context": "106\n× 1.5 112 91 61 170 >1021 >1018 >106\nTable 2: (Left): Coverage,i.e., the number of tasks where the num"
+    },
+    {
+      "text": "(Right)",
+      "ref_ids": [
+        "Right"
+      ],
+      "position": 28841,
+      "context": "ycountsplans,whileEnumadditionallyenumeratesthem. (Right): Statisticsonthenumberofplans\nin the benchmark se"
+    },
+    {
+      "text": "(IPC)",
+      "ref_ids": [
+        "IPC"
+      ],
+      "position": 29420,
+      "context": "e most recent International Planning Competitions (IPC) [Taitler et al., 2024]. In the experiments,\nwe co"
+    },
+    {
+      "text": "(left)",
+      "ref_ids": [
+        "left"
+      ],
+      "position": 30910,
+      "context": "ck et al., 2024].\n6.2 Overall Performance\nTable 2 (left) compares the coverage, i.e., the number of tasks "
+    },
+    {
+      "text": "(right)",
+      "ref_ids": [
+        "right"
+      ],
+      "position": 31693,
+      "context": "ainedbytheincreasing\nnumber of plans, see Table 2 (right), where enumeration becomes less feasible due to t"
+    },
+    {
+      "text": "(core)",
+      "ref_ids": [
+        "core"
+      ],
+      "position": 36029,
+      "context": " variables,i.e., the variables thatare alwaystrue (core)or false (dead). In addition, giventhe\nd-DNNF,itis"
+    },
+    {
+      "text": "(dead)",
+      "ref_ids": [
+        "dead"
+      ],
+      "position": 36044,
+      "context": ", the variables thatare alwaystrue (core)or false (dead). In addition, giventhe\nd-DNNF,itispossibletounifo"
+    },
+    {
+      "text": "(SNSF)",
+      "ref_ids": [
+        "SNSF"
+      ],
+      "position": 38262,
+      "context": "SpeckwasfundedbytheSwissNationalScience\nFoundation(SNSF)aspartoftheproject“UnifyingtheTheoryandAlgorithmso"
+    },
+    {
+      "text": "(UTA)",
+      "ref_ids": [
+        "UTA"
+      ],
+      "position": 38346,
+      "context": "heTheoryandAlgorithmsofFactoredState-Space\nSearch”(UTA).HecherwassupportedbytheAustrianScienceFund(FWF),g"
+    },
+    {
+      "text": "(FWF)",
+      "ref_ids": [
+        "FWF"
+      ],
+      "position": 38394,
+      "context": "h”(UTA).HecherwassupportedbytheAustrianScienceFund(FWF),grantsJ4656andP32830,\nthe Society for Research Fu"
+    },
+    {
+      "text": "(WWTF)",
+      "ref_ids": [
+        "WWTF"
+      ],
+      "position": 38582,
+      "context": "-0004,aswellasthe ViennaScience andTechnologyFund (WWTF),grantICT19-065. The\nworkhasbeencarriedoutwhileHec"
+    },
+    {
+      "text": "(weighted)",
+      "ref_ids": [
+        "weighted"
+      ],
+      "position": 40473,
+      "context": "Lagniez, and Marie Miceli. A new exact solver\nfor (weighted) max#sat. In Frisch and Gregory [2022], pages 28:1"
+    },
+    {
+      "text": "(RDDPS)",
+      "ref_ids": [
+        "RDDPS"
+      ],
+      "position": 47885,
+      "context": "p on Reliable Data-Driven Planning and Scheduling (RDDPS), 2024.\n14\n\n[Frisch and Gregory,2022] Alan M. Fris"
+    },
+    {
+      "text": "(RDDPS)",
+      "ref_ids": [
+        "RDDPS"
+      ],
+      "position": 55842,
+      "context": "p on Reliable Data-Driven Planning and\nScheduling (RDDPS), 2024.\n[Porteous et al., 2001] JuliePorteous,Laur"
+    },
+    {
+      "text": "(Boolean)",
+      "ref_ids": [
+        "Boolean"
+      ],
+      "position": 60979,
+      "context": "aries\nPropositional Logic We define propositional (Boolean) formulas and their evaluation in the usual\nway [K"
+    },
+    {
+      "text": "(F)",
+      "ref_ids": [
+        "F"
+      ],
+      "position": 61207,
+      "context": ". For a propositional formula F, we denote by vars(F) the set of variables\nthat occur in formula F. Log"
+    },
+    {
+      "text": "(CNF)",
+      "ref_ids": [
+        "CNF"
+      ],
+      "position": 61446,
+      "context": "literals. Formula F is in conjunctive\nnormal form (CNF) if F is a conjunction of clauses. We abbreviate b"
+    },
+    {
+      "text": "(F)",
+      "ref_ids": [
+        "F"
+      ],
+      "position": 61506,
+      "context": " is a conjunction of clauses. We abbreviate by Mod(F) the set of all models\nof F and the number of mode"
+    },
+    {
+      "text": "(F)",
+      "ref_ids": [
+        "F"
+      ],
+      "position": 61566,
+      "context": "t of all models\nof F and the number of models by #(F):=|Mod(F)|.\nKnowledgeCompilation Knowledgecompilat"
+    },
+    {
+      "text": "(F)",
+      "ref_ids": [
+        "F"
+      ],
+      "position": 61575,
+      "context": "models\nof F and the number of models by #(F):=|Mod(F)|.\nKnowledgeCompilation Knowledgecompilationisasub"
+    },
+    {
+      "text": "(propositional)",
+      "ref_ids": [
+        "propositional"
+      ],
+      "position": 62422,
+      "context": "e\nNF\nknown as conditioning.\nInmoredetail: LetF bea(propositional)formula,F isinNNF(negation normalform) ifnegations"
+    },
+    {
+      "text": "(DAGs)",
+      "ref_ids": [
+        "DAGs"
+      ],
+      "position": 62678,
+      "context": "resentedin terms ofrooted directed acyclic graphs\n(DAGs) where each leaf node is labeled with a literal, a"
+    },
+    {
+      "text": "(F )",
+      "ref_ids": [
+        "F"
+      ],
+      "position": 63089,
+      "context": "ion F = F ∧···∧F with i 6= j,\ni j 1 n\nwe have vars(F )∩vars(F ) = ∅ [Darwiche, 2004]. Formula F is in d-"
+    },
+    {
+      "text": "(F )",
+      "ref_ids": [
+        "F"
+      ],
+      "position": 63098,
+      "context": " ∧···∧F with i 6= j,\ni j 1 n\nwe have vars(F )∩vars(F ) = ∅ [Darwiche, 2004]. Formula F is in d-DNNF, if "
+    },
+    {
+      "text": "(F )",
+      "ref_ids": [
+        "F"
+      ],
+      "position": 63458,
+      "context": "s in F are smooth, meaningfor F =F ∨F we have vars(F )=vars(F ).\n1 2 1 2\nDeterminism and smoothness perm"
+    },
+    {
+      "text": "(F )",
+      "ref_ids": [
+        "F"
+      ],
+      "position": 63467,
+      "context": "e smooth, meaningfor F =F ∨F we have vars(F )=vars(F ).\n1 2 1 2\nDeterminism and smoothness permit traver"
+    },
+    {
+      "text": "(F)",
+      "ref_ids": [
+        "F"
+      ],
+      "position": 63687,
+      "context": "lledcountinggraphofansd-DNNF.\nThe counting graph G(F) is the DAG of F where each node N is additionally"
+    },
+    {
+      "text": "(N)",
+      "ref_ids": [
+        "N"
+      ],
+      "position": 63755,
+      "context": "F where each node N is additionally labeled by val(N) := 1,\nif N consists of a literal; labeled by val("
+    },
+    {
+      "text": "(N)",
+      "ref_ids": [
+        "N"
+      ],
+      "position": 63807,
+      "context": ") := 1,\nif N consists of a literal; labeled by val(N) := Σ val(N ), if N is an ∨-node with children N ;"
+    },
+    {
+      "text": "(N )",
+      "ref_ids": [
+        "N"
+      ],
+      "position": 63819,
+      "context": " consists of a literal; labeled by val(N) := Σ val(N ), if N is an ∨-node with children N ; labeled\ni i "
+    },
+    {
+      "text": "(N)",
+      "ref_ids": [
+        "N"
+      ],
+      "position": 63881,
+      "context": "s an ∨-node with children N ; labeled\ni i i\nby val(N) := Π val(N ), if N is an ∧-node. By val(G(F)) we "
+    },
+    {
+      "text": "(N )",
+      "ref_ids": [
+        "N"
+      ],
+      "position": 63893,
+      "context": "with children N ; labeled\ni i i\nby val(N) := Π val(N ), if N is an ∧-node. By val(G(F)) we refer to val("
+    },
+    {
+      "text": "(F)",
+      "ref_ids": [
+        "F"
+      ],
+      "position": 63926,
+      "context": "y val(N) := Π val(N ), if N is an ∧-node. By val(G(F)) we refer to val(N) for the root N of G(F).\ni i\nF"
+    },
+    {
+      "text": "(N)",
+      "ref_ids": [
+        "N"
+      ],
+      "position": 63946,
+      "context": "), if N is an ∧-node. By val(G(F)) we refer to val(N) for the root N of G(F).\ni i\nFunction val can be c"
+    },
+    {
+      "text": "(F)",
+      "ref_ids": [
+        "F"
+      ],
+      "position": 63969,
+      "context": "y val(G(F)) we refer to val(N) for the root N of G(F).\ni i\nFunction val can be constructed by traversin"
+    },
+    {
+      "text": "(F)",
+      "ref_ids": [
+        "F"
+      ],
+      "position": 64024,
+      "context": "i i\nFunction val can be constructed by traversingG(F) in post-orderin polynomial time. It is well-known"
+    },
+    {
+      "text": "(N)",
+      "ref_ids": [
+        "N"
+      ],
+      "position": 64307,
+      "context": "al onthe counting\ngraph is modified by setting val(N) = 0, if N consists of ℓ and ¬ℓ ∈ L. This correspo"
+    },
+    {
+      "text": "(Sketch)",
+      "ref_ids": [
+        "Sketch"
+      ],
+      "position": 64650,
+      "context": "-Cautious-\nPlan-Exist is coNP-complete.\n19\n\nProof (Sketch). (Membership): Let Π be a planning task, o∈O anop"
+    },
+    {
+      "text": "(Membership)",
+      "ref_ids": [
+        "Membership"
+      ],
+      "position": 64660,
+      "context": "\nPlan-Exist is coNP-complete.\n19\n\nProof (Sketch). (Membership): Let Π be a planning task, o∈O anoperator,andℓ an"
+    },
+    {
+      "text": "(Hardness)",
+      "ref_ids": [
+        "Hardness"
+      ],
+      "position": 65220,
+      "context": "nswers, which immediately yields coNP-membership. (Hardness): We can\nvacously extend the existing reduction [B"
+    },
+    {
+      "text": "(SAT)",
+      "ref_ids": [
+        "SAT"
+      ],
+      "position": 65321,
+      "context": "uction [Bylander, 1994,The 3.5] and ask for brave (SAT) and cautious\n(UNSAT).\nTheorem 9. The problem Poly"
+    },
+    {
+      "text": "(UNSAT)",
+      "ref_ids": [
+        "UNSAT"
+      ],
+      "position": 65340,
+      "context": "994,The 3.5] and ask for brave (SAT) and cautious\n(UNSAT).\nTheorem 9. The problem Poly-Probabilistic-Reason"
+    },
+    {
+      "text": "(Hardness)",
+      "ref_ids": [
+        "Hardness"
+      ],
+      "position": 65423,
+      "context": "oly-Probabilistic-Reason is CP-complete.\n=\nProof. (Hardness): We reduce from the problem of deciding whether t"
+    },
+    {
+      "text": "(F)",
+      "ref_ids": [
+        "F"
+      ],
+      "position": 66351,
+      "context": "5,\nwhich boils down to asking whether #(F∪{acc})/#(F)=0.5. Indeed, this can be solved via probabilistic"
+    },
+    {
+      "text": "(Membership)",
+      "ref_ids": [
+        "Membership"
+      ],
+      "position": 66538,
+      "context": "] and asking for\nthe probability of operator acc.\n(Membership): We reduce |Plansℓ(Π,Q)|/max(1,|Plansℓ(Π)|) =p=n/"
+    },
+    {
+      "text": "(Membership)",
+      "ref_ids": [
+        "Membership"
+      ],
+      "position": 66932,
+      "context": "O. The problem FacetReason is NP-complete.\nProof. (Membership): As in Lemma 6, we encode task Π, operator o∈O, a"
+    },
+    {
+      "text": "(Hardness)",
+      "ref_ids": [
+        "Hardness"
+      ],
+      "position": 67372,
+      "context": " ∧¬o′ is\nfacet\nsatisfiable if and only if o∈F(Π).\n(Hardness): TakeanypropositionalformulaF. WeensurethatF is n"
+    },
+    {
+      "text": "(Membership)",
+      "ref_ids": [
+        "Membership"
+      ],
+      "position": 68077,
+      "context": "egers. AtLeast-k-Facets is NP-\n0\ncomplete.\nProof. (Membership): Follows from the membership of the proof of Theo"
+    },
+    {
+      "text": "(Hardness)",
+      "ref_ids": [
+        "Hardness"
+      ],
+      "position": 68771,
+      "context": "ger variables in Fi−1 are set to false.\nfacet\n20\n\n(Hardness): We reduce fromanarbitrarypropositionalformula F "
+    },
+    {
+      "text": "(all)",
+      "ref_ids": [
+        "all"
+      ],
+      "position": 68995,
+      "context": "to a facet, which\nthen allows us to ask for ≥|O | (all) facets.\nF\nCorollary 12. Let Π be a planning task,"
+    },
+    {
+      "text": "(Membership)",
+      "ref_ids": [
+        "Membership"
+      ],
+      "position": 69321,
+      "context": "problem Exact-k-Facets is\n0\nP\nD -complete.\nProof. (Membership): Follows from memberships of Lemma 11 and Corolla"
+    },
+    {
+      "text": "(Hardness)",
+      "ref_ids": [
+        "Hardness"
+      ],
+      "position": 69390,
+      "context": "ws from memberships of Lemma 11 and Corollary 12.\n(Hardness): FollowsfromhardnessofLemma11andCorollary12. Inde"
+    }
+  ],
+  "concepts": [
+    {
+      "text": "F",
+      "type": "entity",
+      "count": 20,
+      "examples": [
+        {
+          "section": "2 Preliminaries",
+          "context": "`(σ) := {s | s ∈ σ}. For a\npropositional formula F, we abbreviate by vars(F) the variables that occu"
+        },
+        {
+          "section": "2 Preliminaries",
+          "context": "abbreviate by vars(F) the variables that occur in F and by Mod(F) the\nset of all models of F and the"
+        },
+        {
+          "section": "2 Preliminaries",
+          "context": "occur in F and by Mod(F) the\nset of all models of F and the number of models by #(F):=|Mod(F)|.\nCompu"
+        }
+      ]
+    },
+    {
+      "text": "NP",
+      "type": "entity",
+      "count": 9,
+      "examples": [
+        {
+          "section": "Contributions Our main contributions are as follows:",
+          "context": "22a]. We show that facet reasoning in planning is NP-complete, and thus probably much simpler\nthancoun"
+        },
+        {
+          "section": "Related Work",
+          "context": "l. Ref.\nPoly-Bounded-Plan-Exist Π, ℓ π ∈Plans (Π) NP-c [1]\nℓ\nPoly-Brave-Plan-Exist Π, ℓ, o ∃π ∈Plans ("
+        },
+        {
+          "section": "Related Work",
+          "context": "ℓ\nPoly-Brave-Plan-Exist Π, ℓ, o ∃π ∈Plans (Π):o∈π NP-c Lem. 6\nℓ\nPoly-Cautious-Plan-Exist Π, ℓ, o ∀π ∈P"
+        }
+      ]
+    },
+    {
+      "text": "ASP",
+      "type": "entity",
+      "count": 8,
+      "examples": [
+        {
+          "section": "1 Introduction",
+          "context": "sfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), mor"
+        },
+        {
+          "section": "Contributions Our main contributions are as follows:",
+          "context": "riou and Yannakakis, 1982] and is well studied in ASP [Alrabbaa et al., 2018; Fichte et al.,\n2022a]. We"
+        },
+        {
+          "section": "Related Work",
+          "context": "alandapproximate\ncounting has been considered for ASP [Kabir et al., 2022; Fichte et al., 2024]. In SAT"
+        }
+      ]
+    },
+    {
+      "text": "AAAI",
+      "type": "entity",
+      "count": 7,
+      "examples": [
+        {
+          "section": "J K",
+          "context": "researcher, who has to wake up and give a talk at AAAI. Depending on how late they are, they\ncan go stra"
+        },
+        {
+          "section": "J K",
+          "context": "identify two plans:\n(i) wake-up; get-ready; go-to-AAAI; give-talk.\n(ii) wake-up; go-to-AAAI; give-talk."
+        },
+        {
+          "section": "J K",
+          "context": "ready; go-to-AAAI; give-talk.\n(ii) wake-up; go-to-AAAI; give-talk.\nPlan (i) has length 4, while Plan (ii"
+        }
+      ]
+    },
+    {
+      "text": "Darwiche",
+      "type": "entity",
+      "count": 6,
+      "examples": [
+        {
+          "section": "1 Introduction",
+          "context": "for automated reasoning about the solution space [Darwiche, 2001a;\nDarwiche and Marquis, 2002]. Recent compe"
+        },
+        {
+          "section": "1 Introduction",
+          "context": "soning about the solution space [Darwiche, 2001a;\nDarwiche and Marquis, 2002]. Recent competitions illustrat"
+        },
+        {
+          "section": "Related Work",
+          "context": "Darwiche and Marquis [2002] detailed the theoretical capab"
+        }
+      ]
+    },
+    {
+      "text": "Press",
+      "type": "entity",
+      "count": 6,
+      "examples": [
+        {
+          "section": "MLN",
+          "context": "g and Scheduling (ICAPS 2009), pages 162–169.AAAI Press, 2009.\n[Helmert, 2006] MalteHelmert. TheFastDownw"
+        },
+        {
+          "section": "MLN",
+          "context": "g and Scheduling (ICAPS 2018), pages 132–140.AAAI Press, 2018.\n[Kautz and Selman, 1992] HenryKautzandBart"
+        },
+        {
+          "section": "MLN",
+          "context": "erence on Planning (ECP 2001), pages 174–182.AAAI Press, 2001.\n[Richter et al., 2008] Silvia Richter, Mal"
+        }
+      ]
+    },
+    {
+      "text": "Yannakakis",
+      "type": "entity",
+      "count": 4,
+      "examples": [
+        {
+          "section": "Contributions Our main contributions are as follows:",
+          "context": "ginsin computationalcomplexity\n[Papadimitriou and Yannakakis, 1982] and is well studied in ASP [Alrabbaa et al"
+        },
+        {
+          "section": "2 Preliminaries",
+          "context": "DP := {L ∩L | L ∈ NP,L ∈ coNP} [Papadimitriou and Yannakakis, 1982]. Class\n1 2 1 2\nPP [Gill, 1977] refers to t"
+        },
+        {
+          "section": "4 Faceted Reasoning",
+          "context": "terminology from combinatorics [Papadimitriou and\nYannakakis, 1982] and ASP [Alrabbaa et al., 2018]. At the he"
+        }
+      ]
+    },
+    {
+      "text": "Example 1",
+      "type": "entity",
+      "count": 4,
+      "examples": [
+        {
+          "section": "J K",
+          "context": "ent plans of length up to ℓ [Speck et al., 2020].\nExample 1 (Running Example). Consider a planning task Π con"
+        },
+        {
+          "section": "J K",
+          "context": "ength ℓ.\nExample 2. Consider planning task Π from Example 1. We observe that wake-up, go-to-AAAI, and\n1\ngive-"
+        },
+        {
+          "section": "3 From Qualitative to Quantitative Reasoning",
+          "context": "n bounded length.\nExample 5. Consider task Π from Example 1 and Plans (i) and (ii). Furthermore, let ℓ=4. The"
+        }
+      ]
+    },
+    {
+      "text": "FacetReason",
+      "type": "entity",
+      "count": 4,
+      "examples": [
+        {
+          "section": "4 Faceted Reasoning",
+          "context": "y. We start with a natural\nreasoning problem: The FacetReason problem asks, given a planning task Π and an oper"
+        },
+        {
+          "section": "4 Faceted Reasoning",
+          "context": "(Π). We start with a lower and upper bound on the FacetReason problem.\nTheorem 10 (⋆). Let Π be a planning task"
+        },
+        {
+          "section": "4 Faceted Reasoning",
+          "context": "⋆). Let Π be a planning task and o∈O. The problem FacetReason is NP-complete.\nNext, we look into counting facet"
+        }
+      ]
+    },
+    {
+      "text": "Enum",
+      "type": "entity",
+      "count": 4,
+      "examples": [
+        {
+          "section": "KmyS munE tnuoC xaM naeM\nnaideM",
+          "context": "al., 2017]. For enumeration approaches (K∗, SymK, Enum), we let these solvers enumerate the plans\nonly i"
+        },
+        {
+          "section": "KmyS munE tnuoC xaM naeM\nnaideM",
+          "context": "ragefor\nalengthboundof1.0. Ourenumerationapproach,Enum,ranksoveralllast,althoughbeingabletosolve\na notab"
+        },
+        {
+          "section": "KmyS munE tnuoC",
+          "context": "K∗, SymK, and our SAT-based approaches, Count and\nEnum. Count only counts plans, while Enum outputs each"
+        }
+      ]
+    },
+    {
+      "text": "Lagniez",
+      "type": "entity",
+      "count": 3,
+      "examples": [
+        {
+          "section": "Contributions Our main contributions are as follows:",
+          "context": "nning [Rintanen, 2014] and knowledge compilation [Lagniez and Marquis, 2017; Sundermann et al.,\n2024] and t"
+        },
+        {
+          "section": "6 Empirical Evaluation",
+          "context": "4]. To efficiently carry out counting, we use d4 [Lagniez and Marquis, 2017; Audemard\net al., 2022], whichc"
+        },
+        {
+          "section": "MLN",
+          "context": "tificial Intelligence Research, 72:533–612,2021.\n[Lagniez and Marquis, 2017] Jean-Marie Lagniez and Pierre"
+        }
+      ]
+    },
+    {
+      "text": "Bylander",
+      "type": "entity",
+      "count": 3,
+      "examples": [
+        {
+          "section": "Related Work",
+          "context": "), o ∈ O, k ∈ N , 0 ≤ p ≤ 1, and Q a query. [1]: [Bylander,\n0 o\n1994], [2]: [Speck et al., 2020].\nknowledgec"
+        },
+        {
+          "section": "J K",
+          "context": "s a plan of length at\nmost ℓ, is PSPACE-complete [Bylander, 1994]. The #Bounded-Plan problem, which asks to"
+        },
+        {
+          "section": "B Omitted Proofs",
+          "context": "): We can\nvacously extend the existing reduction [Bylander, 1994,The 3.5] and ask for brave (SAT) and cautio"
+        }
+      ]
+    },
+    {
+      "text": "Lettmann",
+      "type": "entity",
+      "count": 3,
+      "examples": [
+        {
+          "section": "2 Preliminaries",
+          "context": "basics of propositional logic [Kleine Bu¨ning and Lettmann,\n1999]and computationalcomplexity [Papadimitriou,"
+        },
+        {
+          "section": "MLN",
+          "context": "416.IJCAI Organization, 2023.\n[Kleine Bu¨ning and Lettmann, 1999] HansKleineBu¨ningandTheodorLettmann. Propo"
+        },
+        {
+          "section": "18\n\nA Appendix",
+          "context": "r evaluation in the usual\nway [Kleine Bu¨ning and Lettmann, 1999; Robinson and Voronkov, 2001]. Literals are"
+        }
+      ]
+    },
+    {
+      "text": "F+(Π",
+      "type": "entity",
+      "count": 3,
+      "examples": [
+        {
+          "section": "4 Faceted Reasoning",
+          "context": "y, for a planning task Π and an integer ℓ, we let F+(Π) := BO (Π)\\CO (Π) and\nℓ ℓ ℓ\ncall the elements of"
+        },
+        {
+          "section": "4 Faceted Reasoning",
+          "context": ") := BO (Π)\\CO (Π) and\nℓ ℓ ℓ\ncall the elements of F+(Π) inclusive facets. In addition, we distinguish ex"
+        },
+        {
+          "section": "4 Faceted Reasoning",
+          "context": "of a plan. More formally, we let F− := {¬o | o ∈ F+(Π)} and\nℓ\ndefine the set F (Π) of all facets by F ("
+        }
+      ]
+    },
+    {
+      "text": "o∈O",
+      "type": "entity",
+      "count": 3,
+      "examples": [
+        {
+          "section": "4 Faceted Reasoning",
+          "context": "e for a planning task Π=hA,O,I,Gi and an operator o∈O:\n|F (Π)|−|F (Π[o])|\nS (Π,o):= ℓ ℓ .\nℓ\n|F (Π)|\nℓ\nN"
+        },
+        {
+          "section": "4 Faceted Reasoning",
+          "context": "lem asks, given a planning task Π and an operator o∈O,\nto decide whether o∈F(Π). We start with a lower"
+        },
+        {
+          "section": "B Omitted Proofs",
+          "context": "rship): As in Lemma 6, we encode task Π, operator o∈O, and integer ℓ into a proposi-\ntionalformulaFplan"
+        }
+      ]
+    },
+    {
+      "text": "Helmert",
+      "type": "entity",
+      "count": 3,
+      "examples": [
+        {
+          "section": "KmyS munE tnuoC",
+          "context": "therplannersbuiltontopofthe FastDownwardgrounder\n[Helmert, 2006; Helmert, 2009], making it impossible to gr"
+        },
+        {
+          "section": "KmyS munE tnuoC",
+          "context": "ltontopofthe FastDownwardgrounder\n[Helmert, 2006; Helmert, 2009], making it impossible to ground certain ta"
+        },
+        {
+          "section": "MLN",
+          "context": "tificial Intelligence\nResearch, 26:191–246,2006.\n[Helmert, 2009] Malte Helmert. Concise finite-domain repre"
+        }
+      ]
+    },
+    {
+      "text": "Thi´ebaux",
+      "type": "entity",
+      "count": 3,
+      "examples": [
+        {
+          "section": "MLN",
+          "context": "iftedclassicalplanninginpropo-\nsitional logic. In Thi´ebaux and Yeoh [2022], pages 134–144.\n[Honavar and Spaa"
+        },
+        {
+          "section": "MLN",
+          "context": "ning Competition. AI Magazine, pages 1–17,\n2024.\n[Thi´ebaux and Yeoh, 2022] Sylvie Thi´ebaux and William Yeoh"
+        },
+        {
+          "section": "MLN",
+          "context": "ler, and David Speck. Loopless\ntop-k planning. In Thi´ebaux and Yeoh [2022], pages 380–384.\n[Wrathall, 1976]"
+        }
+      ]
+    },
+    {
+      "text": "N",
+      "type": "entity",
+      "count": 3,
+      "examples": [
+        {
+          "section": "NF",
+          "context": "unting graph G(F) is the DAG of F where each node N is additionally labeled by val(N) := 1,\nif N cons"
+        },
+        {
+          "section": "NF",
+          "context": "of a literal; labeled by val(N) := Σ val(N ), if N is an ∨-node with children N ; labeled\ni i i\nby v"
+        },
+        {
+          "section": "NF",
+          "context": "dren N ; labeled\ni i i\nby val(N) := Π val(N ), if N is an ∧-node. By val(G(F)) we refer to val(N) for"
+        }
+      ]
+    },
+    {
+      "text": "acc",
+      "type": "entity",
+      "count": 3,
+      "examples": [
+        {
+          "section": "B Omitted Proofs",
+          "context": "mula F having #accpaths satisfying assignments\nif acc is set to true and #rejpaths satisfying assignmen"
+        },
+        {
+          "section": "B Omitted Proofs",
+          "context": "true and #rejpaths satisfying assignments in case acc is set to false. Observe that we\ncan solve the Tu"
+        },
+        {
+          "section": "B Omitted Proofs",
+          "context": "2020] and asking for\nthe probability of operator acc.\n(Membership): We reduce |Plansℓ(Π,Q)|/max(1,|Pla"
+        }
+      ]
+    },
+    {
+      "text": "Hardness",
+      "type": "entity",
+      "count": 3,
+      "examples": [
+        {
+          "section": "B Omitted Proofs",
+          "context": "∧¬o′ is\nfacet\nsatisfiable if and only if o∈F(Π).\n(Hardness): TakeanypropositionalformulaF. WeensurethatF is"
+        },
+        {
+          "section": "B Omitted Proofs",
+          "context": "er variables in Fi−1 are set to false.\nfacet\n20\n\n(Hardness): We reduce fromanarbitrarypropositionalformula F"
+        },
+        {
+          "section": "B Omitted Proofs",
+          "context": "s from memberships of Lemma 11 and Corollary 12.\n(Hardness): FollowsfromhardnessofLemma11andCorollary12. Ind"
+        }
+      ]
+    },
+    {
+      "text": "Sohrabi",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "1 Introduction",
+          "context": "withtheapproachusedintop-qualityplanning[Katz\nand Sohrabi, 2020]."
+        },
+        {
+          "section": "MLN",
+          "context": "Intelligence\n(IJCAI 2023). IJCAI, 2023.\n[Katz and Sohrabi, 2020] Michael Katz and Shirin Sohrabi. Reshaping"
+        }
+      ]
+    },
+    {
+      "text": "CP",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Contributions Our main contributions are as follows:",
+          "context": "mining\nhow many plans contain a given operator is CP-complete, which is considered computationally har"
+        },
+        {
+          "section": "B Omitted Proofs",
+          "context": "lans (Π,Q)| = n|Plans (Π)|. This clearly works in CP by parsimoniously reducing both\nℓ ℓ =\nplanningcou"
+        }
+      ]
+    },
+    {
+      "text": "Papadimitriou",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Contributions Our main contributions are as follows:",
+          "context": "ning, whichhas originsin computationalcomplexity\n[Papadimitriou and Yannakakis, 1982] and is well studied in ASP"
+        },
+        {
+          "section": "MLN",
+          "context": "2016 System Demonstrations and Ex-\nhibits, 2016.\n[Papadimitriou and Yannakakis, 1982] Christos H. Papadimitriou a"
+        }
+      ]
+    },
+    {
+      "text": "Planalyst",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Contributions Our main contributions are as follows:",
+          "context": "arquis, 2002]. We implement this as a tool called Planalyst, which builds on existing tools from\nplanning [Ri"
+        },
+        {
+          "section": "7 Conclusion and Future Work",
+          "context": "P-c). Finally, we present\nour new reasoning tool, Planalyst, which can count the number of plans assuming fix"
+        }
+      ]
+    },
+    {
+      "text": "Turing",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "2 Preliminaries",
+          "context": "num-\nber of accepting paths of a nondeterministic Turing machine [Valiant, 1979]. Class CP [Fenner et al.,"
+        },
+        {
+          "section": "B Omitted Proofs",
+          "context": "cc is set to false. Observe that we\ncan solve the Turing machine counting problem by asking whether #accpa"
+        }
+      ]
+    },
+    {
+      "text": "Norvig",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "J K",
+          "context": "an space\nℓ\nas done in the literature [Russell and Norvig, 1995].\nA plan π is optimal if there is no plan π"
+        },
+        {
+          "section": "MLN",
+          "context": "es 642–653. IJCAI\nOrganization,2024.\n[Russell and Norvig, 1995] Stuart Russell and Peter Norvig. Artificia"
+        }
+      ]
+    },
+    {
+      "text": "Rintanen",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "J K",
+          "context": "its satisfiability (SAT) [Kautz and Selman, 1992; Rintanen, 2012].\nIn more detail, we can construct a formul"
+        },
+        {
+          "section": "7 Conclusion and Future Work",
+          "context": "nd task rewriting [Areces et al., 2014; Elahi\nand Rintanen, 2024]. We believe counting and facet reasoning a"
+        }
+      ]
+    },
+    {
+      "text": "Remark 4",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "3 From Qualitative to Quantitative Reasoning",
+          "context": "only for an operator occurring at\nany time-point.\nRemark 4. Our definition of cautious operators is similar"
+        },
+        {
+          "section": "4 Faceted Reasoning",
+          "context": "to query the solution space of planning tasks. In\nRemark 4, we discussed the connection between landmarks an"
+        }
+      ]
+    },
+    {
+      "text": "Π",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "3 From Qualitative to Quantitative Reasoning",
+          "context": "oper-\nator. We abbreviate the set of allplans of Π containing o by Plans (Π,o):={π |π ∈Plans (Π),o∈π"
+        },
+        {
+          "section": "3 From Qualitative to Quantitative Reasoning",
+          "context": "fine the conditional probability of o in plans of Π by\n|Plans (Π,o)|\nP [Π,o]:= ℓ .\nℓ\nmax(1,|Plans (Π)"
+        }
+      ]
+    },
+    {
+      "text": "Poly-Probabilistic-Reason",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "3 From Qualitative to Quantitative Reasoning",
+          "context": "ore\ndetail, we obtain:\nTheorem 9 (⋆). The problem Poly-Probabilistic-Reason is CP-complete.\n="
+        },
+        {
+          "section": "B Omitted Proofs",
+          "context": "SAT) and cautious\n(UNSAT).\nTheorem 9. The problem Poly-Probabilistic-Reason is CP-complete.\n=\nProof. (Hardness): We reduce fr"
+        }
+      ]
+    },
+    {
+      "text": "IPC",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "KmyS munE tnuoC xaM naeM\nnaideM",
+          "context": "most recent International Planning Competitions (IPC) [Taitler et al., 2024]. In the experiments,\nwe c"
+        },
+        {
+          "section": "MLN",
+          "context": "tanen. Madagascar: Scalable planning with SAT. In IPC 2011 Planner\nAbstracts, pages 61–64,2011.\n[Rintan"
+        }
+      ]
+    },
+    {
+      "text": "Domshlak",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "KmyS munE tnuoC xaM naeM\nnaideM",
+          "context": "023] with the landmark-cut heuristic [Helmert\nand Domshlak, 2009], and SymK, which implements a variant of b"
+        },
+        {
+          "section": "MLN",
+          "context": "c. RuleML+RR 2022, pages 54–62,2022.\n[Helmert and Domshlak, 2009] Malte Helmert and Carmel Domshlak. Landmar"
+        }
+      ]
+    },
+    {
+      "text": "Proceedings of",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "MLN",
+          "context": "e Howe, Amedeo Cesta,\nandIoannisRefanidis,editors,Proceedings of the NineteenthInternational Conference on Automat"
+        },
+        {
+          "section": "MLN",
+          "context": "r Beck, Erez Karpas, and Shirin\nSohrabi, editors, Proceedings of the Thirtieth International Conference on Automat"
+        }
+      ]
+    },
+    {
+      "text": "AAAI Press",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "MLN",
+          "context": "onference on Artificial Intelligence (AAAI 2022). AAAI Press, 2022.\n[Kabir et al., 2022] Mohimenul Kabir, Flav"
+        },
+        {
+          "section": "MLN",
+          "context": "n Automated Planning and Scheduling (ICAPS 2023). AAAI Press,\n2023.\n[Krajnansky´ et al., 2014] Michal Krajnans"
+        }
+      ]
+    },
+    {
+      "text": "Cambridge",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "MLN",
+          "context": "onal logic –\ndeduction and algorithms, volume48of Cambridge tracts in theoretical computer science. Cambridge"
+        },
+        {
+          "section": "MLN",
+          "context": "Cambridge tracts in theoretical computer science. Cambridge\nUniversity Press, 1999.\n[Koenig et al., 2023] Sve"
+        }
+      ]
+    },
+    {
+      "text": "Automated Planning and Scheduling",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "MLN",
+          "context": "of the Thirty-\nThird International Conference on Automated Planning and Scheduling (ICAPS 2023). AAAI Press,\n2023.\n[Krajnansky´ et a"
+        },
+        {
+          "section": "MLN",
+          "context": "ngs of the Fourteenth International Conference on\nAutomated Planning and Scheduling (ICAPS 2004), pages 393–401.AAAI Press, 2004.\n[So"
+        }
+      ]
+    },
+    {
+      "text": "ICAPS",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "MLN",
+          "context": "Conference on Automated Planning and Scheduling (ICAPS 2023). AAAI Press,\n2023.\n[Krajnansky´ et al., 201"
+        },
+        {
+          "section": "MLN",
+          "context": "Conference on Automated Planning and\nScheduling (ICAPS 2020), pages 574–584.AAAI Press, 2020.\n[Smith, 20"
+        }
+      ]
+    },
+    {
+      "text": "Stockmeyer",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "MLN",
+          "context": "ounting and Reasoning with Plans”.\nZenodo, 2024.\n[Stockmeyer and Meyer, 1973] Larry J. Stockmeyer and Albert R"
+        },
+        {
+          "section": "MLN",
+          "context": "heory of Computing (STOC 1973), pages 1–9, 1973.\n[Stockmeyer, 1976] LarryJ.Stockmeyer.Thepolynomial-timehierar"
+        }
+      ]
+    },
+    {
+      "text": "a planning task",
+      "type": "technical_term",
+      "count": 21,
+      "examples": []
+    },
+    {
+      "text": "artificial intelligence",
+      "type": "technical_term",
+      "count": 21,
+      "examples": []
+    },
+    {
+      "text": "the number",
+      "type": "technical_term",
+      "count": 18,
+      "examples": []
+    },
+    {
+      "text": "a plan",
+      "type": "technical_term",
+      "count": 16,
+      "examples": []
+    },
+    {
+      "text": "the problem",
+      "type": "technical_term",
+      "count": 13,
+      "examples": []
+    },
+    {
+      "text": "the plan space",
+      "type": "technical_term",
+      "count": 12,
+      "examples": []
+    },
+    {
+      "text": "an operator",
+      "type": "technical_term",
+      "count": 8,
+      "examples": []
+    },
+    {
+      "text": "markus hecher",
+      "type": "technical_term",
+      "count": 8,
+      "examples": []
+    },
+    {
+      "text": "a propositional formula",
+      "type": "technical_term",
+      "count": 7,
+      "examples": []
+    },
+    {
+      "text": "the set",
+      "type": "technical_term",
+      "count": 7,
+      "examples": []
+    },
+    {
+      "text": "classical planning",
+      "type": "technical_term",
+      "count": 6,
+      "examples": []
+    },
+    {
+      "text": "[speck et al",
+      "type": "technical_term",
+      "count": 6,
+      "examples": []
+    }
+  ],
+  "source_file": "C:\\Users\\Christoph.Hau\\Auto eval rag\\rag-evaluation-dataset\\data\\raw\\2502.00145v1.pdf"
+}

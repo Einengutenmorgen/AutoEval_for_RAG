@@ -1,0 +1,643 @@
+{
+  "paper_id": "2502.00019v1",
+  "metadata": {
+    "title": "Growth Patterns of Inference",
+    "authors": [
+      "Austin"
+    ],
+    "publication_date": null,
+    "journal": "",
+    "abstract": "as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements\nRelated Work\nin deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade\nUnderstanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable\nanswering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do.",
+    "keywords": []
+  },
+  "sections": [
+    {
+      "heading": "Growth Patterns of Inference\nAbhishek Sharma",
+      "level": 1,
+      "content": "",
+      "start_offset": 44,
+      "end_offset": 45
+    },
+    {
+      "heading": "3840 Far West Blvd",
+      "level": 1,
+      "content": "Austin, TX 78731\nAbhishek81@gmail.com\nAbstract as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements",
+      "start_offset": 63,
+      "end_offset": 2842
+    },
+    {
+      "heading": "Related Work",
+      "level": 1,
+      "content": "in deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade",
+      "start_offset": 2854,
+      "end_offset": 3188
+    },
+    {
+      "heading": "Understanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable",
+      "level": 1,
+      "content": "answering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do.\n\nRepresentation and Reasoning knowledge base. Starting with the queries for the 10\nparameterized question types, we generate all Horn clauses\nWe use conventions from Cyc [Matuszek et al 2006] in\nrelevant for answering them and continue this process\nthis paper since that is the major source of knowledge base\nrecursively for their children until depth 10. This leads to a\ncontents used in our experiments1. We summarize the key\nset of 7,330 first-order axioms. Some heuristics for\nconventions here. Cyc represents concepts as collections.\nimproving inference are discussed in [Sharma et al 2016,",
+      "start_offset": 3302,
+      "end_offset": 4780
+    },
+    {
+      "heading": "Each collection is a kind or type of thing whose instances",
+      "level": 1,
+      "content": "Sharma et al 2019, Sharma and Forbus 2013, Sharma &\nshare a certain property, attribute, or feature. For example,\nForbus 2010, Sharma & Goolsbey 2017]. In the next\nCat is the collection of all and only cats. Collections are\nsection, we use different subsets of this axiom set for\narranged hierarchically by the genls relation. (genls\n<sub> <super>) means that anything that is an instance of studying the properties of search spaces.\n<sub> is also an instance of <super>. For example,\n(genls Dog Mammal) holds. Moreover, (isa <thing> A Model for Spread of Inference\n<collection>) means that <thing> is an instance of\ncollection <collection>. Predicates are also arranged in",
+      "start_offset": 4838,
+      "end_offset": 5513
+    },
+    {
+      "heading": "How does the possibility of inference cascades depend on",
+      "level": 1,
+      "content": "hierarchies. Here, (genlPreds <s> <g>) means that the\nthe size of KB and the network of interconnections? In an\npredicate <g> is a generalization of <s>. For example,\ninference cascade, the effects of new ground facts reach the\n(genlPreds touches near) means that touching\ntarget queries quickly, and a small number of new facts\nsomething implies being near to it. The set of genlPreds\nshould lead to disproportionate effects on the final Q/A\nstatements, like the genls statements, forms a lattice. Here\nperformance.\n(argIsa <relation> <n> <col>) means that to be\nsemantically well-formed, anything given as the <n>th To study these issues, it is useful to view a learning\nargument to <relation> must be an instance of <col>. system as a dynamical system, where the state of the\nThat is, (<relation>……<arg-n> …) is semantically well- system is given by a set of parameters. In what follows, we\nformed only if (isa <arg-n> <col>) holds. For example, define some parameters which are useful for describing a\n(argIsa mother 1 Animal) holds. knowledge-based learning system. Then we report\nLearning by Reading systems typically use a Q/A experimental results for different values of these\nsystem to examine what the system has learned. For parameters. It follows that the aim of a meta-reasoning\nexample, Learning Reader used a parameterized question module should be to identify more desirable states of such\ntemplate scheme [Cohen et al, 1998] to ask ten types of a system and use this information for guidance\nquestions. The templates were: (1) Who was the actor of Now, we describe our model of inference propagation.\n<Event>?, (2) Where did <Event> occur?, (3) Where might The graph G is cycle-free AND/OR graph generated during\n<Person> be?, (4) What are the goals of <Person>?, (5) the backward chaining of the axiom-set construction\nWhat are the consequences of <Event>?, (6) When did process, with N being the set of nodes in this graph. We\n<Event> occur?, (7) Who was affected by the <Event>?, explore variations in the structure of the search space by\n(8) Who is acquainted with (or knows) <Person>?, (9) choosing subsets of N, say M, and keeping only the edges\nWhy did <Event> occur?, and (10) Where is of G which directly connect nodes in M. In order to\n<GeographicalRegion>? In each template, the parameter consider the space of inferences that could be done with a\n(e.g., <Person>) indicates the kind of thing for which the search space, we define Q to be the set of specific\nquestion makes sense (specifically, a collection in the Cyc parameterized questions which could be asked for all 10 of\nontology). Each template has a single open variable (e.g. the questions defined above. That is, the variable\nthe actor in Q1, a location in Q2, etc.) which must be representing the parameter (e.g. <Event>) is bound t all\ninferred to provide an answer. We use these questions in possible entities in the KB of that type, whereas the other\nour experiments below, to provide realistic test of parameter in each query remains open, to be solved for.\nreasoning. For every node m, depth(m) represents its depth in G. We\nWhen answering a parameterized question, each can now define α as follows:\ntemplate expands into a set of formal queries, all of which\nare attempted in order to answer the original question. Our 𝛼 = 1 ∑ 𝑆𝑜𝑙𝑢𝑡𝑖𝑜𝑛𝑠(𝑚)\nFIRE reasoning system uses backchaining over Horn |𝑁| 𝑚∈𝑀|𝑄|∗(𝑑𝑒𝑝𝑡ℎ(𝑚)+1)\nclauses with an LTMS [Forbus & de Kleer 93]. We limit\nSolutions(m) represents the number of answers returned by\ninference to Horn clauses for tractability. To construct a\nthe node m on its own (i.e., purely by ground fact retrieval\nset of axioms for our experiments, we generate first-order\nand not by using axioms). α represents the average",
+      "start_offset": 5569,
+      "end_offset": 9322
+    },
+    {
+      "heading": "Horn clauses from the general clauses in the ResearchCyc\ncontribution of each node towards answering the set of",
+      "level": 1,
+      "content": "queries. Depth of nodes has been used to weigh the",
+      "start_offset": 9433,
+      "end_offset": 9485
+    },
+    {
+      "heading": "1 We use knowledge extracted from the ResearchCyc knowledge contribution of nodes because solutions closer to the root\nnode are more likely to percolate up due to fewer",
+      "level": 1,
+      "content": "base with our own reasoning system, instead of using Cycorp’s\nreasoning system. unification problems. Another factor which plays an\n\nimportant role in determining the diffusion of inference in performance differences between these search spaces, we\nsearch spaces is their connectivity. The larger the degree of generated a number of instances of these models. For\nnodes, the more likely it is to return a solution by using Model 1, we generated\nanswers from its neighbors. Moreover, since different\ndegree distributions lead to significant differences in the\nproperties of dynamics of networks, we study how they\naffect the rate of percolation of inference in the search\nspace.\nModel 1: We start with the set of 7,330 axioms discussed\nabove. We begin with the target queries and choose k\nchildren for them at random. If the node has less than k\nFigure 2: An example of a search space with skewed\nchildren, we choose all of its children. This is done\ndegree distribution.\nrecursively for the children nodes until depth 10. In other\nwords, by construction, the degree of all nodes is less\nthan or equal to k. For example, let us consider the search\nspace shown in Figure 2. Then Figure 3 and 4 show\nexamples of search spaces which could be generated\nfrom this model when k is 2. (Colored nodes in these\nfigures represent selected nodes.) Figure 3: An example of Model 1 search space. Here k=2.\nModel 2: We start with a set of 7,330 axioms discussed\nabove. We begin with target queries and choose β%\nchildren for them at random. This is done recursively for\nthe children nodes until depth 10. For example, if β=50,\nthen Figure 5 shows an example of search space\ngenerated from this model. Figure 4: Another example of Model 1 search space. Here\nFigure 1: Description of two models k=2.\nIn this work, we study the properties of two types of degree\nd istributions: (i) Uniform distribution and (ii) Skewed\ndistribution (i.e., resembling scale-free). To generate\nsearch spaces from these distributions, we do the\nfollowing. We start with the axiom set defined in the\nprevious section. By selecting different subsets of these\naxioms, we can understand how the structure of search\nspace affects inference. As we select different subsets, we Figure 5: An example of Model 2 search space obtained\nare accessing different regions of KB. Since facts are not from the search space shown in Figure 2. (β=50).\nuniformly distributed in the KB, α for these axiom subsets axiom sets for 2≤k≤7. Similarly, for Model 2, we generated\nvaries significantly. Moreover, axioms in ResearchCyc KB axiom sets where β ɛ {10, 15, 20, 30, 40, 50}. For each\nhave a skewed degree distribution. In other words, most value of k and β, at least seven sets of search spaces were\npredicates have very few children in the query graph, generated2.\nwhereas there are many axioms for proving a small number As learning systems gather thousands of facts from\nof predicates. See Figure 2 for a simplified example. (For reading and other sources, the size of their KBs would\nsimplicity, only OR nodes have been shown.) A grow. To model and understand the effects of increasing\ndescription of two methods for generating these search KB size on the performance of learning systems, we use\nspaces is shown in Figure 1. Model 1 makes the search the inverse ablation model [Sharma & Forbus 2010]. The\nspace more uniform by limiting the maximum number of basic idea is to take the contents of a large KB (here,\nchildren to k. On the other hand, Model 2 preserves the ResearchCyc KB) and create a small KB by ablation and\nskewed degree distribution by selecting β% children of incrementally re-add facts, collecting snapshots of\neach node. Which of these models is better for better Q/A reasoning performance of the system. We use this method\nperformance? Moreover, how does the performance to generate two KBs of size 5,180 and 165,992 facts\ndepend on k and β? We believe that these parameters (i.e., respectively. We also use the original ResearchCyc KB\nα, β and k), play an important role in understanding the\ndynamics of inference and the possibility of inference\n2 In some cases, more than 7 sets were generated for better\ncascades in deductive search spaces. To understand the\nunderstanding the patterns.\n\nwhich contains 491,091 facts3. Therefore, the model change as we access those regions of KB which have more\npresented here has been evaluated on these three KBs. In facts (i.e., α increases)? (2) What is the nature of Q/A\nwhat follows, they are referred to as KB , KB and KB performance as search spaces become denser (i.e., as k and\n1 2 3\nrespectively. β increase) and (3) Under what conditions does inference\nIt is obvious that as α increases, we should be able to percolate to a sizeable section of the KB helping us to\nanswer more questions. However, we found that in about answer more than a given threshold fraction of questions?\n28% of all cases, search spaces with high α did not lead to (In this work, the threshold is 0.2)\nexpected high performance. This abnormality is mainly In Figure 7, we observe the average performance of Model\nseen when minimal unification takes place at a small 1 search spaces for the three KBs discussed before. We\nnumber of nodes which lie in all paths from the leaves to observe that the threshold performance was not reached for\nthe root nodes. An example of this phenomenon is shown any value of k in the smallest KB. On the other hand, as k\nin Figure 6. We see how inference propagates from the increases, performance gradually improves. Moreover, as\nKB becomes bigger, the threshold is achieved for sparser\n140000\nsearch spaces. In Figure 8, we see similar trends for Model\n120000\n2 search spaces. The only significant difference is that\n100000\nd errefn",
+      "start_offset": 9653,
+      "end_offset": 15411
+    },
+    {
+      "heading": "I stcaF\nfo",
+      "level": 1,
+      "content": ".o\nN\n2468 000\n0\n000\n0\n000\n0\n000\n0\ns",
+      "start_offset": 15421,
+      "end_offset": 15458
+    },
+    {
+      "heading": "K\nb\nine\neB\nta\nt\netr",
+      "level": 1,
+      "content": "1\nrec erh\na\ns\ns\ntQ\nis nwp\n/\ngAea lc tle\no.\np\ns",
+      "start_offset": 15477,
+      "end_offset": 15525
+    },
+    {
+      "heading": "F\ne\nnrif\nog\nfo\no\ntu\ner\nrr me",
+      "level": 1,
+      "content": "tβ\nh\na>\n7\nan3\ntc\na0\ne\ntn\nh\nda\nee\nt\nr8\nvt ea\ne\ni\ns\ninn\nh\ns\no\nawt wh\ni\nvr te\nt\nh\nehs\nr\nh\na\nyfto\ne\nsl wld\nma er ag\nrp\nl\ne\nle\nr\nar df xKo\nii\nfor",
+      "start_offset": 15553,
+      "end_offset": 15695
+    },
+    {
+      "heading": "B\nfm\nm\nes\nra\ns\neln",
+      "level": 1,
+      "content": ".\nne\nc\na\ncIe\nd\net\niti\ni\nnon\ns\nthe performance in different KBs for higher values of β in\n0\n9 8 7 6 5 4 3 2 1 0 Model 2 search spaces, whereas their performance varies\nDepth from root node significantly in Model 1 search spaces. This brings us to",
+      "start_offset": 15713,
+      "end_offset": 15960
+    },
+    {
+      "heading": "Degenerate Normal",
+      "level": 1,
+      "content": "another interesting question: Which of the two models\nFigure 6: An example of a degenerate case\ndiscussed here lead to better Q/A performance? We note\nleaves (depth 9) to the root nodes (depth 0). We observe\nthat although higher values of k and β imply higher\nthat for the degenerate case, about 120,000 facts are\nconnectivity, there is no one-to-one correspondence\ninferred at depth 5. However, this was reduced to almost\nbetween these parameters. Therefore, to compare these two\nzero answers at depth 3. The other search space accesses\nmodels, we selected a set of axiom-sets which had same\nless ground fact rich regions (about 27,000 facts at depth\naverage degree from both models. The average number of\n2), but manages to produce more than 10,000 answers at\nanswers for these axiom-sets was then measured. The\nthe root node. This shows that small mismatch between the\nresults are shown in Table 1. We see that while uniform\nexpectations of axioms and ground facts can lead to serious\nsearch spaces perform better for larger KBs, search spaces\nproblems in inference propagation. In this particular\nwith skewed degree distribution perform better in smaller\ndegenerate case, no unification took place at the node\nKBs.\nwhich joined the ground fact rich regions to the root node.\n0.45",
+      "start_offset": 15977,
+      "end_offset": 17262
+    },
+    {
+      "heading": "Although the models of selecting axioms described here",
+      "level": 1,
+      "content": "0.40\nare admittedly simple, it is surprising that 28% of all 0.35\naxiom-sets generated by them have such serious problems. )% 0.30",
+      "start_offset": 17316,
+      "end_offset": 17448
+    },
+    {
+      "heading": "This implies that knowledge acquisition process has to be",
+      "level": 1,
+      "content": "(sre\nw\n00. .225\n0\ninformed of the expectations of inference chains. In the\nsn\nA\n0.15\n0.10\nabsence of such a process, the effects of thousands of facts 0.05\n0.00\nlearnt from different sources would degenerate, and the\n2 3 4 k 5 6 7\nresults of learning would not show up in the final Q/A\nKB1 KB2 KB3\nperformance.\nFigure 7: Q/A performance for Model 1 search spaces.",
+      "start_offset": 17505,
+      "end_offset": 17870
+    },
+    {
+      "heading": "Experimental Results",
+      "level": 1,
+      "content": "0.50\n0.40\nIn this section, we study how α, β and k affect the )%\ndynamics of Q/A performance. Recall the set of 10 (sre 0.30\nquestions discussed before. All questions which satisfy the w sn 0.20\nconstraints of these templates were generated. KB , KB A 0.10\n1 2\nand KB led to 5409, 13938 and 36,564 queries 0.00\n3\n10 15 20 β 30 40 50\nrespectively. In particular, we would like to answer\nKB1 KB2 KB3\nfollowing questions: (1) How does Q/A performance\nFigure 8: Q/A performance for Model 2 search spaces.\n3 These numbers do not include the size of the ontology. The total\nsize of our ResearchCyc KB is 1.2 million facts.\n\nKB Change in Model 2 Figure 11: Q/A performance for a Model 1 search space\nModel 1 Model 2 w.r.t. Model 1 in KB 2.\nKB 33 50 +51.5%\n1\n1500\nKB 840 213 -74.6%\n2\nKB 3 10176 9512 -6.5% s r 1000\ne\nTable 1: Average number of answers for two models w\ns\nn 500\nA\nNext, we discuss the change in Q/A performance as α fo\nincreases. How does the performance change as we access .o 0\nN\nthose regions of KB which are richer in facts? Figure 9 0.00E+00 1.00E-05 2.00E-05 3.00E-05\nα Beta=20\nshows a clear transition between a phase in which almost\nno answers are inferred to a high inference phase. Figure 12: Q/A performance for Model 2 search space in\nHowever, for KB 1, such critical transition was observed KB 2.\nonly for denser graphs in Model 1 search spaces (i.e., k=7).\n7000\nIn other cases, the number of answers inferred remained 6000\nvery low. Figure 10 shows similar transition for β=30 and 5000\n50 in Model 2 search spaces.\nsrew\n4000\n33 05 00\nsn",
+      "start_offset": 17890,
+      "end_offset": 19449
+    },
+    {
+      "heading": "A\nfo",
+      "level": 1,
+      "content": ".o\nN\n23 00 00 00\n250 1000\n200 0\nsrew snA11 505 000 0.00E+00 5.00E-05 1.00E α-04 1.50E-04 2.00E-04 B2 e.5 ta0 =E 4-0 04 3.00E-04\n0 Figure 13: Q/A performance for Model 2 search space\n-50 in KB .\n2\nIn our experiments, about 36% of all search spaces did\nk=7 α\nshow a sharp transition discussed above. The results imply\nFigure 9: Q/A performance for Model 1 search space\nthat same amount of learning effort can lead to\nfor KB , k=7.\n1 significantly different performance depending on the state\nIn KB , a quick transition from a low inference to high\n2 of the system. For example, a small addition of facts when\ninference is seen in more cases. For Model 1 search spaces,\nthe value of α is low will lead to only modest improvement\nsuch quick increase in seen when k is 5 or 6 (see Figure 11\nin Q/A performance. On the other hand, when the system is\nfor the case when k is 6). Similarly, Model 2 search spaces\nclose to transition point to fast inference, a small amount of\nalso show two distinct phases of inference (see Figure 12\nlearning can provide disproportionate payoff in terms of\nand 13). Figure 14 shows examples of critical transitions\nperformance.\nfor KB .\n3\n30000\n6000\n25000\n5000\n20000\nsrew\nsn\nA\n234 000 000 000 sre\nw\nsn\nA\n11 05 500 000 000\n0\n1000 0\n0 -5000.000E+00 1.00E-04 2.00E-04 3.00E-04 4.00E-04\n0.00E+00 5.00E-05 1.00E-04 α 1.50E-04 2.00E-04 2.50E-04 k=4 k=5 α\nBeta=50 Beta=30\nFigure 10: Q/A performance for Model 2 search space Figure 14: Q/A performance for Model 1 search space\nin KB 1. for KB 3, k=4 and k=5.\n3500\n3000\n2500\nsrew\nsnA\n112 050 000 000\n500\n0\n0.00E+00 5.00E-05 1.00E-04 1.50E-04 2.00E-04\nα k=6\n\nA Prototype System, Performance Baseline and Lessons Learned.\n35000\nProc. of AAAI 2007: 280-286\n30000\nsr25000 P. Cohen, Schrag, R., Jones, E., Pease, A., Lin, A., Starr, B.,\ne w20000 Gunning, D., and Burke, M. 1998. The DARPA High-\ns n15000 Performance Knowledge Bases Project. AI Magazine, 19(4),\nA\nfo10000\nWinter, 1998, 25-49\n.o 5000\nN 0 Carlson, A., Betteridge, J., Kisiel, B., Settles, B., Hruschka, E.\n0.00E+00 2.00E-04 4.00E-04 6.00E-04 8.00E-04 and Mitchell, T. 2010. Toward an architecture for Never-Ending\nα Beta=50 Language Learning. Proceedings of AAAI-10.\nD. Chakrabarti, Y. Wang, C. Wang, J. Leskovec and C.\nFigure 15: No sharp transition for this Model 2 search\nFaloutsos. Epidemic Thresholds in Real Networks. ACM Trans.\nspace in KB 3. On Information and System Security, 10(4), 2008\nHowever, in remaining 36% of all cases, no discernible\nP. Domingos and M. Richardson. Mining the Network Values of\nchange in the Q/A performance was observed (see Fig 15\nCustomers. Proc. Of Conf.on Knowledge Disc. and Mining, 2001.\nfor an example). In some cases, the spread of inference was\nlimited by the sparseness of the search space. In other O Etzioni, M J. Cafarella, Doug Downey, Ana-Maria Popescu,\ncases, larger KBs already showed reasonably high Q/A Tal Shaked, Stephen Soderland, Daniel S. Weld, Alexander\nYates: Unsupervised named-entity extraction from the Web: An\nperformance for low values of α, and further improvements\nexperimental study. Artif. Intell. 165(1): 91-134 (2005)\nwere limited by low density of facts.\nK. D. Forbus and J. de Kleer. Building Problem Solvers. MIT\nConclusions Press, 1993\nK D. Forbus, C Riesbeck, L Birnbaum, K Livingston, A Sharma,\nAs large-scale learning systems mature, there will be a L Ureel II: Integrating Natural Language, Knowledge\nneed to steer their learning towards states which lead to Representation and Reasoning, and Analogical Processing to\nprogressively better Q/A performance. The study of the Learn by Reading. Proceeding of National Conference On\nstructure of search spaces and knowledge, and dynamics of Artificial Intelligence, 22(2), 2007: 1542-1547\ninference are important for attaining this goal. We have K. D. Forbus, C Riesbeck, L Birnbaum, K Livingston, A Sharma,\nproposed and analyzed a model in which simple features of LC Ureel, A Prototype System that Learns by Reading Simplified\nsearch spaces and knowledge base are used to study the Texts. AAAI Spring Symposium: Machine Reading, 49-54, 2007\ngrowth patterns of inference. We have reported results for\nK Forbus, K Lockwood, A Sharma, E Tomai, Steps towards a 2nd\ntwo types of degree distributions and three KBs. The\ngeneration learning by reading system. AAAI Spring Symposium\npropagation of inference is much less in smaller KBs.\non Learning by Reading, 2009",
+      "start_offset": 19453,
+      "end_offset": 23865
+    },
+    {
+      "heading": "Search spaces with uniform degree distributions perform",
+      "level": 1,
+      "content": "A. Giordana and L. Saitta. Phase Transitions in Relational\nbetter in larger KBs, whereas relatively skewed degree\nLearning. Machine Learning, 41, pp. 217-251, 2000.\ndistributions are more suitable for smaller KBs. Small but\ncritical mismatch between the expectations of axioms and C. Matuszek, J. Cabral, M. Witbrock, J. DeOliveira, An\nfacts in the KB, which lead to almost zero inferences, were Introduction to the Syntax and Content of Cyc, AAAI Spring\nobserved in 28% of axiom sets generated from the models Symp. on Formalizing and Compiling Background Knowledge\ndiscussed here. In 36% of all cases, a critical transition and Its Applications to KR and QA, CA, March 2006.\nbetween a low-inference to a high-inference region was C. Matuszek, M. Witbrock, R. Kahlert, J. Cabral, D. Schneider,\nobserved. Next generation learning systems should be P Shah, D. B. Lenat, Searching for Common Sense: Populating\ncognizant of these properties and the knowledge Cyc from the Web, Proc. of AAAI, 2005.\nacquisition cycle should be pro-active in guiding the\nA. Sharma and K. D. Forbus. Modeling the Evolution of\nsystem towards high-inference states. It is hoped that the\nKnowledge and Reasoning in Learning Systems. AAAI Fall\nintroduction and study of this model will stimulate further\nSymposium on Commonsense Knowledge, 2010\nresearch into understanding the properties of first-order\ninference and its dependence on the distribution of facts in\nA. Sharma and K. D. Forbus. Automatic Extraction of Efficient\nthe KB. axiom sets from large knowledge bases, Proc. of National\nConference on Artificial Intelligence, 27(1), 1542-151547, 2013\nReferences: A Sharma, M Witbrock, K Goolsbey. Controlling Search in very\nlarge commonsense knowledge bases: a machine learning\nK Barker, B Agashe, S Y Chaw, J Fan, N. Friedland, M Glass, J. approach. arXiv preprint arXiv:1603.04402, 2016\nHobbs, E. Hovy, D. Israel, D Kim, R Mulkar-Mehta, S\nPatwardhan, B Porter, D Tecuci, P Z. Yeh: Learning by Reading: A. Sharma and K. Goolsbey Simulation-based approach to\ncommonsense reasoning in very large knowledge-bases. Proc. of\n\nNational Conference on Artificial Intelligence, 33(01), 1360-\n1367, 2019\nA Sharma, K Goolsbey, Identifying useful inference paths in\nlarge commonsense knowledge bases by retrograde\nanalysis, Proceedings of the AAAI Conference on Artificial\nIntelligence, 31(1), 2017\nD. J. Watts. A Simple Model of Global Cascades on Random\nNetworks. Proc. of Nat. Acad. of Sciences, 99(9), 2002.",
+      "start_offset": 23920,
+      "end_offset": 26400
+    }
+  ],
+  "figures": [
+    {
+      "figure_id": "fig_3",
+      "caption": "Figure 3: An example of Model 1 search space.",
+      "image_path": null,
+      "reference_count": 1
+    },
+    {
+      "figure_id": "fig_4",
+      "caption": "Figure 4: Another example of Model 1 search space.",
+      "image_path": null,
+      "reference_count": 0
+    },
+    {
+      "figure_id": "fig_1",
+      "caption": "Figure 1: Description of two models k=2.",
+      "image_path": null,
+      "reference_count": 11
+    },
+    {
+      "figure_id": "fig_2",
+      "caption": "Figure 2. (β=50).",
+      "image_path": null,
+      "reference_count": 3
+    },
+    {
+      "figure_id": "fig_2",
+      "caption": "Figure 2 for a simplified example.",
+      "image_path": null,
+      "reference_count": 3
+    },
+    {
+      "figure_id": "fig_1",
+      "caption": "Figure 1. Model 1 makes the search the inverse ablation model [Sharma & Forbus 2010].",
+      "image_path": null,
+      "reference_count": 11
+    },
+    {
+      "figure_id": "fig_6",
+      "caption": "Figure 6. We see how inference propagates from the increases, performance gradually improves.",
+      "image_path": null,
+      "reference_count": 1
+    },
+    {
+      "figure_id": "fig_7",
+      "caption": "Figure 7: Q/A performance for Model 1 search spaces.",
+      "image_path": null,
+      "reference_count": 1
+    },
+    {
+      "figure_id": "fig_8",
+      "caption": "Figure 8: Q/A performance for Model 2 search spaces.",
+      "image_path": null,
+      "reference_count": 1
+    },
+    {
+      "figure_id": "fig_9",
+      "caption": "Figure 9 0.",
+      "image_path": null,
+      "reference_count": 1
+    },
+    {
+      "figure_id": "fig_11",
+      "caption": "Figure 11\nin Q/A performance.",
+      "image_path": null,
+      "reference_count": 1
+    },
+    {
+      "figure_id": "fig_15",
+      "caption": "Fig 15\nCustomers.",
+      "image_path": null,
+      "reference_count": 0
+    },
+    {
+      "figure_id": "fig_3",
+      "caption": "Figure 3: An example of Model 1 search space.",
+      "image_path": null,
+      "reference_count": 1
+    },
+    {
+      "figure_id": "fig_4",
+      "caption": "Figure 4: Another example of Model 1 search space.",
+      "image_path": null,
+      "reference_count": 0
+    },
+    {
+      "figure_id": "fig_1",
+      "caption": "Figure 1: Description of two models k=2.",
+      "image_path": null,
+      "reference_count": 11
+    },
+    {
+      "figure_id": "fig_2",
+      "caption": "Figure 2. (β=50).",
+      "image_path": null,
+      "reference_count": 3
+    },
+    {
+      "figure_id": "fig_2",
+      "caption": "Figure 2 for a simplified example.",
+      "image_path": null,
+      "reference_count": 3
+    },
+    {
+      "figure_id": "fig_1",
+      "caption": "Figure 1. Model 1 makes the search the inverse ablation model [Sharma & Forbus 2010].",
+      "image_path": null,
+      "reference_count": 11
+    },
+    {
+      "figure_id": "fig_6",
+      "caption": "Figure 6. We see how inference propagates from the increases, performance gradually improves.",
+      "image_path": null,
+      "reference_count": 1
+    },
+    {
+      "figure_id": "fig_7",
+      "caption": "Figure 7: Q/A performance for Model 1 search spaces.",
+      "image_path": null,
+      "reference_count": 1
+    },
+    {
+      "figure_id": "fig_8",
+      "caption": "Figure 8: Q/A performance for Model 2 search spaces.",
+      "image_path": null,
+      "reference_count": 1
+    },
+    {
+      "figure_id": "fig_9",
+      "caption": "Figure 9 0.",
+      "image_path": null,
+      "reference_count": 1
+    },
+    {
+      "figure_id": "fig_11",
+      "caption": "Figure 11\nin Q/A performance.",
+      "image_path": null,
+      "reference_count": 1
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "extracted_table_p5_1",
+      "caption": "Extracted Table 1",
+      "data": [
+        {
+          "KB": "KB\n1",
+          "Model 1": "33",
+          "Model 2": "50",
+          "Change in Model 2\nw.r.t. Model 1": "+51.5%"
+        },
+        {
+          "KB": "KB\n2",
+          "Model 1": "840",
+          "Model 2": "213",
+          "Change in Model 2\nw.r.t. Model 1": "-74.6%"
+        },
+        {
+          "KB": "KB\n3",
+          "Model 1": "10176",
+          "Model 2": "9512",
+          "Change in Model 2\nw.r.t. Model 1": "-6.5%"
+        }
+      ],
+      "reference_count": 0
+    }
+  ],
+  "references": [],
+  "citations": [
+    {
+      "text": "(m)",
+      "ref_ids": [
+        "m"
+      ],
+      "position": 8656,
+      "context": " be solved for.\nreasoning. For every node m, depth(m) represents its depth in G. We\nWhen answering a pa"
+    },
+    {
+      "text": "(m)",
+      "ref_ids": [
+        "m"
+      ],
+      "position": 9043,
+      "context": "an LTMS [Forbus & de Kleer 93]. We limit\nSolutions(m) represents the number of answers returned by\ninfe"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 11514,
+      "context": "properties of two types of degree\nd istributions: (i) Uniform distribution and (ii) Skewed\ndistribution"
+    },
+    {
+      "text": "(ii)",
+      "ref_ids": [
+        "ii"
+      ],
+      "position": 11543,
+      "context": "gree\nd istributions: (i) Uniform distribution and (ii) Skewed\ndistribution (i.e., resembling scale-free)"
+    }
+  ],
+  "concepts": [
+    {
+      "text": "KB",
+      "type": "entity",
+      "count": 12,
+      "examples": [
+        {
+          "section": "How does the possibility of inference cascades depend on",
+          "context": "e, (genlPreds <s> <g>) means that the\nthe size of KB and the network of interconnections? In an\npredic"
+        },
+        {
+          "section": "1 We use knowledge extracted from the ResearchCyc knowledge contribution of nodes because solutions closer to the root\nnode are more likely to percolate up due to fewer",
+          "context": "space obtained\nare accessing different regions of KB. Since facts are not from the search space shown"
+        },
+        {
+          "section": "1 We use knowledge extracted from the ResearchCyc knowledge contribution of nodes because solutions closer to the root\nnode are more likely to percolate up due to fewer",
+          "context": "e, the model change as we access those regions of KB which have more\npresented here has been evaluated"
+        }
+      ]
+    },
+    {
+      "text": "Model 1",
+      "type": "entity",
+      "count": 12,
+      "examples": [
+        {
+          "section": "1 We use knowledge extracted from the ResearchCyc knowledge contribution of nodes because solutions closer to the root\nnode are more likely to percolate up due to fewer",
+          "context": "e more likely it is to return a solution by using Model 1, we generated\nanswers from its neighbors. Moreove"
+        },
+        {
+          "section": "1 We use knowledge extracted from the ResearchCyc knowledge contribution of nodes because solutions closer to the root\nnode are more likely to percolate up due to fewer",
+          "context": "epresent selected nodes.) Figure 3: An example of Model 1 search space. Here k=2.\nModel 2: We start with a"
+        },
+        {
+          "section": "1 We use knowledge extracted from the ResearchCyc knowledge contribution of nodes because solutions closer to the root\nnode are more likely to percolate up due to fewer",
+          "context": "ted from this model. Figure 4: Another example of Model 1 search space. Here\nFigure 1: Description of two m"
+        }
+      ]
+    },
+    {
+      "text": "Model 2",
+      "type": "entity",
+      "count": 12,
+      "examples": [
+        {
+          "section": "1 We use knowledge extracted from the ResearchCyc knowledge contribution of nodes because solutions closer to the root\nnode are more likely to percolate up due to fewer",
+          "context": "ect different subsets, we Figure 5: An example of Model 2 search space obtained\nare accessing different reg"
+        },
+        {
+          "section": "1 We use knowledge extracted from the ResearchCyc knowledge contribution of nodes because solutions closer to the root\nnode are more likely to percolate up due to fewer",
+          "context": "xiom subsets axiom sets for 2≤k≤7. Similarly, for Model 2, we generated\nvaries significantly. Moreover, axi"
+        },
+        {
+          "section": "1 We use knowledge extracted from the ResearchCyc knowledge contribution of nodes because solutions closer to the root\nnode are more likely to percolate up due to fewer",
+          "context": "large KB (here,\nchildren to k. On the other hand, Model 2 preserves the ResearchCyc KB) and create a small"
+        }
+      ]
+    },
+    {
+      "text": "Horn",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Understanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable",
+          "context": "10\nparameterized question types, we generate all Horn clauses\nWe use conventions from Cyc [Matuszek et"
+        },
+        {
+          "section": "How does the possibility of inference cascades depend on",
+          "context": "𝑠(𝑚)\nFIRE reasoning system uses backchaining over Horn |𝑁| 𝑚∈𝑀|𝑄|∗(𝑑𝑒𝑝𝑡ℎ(𝑚)+1)\nclauses with an LTMS [For"
+        }
+      ]
+    },
+    {
+      "text": "k=7",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Experimental Results",
+          "context": "for denser graphs in Model 1 search spaces (i.e., k=7).\n7000\nIn other cases, the number of answers infe"
+        },
+        {
+          "section": "A\nfo",
+          "context": "me amount of learning effort can lead to\nfor KB , k=7.\n1 significantly different performance depending"
+        }
+      ]
+    },
+    {
+      "text": "KB 3",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "A\nfo",
+          "context": "performance for Model 1 search space\nin KB 1. for KB 3, k=4 and k=5.\n3500\n3000\n2500\nsrew\nsnA\n112 050 000"
+        },
+        {
+          "section": "A\nfo",
+          "context": "Thresholds in Real Networks. ACM Trans.\nspace in KB 3. On Information and System Security, 10(4), 2008"
+        }
+      ]
+    },
+    {
+      "text": "AAAI",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "A\nfo",
+          "context": "ance Baseline and Lessons Learned.\n35000\nProc. of AAAI 2007: 280-286\n30000\nsr25000 P. Cohen, Schrag, R.,"
+        },
+        {
+          "section": "Search spaces with uniform degree distributions perform",
+          "context": "ties and the knowledge Cyc from the Web, Proc. of AAAI, 2005.\nacquisition cycle should be pro-active in"
+        }
+      ]
+    },
+    {
+      "text": "q/a performance",
+      "type": "technical_term",
+      "count": 13,
+      "examples": []
+    },
+    {
+      "text": "search spaces",
+      "type": "technical_term",
+      "count": 10,
+      "examples": []
+    },
+    {
+      "text": "an example",
+      "type": "technical_term",
+      "count": 6,
+      "examples": []
+    },
+    {
+      "text": "a set",
+      "type": "technical_term",
+      "count": 5,
+      "examples": []
+    },
+    {
+      "text": "ground facts",
+      "type": "technical_term",
+      "count": 5,
+      "examples": []
+    },
+    {
+      "text": "the set",
+      "type": "technical_term",
+      "count": 5,
+      "examples": []
+    },
+    {
+      "text": "these questions",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "smaller kbs",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "some cases",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "larger kbs",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "an instance",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "the system",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "the kb",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "model 1 search space",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "model 1 search spaces",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "k. d. forbus",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "each node",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "a model",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "the structure",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "the state",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "different subsets",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "the properties",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "the effects",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "the search space",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "this model",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "model 2 search space",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "the other hand",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "all cases",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "model 2 search spaces",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "artificial intelligence",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    }
+  ],
+  "source_file": "C:\\Users\\Christoph.Hau\\Auto eval rag\\rag-evaluation-dataset\\data\\raw\\2502.00019v1.pdf"
+}

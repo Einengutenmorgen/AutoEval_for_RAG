@@ -1,0 +1,999 @@
+[
+  {
+    "question_id": "q_698feef5879a",
+    "question": "When was Stockmeyer first introduced?",
+    "answer": "Based on the information provided in the paper, it is not possible to answer this question definitively.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L2",
+      "special_categories": [
+        "temporal"
+      ],
+      "template": "When was {concept} first introduced?",
+      "template_slots": {
+        "concept": "Stockmeyer"
+      }
+    },
+    "contexts": [
+      {
+        "section": "2 Preliminaries",
+        "text": "For a\npropositional formula F, we abbreviate by vars(F) the variables that occur in F and by Mod(F) the\nset of all models of F and the number of models by #(F):=|Mod(F)|.\nComputational Complexity We follow standard terminology in computational complexity [Pa-\npadimitriou,1994]andthePolynomialHierarchy(PH)[StockmeyerandMeyer,1973;Stockmeyer,1976;\nWrathall,1976]. ThecomplexityclassDP capturesthe(independent)combinationofanNPandacoNP\nproblem, i.e., DP := {L \u2229L | L \u2208 NP,L \u2208 coNP} [Papadimitriou and Yannakakis, 1982]."
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: When was Stockmeyer first introduced?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: When was Stockmeyer first introduced?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_fb885579d4bb",
+    "question": "Who developed Darwiche?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [
+        "impossible"
+      ],
+      "template": "Who developed {concept}?",
+      "template_slots": {
+        "concept": "Darwiche"
+      }
+    },
+    "contexts": [
+      {
+        "section": "1 Introduction",
+        "text": "speck@unibas.ch, hecher@cril.fr, daniel.gnad@liu.se, johannes.fichte@liu.se,\naugusto.blaascorrea@chch.ox.ac.uk\n1\n\nmodel exists (SAT), it also allows for automated reasoning about the solution space [Darwiche, 2001a;\nDarwiche and Marquis, 2002]. Recent competitions illustrate that, despite high computational com-\nplexity, state-of-the-art solvers are effective in practice [Fichte et al., 2021]. Due favorable reasoning\npower and vast applications, counting techniques have been extended to other fields [Aziz et al."
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: Who developed Darwiche?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: Who developed Darwiche?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_208348e75e10",
+    "question": "When was [speck et al first introduced?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L2",
+      "special_categories": [
+        "temporal"
+      ],
+      "template": "When was {concept} first introduced?",
+      "template_slots": {
+        "concept": "[speck et al"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "Classical planning asks for a sequence of operators reaching a given goal. While the most\ncommon case is to computea plan, many scenarios require more than that. However, quantitative\nreasoning on theplan space remains mostly unexplored. A fundamentalproblem is to count plans,\nwhichrelatestotheconditionalprobabilityontheplanspace. Indeed,qualitativeandquantitative\napproaches are well-established in various other areas of automated reasoning.\nWe present the first study to quantitative and qualitative reasoning on the plan space. In\nparticular,wefocusonpolynomiallyboundedplans. Onthetheoreticalside,westudyitscomplexity,\nwhich givesrisetorichreasoning modes. Sincecountingishard ingeneral, weintroducetheeasier\nnotion of facets, which enables understanding the significance of operators. On the practical side,\nwe implement quantitative reasoning for planning. Thereby, we transform a planning task into\na propositional formula and use knowledge compilation to count different plans. This framework\nscales well to large plan spaces, while enabling rich reasoning capabilities such as learning pruning\nfunctions and explainable planning.\n1 Introduction\nThe overarching objective of classical planning is to find a plan, i.e., a sequence of operators, that\ntransforms the current state into a goal state. While in some scenarios a single plan is sufficient, in\nothers, it may not be clear which plan is preferable based on the description of the planning task. To\naddressthis,solverslike top-kortop-qualityplannershavebeen developedto enumeratethe k shortest\nplans or all plans up to a certain length bound allowing for post hoc consideration of the plan space\nandselection[Katzet al.,2018;KatzandSohrabi,2020;Specket al.,2020;vonTschammeret al.,2022;\nChakrabortiet al., 2024]. Although this paradigmhas been successfully applied in practicalareassuch\nas malware detection [Boddy et al., 2005] and scenario planning for risk management [Sohrabi et al.,\n2018], it remains an indirect method for reasoning about the plan space of a planning task.\nConsidering fundamental problems in computer science, such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are anchored around counting. The most prominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula. While #SAT is considered computationally harder than asking whether a single\n\u2217Thisisanauthor self-archivedandextended versionofapaperthathasbeenaccepted forpublicationatAAAI\u201925.\n(cid:0)\n: davidjakob.speck@unibas.ch, hecher@cril.fr, daniel.gnad@liu.se, johannes.fichte@liu.se,\naugusto.blaascorrea@chch.ox.ac.uk\n1"
+      },
+      {
+        "section": "1 Introduction",
+        "text": "The overarching objective of classical planning is to find a plan, i.e., a sequence of operators, that\ntransforms the current state into a goal state. While in some scenarios a single plan is sufficient, in\nothers, it may not be clear which plan is preferable based on the description of the planning task."
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: When was [speck et al first introduced?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: When was [speck et al first introduced?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_de49041f7612",
+    "question": "Which technique is used in this paper?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "Which {category} is used in {context}?",
+      "template_slots": {
+        "category": "technique",
+        "context": "this paper"
+      }
+    },
+    "contexts": [
+      {
+        "section": "1 Introduction",
+        "text": "Recent competitions illustrate that, despite high computational com-\nplexity, state-of-the-art solvers are effective in practice [Fichte et al., 2021]. Due favorable reasoning\npower and vast applications, counting techniques have been extended to other fields [Aziz et al., 2015;\nFichte et al., 2017; Hahn et al., 2022; Eiter et al., 2024b].\nInthispaper,webridgethegapbetweenmodelcountingandclassicalplanningbyintroducinganew\nframeworkfor reasoningand analyzing plan space."
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: Which technique is used in this paper?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: Which technique is used in this paper?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_fecd20c578d4",
+    "question": "Which model is used in this study?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "Which {category} is used in {context}?",
+      "template_slots": {
+        "category": "model",
+        "context": "this study"
+      }
+    },
+    "contexts": [
+      {
+        "section": "1 Introduction",
+        "text": "Considering fundamental problems in computer science, such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are anchored around counting. The most prominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula. While #SAT is considered computationally harder than asking whether a single\n\u2217Thisisanauthor self-archivedandextended versionofapaperthathasbeenaccepted forpublicationatAAAI\u201925."
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: Which model is used in this study?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: Which model is used in this study?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_b634c287330d",
+    "question": "What is Lagniez?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What is {entity}?",
+      "template_slots": {
+        "entity": "Lagniez"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Contributions Our main contributions are as follows:",
+        "text": "On the practical side, we present a solution to the studied counting and reasoning problems by\ntransforming a planning task into a propositional formula, where satisfying assignments correspond\none-to-one to plans, followed by subsequent knowledge compilation into a d-DNNF [Darwiche and\nMarquis, 2002]. We implement this as a tool called Planalyst, which builds on existing tools from\nplanning [Rintanen, 2014] and knowledge compilation [Lagniez and Marquis, 2017; Sundermann et al.,\n2024] and thus readily allows plan counting and automated reasoning in plan space. Empirically, we\ncomparePlanalysttostate-of-the-arttop-qualityplannersonthecomputationallychallengingproblem\nof counting plans, and show that our tool performs favorably, especially when the plan space is large\nand reasoning over trillions of plans is critical."
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: What is Lagniez?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: What is Lagniez?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_dcfc51557c6f",
+    "question": "What are the key characteristics of FacetReason?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "What are the key characteristics of {concept}?",
+      "template_slots": {
+        "concept": "FacetReason"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Definition",
+        "text": "The problem FacetReason is NP-complete."
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: What are the key characteristics of FacetReason?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: What are the key characteristics of FacetReason?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_8c51a23f087d",
+    "question": "What constitutes a Rintanen?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What constitutes a {concept}?",
+      "template_slots": {
+        "concept": "Rintanen"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Definition",
+        "text": "We implement this as a tool called Planalyst, which builds on existing tools from\nplanning [Rintanen, 2014] and knowledge compilation [Lagniez and Marquis, 2017; Sundermann et al.,\n2024] and thus readily allows plan counting and automated reasoning in plan space."
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: What constitutes a Rintanen?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: What constitutes a Rintanen?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_03a186c385e4",
+    "question": "What constitutes a the number?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What constitutes a {concept}?",
+      "template_slots": {
+        "concept": "the number"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Definition",
+        "text": "ominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula."
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: What constitutes a the number?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: What constitutes a the number?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_0a912c34bec5",
+    "question": "What constitutes a ICAPS?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "What constitutes a {concept}?",
+      "template_slots": {
+        "concept": "ICAPS"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Definition",
+        "text": ", Proceedings of the Twenty-Fourth International Conference on Auto-\nmated Planning and Scheduling (ICAPS 2014), pages 11\u201319.AAAI Press, 2014."
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: What constitutes a ICAPS?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: What constitutes a ICAPS?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_bc1e916ac253",
+    "question": "How is Norvig implemented?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "procedural",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "How is {concept} implemented?",
+      "template_slots": {
+        "concept": "Norvig"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "Classical planning asks for a sequence of operators reaching a given goal. While the most\ncommon case is to computea plan, many scenarios require more than that. However, quantitative\nreasoning on theplan space remains mostly unexplored. A fundamentalproblem is to count plans,\nwhichrelatestotheconditionalprobabilityontheplanspace. Indeed,qualitativeandquantitative\napproaches are well-established in various other areas of automated reasoning.\nWe present the first study to quantitative and qualitative reasoning on the plan space. In\nparticular,wefocusonpolynomiallyboundedplans. Onthetheoreticalside,westudyitscomplexity,\nwhich givesrisetorichreasoning modes. Sincecountingishard ingeneral, weintroducetheeasier\nnotion of facets, which enables understanding the significance of operators. On the practical side,\nwe implement quantitative reasoning for planning. Thereby, we transform a planning task into\na propositional formula and use knowledge compilation to count different plans. This framework\nscales well to large plan spaces, while enabling rich reasoning capabilities such as learning pruning\nfunctions and explainable planning.\n1 Introduction\nThe overarching objective of classical planning is to find a plan, i.e., a sequence of operators, that\ntransforms the current state into a goal state. While in some scenarios a single plan is sufficient, in\nothers, it may not be clear which plan is preferable based on the description of the planning task. To\naddressthis,solverslike top-kortop-qualityplannershavebeen developedto enumeratethe k shortest\nplans or all plans up to a certain length bound allowing for post hoc consideration of the plan space\nandselection[Katzet al.,2018;KatzandSohrabi,2020;Specket al.,2020;vonTschammeret al.,2022;\nChakrabortiet al., 2024]. Although this paradigmhas been successfully applied in practicalareassuch\nas malware detection [Boddy et al., 2005] and scenario planning for risk management [Sohrabi et al.,\n2018], it remains an indirect method for reasoning about the plan space of a planning task.\nConsidering fundamental problems in computer science, such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are anchored around counting. The most prominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula. While #SAT is considered computationally harder than asking whether a single\n\u2217Thisisanauthor self-archivedandextended versionofapaperthathasbeenaccepted forpublicationatAAAI\u201925.\n(cid:0)\n: davidjakob.speck@unibas.ch, hecher@cril.fr, daniel.gnad@liu.se, johannes.fichte@liu.se,\naugusto.blaascorrea@chch.ox.ac.uk\n1"
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: How is Norvig implemented?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: How is Norvig implemented?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_cd19d37cdbce",
+    "question": "What is the difference between Domshlak and F+(\u03a0?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "comparative",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "What is the difference between {concept1} and {concept2}?",
+      "template_slots": {
+        "concept1": "Domshlak",
+        "concept2": "F+(\u03a0"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "Classical planning asks for a sequence of operators reaching a given goal. While the most\ncommon case is to computea plan, many scenarios require more than that. However, quantitative\nreasoning on theplan space remains mostly unexplored. A fundamentalproblem is to count plans,\nwhichrelatestotheconditionalprobabilityontheplanspace. Indeed,qualitativeandquantitative\napproaches are well-established in various other areas of automated reasoning.\nWe present the first study to quantitative and qualitative reasoning on the plan space. In\nparticular,wefocusonpolynomiallyboundedplans. Onthetheoreticalside,westudyitscomplexity,\nwhich givesrisetorichreasoning modes. Sincecountingishard ingeneral, weintroducetheeasier\nnotion of facets, which enables understanding the significance of operators. On the practical side,\nwe implement quantitative reasoning for planning. Thereby, we transform a planning task into\na propositional formula and use knowledge compilation to count different plans. This framework\nscales well to large plan spaces, while enabling rich reasoning capabilities such as learning pruning\nfunctions and explainable planning.\n1 Introduction\nThe overarching objective of classical planning is to find a plan, i.e., a sequence of operators, that\ntransforms the current state into a goal state. While in some scenarios a single plan is sufficient, in\nothers, it may not be clear which plan is preferable based on the description of the planning task. To\naddressthis,solverslike top-kortop-qualityplannershavebeen developedto enumeratethe k shortest\nplans or all plans up to a certain length bound allowing for post hoc consideration of the plan space\nandselection[Katzet al.,2018;KatzandSohrabi,2020;Specket al.,2020;vonTschammeret al.,2022;\nChakrabortiet al., 2024]. Although this paradigmhas been successfully applied in practicalareassuch\nas malware detection [Boddy et al., 2005] and scenario planning for risk management [Sohrabi et al.,\n2018], it remains an indirect method for reasoning about the plan space of a planning task.\nConsidering fundamental problems in computer science, such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are anchored around counting. The most prominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula. While #SAT is considered computationally harder than asking whether a single\n\u2217Thisisanauthor self-archivedandextended versionofapaperthathasbeenaccepted forpublicationatAAAI\u201925.\n(cid:0)\n: davidjakob.speck@unibas.ch, hecher@cril.fr, daniel.gnad@liu.se, johannes.fichte@liu.se,\naugusto.blaascorrea@chch.ox.ac.uk\n1"
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: What is the difference between Domshlak and F+(\u03a0?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: What is the difference between Domshlak and F+(\u03a0?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_be4fd9f51abf",
+    "question": "What is the difference between Example 1 and o\u2208O?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "comparative",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "What is the difference between {concept1} and {concept2}?",
+      "template_slots": {
+        "concept1": "Example 1",
+        "concept2": "o\u2208O"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Comparison",
+        "text": "Poly-Bounded-Plan-\nExistis NP-complete[Bylander,1994]and#Poly-Bounded-Planis #P-complete, andthe decision\nproblemPoly-Bounded-Top-k-ExistisPP-hard,whichaskstodecide,giveninadditionanintegerk,\nwhether there are at least k different plans of length up to \u2113 [Speck et al., 2020].\nExample 1 (Running Example). Consider a planning task \u03a0 consisting of a scenario with a slightly\n1\nchaotic researcher, who has to wake up and give a talk at AAAI. [...] If oi\nis true and the effect of operator o makes a true, then ai+1 must be true.\nSinceplansmightbeshorterthan\u2113,wemove\u201cunused\u201dstepstotheendusingtheformulaV (V \u00acoi \u2192\ni\u2208[\u2113] o\u2208O\nV\n\u00acoi+1),whichencodesthatifnooperatorwasassignedatstepi,thennooperatorcanbeassigned\no\u2208O\nat step i+1."
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: What is the difference between Example 1 and o\u2208O?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: What is the difference between Example 1 and o\u2208O?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_d43cc89b3041",
+    "question": "What is the difference between a plan and Stockmeyer?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "comparative",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "What is the difference between {concept1} and {concept2}?",
+      "template_slots": {
+        "concept1": "a plan",
+        "concept2": "Stockmeyer"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Comparison",
+        "text": "Theoretical Com-\nputer Science, 3(1):23\u201333,1976.\n[Zhu and Givan, 2003] Lin Zhu and Robert Givan. Landmark extraction via planning graph propaga-\ntion. In ICAPS 2003 Doctoral Consortium, pages 156\u2013160,2003. [...] Code, benchmarks and data for the aaai 2025 paper \u201cCounting and Reasoning with Plans\u201d.\nZenodo, 2024.\n[Stockmeyer and Meyer, 1973] Larry J. Stockmeyer and Albert R. Meyer. Word problems requiring\nexponentialtime.InAlfredV."
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: What is the difference between a plan and Stockmeyer?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: What is the difference between a plan and Stockmeyer?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_bb5f698d2658",
+    "question": "Why is a plan important for practical applications?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "causal",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "Why is {concept} important for {application}?",
+      "template_slots": {
+        "concept": "a plan",
+        "application": "practical applications"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "Classical planning asks for a sequence of operators reaching a given goal. While the most\ncommon case is to computea plan, many scenarios require more than that. However, quantitative\nreasoning on theplan space remains mostly unexplored. A fundamentalproblem is to count plans,\nwhichrelatestotheconditionalprobabilityontheplanspace. Indeed,qualitativeandquantitative\napproaches are well-established in various other areas of automated reasoning.\nWe present the first study to quantitative and qualitative reasoning on the plan space. In\nparticular,wefocusonpolynomiallyboundedplans. Onthetheoreticalside,westudyitscomplexity,\nwhich givesrisetorichreasoning modes. Sincecountingishard ingeneral, weintroducetheeasier\nnotion of facets, which enables understanding the significance of operators. On the practical side,\nwe implement quantitative reasoning for planning. Thereby, we transform a planning task into\na propositional formula and use knowledge compilation to count different plans. This framework\nscales well to large plan spaces, while enabling rich reasoning capabilities such as learning pruning\nfunctions and explainable planning.\n1 Introduction\nThe overarching objective of classical planning is to find a plan, i.e., a sequence of operators, that\ntransforms the current state into a goal state. While in some scenarios a single plan is sufficient, in\nothers, it may not be clear which plan is preferable based on the description of the planning task. To\naddressthis,solverslike top-kortop-qualityplannershavebeen developedto enumeratethe k shortest\nplans or all plans up to a certain length bound allowing for post hoc consideration of the plan space\nandselection[Katzet al.,2018;KatzandSohrabi,2020;Specket al.,2020;vonTschammeret al.,2022;\nChakrabortiet al., 2024]. Although this paradigmhas been successfully applied in practicalareassuch\nas malware detection [Boddy et al., 2005] and scenario planning for risk management [Sohrabi et al.,\n2018], it remains an indirect method for reasoning about the plan space of a planning task.\nConsidering fundamental problems in computer science, such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are anchored around counting. The most prominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula. While #SAT is considered computationally harder than asking whether a single\n\u2217Thisisanauthor self-archivedandextended versionofapaperthathasbeenaccepted forpublicationatAAAI\u201925.\n(cid:0)\n: davidjakob.speck@unibas.ch, hecher@cril.fr, daniel.gnad@liu.se, johannes.fichte@liu.se,\naugusto.blaascorrea@chch.ox.ac.uk\n1"
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: Why is a plan important for practical applications?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: Why is a plan important for practical applications?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_e3d514d1942c",
+    "question": "Why is Proceedings of important for practical applications?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "causal",
+      "complexity": "L2",
+      "special_categories": [
+        "impossible"
+      ],
+      "template": "Why is {concept} important for {application}?",
+      "template_slots": {
+        "concept": "Proceedings of",
+        "application": "practical applications"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "Classical planning asks for a sequence of operators reaching a given goal. While the most\ncommon case is to computea plan, many scenarios require more than that. However, quantitative\nreasoning on theplan space remains mostly unexplored. A fundamentalproblem is to count plans,\nwhichrelatestotheconditionalprobabilityontheplanspace. Indeed,qualitativeandquantitative\napproaches are well-established in various other areas of automated reasoning.\nWe present the first study to quantitative and qualitative reasoning on the plan space. In\nparticular,wefocusonpolynomiallyboundedplans. Onthetheoreticalside,westudyitscomplexity,\nwhich givesrisetorichreasoning modes. Sincecountingishard ingeneral, weintroducetheeasier\nnotion of facets, which enables understanding the significance of operators. On the practical side,\nwe implement quantitative reasoning for planning. Thereby, we transform a planning task into\na propositional formula and use knowledge compilation to count different plans. This framework\nscales well to large plan spaces, while enabling rich reasoning capabilities such as learning pruning\nfunctions and explainable planning.\n1 Introduction\nThe overarching objective of classical planning is to find a plan, i.e., a sequence of operators, that\ntransforms the current state into a goal state. While in some scenarios a single plan is sufficient, in\nothers, it may not be clear which plan is preferable based on the description of the planning task. To\naddressthis,solverslike top-kortop-qualityplannershavebeen developedto enumeratethe k shortest\nplans or all plans up to a certain length bound allowing for post hoc consideration of the plan space\nandselection[Katzet al.,2018;KatzandSohrabi,2020;Specket al.,2020;vonTschammeret al.,2022;\nChakrabortiet al., 2024]. Although this paradigmhas been successfully applied in practicalareassuch\nas malware detection [Boddy et al., 2005] and scenario planning for risk management [Sohrabi et al.,\n2018], it remains an indirect method for reasoning about the plan space of a planning task.\nConsidering fundamental problems in computer science, such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are anchored around counting. The most prominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula. While #SAT is considered computationally harder than asking whether a single\n\u2217Thisisanauthor self-archivedandextended versionofapaperthathasbeenaccepted forpublicationatAAAI\u201925.\n(cid:0)\n: davidjakob.speck@unibas.ch, hecher@cril.fr, daniel.gnad@liu.se, johannes.fichte@liu.se,\naugusto.blaascorrea@chch.ox.ac.uk\n1"
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: Why is Proceedings of important for practical applications?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: Why is Proceedings of important for practical applications?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_ed00745270b7",
+    "question": "What are the implications of facet reasoning in planning is NP?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "causal",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What are the implications of {finding}?",
+      "template_slots": {
+        "finding": "facet reasoning in planning is NP"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "Classical planning asks for a sequence of operators reaching a given goal. While the most\ncommon case is to computea plan, many scenarios require more than that. However, quantitative\nreasoning on theplan space remains mostly unexplored. A fundamentalproblem is to count plans,\nwhichrelatestotheconditionalprobabilityontheplanspace. Indeed,qualitativeandquantitative\napproaches are well-established in various other areas of automated reasoning.\nWe present the first study to quantitative and qualitative reasoning on the plan space. In\nparticular,wefocusonpolynomiallyboundedplans. Onthetheoreticalside,westudyitscomplexity,\nwhich givesrisetorichreasoning modes. Sincecountingishard ingeneral, weintroducetheeasier\nnotion of facets, which enables understanding the significance of operators. On the practical side,\nwe implement quantitative reasoning for planning. Thereby, we transform a planning task into\na propositional formula and use knowledge compilation to count different plans. This framework\nscales well to large plan spaces, while enabling rich reasoning capabilities such as learning pruning\nfunctions and explainable planning.\n1 Introduction\nThe overarching objective of classical planning is to find a plan, i.e., a sequence of operators, that\ntransforms the current state into a goal state. While in some scenarios a single plan is sufficient, in\nothers, it may not be clear which plan is preferable based on the description of the planning task. To\naddressthis,solverslike top-kortop-qualityplannershavebeen developedto enumeratethe k shortest\nplans or all plans up to a certain length bound allowing for post hoc consideration of the plan space\nandselection[Katzet al.,2018;KatzandSohrabi,2020;Specket al.,2020;vonTschammeret al.,2022;\nChakrabortiet al., 2024]. Although this paradigmhas been successfully applied in practicalareassuch\nas malware detection [Boddy et al., 2005] and scenario planning for risk management [Sohrabi et al.,\n2018], it remains an indirect method for reasoning about the plan space of a planning task.\nConsidering fundamental problems in computer science, such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are anchored around counting. The most prominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula. While #SAT is considered computationally harder than asking whether a single\n\u2217Thisisanauthor self-archivedandextended versionofapaperthathasbeenaccepted forpublicationatAAAI\u201925.\n(cid:0)\n: davidjakob.speck@unibas.ch, hecher@cril.fr, daniel.gnad@liu.se, johannes.fichte@liu.se,\naugusto.blaascorrea@chch.ox.ac.uk\n1"
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: What are the implications of facet reasoning in planning is NP?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: What are the implications of facet reasoning in planning is NP?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_62c209fbb8c2",
+    "question": "How might the findings be applied to artificial intelligence?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "open_ended",
+      "complexity": "L3",
+      "special_categories": [
+        "ambiguous"
+      ],
+      "template": "How might the findings be applied to {domain}?",
+      "template_slots": {
+        "domain": "artificial intelligence"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "Classical planning asks for a sequence of operators reaching a given goal. While the most\ncommon case is to computea plan, many scenarios require more than that. However, quantitative\nreasoning on theplan space remains mostly unexplored. A fundamentalproblem is to count plans,\nwhichrelatestotheconditionalprobabilityontheplanspace. Indeed,qualitativeandquantitative\napproaches are well-established in various other areas of automated reasoning.\nWe present the first study to quantitative and qualitative reasoning on the plan space. In\nparticular,wefocusonpolynomiallyboundedplans. Onthetheoreticalside,westudyitscomplexity,\nwhich givesrisetorichreasoning modes. Sincecountingishard ingeneral, weintroducetheeasier\nnotion of facets, which enables understanding the significance of operators. On the practical side,\nwe implement quantitative reasoning for planning. Thereby, we transform a planning task into\na propositional formula and use knowledge compilation to count different plans. This framework\nscales well to large plan spaces, while enabling rich reasoning capabilities such as learning pruning\nfunctions and explainable planning.\n1 Introduction\nThe overarching objective of classical planning is to find a plan, i.e., a sequence of operators, that\ntransforms the current state into a goal state. While in some scenarios a single plan is sufficient, in\nothers, it may not be clear which plan is preferable based on the description of the planning task. To\naddressthis,solverslike top-kortop-qualityplannershavebeen developedto enumeratethe k shortest\nplans or all plans up to a certain length bound allowing for post hoc consideration of the plan space\nandselection[Katzet al.,2018;KatzandSohrabi,2020;Specket al.,2020;vonTschammeret al.,2022;\nChakrabortiet al., 2024]. Although this paradigmhas been successfully applied in practicalareassuch\nas malware detection [Boddy et al., 2005] and scenario planning for risk management [Sohrabi et al.,\n2018], it remains an indirect method for reasoning about the plan space of a planning task.\nConsidering fundamental problems in computer science, such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are anchored around counting. The most prominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula. While #SAT is considered computationally harder than asking whether a single\n\u2217Thisisanauthor self-archivedandextended versionofapaperthathasbeenaccepted forpublicationatAAAI\u201925.\n(cid:0)\n: davidjakob.speck@unibas.ch, hecher@cril.fr, daniel.gnad@liu.se, johannes.fichte@liu.se,\naugusto.blaascorrea@chch.ox.ac.uk\n1"
+      },
+      {
+        "section": "7 Conclusion and Future Work",
+        "text": "Wecountplansandreasoninthesolutionspace,whichisorthogonaltopreviousworksinplanning[Katz\netal.,2018;Specketal.,2020;KatzandSohrabi,2020]. Moreover,wereasonabouttheplanspaceinthe\nformofqueriesandintroducefacetedreasoningtoplanningallowingforquestionsonthesignificanceof\noperators. Althoughfacetedreasoningiscomputationallyhard(NP-c),itis,understandardtheoretical\nassumptions,significantlymoreefficientthancountingthe numberofplans (#P-c)."
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: How might the findings be applied to artificial intelligence?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: How might the findings be applied to artificial intelligence?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_93f25e406309",
+    "question": "How does this work advance the field of artificial intelligence?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "open_ended",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "How does this work advance the field of {domain}?",
+      "template_slots": {
+        "domain": "artificial intelligence"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "Classical planning asks for a sequence of operators reaching a given goal. While the most\ncommon case is to computea plan, many scenarios require more than that. However, quantitative\nreasoning on theplan space remains mostly unexplored. A fundamentalproblem is to count plans,\nwhichrelatestotheconditionalprobabilityontheplanspace. Indeed,qualitativeandquantitative\napproaches are well-established in various other areas of automated reasoning.\nWe present the first study to quantitative and qualitative reasoning on the plan space. In\nparticular,wefocusonpolynomiallyboundedplans. Onthetheoreticalside,westudyitscomplexity,\nwhich givesrisetorichreasoning modes. Sincecountingishard ingeneral, weintroducetheeasier\nnotion of facets, which enables understanding the significance of operators. On the practical side,\nwe implement quantitative reasoning for planning. Thereby, we transform a planning task into\na propositional formula and use knowledge compilation to count different plans. This framework\nscales well to large plan spaces, while enabling rich reasoning capabilities such as learning pruning\nfunctions and explainable planning.\n1 Introduction\nThe overarching objective of classical planning is to find a plan, i.e., a sequence of operators, that\ntransforms the current state into a goal state. While in some scenarios a single plan is sufficient, in\nothers, it may not be clear which plan is preferable based on the description of the planning task. To\naddressthis,solverslike top-kortop-qualityplannershavebeen developedto enumeratethe k shortest\nplans or all plans up to a certain length bound allowing for post hoc consideration of the plan space\nandselection[Katzet al.,2018;KatzandSohrabi,2020;Specket al.,2020;vonTschammeret al.,2022;\nChakrabortiet al., 2024]. Although this paradigmhas been successfully applied in practicalareassuch\nas malware detection [Boddy et al., 2005] and scenario planning for risk management [Sohrabi et al.,\n2018], it remains an indirect method for reasoning about the plan space of a planning task.\nConsidering fundamental problems in computer science, such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are anchored around counting. The most prominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula. While #SAT is considered computationally harder than asking whether a single\n\u2217Thisisanauthor self-archivedandextended versionofapaperthathasbeenaccepted forpublicationatAAAI\u201925.\n(cid:0)\n: davidjakob.speck@unibas.ch, hecher@cril.fr, daniel.gnad@liu.se, johannes.fichte@liu.se,\naugusto.blaascorrea@chch.ox.ac.uk\n1"
+      },
+      {
+        "section": "7 Conclusion and Future Work",
+        "text": "Wecountplansandreasoninthesolutionspace,whichisorthogonaltopreviousworksinplanning[Katz\netal.,2018;Specketal.,2020;KatzandSohrabi,2020]. Moreover,wereasonabouttheplanspaceinthe\nformofqueriesandintroducefacetedreasoningtoplanningallowingforquestionsonthesignificanceof\noperators. Althoughfacetedreasoningiscomputationallyhard(NP-c),itis,understandardtheoretical\nassumptions,significantlymoreefficientthancountingthe numberofplans (#P-c)."
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: How does this work advance the field of artificial intelligence?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: How does this work advance the field of artificial intelligence?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_5c7733d66867",
+    "question": "What is the difference between the problem and o\u2208O?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "comparative",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What is the difference between {concept1} and {concept2}?",
+      "template_slots": {
+        "concept1": "the problem",
+        "concept2": "o\u2208O"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Comparison",
+        "text": "Definition 3. Let \u03a0=hA,O,I,Gi be a planning task, o\u2208O an operator, and \u2113 an integer. We define\nthe\n\u2022 brave operator by BO \u2113(\u03a0):=S \u03c0\u2208Plans\u2113(\u03a0)`(\u03c0) and\n\u2022 cautious operator by CO \u2113(\u03a0):=T \u03c0\u2208Plans\u2113(\u03a0)`(\u03c0).\nThe problem Poly-Brave-Plan-Exist asks to decide whether o \u2208 BO (\u03a0). The problem Poly-"
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: What is the difference between the problem and o\u2208O?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: What is the difference between the problem and o\u2208O?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_efcb9f6ac26f",
+    "question": "Where is o\u2208O typically used?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "Where is {entity} typically used?",
+      "template_slots": {
+        "entity": "o\u2208O"
+      }
+    },
+    "contexts": [
+      {
+        "section": "A\ng A\nAI",
+        "text": "\u2217\nstatep,wewrites|=pifssatisfies p,moreformally,p\u22121(0)\u2286s\u22121(0)andp\u22121(1)\u2286s\u22121(1). Oisafinite\nsetofoperators,whereeachoperatorisatupleo=hpre ,eff iofpartialstates,calledpreconditions and\no o\neffects. An operatoro\u2208O is applicable in a state s if s|=pre . Applying operatoro to state s, s o for\no"
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: Where is o\u2208O typically used?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: Where is o\u2208O typically used?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_dd60dd9641f4",
+    "question": "What is Hardness?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "What is {entity}?",
+      "template_slots": {
+        "entity": "Hardness"
+      }
+    },
+    "contexts": [
+      {
+        "section": "B Omitted Proofs",
+        "text": ") For brave operators, we conjoin o and ask whether the\n\u2264\u2113\nresultingformulaissatisfiable,whichgivesNP-membership. Forcautiousoperators,we conjoin\u00aco, ask\nfor satisfiability, and swap answers, which immediately yields coNP-membership. (Hardness): We can\nvacously extend the existing reduction [Bylander, 1994,The 3.5] and ask for brave (SAT) and cautious\n(UNSAT).\nTheorem 9. The problem Poly-Probabilistic-Reason is CP-complete.\n=\nProof. (Hardness): We reduce from the problem of deciding whether the number of accepting paths of\na non-deterministic Turing machine equals its number of rejecting paths, see, e."
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: What is Hardness?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: What is Hardness?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_31b3b0c07407",
+    "question": "How is Poly-Probabilistic-Reason implemented?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "procedural",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "How is {concept} implemented?",
+      "template_slots": {
+        "concept": "Poly-Probabilistic-Reason"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "Classical planning asks for a sequence of operators reaching a given goal. While the most\ncommon case is to computea plan, many scenarios require more than that. However, quantitative\nreasoning on theplan space remains mostly unexplored. A fundamentalproblem is to count plans,\nwhichrelatestotheconditionalprobabilityontheplanspace. Indeed,qualitativeandquantitative\napproaches are well-established in various other areas of automated reasoning.\nWe present the first study to quantitative and qualitative reasoning on the plan space. In\nparticular,wefocusonpolynomiallyboundedplans. Onthetheoreticalside,westudyitscomplexity,\nwhich givesrisetorichreasoning modes. Sincecountingishard ingeneral, weintroducetheeasier\nnotion of facets, which enables understanding the significance of operators. On the practical side,\nwe implement quantitative reasoning for planning. Thereby, we transform a planning task into\na propositional formula and use knowledge compilation to count different plans. This framework\nscales well to large plan spaces, while enabling rich reasoning capabilities such as learning pruning\nfunctions and explainable planning.\n1 Introduction\nThe overarching objective of classical planning is to find a plan, i.e., a sequence of operators, that\ntransforms the current state into a goal state. While in some scenarios a single plan is sufficient, in\nothers, it may not be clear which plan is preferable based on the description of the planning task. To\naddressthis,solverslike top-kortop-qualityplannershavebeen developedto enumeratethe k shortest\nplans or all plans up to a certain length bound allowing for post hoc consideration of the plan space\nandselection[Katzet al.,2018;KatzandSohrabi,2020;Specket al.,2020;vonTschammeret al.,2022;\nChakrabortiet al., 2024]. Although this paradigmhas been successfully applied in practicalareassuch\nas malware detection [Boddy et al., 2005] and scenario planning for risk management [Sohrabi et al.,\n2018], it remains an indirect method for reasoning about the plan space of a planning task.\nConsidering fundamental problems in computer science, such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are anchored around counting. The most prominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula. While #SAT is considered computationally harder than asking whether a single\n\u2217Thisisanauthor self-archivedandextended versionofapaperthathasbeenaccepted forpublicationatAAAI\u201925.\n(cid:0)\n: davidjakob.speck@unibas.ch, hecher@cril.fr, daniel.gnad@liu.se, johannes.fichte@liu.se,\naugusto.blaascorrea@chch.ox.ac.uk\n1"
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: How is Poly-Probabilistic-Reason implemented?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: How is Poly-Probabilistic-Reason implemented?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_79085e35d9ba",
+    "question": "What are the key characteristics of acc?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "What are the key characteristics of {concept}?",
+      "template_slots": {
+        "concept": "acc"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Definition",
+        "text": "Consequently, we can also construct a formula F having #accpaths satisfying assignments\nif acc is set to true and #rejpaths satisfying assignments in case acc is set to false."
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: What are the key characteristics of acc?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: What are the key characteristics of acc?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_dd1d7303798b",
+    "question": "How is Thi\u00b4ebaux implemented?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "procedural",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "How is {concept} implemented?",
+      "template_slots": {
+        "concept": "Thi\u00b4ebaux"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "Classical planning asks for a sequence of operators reaching a given goal. While the most\ncommon case is to computea plan, many scenarios require more than that. However, quantitative\nreasoning on theplan space remains mostly unexplored. A fundamentalproblem is to count plans,\nwhichrelatestotheconditionalprobabilityontheplanspace. Indeed,qualitativeandquantitative\napproaches are well-established in various other areas of automated reasoning.\nWe present the first study to quantitative and qualitative reasoning on the plan space. In\nparticular,wefocusonpolynomiallyboundedplans. Onthetheoreticalside,westudyitscomplexity,\nwhich givesrisetorichreasoning modes. Sincecountingishard ingeneral, weintroducetheeasier\nnotion of facets, which enables understanding the significance of operators. On the practical side,\nwe implement quantitative reasoning for planning. Thereby, we transform a planning task into\na propositional formula and use knowledge compilation to count different plans. This framework\nscales well to large plan spaces, while enabling rich reasoning capabilities such as learning pruning\nfunctions and explainable planning.\n1 Introduction\nThe overarching objective of classical planning is to find a plan, i.e., a sequence of operators, that\ntransforms the current state into a goal state. While in some scenarios a single plan is sufficient, in\nothers, it may not be clear which plan is preferable based on the description of the planning task. To\naddressthis,solverslike top-kortop-qualityplannershavebeen developedto enumeratethe k shortest\nplans or all plans up to a certain length bound allowing for post hoc consideration of the plan space\nandselection[Katzet al.,2018;KatzandSohrabi,2020;Specket al.,2020;vonTschammeret al.,2022;\nChakrabortiet al., 2024]. Although this paradigmhas been successfully applied in practicalareassuch\nas malware detection [Boddy et al., 2005] and scenario planning for risk management [Sohrabi et al.,\n2018], it remains an indirect method for reasoning about the plan space of a planning task.\nConsidering fundamental problems in computer science, such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are anchored around counting. The most prominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula. While #SAT is considered computationally harder than asking whether a single\n\u2217Thisisanauthor self-archivedandextended versionofapaperthathasbeenaccepted forpublicationatAAAI\u201925.\n(cid:0)\n: davidjakob.speck@unibas.ch, hecher@cril.fr, daniel.gnad@liu.se, johannes.fichte@liu.se,\naugusto.blaascorrea@chch.ox.ac.uk\n1"
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: How is Thi\u00b4ebaux implemented?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: How is Thi\u00b4ebaux implemented?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_85fee7ba2769",
+    "question": "When was o\u2208O first introduced?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [
+        "temporal"
+      ],
+      "template": "When was {concept} first introduced?",
+      "template_slots": {
+        "concept": "o\u2208O"
+      }
+    },
+    "contexts": [
+      {
+        "section": "A\ng A\nAI",
+        "text": "\u2217\nstatep,wewrites|=pifssatisfies p,moreformally,p\u22121(0)\u2286s\u22121(0)andp\u22121(1)\u2286s\u22121(1). Oisafinite\nsetofoperators,whereeachoperatorisatupleo=hpre ,eff iofpartialstates,calledpreconditions and\no o\neffects. An operatoro\u2208O is applicable in a state s if s|=pre . Applying operatoro to state s, s o for\no"
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: When was o\u2208O first introduced?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: When was o\u2208O first introduced?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_1804f90adc08",
+    "question": "Why is Rintanen important for practical applications?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "causal",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "Why is {concept} important for {application}?",
+      "template_slots": {
+        "concept": "Rintanen",
+        "application": "practical applications"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "Classical planning asks for a sequence of operators reaching a given goal. While the most\ncommon case is to computea plan, many scenarios require more than that. However, quantitative\nreasoning on theplan space remains mostly unexplored. A fundamentalproblem is to count plans,\nwhichrelatestotheconditionalprobabilityontheplanspace. Indeed,qualitativeandquantitative\napproaches are well-established in various other areas of automated reasoning.\nWe present the first study to quantitative and qualitative reasoning on the plan space. In\nparticular,wefocusonpolynomiallyboundedplans. Onthetheoreticalside,westudyitscomplexity,\nwhich givesrisetorichreasoning modes. Sincecountingishard ingeneral, weintroducetheeasier\nnotion of facets, which enables understanding the significance of operators. On the practical side,\nwe implement quantitative reasoning for planning. Thereby, we transform a planning task into\na propositional formula and use knowledge compilation to count different plans. This framework\nscales well to large plan spaces, while enabling rich reasoning capabilities such as learning pruning\nfunctions and explainable planning.\n1 Introduction\nThe overarching objective of classical planning is to find a plan, i.e., a sequence of operators, that\ntransforms the current state into a goal state. While in some scenarios a single plan is sufficient, in\nothers, it may not be clear which plan is preferable based on the description of the planning task. To\naddressthis,solverslike top-kortop-qualityplannershavebeen developedto enumeratethe k shortest\nplans or all plans up to a certain length bound allowing for post hoc consideration of the plan space\nandselection[Katzet al.,2018;KatzandSohrabi,2020;Specket al.,2020;vonTschammeret al.,2022;\nChakrabortiet al., 2024]. Although this paradigmhas been successfully applied in practicalareassuch\nas malware detection [Boddy et al., 2005] and scenario planning for risk management [Sohrabi et al.,\n2018], it remains an indirect method for reasoning about the plan space of a planning task.\nConsidering fundamental problems in computer science, such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are anchored around counting. The most prominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula. While #SAT is considered computationally harder than asking whether a single\n\u2217Thisisanauthor self-archivedandextended versionofapaperthathasbeenaccepted forpublicationatAAAI\u201925.\n(cid:0)\n: davidjakob.speck@unibas.ch, hecher@cril.fr, daniel.gnad@liu.se, johannes.fichte@liu.se,\naugusto.blaascorrea@chch.ox.ac.uk\n1"
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: Why is Rintanen important for practical applications?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: Why is Rintanen important for practical applications?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_e2d171fbf7dc",
+    "question": "What is the statistical significance of A novel\niterative approach to top-k planning.?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "quantitative",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "What is the statistical significance of {finding}?",
+      "template_slots": {
+        "finding": "A novel\niterative approach to top-k planning."
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "Classical planning asks for a sequence of operators reaching a given goal. While the most\ncommon case is to computea plan, many scenarios require more than that. However, quantitative\nreasoning on theplan space remains mostly unexplored. A fundamentalproblem is to count plans,\nwhichrelatestotheconditionalprobabilityontheplanspace. Indeed,qualitativeandquantitative\napproaches are well-established in various other areas of automated reasoning.\nWe present the first study to quantitative and qualitative reasoning on the plan space. In\nparticular,wefocusonpolynomiallyboundedplans. Onthetheoreticalside,westudyitscomplexity,\nwhich givesrisetorichreasoning modes. Sincecountingishard ingeneral, weintroducetheeasier\nnotion of facets, which enables understanding the significance of operators. On the practical side,\nwe implement quantitative reasoning for planning. Thereby, we transform a planning task into\na propositional formula and use knowledge compilation to count different plans. This framework\nscales well to large plan spaces, while enabling rich reasoning capabilities such as learning pruning\nfunctions and explainable planning.\n1 Introduction\nThe overarching objective of classical planning is to find a plan, i.e., a sequence of operators, that\ntransforms the current state into a goal state. While in some scenarios a single plan is sufficient, in\nothers, it may not be clear which plan is preferable based on the description of the planning task. To\naddressthis,solverslike top-kortop-qualityplannershavebeen developedto enumeratethe k shortest\nplans or all plans up to a certain length bound allowing for post hoc consideration of the plan space\nandselection[Katzet al.,2018;KatzandSohrabi,2020;Specket al.,2020;vonTschammeret al.,2022;\nChakrabortiet al., 2024]. Although this paradigmhas been successfully applied in practicalareassuch\nas malware detection [Boddy et al., 2005] and scenario planning for risk management [Sohrabi et al.,\n2018], it remains an indirect method for reasoning about the plan space of a planning task.\nConsidering fundamental problems in computer science, such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are anchored around counting. The most prominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula. While #SAT is considered computationally harder than asking whether a single\n\u2217Thisisanauthor self-archivedandextended versionofapaperthathasbeenaccepted forpublicationatAAAI\u201925.\n(cid:0)\n: davidjakob.speck@unibas.ch, hecher@cril.fr, daniel.gnad@liu.se, johannes.fichte@liu.se,\naugusto.blaascorrea@chch.ox.ac.uk\n1"
+      },
+      {
+        "section": "6 Empirical Evaluation",
+        "text": "We implemented our reasoning framework for classical planning as a tool called Planalyst. Therefore,\nwe transform planning tasks into SAT formulas based on the Madagascar planner [Rintanen, 2011;\nRintanen, 2014]. To efficiently carry out counting, we use d4 [Lagniez and Marquis, 2017; Audemard\net al., 2022], whichcompiles (potentially large)formulasinto a specializednormalformcalled d-DNNF\n[Darwiche and Marquis, 2002], enabling fast reasoning."
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: What is the statistical significance of A novel\niterative approach to top-k planning.?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: What is the statistical significance of A novel\niterative approach to top-k planning.?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_af28d92782f3",
+    "question": "How is a plan implemented?",
+    "answer": "Based on the information provided in the paper, it is not possible to answer this question definitively.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "procedural",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "How is {concept} implemented?",
+      "template_slots": {
+        "concept": "a plan"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "Classical planning asks for a sequence of operators reaching a given goal. While the most\ncommon case is to computea plan, many scenarios require more than that. However, quantitative\nreasoning on theplan space remains mostly unexplored. A fundamentalproblem is to count plans,\nwhichrelatestotheconditionalprobabilityontheplanspace. Indeed,qualitativeandquantitative\napproaches are well-established in various other areas of automated reasoning.\nWe present the first study to quantitative and qualitative reasoning on the plan space. In\nparticular,wefocusonpolynomiallyboundedplans. Onthetheoreticalside,westudyitscomplexity,\nwhich givesrisetorichreasoning modes. Sincecountingishard ingeneral, weintroducetheeasier\nnotion of facets, which enables understanding the significance of operators. On the practical side,\nwe implement quantitative reasoning for planning. Thereby, we transform a planning task into\na propositional formula and use knowledge compilation to count different plans. This framework\nscales well to large plan spaces, while enabling rich reasoning capabilities such as learning pruning\nfunctions and explainable planning.\n1 Introduction\nThe overarching objective of classical planning is to find a plan, i.e., a sequence of operators, that\ntransforms the current state into a goal state. While in some scenarios a single plan is sufficient, in\nothers, it may not be clear which plan is preferable based on the description of the planning task. To\naddressthis,solverslike top-kortop-qualityplannershavebeen developedto enumeratethe k shortest\nplans or all plans up to a certain length bound allowing for post hoc consideration of the plan space\nandselection[Katzet al.,2018;KatzandSohrabi,2020;Specket al.,2020;vonTschammeret al.,2022;\nChakrabortiet al., 2024]. Although this paradigmhas been successfully applied in practicalareassuch\nas malware detection [Boddy et al., 2005] and scenario planning for risk management [Sohrabi et al.,\n2018], it remains an indirect method for reasoning about the plan space of a planning task.\nConsidering fundamental problems in computer science, such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are anchored around counting. The most prominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula. While #SAT is considered computationally harder than asking whether a single\n\u2217Thisisanauthor self-archivedandextended versionofapaperthathasbeenaccepted forpublicationatAAAI\u201925.\n(cid:0)\n: davidjakob.speck@unibas.ch, hecher@cril.fr, daniel.gnad@liu.se, johannes.fichte@liu.se,\naugusto.blaascorrea@chch.ox.ac.uk\n1"
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: How is a plan implemented?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: How is a plan implemented?"
+        }
+      ]
+    }
+  },
+  {
+    "question_id": "q_0717bde4a874",
+    "question": "What is Lettmann?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "What is {entity}?",
+      "template_slots": {
+        "entity": "Lettmann"
+      }
+    },
+    "contexts": [
+      {
+        "section": "2 Preliminaries",
+        "text": "We assume that the reader is familiar with basics of propositional logic [Kleine Bu\u00a8ning and Lettmann,\n1999]and computationalcomplexity [Papadimitriou,1994]. Below, we follow standard definitions [By-\nlander, 1994; Speck et al., 2020] to summarize basic notations for planning.\nBasics For an integer i, we define [i] := {0,1,."
+      }
+    ],
+    "gold_answer": {
+      "text": "This is a mock gold answer for: What is Lettmann?",
+      "is_validated": true,
+      "supporting_passages": [
+        {
+          "id": "P1",
+          "section": "Introduction",
+          "text": "This is a mock supporting passage for: What is Lettmann?"
+        }
+      ]
+    }
+  }
+]

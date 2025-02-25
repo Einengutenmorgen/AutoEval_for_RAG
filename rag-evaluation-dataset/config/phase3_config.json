@@ -1,0 +1,4 @@
+{
+    "evaluation_config": "C:\\Users\\Christoph.Hau\\Auto eval rag\\rag-evaluation-dataset\\config\\evaluation_config.yaml",
+    "questions_file": "question_sets/generated_questions/2502.00145v1_questions_with_gold.json"
+  }

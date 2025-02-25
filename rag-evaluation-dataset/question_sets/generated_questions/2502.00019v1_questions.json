@@ -1,0 +1,659 @@
+[
+  {
+    "question_id": "q_6786c4bb8d1a",
+    "question": "When was the set first introduced?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [
+        "temporal"
+      ],
+      "template": "When was {concept} first introduced?",
+      "template_slots": {
+        "concept": "the set"
+      }
+    },
+    "contexts": [
+      {
+        "section": "How does the possibility of inference cascades depend on",
+        "text": ", (3) Where might The graph G is cycle-free AND/OR graph generated during\n<Person> be?, (4) What are the goals of <Person>?, (5) the backward chaining of the axiom-set construction\nWhat are the consequences of <Event>?, (6) When did process, with N being the set of nodes in this graph. We\n<Event> occur?, (7) Who was affected by the <Event>?, explore variations in the structure of the search space by\n(8) Who is acquainted with (or knows) <Person>?, (9) choosing subsets of N, say M, and keeping only the edges\nWhy did <Event> occur?"
+      }
+    ]
+  },
+  {
+    "question_id": "q_c829390451a9",
+    "question": "What is AAAI?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "What is {entity}?",
+      "template_slots": {
+        "entity": "AAAI"
+      }
+    },
+    "contexts": [
+      {
+        "section": "A\nfo",
+        "text": "for KB 3, k=4 and k=5.\n3500\n3000\n2500\nsrew\nsnA\n112 050 000 000\n500\n0\n0.00E+00 5.00E-05 1.00E-04 1.50E-04 2.00E-04\nα k=6\n\nA Prototype System, Performance Baseline and Lessons Learned.\n35000\nProc. of AAAI 2007: 280-286\n30000\nsr25000 P. Cohen, Schrag, R., Jones, E., Pease, A., Lin, A., Starr, B.,\ne w20000 Gunning, D., and Burke, M. 1998. The DARPA High-\ns n15000 Performance Knowledge Bases Project. AI Magazine, 19(4),\nA\nfo10000\nWinter, 1998, 25-49\n."
+      }
+    ]
+  },
+  {
+    "question_id": "q_59a72714bc0f",
+    "question": "What is Model 1?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "What is {entity}?",
+      "template_slots": {
+        "entity": "Model 1"
+      }
+    },
+    "contexts": [
+      {
+        "section": "1 We use knowledge extracted from the ResearchCyc knowledge contribution of nodes because solutions closer to the root\nnode are more likely to percolate up due to fewer",
+        "text": "Another factor which plays an\n\nimportant role in determining the diffusion of inference in performance differences between these search spaces, we\nsearch spaces is their connectivity. The larger the degree of generated a number of instances of these models. For\nnodes, the more likely it is to return a solution by using Model 1, we generated\nanswers from its neighbors. Moreover, since different\ndegree distributions lead to significant differences in the\nproperties of dynamics of networks, we study how they\naffect the rate of percolation of inference in the search\nspace."
+      }
+    ]
+  },
+  {
+    "question_id": "q_2bc7f4919bcd",
+    "question": "Where is Model 1 typically used?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "Where is {entity} typically used?",
+      "template_slots": {
+        "entity": "Model 1"
+      }
+    },
+    "contexts": [
+      {
+        "section": "1 We use knowledge extracted from the ResearchCyc knowledge contribution of nodes because solutions closer to the root\nnode are more likely to percolate up due to fewer",
+        "text": "Another factor which plays an\n\nimportant role in determining the diffusion of inference in performance differences between these search spaces, we\nsearch spaces is their connectivity. The larger the degree of generated a number of instances of these models. For\nnodes, the more likely it is to return a solution by using Model 1, we generated\nanswers from its neighbors. Moreover, since different\ndegree distributions lead to significant differences in the\nproperties of dynamics of networks, we study how they\naffect the rate of percolation of inference in the search\nspace."
+      }
+    ]
+  },
+  {
+    "question_id": "q_7eedb06d0f10",
+    "question": "Who developed this model?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "Who developed {concept}?",
+      "template_slots": {
+        "concept": "this model"
+      }
+    },
+    "contexts": [
+      {
+        "section": "1 We use knowledge extracted from the ResearchCyc knowledge contribution of nodes because solutions closer to the root\nnode are more likely to percolate up due to fewer",
+        "text": "In other\nwords, by construction, the degree of all nodes is less\nthan or equal to k. For example, let us consider the search\nspace shown in Figure 2. Then Figure 3 and 4 show\nexamples of search spaces which could be generated\nfrom this model when k is 2. (Colored nodes in these\nfigures represent selected nodes.) Figure 3: An example of Model 1 search space. Here k=2.\nModel 2: We start with a set of 7,330 axioms discussed\nabove. We begin with target queries and choose β%\nchildren for them at random."
+      }
+    ]
+  },
+  {
+    "question_id": "q_04c706fb0cd0",
+    "question": "Who developed model 2 search space?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "Who developed {concept}?",
+      "template_slots": {
+        "concept": "model 2 search space"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements\nRelated Work\nin deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade\nUnderstanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable\nanswering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do."
+      }
+    ]
+  },
+  {
+    "question_id": "q_8473eca63af3",
+    "question": "What does these questions mean?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "What does {concept} mean?",
+      "template_slots": {
+        "concept": "these questions"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Definition",
+        "text": "Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces."
+      }
+    ]
+  },
+  {
+    "question_id": "q_69c5773dc5ef",
+    "question": "What does a model mean?",
+    "answer": "Based on the information provided in the paper, it is not possible to answer this question definitively.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What does {concept} mean?",
+      "template_slots": {
+        "concept": "a model"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Definition",
+        "text": "developing a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph."
+      }
+    ]
+  },
+  {
+    "question_id": "q_3568cab9bbff",
+    "question": "What are the key characteristics of model 2 search space?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What are the key characteristics of {concept}?",
+      "template_slots": {
+        "concept": "model 2 search space"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Definition",
+        "text": "As we select different subsets, we Figure 5: An example of Model 2 search space obtained\nare accessing different regions of KB."
+      }
+    ]
+  },
+  {
+    "question_id": "q_c7d94ae30612",
+    "question": "What constitutes a this model?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What constitutes a {concept}?",
+      "template_slots": {
+        "concept": "this model"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Definition",
+        "text": "Then Figure 3 and 4 show\nexamples of search spaces which could be generated\nfrom this model when k is 2."
+      }
+    ]
+  },
+  {
+    "question_id": "q_0395d4f6bb2f",
+    "question": "What methodology is used for this process?",
+    "answer": "Based on the information provided in the paper, it is not possible to answer this question definitively.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "procedural",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What methodology is used for {process}?",
+      "template_slots": {
+        "process": "this process"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements\nRelated Work\nin deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade\nUnderstanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable\nanswering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do."
+      }
+    ]
+  },
+  {
+    "question_id": "q_5523f783d5b1",
+    "question": "How is some cases implemented?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "procedural",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "How is {concept} implemented?",
+      "template_slots": {
+        "concept": "some cases"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements\nRelated Work\nin deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade\nUnderstanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable\nanswering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do."
+      }
+    ]
+  },
+  {
+    "question_id": "q_8f7a4112299f",
+    "question": "How is the other hand implemented?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "procedural",
+      "complexity": "L1",
+      "special_categories": [
+        "impossible"
+      ],
+      "template": "How is {concept} implemented?",
+      "template_slots": {
+        "concept": "the other hand"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements\nRelated Work\nin deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade\nUnderstanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable\nanswering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do."
+      }
+    ]
+  },
+  {
+    "question_id": "q_7f9752854202",
+    "question": "How is model 1 search spaces implemented?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "procedural",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "How is {concept} implemented?",
+      "template_slots": {
+        "concept": "model 1 search spaces"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements\nRelated Work\nin deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade\nUnderstanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable\nanswering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do."
+      }
+    ]
+  },
+  {
+    "question_id": "q_a3bda32ba749",
+    "question": "What is the difference between k. d. forbus and KB?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "comparative",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "What is the difference between {concept1} and {concept2}?",
+      "template_slots": {
+        "concept1": "k. d. forbus",
+        "concept2": "KB"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Comparison",
+        "text": "Weld, Alexander\nYates: Unsupervised named-entity extraction from the Web: An\nperformance for low values of α, and further improvements\nexperimental study. Artif. Intell. 165(1): 91-134 (2005)\nwere limited by low density of facts.\nK. D. Forbus and J. de Kleer. Building Problem Solvers. MIT\nConclusions Press, 1993\nK D. Forbus, C Riesbeck, L Birnbaum, K Livingston, A Sharma,\nAs large-scale learning systems mature, there will be a L Ureel II: Integrating Natural Language, Knowledge\nneed to steer their learning towards states which lead to Representation and Reasoning, and Analogical Processing to\nprogressively better Q/A performance. [...] 50E-04 2.00E-04 B2 e.5 ta0 =E 4-0 04 3.00E-04\n0 Figure 13: Q/A performance for Model 2 search space\n-50 in KB .\n2\nIn our experiments, about 36% of all search spaces did\nk=7 α\nshow a sharp transition discussed above."
+      }
+    ]
+  },
+  {
+    "question_id": "q_cb11bfc49397",
+    "question": "What is the difference between k. d. forbus and the other hand?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "comparative",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What is the difference between {concept1} and {concept2}?",
+      "template_slots": {
+        "concept1": "k. d. forbus",
+        "concept2": "the other hand"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Comparison",
+        "text": "Weld, Alexander\nYates: Unsupervised named-entity extraction from the Web: An\nperformance for low values of α, and further improvements\nexperimental study. Artif. Intell. 165(1): 91-134 (2005)\nwere limited by low density of facts.\nK. D. Forbus and J. de Kleer. Building Problem Solvers. MIT\nConclusions Press, 1993\nK D. Forbus, C Riesbeck, L Birnbaum, K Livingston, A Sharma,\nAs large-scale learning systems mature, there will be a L Ureel II: Integrating Natural Language, Knowledge\nneed to steer their learning towards states which lead to Representation and Reasoning, and Analogical Processing to\nprogressively better Q/A performance. [...] For Model 1 search spaces,\nthe value of α is low will lead to only modest improvement\nsuch quick increase in seen when k is 5 or 6 (see Figure 11\nin Q/A performance. On the other hand, when the system is\nfor the case when k is 6). Similarly, Model 2 search spaces\nclose to transition point to fast inference, a small amount of\nalso show two distinct phases of inference (see Figure 12\nlearning can provide disproportionate payoff in terms of\nand 13)."
+      }
+    ]
+  },
+  {
+    "question_id": "q_e7a0a413ab38",
+    "question": "How does this factor affect the observed outcome?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "causal",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "How does {factor} affect {outcome}?",
+      "template_slots": {
+        "factor": "this factor",
+        "outcome": "the observed outcome"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements\nRelated Work\nin deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade\nUnderstanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable\nanswering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do."
+      }
+    ]
+  },
+  {
+    "question_id": "q_a93deb90fa7a",
+    "question": "What are the factors that lead to the observed outcome?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "causal",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What are the factors that lead to {outcome}?",
+      "template_slots": {
+        "outcome": "the observed outcome"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements\nRelated Work\nin deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade\nUnderstanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable\nanswering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do."
+      }
+    ]
+  },
+  {
+    "question_id": "q_3e2279f30169",
+    "question": "What are the implications of Here we argue that some useful insights about\nlearn??",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "causal",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "What are the implications of {finding}?",
+      "template_slots": {
+        "finding": "Here we argue that some useful insights about\nlearn?"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements\nRelated Work\nin deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade\nUnderstanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable\nanswering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do."
+      }
+    ]
+  },
+  {
+    "question_id": "q_f5f3da02b59b",
+    "question": "What are the implications of A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art).?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "causal",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What are the implications of {finding}?",
+      "template_slots": {
+        "finding": "A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art)."
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements\nRelated Work\nin deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade\nUnderstanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable\nanswering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do."
+      }
+    ]
+  },
+  {
+    "question_id": "q_0bb6445afc8b",
+    "question": "What is the statistical significance of A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art).?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "quantitative",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "What is the statistical significance of {finding}?",
+      "template_slots": {
+        "finding": "A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art)."
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements\nRelated Work\nin deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade\nUnderstanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable\nanswering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do."
+      },
+      {
+        "section": "Experimental Results",
+        "text": "0.50\n0.40\nIn this section, we study how α, β and k affect the )%\ndynamics of Q/A performance. Recall the set of 10 (sre 0.30\nquestions discussed before. All questions which satisfy the w sn 0.20\nconstraints of these templates were generated. KB , KB A 0.10\n1 2\nand KB led to 5409, 13938 and 36,564 queries 0.00\n3\n10 15 20 β 30 40 50\nrespectively. In particular, we would like to answer\nKB1 KB2 KB3\nfollowing questions: (1) How does Q/A performance\nFigure 8: Q/A performance for Model 2 search spaces."
+      }
+    ]
+  },
+  {
+    "question_id": "q_6b4a0c7dec18",
+    "question": "How much improvement was achieved by this method?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "quantitative",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "How much {improvement} was achieved by {method}?",
+      "template_slots": {
+        "improvement": "improvement",
+        "method": "this method"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements\nRelated Work\nin deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade\nUnderstanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable\nanswering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do."
+      },
+      {
+        "section": "Experimental Results",
+        "text": "0.50\n0.40\nIn this section, we study how α, β and k affect the )%\ndynamics of Q/A performance. Recall the set of 10 (sre 0.30\nquestions discussed before. All questions which satisfy the w sn 0.20\nconstraints of these templates were generated. KB , KB A 0.10\n1 2\nand KB led to 5409, 13938 and 36,564 queries 0.00\n3\n10 15 20 β 30 40 50\nrespectively. In particular, we would like to answer\nKB1 KB2 KB3\nfollowing questions: (1) How does Q/A performance\nFigure 8: Q/A performance for Model 2 search spaces."
+      }
+    ]
+  },
+  {
+    "question_id": "q_65bc1554b9d7",
+    "question": "What is the Recall of this method reported in the paper?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "quantitative",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "What is the {metric} of {method} reported in the paper?",
+      "template_slots": {
+        "metric": "Recall",
+        "method": "this method"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements\nRelated Work\nin deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade\nUnderstanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable\nanswering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do."
+      },
+      {
+        "section": "Experimental Results",
+        "text": "0.50\n0.40\nIn this section, we study how α, β and k affect the )%\ndynamics of Q/A performance. Recall the set of 10 (sre 0.30\nquestions discussed before. All questions which satisfy the w sn 0.20\nconstraints of these templates were generated. KB , KB A 0.10\n1 2\nand KB led to 5409, 13938 and 36,564 queries 0.00\n3\n10 15 20 β 30 40 50\nrespectively. In particular, we would like to answer\nKB1 KB2 KB3\nfollowing questions: (1) How does Q/A performance\nFigure 8: Q/A performance for Model 2 search spaces."
+      }
+    ]
+  },
+  {
+    "question_id": "q_5ab770582758",
+    "question": "How might the findings be applied to this field?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "open_ended",
+      "complexity": "L2",
+      "special_categories": [
+        "ambiguous"
+      ],
+      "template": "How might the findings be applied to {domain}?",
+      "template_slots": {
+        "domain": "this field"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements\nRelated Work\nin deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade\nUnderstanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable\nanswering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do."
+      }
+    ]
+  },
+  {
+    "question_id": "q_6b134e63d4c1",
+    "question": "How does this work advance the field of this field?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "open_ended",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "How does this work advance the field of {domain}?",
+      "template_slots": {
+        "domain": "this field"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements\nRelated Work\nin deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade\nUnderstanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable\nanswering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do."
+      }
+    ]
+  },
+  {
+    "question_id": "q_59560a2dd464",
+    "question": "What is the difference between larger kbs and each node?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "comparative",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What is the difference between {concept1} and {concept2}?",
+      "template_slots": {
+        "concept1": "larger kbs",
+        "concept2": "each node"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Comparison",
+        "text": "We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems. [...] We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions."
+      }
+    ]
+  },
+  {
+    "question_id": "q_eed591aacc0e",
+    "question": "Where is Horn typically used?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L3",
+      "special_categories": [
+        "impossible"
+      ],
+      "template": "Where is {entity} typically used?",
+      "template_slots": {
+        "entity": "Horn"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Understanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable",
+        "text": "The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i."
+      }
+    ]
+  },
+  {
+    "question_id": "q_5ca463e9cbe5",
+    "question": "How do the authors perform this process?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "procedural",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "How do the authors perform {process}?",
+      "template_slots": {
+        "process": "this process"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements\nRelated Work\nin deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade\nUnderstanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable\nanswering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do."
+      }
+    ]
+  },
+  {
+    "question_id": "q_379f162cd19c",
+    "question": "What is the difference between Horn and model 2 search spaces?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "comparative",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "What is the difference between {concept1} and {concept2}?",
+      "template_slots": {
+        "concept1": "Horn",
+        "concept2": "model 2 search spaces"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements\nRelated Work\nin deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade\nUnderstanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable\nanswering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do."
+      }
+    ]
+  },
+  {
+    "question_id": "q_e729335051e5",
+    "question": "How is the properties implemented?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00019v1",
+    "metadata": {
+      "query_type": "procedural",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "How is {concept} implemented?",
+      "template_slots": {
+        "concept": "the properties"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "as new ground facts are learned. Cascade conditions\nWhat properties of a first-order search space support/hinder correspond to when inference becomes easy, i.e. increased\ninference? What kinds of facts would be most effective to coverage. Here we argue that some useful insights about\nlearn? Answering these questions is essential for growth patterns of inference can be derived from simple\nunderstanding the dynamics of deductive reasoning and features of search spaces. We focus on three parameters:\ncreating large-scale knowledge-based learning systems that The first, α, associated with each node, represents the\nsupport efficient inference. We address these questions by\ncontribution of each node in answering a set of questions.\ndeveloping a model of how the distribution of ground facts\nParameters k and β represent the connectivity of the graph.\naffects inference performance in search spaces. Experiments\nsuggest that uniform search spaces are suitable for larger We study Q/A performance for different values of these\nKBs whereas search spaces with skewed degree distribution parameters, including several sizes of KB contents, to\nshow better performance in smaller KBs. A sharp transition simulate the impact of learning. We found that search\nin Q/A performance is seen in some cases, suggesting that spaces with skewed degree distribution lead to better Q/A\nanalysis of the structure of search spaces with existing\nperformance in smaller KBs, whereas in larger KBs more\nknowledge should be used to guide the acquisition of new\nuniform search spaces perform better. In some cases, as α\nground facts in learning systems.\nincreases, the percolation of inference shows a significant\nand abrupt change. A degenerate case, in which the effect\nIntroduction and Motivation of ground facts “dies down” and expected improvements in\nQ/A performance are not observed due to mismatch of\nIn recent years, there has been considerable interest in expectations and ground facts, is also seen.\nLearning by Reading [Barker et al 2007; Forbus et al 2007,\nMulkar et al 2007] and Machine Reading [Etzioni et al The rest of this paper is organized as follows: We start\n2005; Carlson et al 2010] systems. Such systems are by summarizing related work and the conventions we\nalready good at accumulating large bodies of ground facts assume for representation and reasoning. A detailed\n(although learning general quantified knowledge is description of the diffusion model and experimental results\ncurrently still beyond the state of the art). But what ground are described next. In the final section, we summarize our\nfacts should they be learning, to support deductive main conclusions.\nreasoning? Ideally, new facts should lead to improvements\nRelated Work\nin deductive Q/A coverage, i.e. more questions are\nIn social sciences, there has been significant interest in\nanswered. Will the rate of performance improvement\nmodels of different kinds of cascades. In these domains,\nalways be uniform, or will there be “phase changes”?\nthe interest is to study how small initial shocks can cascade\nUnderstanding the dynamics of inference is important to\nto affect or disrupt large systems that have proven stable\nanswering these questions, which in turn are important for\nwith respect to similar disturbances in the past [Watts\nmaking self-guiding learning systems.\n2002]. The model described here is inspired by work on\nOur analysis draws upon ideas from network analysis, cascades in random graphs [Watts 2002] and epidemic\nwhere the networks are the AND/OR connection graph of a thresholds in networks [Chakrabarti et al 2008]. In AI,\nset of first-order Horn axioms. By analogy to there has been work on viral marketing [Domingos &\nepidemiological models, we explore diffusion of inference Richardson 2001] and phase transitions in relational\nin the network, i.e. how does coverage of queries increase learning [Giordana & Saitta 2000], who uses somewhat\nsimilar parameter definitions to ours. However, neither of\nthem addresses deductive reasoning in first-order\nknowledge bases, as we do."
+      }
+    ]
+  }
+]

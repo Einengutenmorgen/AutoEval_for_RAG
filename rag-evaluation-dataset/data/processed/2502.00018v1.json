@@ -1,0 +1,2757 @@
+{
+  "paper_id": "2502.00018v1",
+  "metadata": {
+    "title": "An Expectation-Maximization Algorithm-based Autoregressive Model",
+    "authors": [
+      "Yijian Wang",
+      "Tongxian Guo",
+      "Zhaoqiang Liu"
+    ],
+    "publication_date": null,
+    "journal": "",
+    "abstract": "—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job shop scheduling t˜ i The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns o The ready operation of job j at step t\nt,i\nthe problem more closely with the complexities of real-world I The instance\nmanufacturing environments. This improvement increases the\nπ The scheduling scheme\ncomputational complexity of deriving the solution while improv-\nFunctions\ning its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.\nNOTATIONS They introduced an innovative crossover operator and two\ncooperative population environmental selection mechanisms,\nSets\nwhich effectively balanced the convergence and diversity ca-\nJ Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set\nhierarchicalestimationtechniques,addressingthechallengeof\nParameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs\nofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a\nN Number of operations\nnovel selection mechanism, enhancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ The job to which operation i belongs\ni for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm\nSt The first operation of the job that operation\ni aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic\nEnd The last operation of the job that operation\ni algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra",
+    "keywords": []
+  },
+  "sections": [
+    {
+      "heading": "Functions",
+      "level": 1,
+      "content": "ing its applicability. In the domain of deterministic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzification operation on fuzzy\nstrated remarkable efficacy. However, its application to the numbers\nrealm of fuzzy scheduling has been relatively unexplored. This Quartile(·)Calculate the quartiles\npaper aims to bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employing neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroduceanexpectation-maximizationalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alternates between generating scheduling schemes established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the autoregressive thatholdsboththeoreticalsignificanceandpracticalrelevance\nmodel weights based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the form\nnovel methodology effectively navigates around the substantial\nof crisp numbers. However, in real-world manufacturing sce-\nhurdle of obtaining ground-truth labels, which is a prevalent\nnarios, numerous uncertain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingitseffectivenessandpotentialforpractical specificationofprocessingtimes.Toovercomethislimitation,\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maximization\nalgorithm,fuzzyjobshopschedulingproblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-population balancing multiobjective evolu-\ntionary algorithm tailored for the distributed flexible FJSSP.",
+      "start_offset": 721,
+      "end_offset": 3076
+    },
+    {
+      "heading": "NOTATIONS They introduced an innovative crossover operator and two",
+      "level": 1,
+      "content": "cooperative population environmental selection mechanisms,",
+      "start_offset": 3142,
+      "end_offset": 3202
+    },
+    {
+      "heading": "Sets",
+      "level": 1,
+      "content": "which effectively balanced the convergence and diversity ca-",
+      "start_offset": 3206,
+      "end_offset": 3268
+    },
+    {
+      "heading": "J Job set",
+      "level": 1,
+      "content": "pabilities of the algorithm. Zhang et al. [8] proposed a multi-",
+      "start_offset": 3277,
+      "end_offset": 3342
+    },
+    {
+      "heading": "M Machine set\nobjectiveevolutionaryalgorithmthatintegratedclusteringand\nO Operation set",
+      "level": 1,
+      "content": "hierarchicalestimationtechniques,addressingthechallengeof",
+      "start_offset": 3429,
+      "end_offset": 3488
+    },
+    {
+      "heading": "Parameters\nmaintaining a balance between the diversity and convergence\nn Number of jobs",
+      "level": 1,
+      "content": "ofnondominatedsolutionswhileensuringoverallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a",
+      "start_offset": 3575,
+      "end_offset": 3718
+    },
+    {
+      "heading": "N Number of operations",
+      "level": 1,
+      "content": "novel selection mechanism, enhancing the solution of FJSSP.",
+      "start_offset": 3740,
+      "end_offset": 3801
+    },
+    {
+      "heading": "Variables",
+      "level": 1,
+      "content": "Li et al. [10] enhanced an artificial immune system algorithm",
+      "start_offset": 3810,
+      "end_offset": 3873
+    },
+    {
+      "heading": "J The job to which operation i belongs",
+      "level": 1,
+      "content": "i for the flexible FJSSP by incorporating simulated annealing,\nM The specific machine designated for opera-\ni thereby boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative coevolution algorithm",
+      "start_offset": 3911,
+      "end_offset": 4154
+    },
+    {
+      "heading": "St The first operation of the job that operation",
+      "level": 1,
+      "content": "i aimedatminimizingthefuzzymakespanoftheflexibleFJSSP,\ni belongs\nwithacombinationofparticleswarmoptimizationandgenetic",
+      "start_offset": 4202,
+      "end_offset": 4322
+    },
+    {
+      "heading": "End The last operation of the job that operation",
+      "level": 1,
+      "content": "i algorithms significantly improving the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na multiobjective FJSSP into a single-objective problem and\nThe authors are with the School of Computer Science and Engineering, designed a hybrid adaptive differential evolution algorithm\nUniversityofElectronicScienceandTechnologyofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.edu.cn;202421081138@std.uestc.edu.cn;zqliu12@gmail.com.\n(Correspondingauthor:ZhaoqiangLiu.) flexible FJSSP and developed a bi-population evolutionary\n5202\nnaJ\n11\n]IA.sc[\n1v81000.2052:viXra\n\nJOURNALOFLATEXCLASSFILES 2\nalgorithm with feedback to maximize minimum agreement mutation flow shop scheduling. Tassel et al. [28] presented an\nindexandfuzzytotalenergyconsumptionandminimizefuzzy innovativeend-to-endsolutionthatappliesconstraintprogram-\nmakespan. mingandreinforcementlearningtoschedulingproblems.Song\nRecognizing the potential of learning approaches, several et al. [29] contributed to the flexible JSSP with a new deep\nscholars have successfully integrated them into their work, reinforcement learning method aimed at learning high-quality\nyieldingpromisingresults.Lietal.[14]developedalearning- production dispatching rules in an end-to-end manner. Liu et\nbased reference vector memetic algorithm to address the mul- al.[30]formulatedthedynamicparallelmachineschedulingas\ntiobjective energy-efficient flexible FJSSP with type-2 fuzzy aMarkovdecisionprocesstoaccommodateunexpectedevents,\nprocessing times. Zhao et al. [15] introduced a hyperheuristic inspiring the development of a deep reinforcement learning\nalgorithm with Q-learning to address the energy efficient method for the dynamic parallel machine scheduling. Pan et\ndistributedblockingflowshopschedulingproblem.Dengetal. al.[31]proposedaknowledge-guidedend-to-endoptimization\n[16]presenteda3-Destimationofdistributionalgorithminte- framework based on reinforcement learning for the permuta-\ngratedwithreinforcementlearning,targetingtheminimization tion flow shop scheduling problem. Chen et al. [32] presented\nof makespan and total energy consumption while maximizing a sophisticated deep reinforcement learning framework that\ndelivery accuracy. They notably employed a Q-learning-based integrated an attention mechanism with disjunctive graph\nbiased decoding method to adaptively adjust the evolutionary embeddings. This innovative approach leveraged a sequence-\ndirection. Li et al. [17] designed a co-evolutionary algorithm tosequence model to tackle the intricate challenges associated\nleveraging deep Q-networks for the energy-aware distributed with the JSSP. Du et al. [33] developed a deep Q-network to\nheterogeneous flexible JSSP. Focusing on the energy-efficient address the multiobjective flexible JSSP, incorporating crane\ndistributed fuzzy hybrid blocking flow shop scheduling prob- transportationandsetuptimes.Leietal.[34]proposedanend-\nlem, Shao et al. [18] developed a meta-Q-learning-based to-end hierarchical reinforcement learning framework for the\nmultiobjective search framework that automatically selected large-scale dynamic flexible JSSP, capable of near real-time\nsearch operators to simplify the optimization process. Zhao et operation. Li et al. [35] tackled the distributed heterogeneous\nal. [19] tackled the energy-efficient distributed no-wait flow hybrid flow shop scheduling with a dual deep Q-network-\nshop scheduling problem, prioritizing the minimization of based co-evolutionary algorithm. Liu et al. [36] integrated a\nmakespanandtotalenergyconsumption,andproposedacoop- deep neural network into the decomposition and coordina-\nerativemeta-heuristicalgorithmincorporatingQ-learning.Pan tion framework of surrogate Lagrangian relaxation to predict\net al. [20] addressed the flexible JSSP complicated by finite satisfactory solutions for the JSSP. Liu et al. [37] combined\ntransportationresourceswithalearning-basedmultipopulation graph neural networks with deep reinforcement learning for\nevolutionary optimization approach, featuring a reinforcement dynamic JSSP. Luo et al. [38] developed a hierarchical multi-\nlearning-based mating selection mechanism. Li et al. [21] agentproximalpolicyoptimizationformanagingthedynamic\nenhanced the artificial bee colony algorithm with Q-learning partial-no-wait multiobjective flexible JSSP. However, these\nfor the permutation flow shop scheduling problem. Lin et al. works are based on deterministic environments, and there has\n[22] proposed a learning-based grey wolf optimizer for the beennoworkthatemployslearningapproachesastheprimary\nstochastic flexible JSSP, characterized by limited additional solver for addressing fuzzy scheduling problems. This paper\nresources and machine-dependent setup times. Across these aims to investigate whether neural networks can assimilate\nworks, learning approaches serve a supportive role, deployed fuzzy information and apply it to solve the FJSSP, thereby\naslocalimprovementstrategiesratherthanasthecoresolvers. integrating the advancements of NCO into fuzzy scheduling.\nThe surge in deep learning has sparked significant ad-\nInthispaper,wefirstlymodeltheFJSSPasagenerativetask\nvancements in neural combinatorialoptimization (NCO), with\nand introduce an expectation-maximization (EM) algorithm-\na growing trend toward leveraging learning approaches for\nbased autoregressive model (EMARM) to address it. This\nscheduling problems. Zhang et al. [23] developed a deep\napproach addresses the major challenge of obtaining ground-\nreinforcementlearningagentcapableofautomaticallylearning\ntruth labels, which is a common problem in the NCO frame-\npriority dispatch rules for the JSSP, complemented by a\nwork. Secondly, to enable the neural network to understand\ngraph neural network to embed the states encountered during\nandprocessfuzzyinformation,weequipitwithahand-crafted\nproblem-solving. Kotary et al. [24] employed a deep learning\nprior and employ a novel method for ranking fuzzy numbers.\napproach to provide efficient and precise approximations for\nFinally, we conduct comprehensive experiments to assess the\ntheJSSP,utilizingLagrangiandualitytocaptureproblemcon-\nperformanceofEMARM,andtheresultsindicatethatitholds\nstraints. Corsini et al. [25] explored a self-supervised training\nan advantage over comparative algorithms, demonstrating its\nstrategyfortheJSSP,wherethemodelwastrainedbysampling\nefficacy in solving the FJSSP.\nmultiplesolutionsandthebestsolutionwasusedasapseudo-\nlabel according to the objective of the problem. Wang et al. The remainder of this paper is organized as follows. In\n[26] introduced a pioneering end-to-end learning framework Section II, we introduce fuzzy numbers, outline their oper-\nthat harmoniously combines self-attention models for deep ational properties, and define the characteristics of the FJSSP.\nfeature extraction with the scalability of deep reinforcement Section III provides a detailed exposition of the proposed\nlearning for decision-making. Pan et al. [27] proposed an EMARM. Section IV presents the experimental results and\nefficientdeepreinforcementlearning-basedoptimizationalgo- analysis.Finally,SectionVpresentstheconclusionandfuture\nrithm to minimize the maximum completion time in the per- work.\n\nJOURNALOFLATEXCLASSFILES 3\nII. PRELIMINARIES This method can efficiently compare multiple numbers, but\nA. Fuzzy number it only takes into account the magnitude of the expected\nvalues while neglecting the differences in boundary values.",
+      "start_offset": 4370,
+      "end_offset": 11907
+    },
+    {
+      "heading": "Fuzzy numbers are used to represent the processing time",
+      "level": 1,
+      "content": "Considering both of the above points, this paper employs the\nfor the fuzzy scheduling, which is described in this section.\nfollowing comparison method [46]: For any TFN, we first\nInmanufacturingenvironments,preciseprocessingtimesare\ncalculate its Z-value using Eq. (5):\noftenelusiveduetovariablessuchasthediverseskilllevelsof\nworkers [39]. While exact durations may not be predictable, Z(A˜)=Vβ(A˜)+ωS(A˜), (5)\nexperts can often draw on historical data to provide estimated\nwhereω isaweightrangingfrom[0,1].Vβ(A˜)representsthe\ndurations [40]. To address this unpredictability, a prevalent\nexpected value, and its formula is:\nstrategyinvolvesestimatingwithinconfidenceintervals.When\ncertain values are more likely, opting for a fuzzy interval or Vβ(A˜)=βVmax(A˜)+(1−β)Vmin(A˜), (6)\nnumber becomes an appropriate choice [41].\nAssume S is a fuzzy set defined on R, with a membership where\nfunction µ S : R → [0,1]. The α-cut of S is defined as S α = Vmax(A˜)=a +(cid:90) a3 µ (x)dx, (7)\n{x ∈ R : µ (x) ≥ α},α ∈ [0,1], and the support is S . A 2 A˜\nS 0 a2\nfuzzy interval is delineated by its α-cuts being confined, and (cid:90) a2\na fuzzy number N˜, with a compact support and a pronounced Vmin(A˜)=a 2− µ A˜(x)dx, (8)\nmodal value, is depicted by closed intervals N˜ =[n ,n¯ ]. a1\nThe triangular fuzzy number (TFN) [16] isα frequenα tlyα uti- andβ isaweightrangingfrom[0,1].S(A˜)takesintoaccount\nlized in fuzzy scheduling problems. Let A˜ be a TFN denoted the boundary values, and its formula is:\nas A˜ = (a 1,a 2,a 3), where a 1 and a 3 outline the range of S(A˜)=a −a . (9)\n3 1\npotential values and a signifies the modal value within this\n2\nrange. The membership function of A˜ is defined as follows: Then, the magnitude of the Z-value represents the magnitude\nof the original number.\n\nax 2− −a a1 1, if a 1 <x≤a 2, Inadditiontothewell-definedoperationsmentionedabove,\nµ A˜(x)= 0aa ,33 −− ax 2, i of tha e2 rw< isx e.≤a 3, (1) t oh pi es rap tia op ne sr oa nlso TFa Nd sd .re Ts hse es desu fub ztr za ifict ci ao tn io, ndi mvi es ti ho on d, dan efid neo dth ie nr\nEq. (4) is applied to these operations, enabling the neural\nLet A˜ = (a ,a ,a ) and B˜ = (b ,b ,b ) represent two network to learn the corresponding fuzzy information.\n1 2 3 1 2 3\nTFNs. The operations on these TFNs are defined as follows:\n1. Addition Operation. According to [42], the sum of A˜\nB. FJSSP\nand B˜ is calculated as follows:\nThe FJSSP involves a collection of jobs, machines, and\nA(cid:101)+B(cid:101) =(a 1+b 1,a 2+b 2,a 3+b 3). (2) operations. Specifically, there are n jobs denoted by set J,\nm machines represented by set M, and N operations within\n2. Max operation. According to [43], the max operation\nset O. Each operation i ∈ O is associated with a unique job\nbetween A and B is defined as:\nJ ∈J,processedbyaspecificmachineM ∈M,andhasan\n(cid:40) i i\nA˜, if A˜≥B˜, uncertainprocessingtimedenotedbyaTFNt˜.Theoperations\nmax(A˜,B˜)= (3) i\nB˜, otherwise. are linked by a binary relationship “ → ” that forms chains\nfor each job. If operation i precedes j (i→j), they share the",
+      "start_offset": 11962,
+      "end_offset": 15025
+    },
+    {
+      "heading": "It is evident that the max operation is determined by a",
+      "level": 1,
+      "content": "same job J = J , and no other operation x can exist such\ni j\nranking operation. In fuzzy scheduling, a commonly used\nthat i→x or x→j. Let S be the set of scheduling schemes.\nranking method is as follows [44]: Let c 1(A˜) = a1+2a 42+a3,\nThe objective of FJSSP is to minimize the fuzzy makespan,\nc 2(A˜)=a 2, and c 3(A˜)=a 3−a 1. A˜>B˜ if and only if one i.e., to find the fuzzy start time s˜\ni\nfor each operation i∈O to\nof the following three conditions is met: minimize the following objective over all possible schemes:\n1) c (A˜)>c (B˜);\n1 1 maxs˜ +t˜\n2) c 1(A˜)=c 1(B˜)∧c 2(A˜)>c 2(B˜); i∈O i i\n3) c 1(A˜)=c 1(B˜)∧c 2(A˜)=c 2(B˜)∧c 3(A˜)>c 3(B˜). s.t. s˜\ni\n≥0, ∀i∈O,\n(10)\nHowever, this method can only compare the magnitude of s˜ ≥s˜ +t˜, if i→j,i,j ∈O,\nj i i\ntwo TFNs at a time, and comparing multiple TFNs in this\ns˜ ≥s˜ +t˜ ∨s˜ ≥s˜ +t˜, if M =M ,i,j ∈O.\nway would be very time-consuming, which is not conducive j i i i j j i j\ntothelearningprocessofneuralnetworks.Anothercommonly To enable the neural network to assimilate the intricate con-\nusedrankingmethod[45]involvesdefuzzifyingfuzzynumbers straint information inherent in the FJSSP, this paper devi-\ninto crisp numbers, allowing the comparison of these values ates from the conventional mixed-integer linear programming\nto determine the relationship between the TFNs, as shown in models [47] typically utilized in heuristic algorithms. Instead,\nthe following formula: we adopt the disjunctive graph [48] to effectively model the\nFJSSP. This methodological choice facilitates a more nuanced\na +2a +a\nDefuzz(A˜)= 1 2 3. (4) representation of the scheduling constraints, enhancing the\n4\n\nJOURNALOFLATEXCLASSFILES 4\ncapacityofthenetworktolearnandsolvewithinthiscomplex\n1 2 3\ndomain.\nThe disjunctive graph G=(V,A,E) is defined as follows:\n• V =O∪{S,T}, where S and T denote the starting and\nS 4 5 6 T\nendingvirtualnodes,respectively,eachwithaprocessing\ntime of zero.\n• A encompasses ordered pairs (i,j) for (i,j) ∈ O such\nthat i→j,alongwith pairs(S,j) forthefirst operations 7 8 9\nof all jobs and (i,T) for the last operations, representing\n(a) FJSSP instance\nthe directed connections between operations within the\njobs. 1 2 3\n• E includes pairs (i,j) where M i = M j, indicating\nundirected connections between operations assigned to\nthe same machine.\nS 4 5 6 T\nFor each pair of operations i,j ∈ O with i → j, the\nsecond constraint in Eq. (10) is denoted as a directed edge\n(i,j) in A. Similarly, for each pair of operations i,j ∈ O\n7 8 9\nwith M =M , the third constraint in Eq. (10) is denoted as\ni j\nan undirected edge (i,j) in E, and the two ways of solving (b) Directed solution\nthe disjunction correspond to the two possible orientations of Fig.1. Disjunctivegraphmodel.(a)illustratesa3×3FJSSPinstance.The\nthe edge. Therefore, finding a scheduling scheme π of FJSSP blacksolidlinesdelineatesetA,whilethecoloreddashedlinesenclosesetE.\nOperationswiththesameframecolormustbeexecutedonthesamemachine.\nis equivalent to determining the direction of each undirected\n(b)presentsasolutionfor(a),whereallundirectededgeshavebeendirected.\nedge, resulting in a directed acyclic graph. An example of a\ndisjunctive graph for an FJSSP instance and its solution are\nshown in Fig. 1. When a FJSSP is modeled as a disjunctive\nconditionalprobabilityp(π |I ).Byleveragingthechainrule,\ngraph, J (the job to which operation i belongs), M (the l l\ni i we can express this as:\nspecific machine designated for operation i), St (the first\ni\noperation of the job that operation i belongs), End\ni\n(the last (cid:89)mn\noperationofthejobthatoperationibelongs),andt˜ (thefuzzy p(π l |I l)=p(π l,1 |I l) p(π l,i |π l,1,...,π l,i−1,I l),\ni\nprocessing time of operation i) are all directly obtainable. For i=2\n(11)\nthe scheduled operation i, its start time s˜ is also available,\ni where m denotes the number of machines, n represents the\nand consequently, its fuzzy completion time can be calculated\nnumber of jobs, and mn is the length of π . It is evident that\nby s˜ +t˜. For a scheduling scheme π, its fuzzy makespan l\ni i modeling p(π | I ) in this way would require exponential\nl l\ncan also be determined.\ncomplexity, which is not feasible. Assuming π to be i.i.d.\nl,i\nMoreover, since the directed edges give constraints on the or Markovian would make it possible to model p(π |I ), but\nl l\nprocessing order of all the operations in each job, in decision this assumption does not align with the actual situation of the\nmaking, we only need to determine which job (rather than FJSSP as discussed in Section II.B. To address this, we posit\nwhichoperation)needstobeprocessed.Forexample,Fig.1(b) theexistenceofaneuralnetworkp (parameterizedbyθ)that\nθ\ncorresponds to a scheduling scheme (1, 3, 2, 3, 1, 2, 1, 2, 3), approximates the conditional probability table in Eq. (11):\nand the objective of the method proposed in this paper is to\nmn\ndecideonschedulingschemessuchasthisoneandmaketheir (cid:89)\np (π |I )= p (π |π ,...,π ,I ). (12)\nθ l l θ l,i l,1 l,i−1 l\nfuzzy makespan as small as possible.\ni=1\nConsequently, an autoregressive model is established, and the\nIII. EMARM π is constructed by iteratively generating π from i = 1 to\nl l,i\nmn.\nIn this section, we begin by formulating the FJSSP as\nOur objective is to identify the parameter θ that maximize\na generative task and outlining its optimization objectives.\nthe log-likelihood of the optimal scheduling scheme {π∗}L\nSubsequently, we detail the computational methods for each l l=1\nfor training set {I }L :\nspecific component of the objective. Finally, we introduce a l l=1\nstrategy to address the challenge posed by the absence of L\n(cid:88)\nground-truth solutions in NCO using the EM algorithm. θ =argmax logp (π∗ |I ). (13)\nθ l l\nθ\nl=1\nTheremainderofthissectionoffersacomprehensiveexpla-\nA. Autoregressive model for FJSSP\nnation of the methods for representing and calculating each\nGiven an training set {I l}L\nl=1\nand its scheduling scheme element within Eqs. (12) and (13). In Sections III.B-D, we\n{π }L , where π = (π ,...,π ), our objective is to focus on a specific instance to illustrate the principles, for\nl l=1 l l,1 l,mn\nmodel the joint probability distribution p(I ,π ) to derive the brevity, we omit the subscript l.\nl l\n\nJOURNALOFLATEXCLASSFILES 5\nB. Hand-crafted fuzzy prior D. Decoder\nInthedisjunctivegraphmodel,thedatainformation,specif- Thedecoderiscomposedoftwoparts:Astatenetworkand\nically the fuzzy processing times, is stored at the vertices a decision network. The former is responsible for updating\nrepresenting the operations, while constraints are defined by state, and the latter is responsible for making decisions based\nthe edges. However, the raw data for these vertices includes on the information provided by the encoder and the state\nonly a single fuzzy processing time, which is insufficient to network. The two networks are described below.\nmake accurate decisions. To achieve this, we require more 1. The state network. EMARM makes decisions step by\ncomprehensive information. This is because, in addition to step, and each decision impacts the future. Therefore, after\nits own numerical magnitude, its role (relative numerical each decision, it is necessary to update the state and convey\nmagnitude) in the job and machine to which it belongs is it to the EMARM to enhance the accuracy of subsequent\nalsoimportant.Wemanuallydesignsignificantinformationas decisions.\npriors to be integrated into the network. For each operation First,wegeneratean11-dimensionalcontextvector c (i=\ni\ni, the composition of its information vector x ∈ R18 is as 1,2,...,n)foreachjobtodescribeitsinformation.Assuming\ni\nfollows: that o denote the ready operation of job J at step t and its\nt,i i\nt˜ =(t ,t ,t )∈R3, (14) predecessor is o −1. The context vector c ∈R11 contains\ni 1 2 3 t,i i\nDefuzz(cid:0) t˜(cid:1) ∈R, (15) the following entries:\ni\nDefuzz(FC(o −1))−Defuzz(cid:0) FC(M )(cid:1) ∈R, (23)\n(cid:80)i Defuzz(cid:0) t˜(cid:1) t,i ot,i\n(cid:80)j E= ndS iti Defuzz(cid:0) t˜j (cid:1) ∈R, (16) Defuzz(FC(o t,i−1)) ∈R, (24)\nj=Sti j Defuzz(max i=1,...,nFC(J i))\n(cid:80) (cid:80)E j E=n nd i di + i1 DD ee ff uu zz zz (cid:0)(cid:0) t˜t˜ j (cid:1)(cid:1) ∈R, (17) Defuzz(FC(o t,i−1))− Defuzz((cid:80) nn i=1FC(J i)) ∈R, (25)\nj=Sti j\nDefuzz(Quartile(J ))∈R3, (18) Defuzz(FC(o t,i−1))−Defuzz(Quartile(J))∈R3, (26)\ni\n(cid:0) (cid:1)\nDefuzz(Quartile(M i))∈R3, (19) Defuzz FC(M ot,i) ∈R, (27)\nDefuzz(max FC(M ))\nDefuzz(cid:0) t˜(cid:1) −Defuzz(Quartile(J ))∈R3, (20) i=1,...,m i\nDefuzz(cid:0) t˜\nii\n(cid:1)\n−Defuzz(Quartile(Mi\ni))∈R3, (21) Defuzz(cid:0) FC(M ot,i)(cid:1) −\nDefuzz((cid:80)m\ni m=1FC(M i)) ∈R, (28)\nwhere Quartile(J i) and Quartile(M i) represent the quartile Defuzz(cid:0) FC(M ot,i)(cid:1) −Defuzz(Quartile(M))∈R3, (29)\nofthefuzzyprocessingtimeforoperationsbelongingtoJ and\ni\nwhere FC(·) calculates the fuzzy completion time. Eq. (23)\nM ,respectively.Eqs.(14)and(15)describelocalinformation\ni\ndescribes the relationship between two factors that affect o\nand represent the fuzzy processing time and the defuzzified t,i\nprocessing: Whether the predecessor operation is complete\nprocessing time of O , respectively. Other equations describe\ni\nand whether the required machine is idle. Eq. (24) measures\nglobal information. Eqs. (16) and (17) describe how much\nhow close the current fuzzy completion time of J is to\nof the job to which it belongs has been completed and how ot,i\nthe current fuzzy makespan. Eq. (25) measures how early or\nmuch is left after processing O , respectively. Eqs. (18) and\ni\nlate the fuzzy completion time of J is compared to the\n(19)describethequartilesoffuzzyprocessingtimeforthejob ot,i\naverage fuzzy completion time of all jobs in current state.\nand machine to which O belongs, respectively. Eqs. (20) and\ni\nEq. (26) describes the relative fuzzy completion time of J\n(21)describethedifferenceofthedefuzzifiedfuzzyprocessing ot,i\nwith respect to other jobs in current state. Eq. (27) measures\ntime of O and Eqs. (18) and (19), respectively.\ni\nhowclosethecurrentfuzzycompletiontimeofM istothe\not,i\ncurrent fuzzy makespan. Eq. (28) measures how early or late\nC. Encoder\nthefuzzycompletiontimeofM iscomparedtotheaverage\nA two-layer graph attention network (GAT) [49] is em- completiontimeofalljobsincuot r, ri entstate.Eq.(29)describes\nployed to extract and learn valuable information from the the relative fuzzy completion time of M with respect to\ndisjunctive graph. This network transforms 18-dimensional x i other machines in current state.\not,i\ninto a h-dimensional e i. The primary advantage of e i over Second, these context vectors are further integrated by\nx i lies in its ability to complement the relationship between Eq. (30) to derive the state vectors s i ∈ Rd(i=1,2,...,n).\nedges. To preserve the vertex information without dilution, These state vectors assist the decision network in making\nthe output at each layer of the GAT is concatenated with informed decisions, where d is a hyper-parameter.\nthe original feature vector x . The formulation of encoder is\ni (cid:18)(cid:20) (cid:21) (cid:19)\ndetailed as follows: s =σ c W + MHA (c W ) W , (30)\ni i 1 j 1 2\nj=1,...,n\ne =[x ∥σ(GAT ([x ∥σ(GAT (x ,D))],D))], (22)\ni i 2 i 1 i where W and W are learnable parameter matrices, MHA\n1 2\nwhere “∥” is the concatenation operation, σ is the ReLU denotes the multi-head attention layer [50], and s represents\ni\nactivationfunction,D =A∪E isthesetofedgesforinstance theimpactofthescheduledoperationsonsubsequentdecision-\nI, and e describes the instance I in Eq. (12). making, corresponding to the π ,...,π in Eq. (12).\ni 1 i−1\n\nJOURNALOFLATEXCLASSFILES 6\nAlgorithm 1 The EM algorithm-based training strategy maximum likelihood estimation is not feasible, and thus, the\nInput: Training set {I }L , number of epochs T, number of EM algorithm maximizes a lower bound of the log-likelihood\nl l=1\nsampling times K function. This bound is established using Jensen’s inequality,\nOutput: The parameters θ of the EMARM as illustrated in Eq. (32), where x,y, and θ denote the latent\n1: Randomly initialize the parameter ϕ variables, observations, and model parameters, respectively.\n2: for t=1 to T do The algorithm proceeds through two main steps:\n3: // E-step • Expectation step (E-step): Sample latent variables\n4: for l=1 to L do from the current conditional distribution estimate\n5: Calculate p ϕ(π l |I l) according to Eq. (12) x∼ p θ(x| y),andcomputetheexpectedlog-likelihood\n6: Sample (cid:8) π l1,...,π lK(cid:9) ∼p ϕ(π l |I l) lower bound L(θ).\n7: πˆ l =argmin π∈{π1,...,πK}FMS(π) • Maximization step (M-step): Maximize\n8: end for l l E x∼pθ(x|y)[logp θ(x)] to update parameter θ.\n9: // M-step ThisiterativeprocessenablestheEMalgorithmtoconverge\n10: θ =argmax(cid:80)L l=1logp ϕ(πˆ l |I l) towardsalocalmaximumofthelog-likelihoodoftheobserved\nϕ data, rendering it a robust technique for estimation problems\n11: ϕ=θ\nwith latent variables. Given the NP-hard nature of the FJSSP\n12: end for\n[9], the optimal scheduling scheme π∗ shares the same un-\nobservable characteristic as the latent variable. This similarity\nmotivatesustotackletheproblemusingtheEMalgorithm,the\n2. Decision network.Thisnetworkcombinesthee gen-\not,i\npseudo-code for which is presented in Algorithm 1, where π\neratedbytheencoder,whichcontainglobalinformationabout l\nis a scheduling scheme of instance I , FMS(·) calculates the\nthe FJSSP, with the s generated by the state network, which l\ni\nfuzzy makespan. Furthermore, in the specific implementation,\ncontain local state information, to generate the probability of\nthe expected solution for each instance may be obtained by\nchoosing a job for the step t. The details are as follows:\nsamplingmultiplecandidateschedulingschemesandselecting\n(cid:0)(cid:2) (cid:3)(cid:1)\nz =FNN e ∥s , (31) the best, thereby improving the performance of EMARM in\ni ot,i i\nthe early stages.\nwhereFNNdenotesthefeedforwardneuralnetwork[51].Sub-\nsequently,thesez\ni\n∈Raretransformedintoprobabilitieswith\nIV. NUMERICALRESULTANDCOMPARISONS\naSoftmaxfunction:p\ni\n=ezi/(cid:80)n j=1ezj,wherep icorresponds\nIn this section, numerous experiments are performed to\nto p (π |π ,...,π ,I ) in Eq. (12). Finally, the job\nθ l,i l,1 l,i−1 l validate the effectiveness of the EMARM. The EMARM is\nto be processed at step t is determined through the sample\ndevelopedusingPython3.9andPyTorch1.3.1,andisexecuted\nmethod described below.\non an Ubuntu 22.04 PC. The hardware setup includes an Intel\nOn the one hand, we randomly select a job i with a\nPlatinum8358PprocessorandanNVIDIAGeForceRTX4090\nprobability proportional to p , which is produced at step t by\ni with 24GB of memory.\nthe decoder. On the other hand, to avoid selecting jobs that\nhavealreadybeencompleted,weemployamaskingoperation\nA. Dataset and test instances\nto set the probability of selecting them in subsequent steps to\nzero. We randomly generate 30000 instances as the training set\nbyfollowing[53].Thesize(m×n)ofthetrainingsetincludes\n10×10, 15×10, 15×15, 20×10, 20×15, and 20×20\nE. Training strategy based on EM algorithm\nwith each size represented by 5000 instances. The validation\nTo address the challenge of determining the parameter θ of set is generated in the same way as the training set, except\nEMARM according to Eq. (13), we encounter a chicken-and- that the number of instances for each size is 100. In order\negg dilemma: Knowing the optimal scheduling scheme π∗ is to test the performance of EMARM comprehensively, we\nessential for identifying θ, yet discovering π∗ itself relies on select 9 benchmarks from [54], and generate 2 benchmarks\nhaving a well-tuned θ. (20 × 20, 30 × 20) following the method in [54], with each\nTheEMalgorithm[52]providesasolutiontothisdilemma. benchmark consisting of 4 instances. It is worth noting that",
+      "start_offset": 15080,
+      "end_offset": 30816
+    },
+    {
+      "heading": "Itisaniterativemethoddesignedforestimatingparametersin the benchmarks are not exactly the same size as those in the",
+      "level": 1,
+      "content": "statistical models that include latent variables. When the true training set, which helps to demonstrate the generalization\nvalues of these latent variables remain unknown, traditional ability of EMARM.\n(cid:90) (cid:90) p (y,x)\nlogp (y)=log p (y,x)dx≥ p (x|y)log θ dx\nθ θ θ p (x|y)\nθ\n(cid:90) (cid:90)\n= p (x|y)logp (y,x)dx− p (x|y)logp (x|y)dx (32)\nθ θ θ θ\n=E [logp (y|x)+logp (x)−logp (x|y)]≜L(θ).\nx∼pθ(x|y) θ θ θ\n\nJOURNALOFLATEXCLASSFILES 7",
+      "start_offset": 30931,
+      "end_offset": 31377
+    },
+    {
+      "heading": "TABLEI TABLEII",
+      "level": 1,
+      "content": "PARAMETERSETTINGS RUNNINGTIME(INSECONDS)FOREMARM,\nNSODE,HADE,PSO,ANDGA",
+      "start_offset": 31391,
+      "end_offset": 31463
+    },
+    {
+      "heading": "Algorithm Parametersettings\nSize EMARM NSODE HADE PSO GA",
+      "level": 1,
+      "content": "NSODE mutationfactor:0.5,crossoverfactor:0.5\nHADE mutationfactor:0.5,crossoverfactor:0.5 6×6 0.118 0.542 0.801 1.845 0.935\nPSO globallearningfactor:1.2,locallearningfactor:1.2 10×5 0.133 0.681 0.915 2.294 1.150\nGA crossoverprobability:0.7,mutationprobability:0.1 10×10 0.226 1.241 1.544 4.088 2.120\n15×5 0.275 0.953 1.137 3.196 1.639\n15×10 0.475 1.821 2.489 6.301 2.984\n15×15 0.435 2.950 4.471 10.220 4.578\nB. Architecture, hyperparameters, and training 20×5 0.406 1.226 1.506 4.099 2.063\n20×10 0.407 2.534 3.700 8.824 3.970\nIn the encoder, we utilize two GATs, each equipped with 3\n20×15 0.605 4.234 6.740 14.870 6.601\nattention heads and a Leaky-ReLU slope of 0.15. In GAT 1, 20×20 0.768 6.196 10.190 22.430 9.477\nthe size of each head is set to 64 and their outputs are 30×20 1.225 18.471 19.490 41.520 18.940\nconcatenated.InGAT ,thesizeofeachheadissetto128and\n2\ntheir outputs are averaged. Therefore, h = 16+128 = 144,\nand e ∈R144. affect the quality of the solution; for running time, C++ is\ni\nIn the state network, the size of each head in MHA layer usuallyfasterthanPythonforthesametask,sothisisabetter\nis set to 64 and their outputs are concatenated. This results indication of the superiority of our method.\nin parameter matrices W ∈ R11×192 and W ∈ R192×128. The results of the running time comparison experiment are\n1 2\nTherefore, d = 128 and s ∈ R128. In the decision network, presentedinTableII.Duetothesimilarityinrunningtimefor\ni\nthe FNN is implemented by a dense layer of 128 neurons, instancesofthesamesize,wehaveoptednottolistindividual\nwithafinallayerof1neuronandLeaky-ReLU(slope=0.15) times for the four instances but instead provide the average\nactivation function. We utilize the Adam optimizer [55] for runningtimeastheexperimentalresult.AsevidencedbyTable\ntraining EMARM. The training parameters are set as follows: II,EMARMdemonstratesasignificantlyreducedrunningtime\nThe number of epochs T is set to 30, the learning rate is when compared to the other algorithms. This is attributed to\n0.0002, and the batch size is configured at 16. During the thefactthatEMARMisadata-drivendirectsolvercapableof\ntraining stage, sampling times K is 256 and this number is solving problems through numerical operations after param-\nincreased to 512 during the testing stage. According to [11], eter learning. In contrast, evolutionary algorithms rely on an\nthe β and ω in Eq. (5) are set to 0.5 and 0.4, respectively. iterative approach grounded in population evolution, necessi-\ntating progressive refinement of solutions across generations.\nGenerally, iterative methods tend to require more time than\nC. Comparisons to other algorithms\ndirect solution methods.\nIn this section, NSODE [9], HADE [12], genetic algorithm Comparison experiments for fuzzy makespan are presented\n(GA) [56], and particle swarm optimization (PSO) [57] are by Table III, which shows that EMARM outperforms all\nselected for comparison experiments. NSODE and HADE are comparative algorithms in terms of solution quality. This\nrecent algorithms proposed in 2020 and 2022 respectively, confirms the soundness of modeling FJSSP as a generative\nwhileGAandPSOarewell-establishedandclassicevolution- task and the potential of learning-based approaches to solve\nary algorithms. All these algorithms are implemented in C++. this type of COPs.\nThe population size for all algorithms is set to 100, with each\nrunning through 100 iterations to ensure a fair comparison.\nV. CONCLUSIONANDFUTUREWORK",
+      "start_offset": 31519,
+      "end_offset": 34990
+    },
+    {
+      "heading": "Additional parameters specific to each algorithm are detailed",
+      "level": 1,
+      "content": "in Table I. In this paper, we investigate the FJSSP. This problem",
+      "start_offset": 35051,
+      "end_offset": 35118
+    },
+    {
+      "heading": "NSODE is designed to address optimization objectives extendstheJSSPbyemployingfuzzynumberstocharacterize",
+      "level": 1,
+      "content": "within the FJSSP, considering both fuzzy execution and com- uncertaintiesintheproductionprocess.Whilethisapproachis\npletion times. HADE employs fuzzy relative entropy to tackle morecloselyalignedwithreal-worldmanufacturingscenarios,\na multi-objective FJSSP, balancing fuzzy completion times it also increases the complexity of finding solutions. NCO\nwith total fuzzy energy consumption. GA and PSO are repre- is experiencing rapid development and is achieving many\nsentative of evolutionary computation and swarm intelligence, remarkableresults.However,noresearchershaveattemptedto\nrespectively. address the FJSSP using learning-based methods. We model\nWe conduct comparisons on two aspects: Solution quality the FJSSP as a generative task and propose the EMARM to\nand running time. Given that evolutionary algorithms are solve it. Firstly, to enable neural networks to capture fuzzy\nstochastic in nature, we take the average of 30 experimental information, we design hand-crafted fuzzy priors. Secondly,\nruns for the comparison. Since EMARM can be used con- we employ the EM algorithm to overcome the challenge of\ntinuously without the need for retraining after it has been obtaining ground-truth labels in NCO. Lastly, a large number\ntrained, we only accounted for its testing time in terms of the of experiments prove the effectiveness of the method we\ntime metric. Although EMARM and comparative algorithms propose in this paper.\nare written in different languages, for fuzzy makeapsn, the In the future, on one hand, we intend to investigate the po-\ndifference in compilation languages does not significantly tential of alternative generative models in tackling the FJSSP.\n\nJOURNALOFLATEXCLASSFILES 8",
+      "start_offset": 35222,
+      "end_offset": 36929
+    },
+    {
+      "heading": "TABLEIII",
+      "level": 1,
+      "content": "FUZZYMAKESPANFOREMARM,NSODE,HADE,PSO,ANDGA",
+      "start_offset": 36937,
+      "end_offset": 36981
+    },
+    {
+      "heading": "Size Instance EMARM NSODE HADE PSO GA",
+      "level": 1,
+      "content": "S6.1 (57,83,108) (63,88,107) (61,87,110) (97,139,176) (62,87,107)\nS6.2 (51,70,86) (60,87,110) (60,86,107) (94,137,168) (62,89,111)\n6×6\nS6.3 (50,65,84) (60,79,103) (53,71,93) (107,151,194) (60,78,105)\nS6.4 (27,36,45) (32,43,54) (31,41,51) (49,69,89) (31,42,59)\nS10.1 (99,134,171) (146,202,255) (131,182,227) (236,319,399) (143,202,249)\nS10.2 (94,134,168) (138,185,224) (121,166,209) (209,279,354) (145,191,250)\n10×10\nS10.3 (85,116,143) (139,183,239) (117,159,198) (140,195,250) (146,200,264)\nS10.4 (30,48,63) (40,70,96) (39,68,94) (56,102,139) (45,79,107)\nLa6 (667,926,1186) (815,1097,1421) (792,1070,1369) (1637,2211,2822) (1030,1358,1722)\nLa7 (821,890,1003) (1137,1229,1387) (1064,1151,1278) (1604,1743,1946) (1240,1345,1499)\n15×5\nLa8 (796,863,952) (1013,1144,1245) (967,1103,1181) (1917,2174,2354) (1213,1366,1495)\nLa9 (856,951,1014) (1222,1359,1483) (1101,1188,1287) (1783,1937,2098) (1317,1459,1602)\nLa21 (1051,1147,1243) (1916,2052,2188) (1441,1569,1697) (2194,2350,2506) (2202,2342,2482)\nLa22 (880,982,1125) (1492,1672,1918) (1366,1532,1772) (2057,2310,2634) (1572,1738,1997)\n15×10\nLei1 (144,213,279) (222,320,414) (221,312,410) (309,450,580) (268,387,507)\nLei2 (130,177,237) (219,310,405) (182,253,335) (251,350,456) (225,322,409)\nLa36 (1174,1326,1504) (2176,2418,2681) (1765,1958,2173) (2658,2938,3309) (2308,2556,2821)\nLa37 (1354,1502,1677) (2441,2708,2993) (1919,2125,2329) (2594,2887,3247) (2402,2681,2988)\n15×15\nLa38 (1205,1297,1389) (2195,2347,2499) (1900,2061,2222) (2249,2407,2565) (2295,2453,2611)\nLa39 (1195,1322,1463) (2220,2454,2741) (1984,2177,2413) (2324,2613,2900) (2320,2602,2889)\nLa11 (1186,1315,1430) (1751,1868,1985) (1539,1636,1733) (2489,2642,2795) (1819,1931,2043)\nLa12 (1154,1241,1328) (1216,1381,1493) (1187,1339,1433) (2139,2391,2561) (1519,1708,1826)\n20×5\nLa13 (1190,1364,1501) (1496,1666,1818) (1398,1575,1731) (2533,2816,3071) (1706,1931,2106)\nFT20 (1129,1223,1141) (1742,1844,1944) (1478,1557,1633) (2604,2728,2844) (1894,1987,2077)\nLa27 (1254,1325,1396) (2555,2757,2959) (2044,2178,2312) (3159,3382,3605) (2592,2777,2962)\nLa28 (1186,1315,1430) (2356,2662,2924) (1806,2012,2215) (2607,2887,3183) (2461,2770,3018)\n20×10\nLa29 (1154,1241,1328) (2305,2478,2651) (1884,2003,2122) (3047,3248,3449) (2556,2747,2938)\nLa30 (1190,1364,1501) (2419,2697,2922) (1848,2090,2289) (3019,3344,3636) (2782,3136,3470)\nABZ7 (673,713,753) (1366,1462,1558) (1075,1150,1225) (1909,2040,2171) (1415,1496,1577)\nABZ8 (696,721,746) (1453,1518,1583) (1076,1153,1230) (1652,1751,1850) (1470,1562,1654)\n20×15\nABZ9 (721,764,807) (1430,1514,1598) (1097,1180,1263) (1582,1669,1756) (1444,1530,1616)\nDMU1 (2536,2858,3094) (5428,6038,6585) (4290,4767,5250) (5382,6066,6684) (5471,6150,6681)\nTa21 (1665,1821,1971) (3352,3613,3874) (2652,2811,2970) (3480,3715,3950) (3516,3747,3978)\nTa22 (1638,1764,1890) (3387,3651,3915) (2713,2936,3159) (3411,3704,3997) (3281,3566,3851)\n20×20\nTa23 (1630,1731,1832) (3452,3669,3886) (2617,2796,2975) (3482,3730,3978) (3563,3799,4035)\nTa24 (1648,1797,1946) (3485,3755,4025) (2765,2997,3229) (3420,3694,3968) (3536,3816,4096)\nTa41 (2137,2265,2393) (5807,6247,6687) (3801,4071,4341) (4796,5159,5522) (5884,6319,6754)\nTa42 (2015,2184,2353) (5205,5580,5955) (3679,3939,4199) (5264,5622,5980) (5445,5866,6287)\n30×20\nTa43 (1958,2115,2272) (5417,5788,6159) (3258,3487,3716) (5075,5388,5701) (5538,5932,6326)\nTa44 (2073,2217,2361) (5073,5431,5789) (3814,4074,4334) (5340,5728,6116) (5395,5763,6131)\nThisincludesmodelssuchasdiffusionmodels[58],generative [3] F.Zhang,Y.Mei,S.Nguyen,andM.Zhang,“Multitaskmultiobjective\nadversarial networks [59], and flow-based models [60]. On geneticprogrammingforautomatedschedulingheuristiclearningindy-\nnamicflexiblejob-shopscheduling,”IEEETransactionsonCybernetics,\nthe other hand, we also plan to apply the model presented\nvol.53,no.7,pp.4473–4486,2023.\nin this paper to solve other scheduling problems, such as\n[4] L.He,R.Chiong,W.Li,S.Dhakal,Y.Cao,andY.Zhang,“Multiobjec-\nthe permutation flow shop scheduling problem [61], hybrid tiveoptimizationofenergy-efficientjob-shopschedulingwithdynamic\nflow shop scheduling problem [62], and parallel machine reference point-based fuzzy relative entropy,” IEEE Transactions on\nIndustrialInformatics,vol.18,no.1,pp.600–610,2022.\nscheduling problem [63].\n[5] M. Huang, S. Huang, B. Du, J. Guo, and Y. Li, “Fuzzy superposition\noperationandknowledge-drivenco-evolutionaryalgorithmforintegrated",
+      "start_offset": 37018,
+      "end_offset": 41414
+    },
+    {
+      "heading": "REFERENCES\nproduction scheduling and vehicle routing problem with soft time",
+      "level": 1,
+      "content": "windowsandfuzzytraveltimes,”IEEETransactionsonFuzzySystems,\n[1] Y. Yao, Q. Liu, L. Fu, X. Li, Y. Yu, L. Gao, and W. Zhou, “A novel\nearly,access,2024.doi:10.1109/TFUZZ.2024.3388003.\nmathematicalmodelfortheflexiblejob-shopschedulingproblemwith\nlimited automated guided vehicles,” IEEE Transactions on Automa- [6] R.Li,W.Gong,andC.Lu,“Self-adaptivemulti-objectiveevolutionary\ntion Science and Engineering, early, access, 2024. doi: 10.1109/TAS algorithmforflexiblejobshopschedulingwithfuzzyprocessingtime,”\nE.2024.3356255. Computers&IndustrialEngineering,vol.168,p.108099,2022.\n[2] Z. Tian, X. Jiang, G. Tian, Z. Li, and W. Liu, “Knowledge-based [7] J.Li,Y.Han,K.Gao,X.Xiao,andP.Duan,“Bi-populationbalancing\nlot-splitting optimization method for flexible job shops considering multi-objective algorithm for fuzzy flexible job shop with energy and\nenergy consumption,” IEEE Transactions on Automation Science and transportation,” IEEE Transactions on Automation Science and Engi-\nEngineering,vol.21,no.3,pp.4864–4785,2024. neering,vol.21,no.3,pp.4686–4702,2024.\n\nJOURNALOFLATEXCLASSFILES 9\n[8] X. Zhang, S. Liu, Z. Zhao, and S. Yang, “A decomposition-based [27] Z. Pan, L. Wang, J. Wang, and J. Lu, “Deep reinforcement learning\nevolutionary algorithm with clustering and hierarchical estimation for based optimization algorithm for permutation flow-shop scheduling,”\nmulti-objective fuzzy flexible jobshop scheduling,” IEEE Transac- IEEE Transactions on Emerging Topics in Computational Intelligence,\ntions on Evolutionary Computation, early, access, 2024. doi: doi: vol.7,no.4,pp.983–994,2023.\n10.1109/TEVC.2024.3359120. [28] P.Tassel,M.Gebser,andK.Schekotihin,“Anend-to-endreinforcement\n[9] D.Gao,G.-G.Wang,andW.Pedrycz,“Solvingfuzzyjob-shopschedul- learningapproachforjob-shopschedulingproblemsbasedonconstraint\ningproblemusingDEalgorithmimprovedbyaselectionmechanism,” programming,” in Proceedings of the International Conference on Au-\nIEEE Transactions on Fuzzy Systems, vol. 28, no. 12, pp. 3265–3275, tomatedPlanningandScheduling,vol.33,2023,pp.614–622.\n2020. [29] W. Song, X. Chen, Q. Li, and Z. Cao, “Flexible job-shop scheduling\n[10] J.-q.Li,Z.-m.Liu,C.Li,andZ.-x.Zheng,“Improvedartificialimmune via graph neural network and deep reinforcement learning,” IEEE\nsystemalgorithmfortype-2fuzzyflexiblejobshopschedulingproblem,” Transactions on Industrial Informatics, vol. 19, no. 2, pp. 1600–1610,\nIEEE Transactions on Fuzzy Systems, vol. 29, no. 11, pp. 3234–3248, 2023.\n2021. [30] C.-L. Liu, C.-J. Tseng, T.-H. Huang, and J.-W. Wang, “Dynamic\n[11] L.Sun,L.Lin,M.Gen,andH.Li,“Ahybridcooperativecoevolution parallel machine scheduling with deep q-network,” IEEE Transactions\nalgorithm for fuzzy flexible job shop scheduling,” IEEE Transactions onSystems,Man,andCybernetics:Systems,vol.53,no.11,pp.6792–\nonFuzzySystems,vol.27,no.5,pp.1008–1022,2019. 6804,2023.\n[12] G.-G. Wang, D. Gao, and W. Pedrycz, “Solving multiobjective fuzzy [31] Z.Pan,L.Wang,C.Dong,andJ.-F.Chen,“Aknowledge-guidedend-\njob-shopschedulingproblembyahybridadaptivedifferentialevolution to-endoptimizationframeworkbasedonreinforcementlearningforflow\nalgorithm,”IEEETransactionsonIndustrialInformatics,vol.18,no.12, shopscheduling,”IEEETransactionsonIndustrialInformatics,vol.20,\npp.8519–8528,2022. no.2,pp.1853–1861,2024.\n[13] Z. Pan, D. Lei, and L. Wang, “A bi-population evolutionary algorithm [32] R.Chen,W.Li,andH.Yang,“Adeepreinforcementlearningframework\nwith feedback for energy-efficient fuzzy flexible job shop scheduling,” based on an attention mechanism and disjunctive graph embedding\nIEEETransactionsonSystems,Man,andCybernetics:Systems,vol.52, forthejob-shopschedulingproblem,”IEEETransactionsonIndustrial\nno.8,pp.5295–5307,2022. Informatics,vol.19,no.2,pp.1322–1331,2023.\n[14] R. Li, W. Gong, C. Lu, and L. Wang, “A learning-based memetic [33] Y.Du,J.Li,C.Li,andP.Duan,“Areinforcementlearningapproachfor\nalgorithm for energy-efficient flexible job-shop scheduling with type-2 flexiblejobshopschedulingproblemwithcranetransportationandsetup\nfuzzy processing time,” IEEE Transactions on Evolutionary Computa- times,”IEEETransactionsonNeuralNetworksandLearningSystems,\ntion,vol.27,no.3,pp.610–620,2023. vol.35,no.4,pp.5695–5709,2024.\n[15] F.Zhao,S.Di,andL.Wang,“AhyperheuristicwithQ-learningforthe\n[34] K. Lei, P. Guo, Y. Wang, J. Zhang, X. Meng, and L. Qian, “Large-\nmultiobjectiveenergy-efficientdistributedblockingflowshopscheduling\nscaledynamicschedulingforflexiblejob-shopwithrandomarrivalsof\nproblem,”IEEETransactionsonCybernetics,vol.53,no.5,pp.3337–\nnewjobsbyhierarchicalreinforcementlearning,”IEEETransactionson\n3350,2023. IndustrialInformatics,vol.20,no.1,pp.1007–1018,2024.\n[16] L. Deng, Y. Di, and L. Wang, “A reinforcement-learning-based 3-D\n[35] R.Li,W.Gong,L.Wang,C.Lu,Z.Pan,andX.Zhuang,“Doubledqn-\nestimation of distribution algorithm for fuzzy distributed hybrid flow-\nbasedcoevolutionforgreendistributedheterogeneoushybridflowshop\nshop scheduling considering on-time-delivery,” IEEE Transactions on\nscheduling with multiple priorities of jobs,” IEEE Transactions on\nCybernetics,vol.54,no.2,pp.1024–1036,2024.\nAutomation Science and Engineering, vol. 21, no. 4, pp. 6550–6562,\n[17] R. Li, W. Gong, L. Wang, C. Lu, and C. Dong, “Co-evolution with\n2024.\ndeepreinforcementlearningforenergy-awaredistributedheterogeneous\n[36] A.Liu,P.B.Luh,K.Sun,M.A.Bragin,andB.Yan,“Integratingma-\nflexiblejobshopscheduling,”IEEETransactionsonSystems,Man,and\nchinelearningandmathematicaloptimizationforjobshopscheduling,”\nCybernetics:Systems,vol.54,no.1,pp.201–211,2024.\nIEEE Transactions on Automation Science and Engineering, vol. 21,\n[18] Z.Shao,W.Shao,J.Chen,andD.Pi,“MQL-MM:Ameta-Q-learning-\nno.3,pp.4829–4850,2024.\nbasedmulti-objectivemetaheuristicforenergy-efficientdistributedfuzzy\n[37] C.-L. Liu and T.-H. Huang, “Dynamic job-shop scheduling problems\nhybrid blocking flow-shop scheduling problem,” IEEE Transactions\nusing graph neural network and deep reinforcement learning,” IEEE\non Evolutionary Computation, early, access, 2024. 10.1109/TEVC.202\nTransactions on Systems, Man, and Cybernetics: Systems, vol. 53,\n4.3399314.\nno.11,pp.6836–6848,2023.\n[19] F. Zhao, T. Jiang, and L. Wang, “A reinforcement learning driven\n[38] S.Luo,L.Zhang,andY.Fan,“Real-timeschedulingfordynamicpartial-\ncooperativemeta-heuristicalgorithmforenergy-efficientdistributedno-\nno-waitmultiobjectiveflexiblejobshopbydeepreinforcementlearning,”\nwaitflow-shopschedulingwithsequence-dependentsetuptime,”IEEE\nIEEE Transactions on Automation Science and Engineering, vol. 19,\nTransactions on Industrial Informatics, vol. 19, no. 7, pp. 8427–8440,\nno.4,pp.3020–3038,2022.\n2023.\n[39] G.-Y. Zhu, C. Ding, and W.-B. Zhang, “Optimal foraging algorithm\n[20] Z.Pan,L.Wang,J.Zheng,J.-F.Chen,andX.Wang,“Alearning-based\nthat incorporates fuzzy relative entropy for solving many-objective\nmultipopulationevolutionaryoptimizationforflexiblejobshopschedul-\npermutation flow shop scheduling problems,” IEEE Transactions on\ningproblemwithfinitetransportationresources,”IEEETransactionson\nFuzzySystems,vol.28,no.11,pp.2738–2746,2020.\nEvolutionaryComputation,vol.27,no.6,pp.1590–1603,2023.\n[40] F.-T. Lin, “Fuzzy job-shop scheduling based on ranking level (/spl\n[21] H. Li, K. Gao, P.-Y. Duan, J.-Q. Li, and L. Zhang, “An improved\nlambda/,1)interval-valuedfuzzynumbers,”IEEETransactionsonFuzzy\nartificial bee colony algorithm with q-learning for solving permutation\nflow-shop scheduling problems,” IEEE Transactions on Systems, Man,\nSystems,vol.10,no.4,pp.510–522,2002.\nandCybernetics:Systems,vol.53,no.5,pp.2684–2693,2023. [41] P. Fortemps, “Jobshop scheduling with imprecise durations: a fuzzy\n[22] C. Lin, Z. Cao, and M. Zhou, “Learning-based grey wolf optimizer approach,”IEEETransactionsonFuzzySystems,vol.5,no.4,pp.557–\nfor stochastic flexible job shop scheduling,” IEEE Transactions on 569,1997.\nAutomation Science and Engineering, vol. 19, no. 4, pp. 3659–3671, [42] H.T.Nguyen,C.Walker,andE.A.Walker,Afirstcourseinfuzzylogic.\n2022. ChapmanandHall/CRC,2018.\n[23] C.Zhang,W.Song,Z.Cao,J.Zhang,P.S.Tan,andX.Chi,“Learning [43] D. Lei, “Fuzzy job shop scheduling problem with availability con-\ntodispatchforjobshopschedulingviadeepreinforcementlearning,”in straints,”Computers&IndustrialEngineering,vol.58,no.4,pp.610–\nAdvances in neural information processing systems, vol. 33, 2020, pp. 617,2010.\n1621–1632. [44] M. Sakawa and T. Mori, “An efficient genetic algorithm for job-shop\n[24] J. Kotary, F. Fioretto, and P. Van Hentenryck, “Fast approximations scheduling problems with fuzzy processing time and fuzzy duedate,”\nfor job shop scheduling: A lagrangian dual deep learning method,” in Computers&industrialengineering,vol.36,no.2,pp.325–341,1999.\nProceedingsoftheAAAIConferenceonArtificialIntelligence,vol.36, [45] S. Heilpern, “The expected value of a fuzzy number,” Fuzzy sets and\nno.7,2022,pp.7239–7246. Systems,vol.47,no.1,pp.81–86,1992.\n[25] A.Corsini,A.Porrello,S.Calderara,andM.Dell’Amico,“Self-labeling [46] J. J. Palacios, I. Gonza´lez-Rodr´ıguez, C. R. Vela, and J. Puente, “Co-\nthe job shop scheduling problem,” arXiv preprint arXiv:2401.11849, evolutionarymakespanoptimisationthroughdifferentrankingmethods\n2024. forthefuzzyflexiblejobshop,”FuzzySetsandSystems,vol.278,pp.\n[26] R. Wang, G. Wang, J. Sun, F. Deng, and J. Chen, “Flexible job shop 81–97,2015.\nscheduling via dual attention network-based reinforcement learning,” [47] E. B. Tirkolaee, A. Goli, and G.-W. Weber, “Fuzzy mathematical\nIEEETransactionsonNeuralNetworksandLearningSystems,vol.35, programmingandself-adaptiveartificialfishswarmalgorithmforjust-\nno.3,pp.3091–3102,2024. in-time energy-aware flow shop scheduling problem with outsourcing\n\nJOURNALOFLATEXCLASSFILES 10\noption,”IEEEtransactionsonfuzzysystems,vol.28,no.11,pp.2772–\n2783,2020.\n[48] P.J.VanLaarhoven,E.H.Aarts,andJ.K.Lenstra,“Jobshopscheduling\nbysimulatedannealing,”Operationsresearch,vol.40,no.1,pp.113–\n125,1992.\n[49] S. Brody, U. Alon, and E. Yahav, “How attentive are graph attention\nnetworks?”arXivpreprintarXiv:2105.14491,2021.\n[50] A.Vaswani,N.Shazeer,N.Parmar,J.Uszkoreit,L.Jones,A.N.Gomez,\nL. Kaiser, and I. Polosukhin, “Attention is all you need,” in Advances\ninNeuralInformationProcessingSystems,2017.\n[51] X. Glorot and Y. Bengio, “Understanding the difficulty of training\ndeep feedforward neural networks,” in Proceedings of the thirteenth\ninternationalconferenceonartificialintelligenceandstatistics. JMLR\nWorkshopandConferenceProceedings,2010,pp.249–256.\n[52] A. P. Dempster, N. M. Laird, and D. B. Rubin, “Maximum likelihood\nfrom incomplete data via the EM algorithm,” Journal of the royal\nstatistical society: series B (methodological), vol. 39, no. 1, pp. 1–22,\n1977.\n[53] W. Li, L. He, and Y. Cao, “Many-objective evolutionary algorithm\nwithreferencepoint-basedfuzzycorrelationentropyforenergy-efficient\njob shop scheduling with limited workers,” IEEE Transactions on\nCybernetics,vol.52,no.10,pp.10721–10734,2022.\n[54] S.AbdullahandM.Abdolrazzagh-Nezhad,“Fuzzyjob-shopscheduling\nproblems:Areview,”InformationSciences,vol.278,pp.380–407,2014.\n[55] D. P. Kingma, “Adam: A method for stochastic optimization,” arXiv\npreprintarXiv:1412.6980,2014.\n[56] M.Mitchell,Anintroductiontogeneticalgorithms. MITpress,1998.\n[57] J.KennedyandR.Eberhart,“Particleswarmoptimization,”inProceed-\nings of ICNN’95-international conference on neural networks, vol. 4.\nieee,1995,pp.1942–1948.\n[58] J.Ho,A.Jain,andP.Abbeel,“Denoisingdiffusionprobabilisticmodels,”\ninAdvancesinneuralinformationprocessingsystems,vol.33,2020,pp.\n6840–6851.\n[59] I. Goodfellow, J. Pouget-Abadie, M. Mirza, B. Xu, D. Warde-Farley,\nS.Ozair,A.Courville,andY.Bengio,“Generativeadversarialnets,”in\nAdvancesinneuralinformationprocessingsystems,vol.27,2014.\n[60] L. Dinh, D. Krueger, and Y. Bengio, “Nice: Non-linear independent\ncomponentsestimation,”arXivpreprintarXiv:1410.8516,2014.\n[61] J.Brammer,B.Lutz,andD.Neumann,“Permutationflowshopschedul-\ningwithmultiplelinesanddemandplansusingreinforcementlearning,”\nEuropeanJournalofOperationalResearch,vol.299,no.1,pp.75–86,\n2022.\n[62] Y.-J.Wang,G.-G.Wang,andL.Wang,“Atree-basedmultiobjectiveevo-\nlutionary algorithm for energy-efficient hybrid flow-shop scheduling,”\nIEEE Transactions on Evolutionary Computation, early access, 2024.\ndoi:10.1109/TEVC.2024.3411661.\n[63] P. Wu, Y. Wang, J. Cheng, and Y. Li, “A biobjective optimization for\nintegrated parallel machine scheduling and location problem: Mathe-\nmaticalmodelanditerativetwo-stageheuristic,”IEEETransactionson\nSystems,Man,andCybernetics:Systems,vol.53,no.11,pp.6897–6908,\n2023.",
+      "start_offset": 41489,
+      "end_offset": 54043
+    }
+  ],
+  "figures": [],
+  "tables": [],
+  "references": [
+    {
+      "id": "1",
+      "text": "Y. Yao, Q. Liu, L. Fu, X. Li, Y. Yu, L. Gao, and W. Zhou, “A novel\nearly,access,2024.doi:10.1109/TFUZZ.2024.3388003.\nmathematicalmodelfortheflexiblejob-shopschedulingproblemwith\nlimited automated guided vehicles,” IEEE Transactions on Automa- [6] R.Li,W.Gong,andC.Lu,“Self-adaptivemulti-objectiveevolutionary\ntion Science and Engineering, early, access, 2024. doi: 10.1109/TAS algorithmforflexiblejobshopschedulingwithfuzzyprocessingtime,”\nE.2024.3356255. Computers&IndustrialEngineering,vol.168,p.108099,2022.",
+      "parsed": {
+        "authors": [
+          "Y"
+        ],
+        "year": "2024",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "10.1109/TFUZZ.2024.mathematicalmodelfortheflexiblejob-shopschedulingproblemwith",
+        "url": ""
+      }
+    },
+    {
+      "id": "2",
+      "text": "Z. Tian, X. Jiang, G. Tian, Z. Li, and W. Liu, “Knowledge-based [7] J.Li,Y.Han,K.Gao,X.Xiao,andP.Duan,“Bi-populationbalancing\nlot-splitting optimization method for flexible job shops considering multi-objective algorithm for fuzzy flexible job shop with energy and\nenergy consumption,” IEEE Transactions on Automation Science and transportation,” IEEE Transactions on Automation Science and Engi-\nEngineering,vol.21,no.3,pp.4864–4785,2024. neering,vol.21,no.3,pp.4686–4702,2024.\n\nJOURNALOFLATEXCLASSFILES 9",
+      "parsed": {
+        "authors": [
+          "Z"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "8",
+      "text": "X. Zhang, S. Liu, Z. Zhao, and S. Yang, “A decomposition-based [27] Z. Pan, L. Wang, J. Wang, and J. Lu, “Deep reinforcement learning\nevolutionary algorithm with clustering and hierarchical estimation for based optimization algorithm for permutation flow-shop scheduling,”\nmulti-objective fuzzy flexible jobshop scheduling,” IEEE Transac- IEEE Transactions on Emerging Topics in Computational Intelligence,\ntions on Evolutionary Computation, early, access, 2024. doi: doi: vol.7,no.4,pp.983–994,2023.\n10.1109/TEVC.2024.3359120. [28] P.Tassel,M.Gebser,andK.Schekotihin,“Anend-to-endreinforcement",
+      "parsed": {
+        "authors": [
+          "X"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "doi:",
+        "url": ""
+      }
+    },
+    {
+      "id": "9",
+      "text": "D.Gao,G.-G.Wang,andW.Pedrycz,“Solvingfuzzyjob-shopschedul- learningapproachforjob-shopschedulingproblemsbasedonconstraint\ningproblemusingDEalgorithmimprovedbyaselectionmechanism,” programming,” in Proceedings of the International Conference on Au-\nIEEE Transactions on Fuzzy Systems, vol. 28, no. 12, pp. 3265–3275, tomatedPlanningandScheduling,vol.33,2023,pp.614–622.\n2020. [29] W. Song, X. Chen, Q. Li, and Z. Cao, “Flexible job-shop scheduling",
+      "parsed": {
+        "authors": [],
+        "year": "2023",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "10",
+      "text": "J.-q.Li,Z.-m.Liu,C.Li,andZ.-x.Zheng,“Improvedartificialimmune via graph neural network and deep reinforcement learning,” IEEE\nsystemalgorithmfortype-2fuzzyflexiblejobshopschedulingproblem,” Transactions on Industrial Informatics, vol. 19, no. 2, pp. 1600–1610,\nIEEE Transactions on Fuzzy Systems, vol. 29, no. 11, pp. 3234–3248, 2023.\n2021. [30] C.-L. Liu, C.-J. Tseng, T.-H. Huang, and J.-W. Wang, “Dynamic",
+      "parsed": {
+        "authors": [],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "11",
+      "text": "L.Sun,L.Lin,M.Gen,andH.Li,“Ahybridcooperativecoevolution parallel machine scheduling with deep q-network,” IEEE Transactions\nalgorithm for fuzzy flexible job shop scheduling,” IEEE Transactions onSystems,Man,andCybernetics:Systems,vol.53,no.11,pp.6792–\nonFuzzySystems,vol.27,no.5,pp.1008–1022,2019. 6804,2023.",
+      "parsed": {
+        "authors": [],
+        "year": "6804",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "12",
+      "text": "G.-G. Wang, D. Gao, and W. Pedrycz, “Solving multiobjective fuzzy [31] Z.Pan,L.Wang,C.Dong,andJ.-F.Chen,“Aknowledge-guidedend-\njob-shopschedulingproblembyahybridadaptivedifferentialevolution to-endoptimizationframeworkbasedonreinforcementlearningforflow\nalgorithm,”IEEETransactionsonIndustrialInformatics,vol.18,no.12, shopscheduling,”IEEETransactionsonIndustrialInformatics,vol.20,\npp.8519–8528,2022. no.2,pp.1853–1861,2024.",
+      "parsed": {
+        "authors": [],
+        "year": "2024",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "13",
+      "text": "Z. Pan, D. Lei, and L. Wang, “A bi-population evolutionary algorithm [32] R.Chen,W.Li,andH.Yang,“Adeepreinforcementlearningframework\nwith feedback for energy-efficient fuzzy flexible job shop scheduling,” based on an attention mechanism and disjunctive graph embedding\nIEEETransactionsonSystems,Man,andCybernetics:Systems,vol.52, forthejob-shopschedulingproblem,”IEEETransactionsonIndustrial\nno.8,pp.5295–5307,2022. Informatics,vol.19,no.2,pp.1322–1331,2023.",
+      "parsed": {
+        "authors": [
+          "Z"
+        ],
+        "year": "2023",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "14",
+      "text": "R. Li, W. Gong, C. Lu, and L. Wang, “A learning-based memetic [33] Y.Du,J.Li,C.Li,andP.Duan,“Areinforcementlearningapproachfor\nalgorithm for energy-efficient flexible job-shop scheduling with type-2 flexiblejobshopschedulingproblemwithcranetransportationandsetup\nfuzzy processing time,” IEEE Transactions on Evolutionary Computa- times,”IEEETransactionsonNeuralNetworksandLearningSystems,\ntion,vol.27,no.3,pp.610–620,2023. vol.35,no.4,pp.5695–5709,2024.",
+      "parsed": {
+        "authors": [
+          "R"
+        ],
+        "year": "2024",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "15",
+      "text": "F.Zhao,S.Di,andL.Wang,“AhyperheuristicwithQ-learningforthe",
+      "parsed": {
+        "authors": [],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "34",
+      "text": "K. Lei, P. Guo, Y. Wang, J. Zhang, X. Meng, and L. Qian, “Large-\nmultiobjectiveenergy-efficientdistributedblockingflowshopscheduling\nscaledynamicschedulingforflexiblejob-shopwithrandomarrivalsof\nproblem,”IEEETransactionsonCybernetics,vol.53,no.5,pp.3337–\nnewjobsbyhierarchicalreinforcementlearning,”IEEETransactionson\n3350,2023. IndustrialInformatics,vol.20,no.1,pp.1007–1018,2024.",
+      "parsed": {
+        "authors": [
+          "K"
+        ],
+        "year": "2024",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "16",
+      "text": "L. Deng, Y. Di, and L. Wang, “A reinforcement-learning-based 3-D",
+      "parsed": {
+        "authors": [
+          "L"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "35",
+      "text": "R.Li,W.Gong,L.Wang,C.Lu,Z.Pan,andX.Zhuang,“Doubledqn-\nestimation of distribution algorithm for fuzzy distributed hybrid flow-\nbasedcoevolutionforgreendistributedheterogeneoushybridflowshop\nshop scheduling considering on-time-delivery,” IEEE Transactions on\nscheduling with multiple priorities of jobs,” IEEE Transactions on\nCybernetics,vol.54,no.2,pp.1024–1036,2024.\nAutomation Science and Engineering, vol. 21, no. 4, pp. 6550–6562,",
+      "parsed": {
+        "authors": [],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "17",
+      "text": "R. Li, W. Gong, L. Wang, C. Lu, and C. Dong, “Co-evolution with\n2024.\ndeepreinforcementlearningforenergy-awaredistributedheterogeneous",
+      "parsed": {
+        "authors": [
+          "R"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "36",
+      "text": "A.Liu,P.B.Luh,K.Sun,M.A.Bragin,andB.Yan,“Integratingma-\nflexiblejobshopscheduling,”IEEETransactionsonSystems,Man,and\nchinelearningandmathematicaloptimizationforjobshopscheduling,”\nCybernetics:Systems,vol.54,no.1,pp.201–211,2024.\nIEEE Transactions on Automation Science and Engineering, vol. 21,",
+      "parsed": {
+        "authors": [],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "18",
+      "text": "Z.Shao,W.Shao,J.Chen,andD.Pi,“MQL-MM:Ameta-Q-learning-\nno.3,pp.4829–4850,2024.\nbasedmulti-objectivemetaheuristicforenergy-efficientdistributedfuzzy",
+      "parsed": {
+        "authors": [],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "37",
+      "text": "C.-L. Liu and T.-H. Huang, “Dynamic job-shop scheduling problems\nhybrid blocking flow-shop scheduling problem,” IEEE Transactions\nusing graph neural network and deep reinforcement learning,” IEEE\non Evolutionary Computation, early, access, 2024. 10.1109/TEVC.202\nTransactions on Systems, Man, and Cybernetics: Systems, vol. 53,\n4.3399314.\nno.11,pp.6836–6848,2023.",
+      "parsed": {
+        "authors": [],
+        "year": "2023",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "19",
+      "text": "F. Zhao, T. Jiang, and L. Wang, “A reinforcement learning driven",
+      "parsed": {
+        "authors": [
+          "F"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "38",
+      "text": "S.Luo,L.Zhang,andY.Fan,“Real-timeschedulingfordynamicpartial-\ncooperativemeta-heuristicalgorithmforenergy-efficientdistributedno-\nno-waitmultiobjectiveflexiblejobshopbydeepreinforcementlearning,”\nwaitflow-shopschedulingwithsequence-dependentsetuptime,”IEEE\nIEEE Transactions on Automation Science and Engineering, vol. 19,\nTransactions on Industrial Informatics, vol. 19, no. 7, pp. 8427–8440,\nno.4,pp.3020–3038,2022.\n2023.",
+      "parsed": {
+        "authors": [],
+        "year": "2023",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "39",
+      "text": "G.-Y. Zhu, C. Ding, and W.-B. Zhang, “Optimal foraging algorithm",
+      "parsed": {
+        "authors": [],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "20",
+      "text": "Z.Pan,L.Wang,J.Zheng,J.-F.Chen,andX.Wang,“Alearning-based\nthat incorporates fuzzy relative entropy for solving many-objective\nmultipopulationevolutionaryoptimizationforflexiblejobshopschedul-\npermutation flow shop scheduling problems,” IEEE Transactions on\ningproblemwithfinitetransportationresources,”IEEETransactionson\nFuzzySystems,vol.28,no.11,pp.2738–2746,2020.\nEvolutionaryComputation,vol.27,no.6,pp.1590–1603,2023.",
+      "parsed": {
+        "authors": [],
+        "year": "2023",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "40",
+      "text": "F.-T. Lin, “Fuzzy job-shop scheduling based on ranking level (/spl",
+      "parsed": {
+        "authors": [],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "21",
+      "text": "H. Li, K. Gao, P.-Y. Duan, J.-Q. Li, and L. Zhang, “An improved\nlambda/,1)interval-valuedfuzzynumbers,”IEEETransactionsonFuzzy\nartificial bee colony algorithm with q-learning for solving permutation\nflow-shop scheduling problems,” IEEE Transactions on Systems, Man,\nSystems,vol.10,no.4,pp.510–522,2002.\nandCybernetics:Systems,vol.53,no.5,pp.2684–2693,2023. [41] P. Fortemps, “Jobshop scheduling with imprecise durations: a fuzzy",
+      "parsed": {
+        "authors": [
+          "H"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "22",
+      "text": "C. Lin, Z. Cao, and M. Zhou, “Learning-based grey wolf optimizer approach,”IEEETransactionsonFuzzySystems,vol.5,no.4,pp.557–\nfor stochastic flexible job shop scheduling,” IEEE Transactions on 569,1997.\nAutomation Science and Engineering, vol. 19, no. 4, pp. 3659–3671, [42] H.T.Nguyen,C.Walker,andE.A.Walker,Afirstcourseinfuzzylogic.\n2022. ChapmanandHall/CRC,2018.",
+      "parsed": {
+        "authors": [
+          "C"
+        ],
+        "year": "2018",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "23",
+      "text": "C.Zhang,W.Song,Z.Cao,J.Zhang,P.S.Tan,andX.Chi,“Learning [43] D. Lei, “Fuzzy job shop scheduling problem with availability con-\ntodispatchforjobshopschedulingviadeepreinforcementlearning,”in straints,”Computers&IndustrialEngineering,vol.58,no.4,pp.610–\nAdvances in neural information processing systems, vol. 33, 2020, pp. 617,2010.\n1621–1632. [44] M. Sakawa and T. Mori, “An efficient genetic algorithm for job-shop",
+      "parsed": {
+        "authors": [],
+        "year": "2020",
+        "title": "pp",
+        "journal": "617",
+        "volume": "617",
+        "issue": "1621",
+        "pages": "44",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "24",
+      "text": "J. Kotary, F. Fioretto, and P. Van Hentenryck, “Fast approximations scheduling problems with fuzzy processing time and fuzzy duedate,”\nfor job shop scheduling: A lagrangian dual deep learning method,” in Computers&industrialengineering,vol.36,no.2,pp.325–341,1999.\nProceedingsoftheAAAIConferenceonArtificialIntelligence,vol.36, [45] S. Heilpern, “The expected value of a fuzzy number,” Fuzzy sets and\nno.7,2022,pp.7239–7246. Systems,vol.47,no.1,pp.81–86,1992.",
+      "parsed": {
+        "authors": [
+          "J"
+        ],
+        "year": "2022",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "25",
+      "text": "A.Corsini,A.Porrello,S.Calderara,andM.Dell’Amico,“Self-labeling [46] J. J. Palacios, I. Gonza´lez-Rodr´ıguez, C. R. Vela, and J. Puente, “Co-\nthe job shop scheduling problem,” arXiv preprint arXiv:2401.11849, evolutionarymakespanoptimisationthroughdifferentrankingmethods\n2024. forthefuzzyflexiblejobshop,”FuzzySetsandSystems,vol.278,pp.",
+      "parsed": {
+        "authors": [],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "26",
+      "text": "R. Wang, G. Wang, J. Sun, F. Deng, and J. Chen, “Flexible job shop 81–97,2015.\nscheduling via dual attention network-based reinforcement learning,” [47] E. B. Tirkolaee, A. Goli, and G.-W. Weber, “Fuzzy mathematical\nIEEETransactionsonNeuralNetworksandLearningSystems,vol.35, programmingandself-adaptiveartificialfishswarmalgorithmforjust-\nno.3,pp.3091–3102,2024. in-time energy-aware flow shop scheduling problem with outsourcing\n\nJOURNALOFLATEXCLASSFILES 10\noption,”IEEEtransactionsonfuzzysystems,vol.28,no.11,pp.2772–\n2783,2020.",
+      "parsed": {
+        "authors": [
+          "R"
+        ],
+        "year": "2020",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "48",
+      "text": "P.J.VanLaarhoven,E.H.Aarts,andJ.K.Lenstra,“Jobshopscheduling\nbysimulatedannealing,”Operationsresearch,vol.40,no.1,pp.113–\n125,1992.",
+      "parsed": {
+        "authors": [],
+        "year": "1992",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "49",
+      "text": "S. Brody, U. Alon, and E. Yahav, “How attentive are graph attention\nnetworks?”arXivpreprintarXiv:2105.14491,2021.",
+      "parsed": {
+        "authors": [
+          "S"
+        ],
+        "year": "2021",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "50",
+      "text": "A.Vaswani,N.Shazeer,N.Parmar,J.Uszkoreit,L.Jones,A.N.Gomez,\nL. Kaiser, and I. Polosukhin, “Attention is all you need,” in Advances\ninNeuralInformationProcessingSystems,2017.",
+      "parsed": {
+        "authors": [],
+        "year": "2017",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "51",
+      "text": "X. Glorot and Y. Bengio, “Understanding the difficulty of training\ndeep feedforward neural networks,” in Proceedings of the thirteenth\ninternationalconferenceonartificialintelligenceandstatistics. JMLR\nWorkshopandConferenceProceedings,2010,pp.249–256.",
+      "parsed": {
+        "authors": [
+          "X"
+        ],
+        "year": "2010",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "52",
+      "text": "A. P. Dempster, N. M. Laird, and D. B. Rubin, “Maximum likelihood\nfrom incomplete data via the EM algorithm,” Journal of the royal\nstatistical society: series B (methodological), vol. 39, no. 1, pp. 1–22,\n1977.",
+      "parsed": {
+        "authors": [
+          "A"
+        ],
+        "year": "1977",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "53",
+      "text": "W. Li, L. He, and Y. Cao, “Many-objective evolutionary algorithm\nwithreferencepoint-basedfuzzycorrelationentropyforenergy-efficient\njob shop scheduling with limited workers,” IEEE Transactions on\nCybernetics,vol.52,no.10,pp.10721–10734,2022.",
+      "parsed": {
+        "authors": [
+          "W"
+        ],
+        "year": "2022",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "54",
+      "text": "S.AbdullahandM.Abdolrazzagh-Nezhad,“Fuzzyjob-shopscheduling\nproblems:Areview,”InformationSciences,vol.278,pp.380–407,2014.",
+      "parsed": {
+        "authors": [],
+        "year": "2014",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "55",
+      "text": "D. P. Kingma, “Adam: A method for stochastic optimization,” arXiv\npreprintarXiv:1412.6980,2014.",
+      "parsed": {
+        "authors": [
+          "D"
+        ],
+        "year": "2014",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "56",
+      "text": "M.Mitchell,Anintroductiontogeneticalgorithms. MITpress,1998.",
+      "parsed": {
+        "authors": [],
+        "year": "1998",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "57",
+      "text": "J.KennedyandR.Eberhart,“Particleswarmoptimization,”inProceed-\nings of ICNN’95-international conference on neural networks, vol. 4.\nieee,1995,pp.1942–1948.",
+      "parsed": {
+        "authors": [],
+        "year": "1995",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "58",
+      "text": "J.Ho,A.Jain,andP.Abbeel,“Denoisingdiffusionprobabilisticmodels,”\ninAdvancesinneuralinformationprocessingsystems,vol.33,2020,pp.\n6840–6851.",
+      "parsed": {
+        "authors": [],
+        "year": "2020",
+        "title": "pp",
+        "journal": "6840–6851.",
+        "volume": "6840",
+        "issue": "685",
+        "pages": "1",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "59",
+      "text": "I. Goodfellow, J. Pouget-Abadie, M. Mirza, B. Xu, D. Warde-Farley,\nS.Ozair,A.Courville,andY.Bengio,“Generativeadversarialnets,”in\nAdvancesinneuralinformationprocessingsystems,vol.27,2014.",
+      "parsed": {
+        "authors": [
+          "I"
+        ],
+        "year": "2014",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "60",
+      "text": "L. Dinh, D. Krueger, and Y. Bengio, “Nice: Non-linear independent\ncomponentsestimation,”arXivpreprintarXiv:1410.8516,2014.",
+      "parsed": {
+        "authors": [
+          "L"
+        ],
+        "year": "2014",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "61",
+      "text": "J.Brammer,B.Lutz,andD.Neumann,“Permutationflowshopschedul-\ningwithmultiplelinesanddemandplansusingreinforcementlearning,”\nEuropeanJournalofOperationalResearch,vol.299,no.1,pp.75–86,\n2022.",
+      "parsed": {
+        "authors": [],
+        "year": "2022",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "62",
+      "text": "Y.-J.Wang,G.-G.Wang,andL.Wang,“Atree-basedmultiobjectiveevo-\nlutionary algorithm for energy-efficient hybrid flow-shop scheduling,”\nIEEE Transactions on Evolutionary Computation, early access, 2024.\ndoi:10.1109/TEVC.2024.3411661.",
+      "parsed": {
+        "authors": [],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "10.1109/TEVC.2024.3411661",
+        "url": ""
+      }
+    },
+    {
+      "id": "63",
+      "text": "P. Wu, Y. Wang, J. Cheng, and Y. Li, “A biobjective optimization for\nintegrated parallel machine scheduling and location problem: Mathe-\nmaticalmodelanditerativetwo-stageheuristic,”IEEETransactionson\nSystems,Man,andCybernetics:Systems,vol.53,no.11,pp.6897–6908,\n2023.",
+      "parsed": {
+        "authors": [
+          "P"
+        ],
+        "year": "2023",
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    }
+  ],
+  "citations": [
+    {
+      "text": "[1]",
+      "ref_ids": [
+        "1"
+      ],
+      "position": 1934,
+      "context": "s based on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in th"
+    },
+    {
+      "text": "[3]",
+      "ref_ids": [
+        "3"
+      ],
+      "position": 1938,
+      "context": "sed on these generated schemes (M-step). This [1]–[3]. The JSSP describes the processing time in the fo"
+    },
+    {
+      "text": "[4]",
+      "ref_ids": [
+        "4"
+      ],
+      "position": 2362,
+      "context": "te the superior capability of EMARM in addressing [4] and machine flexibility [5], often preclude the a"
+    },
+    {
+      "text": "[5]",
+      "ref_ids": [
+        "5"
+      ],
+      "position": 2390,
+      "context": "f EMARM in addressing [4] and machine flexibility [5], often preclude the accurate\ntheFJSSP,showcasingi"
+    },
+    {
+      "text": "[6]",
+      "ref_ids": [
+        "6"
+      ],
+      "position": 2683,
+      "context": "h\nfuzzynumbershasemergedanddrawnextensiveattention[6].\nIndexTerms—Autoregressivemodel,expectation-maxim"
+    },
+    {
+      "text": "[7]",
+      "ref_ids": [
+        "7"
+      ],
+      "position": 2922,
+      "context": "ial optimization. heuristic algorithms. Li et al. [7] contributed to the field by\ndeveloping a bi-popul"
+    },
+    {
+      "text": "[8]",
+      "ref_ids": [
+        "8"
+      ],
+      "position": 3320,
+      "context": "Job set\npabilities of the algorithm. Zhang et al. [8] proposed a multi-\nM Machine set\nobjectiveevolutio"
+    },
+    {
+      "text": "[9]",
+      "ref_ids": [
+        "9"
+      ],
+      "position": 3664,
+      "context": "erallconvergence.\nm Number of machines\nGao et al. [9] crafted a differential evolution algorithm with a"
+    },
+    {
+      "text": "[10]",
+      "ref_ids": [
+        "10"
+      ],
+      "position": 3821,
+      "context": "ancing the solution of FJSSP.\nVariables\nLi et al. [10] enhanced an artificial immune system algorithm\nJ "
+    },
+    {
+      "text": "[11]",
+      "ref_ids": [
+        "11"
+      ],
+      "position": 4080,
+      "context": "boosting its exploration capabilities. Sun et al. [11]\ntion i\ncreated an effective hybrid cooperative co"
+    },
+    {
+      "text": "[12]",
+      "ref_ids": [
+        "12"
+      ],
+      "position": 4455,
+      "context": "ng the convergence ability.\ni belongs\nWang et al. [12] utilized fuzzy relative entropy to convert\na mult"
+    },
+    {
+      "text": "[13]",
+      "ref_ids": [
+        "13"
+      ],
+      "position": 4782,
+      "context": "yofChina.Emails:wangyi-\nto address it. Pan et al. [13] focused on the energy-efficient\njian@std.uestc.ed"
+    },
+    {
+      "text": "[28]",
+      "ref_ids": [
+        "28"
+      ],
+      "position": 5150,
+      "context": "ment mutation flow shop scheduling. Tassel et al. [28] presented an\nindexandfuzzytotalenergyconsumptiona"
+    },
+    {
+      "text": "[29]",
+      "ref_ids": [
+        "29"
+      ],
+      "position": 5407,
+      "context": " potential of learning approaches, several et al. [29] contributed to the flexible JSSP with a new deep\n"
+    },
+    {
+      "text": "[14]",
+      "ref_ids": [
+        "14"
+      ],
+      "position": 5614,
+      "context": "ning high-quality\nyieldingpromisingresults.Lietal.[14]developedalearning- production dispatching rules i"
+    },
+    {
+      "text": "[30]",
+      "ref_ids": [
+        "30"
+      ],
+      "position": 5763,
+      "context": "e vector memetic algorithm to address the mul- al.[30]formulatedthedynamicparallelmachineschedulingas\nti"
+    },
+    {
+      "text": "[15]",
+      "ref_ids": [
+        "15"
+      ],
+      "position": 5960,
+      "context": "teunexpectedevents,\nprocessing times. Zhao et al. [15] introduced a hyperheuristic inspiring the develop"
+    },
+    {
+      "text": "[31]",
+      "ref_ids": [
+        "31"
+      ],
+      "position": 6227,
+      "context": "tedblockingflowshopschedulingproblem.Dengetal. al.[31]proposedaknowledge-guidedend-to-endoptimization\n[1"
+    },
+    {
+      "text": "[16]",
+      "ref_ids": [
+        "16"
+      ],
+      "position": 6279,
+      "context": "1]proposedaknowledge-guidedend-to-endoptimization\n[16]presenteda3-Destimationofdistributionalgorithminte"
+    },
+    {
+      "text": "[32]",
+      "ref_ids": [
+        "32"
+      ],
+      "position": 6498,
+      "context": "on tion flow shop scheduling problem. Chen et al. [32] presented\nof makespan and total energy consumptio"
+    },
+    {
+      "text": "[17]",
+      "ref_ids": [
+        "17"
+      ],
+      "position": 6888,
+      "context": "proach leveraged a sequence-\ndirection. Li et al. [17] designed a co-evolutionary algorithm tosequence m"
+    },
+    {
+      "text": "[33]",
+      "ref_ids": [
+        "33"
+      ],
+      "position": 7078,
+      "context": "energy-aware distributed with the JSSP. Du et al. [33] developed a deep Q-network to\nheterogeneous flexi"
+    },
+    {
+      "text": "[34]",
+      "ref_ids": [
+        "34"
+      ],
+      "position": 7334,
+      "context": "eduling prob- transportationandsetuptimes.Leietal.[34]proposedanend-\nlem, Shao et al. [18] developed a m"
+    },
+    {
+      "text": "[18]",
+      "ref_ids": [
+        "18"
+      ],
+      "position": 7370,
+      "context": "times.Leietal.[34]proposedanend-\nlem, Shao et al. [18] developed a meta-Q-learning-based to-end hierarch"
+    },
+    {
+      "text": "[35]",
+      "ref_ids": [
+        "35"
+      ],
+      "position": 7675,
+      "context": "ptimization process. Zhao et operation. Li et al. [35] tackled the distributed heterogeneous\nal. [19] ta"
+    },
+    {
+      "text": "[19]",
+      "ref_ids": [
+        "19"
+      ],
+      "position": 7722,
+      "context": "l. [35] tackled the distributed heterogeneous\nal. [19] tackled the energy-efficient distributed no-wait "
+    },
+    {
+      "text": "[36]",
+      "ref_ids": [
+        "36"
+      ],
+      "position": 7939,
+      "context": "on of based co-evolutionary algorithm. Liu et al. [36] integrated a\nmakespanandtotalenergyconsumption,an"
+    },
+    {
+      "text": "[20]",
+      "ref_ids": [
+        "20"
+      ],
+      "position": 8192,
+      "context": "surrogate Lagrangian relaxation to predict\net al. [20] addressed the flexible JSSP complicated by finite"
+    },
+    {
+      "text": "[37]",
+      "ref_ids": [
+        "37"
+      ],
+      "position": 8295,
+      "context": "e satisfactory solutions for the JSSP. Liu et al. [37] combined\ntransportationresourceswithalearning-bas"
+    },
+    {
+      "text": "[38]",
+      "ref_ids": [
+        "38"
+      ],
+      "position": 8513,
+      "context": "eaturing a reinforcement dynamic JSSP. Luo et al. [38] developed a hierarchical multi-\nlearning-based ma"
+    },
+    {
+      "text": "[21]",
+      "ref_ids": [
+        "21"
+      ],
+      "position": 8603,
+      "context": "rning-based mating selection mechanism. Li et al. [21] agentproximalpolicyoptimizationformanagingthedyna"
+    },
+    {
+      "text": "[22]",
+      "ref_ids": [
+        "22"
+      ],
+      "position": 8905,
+      "context": "ased on deterministic environments, and there has\n[22] proposed a learning-based grey wolf optimizer for"
+    },
+    {
+      "text": "[23]",
+      "ref_ids": [
+        "23"
+      ],
+      "position": 9861,
+      "context": "ddress it. This\nscheduling problems. Zhang et al. [23] developed a deep\napproach addresses the major cha"
+    },
+    {
+      "text": "[24]",
+      "ref_ids": [
+        "24"
+      ],
+      "position": 10318,
+      "context": "twithahand-crafted\nproblem-solving. Kotary et al. [24] employed a deep learning\nprior and employ a novel"
+    },
+    {
+      "text": "[25]",
+      "ref_ids": [
+        "25"
+      ],
+      "position": 10660,
+      "context": "sultsindicatethatitholds\nstraints. Corsini et al. [25] explored a self-supervised training\nan advantage "
+    },
+    {
+      "text": "[26]",
+      "ref_ids": [
+        "26"
+      ],
+      "position": 11015,
+      "context": "mainder of this paper is organized as follows. In\n[26] introduced a pioneering end-to-end learning frame"
+    },
+    {
+      "text": "[27]",
+      "ref_ids": [
+        "27"
+      ],
+      "position": 11419,
+      "context": "proposed\nlearning for decision-making. Pan et al. [27] proposed an EMARM. Section IV presents the experi"
+    },
+    {
+      "text": "[46]",
+      "ref_ids": [
+        "46"
+      ],
+      "position": 12114,
+      "context": "ibed in this section.\nfollowing comparison method [46]: For any TFN, we first\nInmanufacturingenvironment"
+    },
+    {
+      "text": "[39]",
+      "ref_ids": [
+        "39"
+      ],
+      "position": 12297,
+      "context": "etovariablessuchasthediverseskilllevelsof\nworkers [39]. While exact durations may not be predictable, Z("
+    },
+    {
+      "text": "[0,1]",
+      "ref_ids": [
+        "0",
+        "1"
+      ],
+      "position": 12464,
+      "context": "a to provide estimated\nwhereω isaweightrangingfrom[0,1].Vβ(A˜)representsthe\ndurations [40]. To address th"
+    },
+    {
+      "text": "[40]",
+      "ref_ids": [
+        "40"
+      ],
+      "position": 12500,
+      "context": "ghtrangingfrom[0,1].Vβ(A˜)representsthe\ndurations [40]. To address this unpredictability, a prevalent\nex"
+    },
+    {
+      "text": "[41]",
+      "ref_ids": [
+        "41"
+      ],
+      "position": 12781,
+      "context": "min(A˜), (6)\nnumber becomes an appropriate choice [41].\nAssume S is a fuzzy set defined on R, with a mem"
+    },
+    {
+      "text": "[0,1]",
+      "ref_ids": [
+        "0",
+        "1"
+      ],
+      "position": 12868,
+      "context": " on R, with a membership where\nfunction µ S : R → [0,1]. The α-cut of S is defined as S α = Vmax(A˜)=a +("
+    },
+    {
+      "text": "[0,1]",
+      "ref_ids": [
+        "0",
+        "1"
+      ],
+      "position": 12971,
+      "context": "+(cid:90) a3 µ (x)dx, (7)\n{x ∈ R : µ (x) ≥ α},α ∈ [0,1], and the support is S . A 2 A˜\nS 0 a2\nfuzzy inter"
+    },
+    {
+      "text": "[16]",
+      "ref_ids": [
+        "16"
+      ],
+      "position": 13274,
+      "context": "˜ =[n ,n¯ ]. a1\nThe triangular fuzzy number (TFN) [16] isα frequenα tlyα uti- andβ isaweightrangingfrom["
+    },
+    {
+      "text": "[0,1]",
+      "ref_ids": [
+        "0",
+        "1"
+      ],
+      "position": 13327,
+      "context": "] isα frequenα tlyα uti- andβ isaweightrangingfrom[0,1].S(A˜)takesintoaccount\nlized in fuzzy scheduling p"
+    },
+    {
+      "text": "[42]",
+      "ref_ids": [
+        "42"
+      ],
+      "position": 14309,
+      "context": "d as follows:\n1. Addition Operation. According to [42], the sum of A˜\nB. FJSSP\nand B˜ is calculated as f"
+    },
+    {
+      "text": "[43]",
+      "ref_ids": [
+        "43"
+      ],
+      "position": 14629,
+      "context": " operations within\n2. Max operation. According to [43], the max operation\nset O. Each operation i ∈ O is"
+    },
+    {
+      "text": "[44]",
+      "ref_ids": [
+        "44"
+      ],
+      "position": 15284,
+      "context": " scheduling schemes.\nranking method is as follows [44]: Let c 1(A˜) = a1+2a 42+a3,\nThe objective of FJSS"
+    },
+    {
+      "text": "[45]",
+      "ref_ids": [
+        "45"
+      ],
+      "position": 16145,
+      "context": "to assimilate the intricate con-\nusedrankingmethod[45]involvesdefuzzifyingfuzzynumbers straint informati"
+    },
+    {
+      "text": "[47]",
+      "ref_ids": [
+        "47"
+      ],
+      "position": 16429,
+      "context": "relationship between the TFNs, as shown in models [47] typically utilized in heuristic algorithms. Inste"
+    },
+    {
+      "text": "[48]",
+      "ref_ids": [
+        "48"
+      ],
+      "position": 16541,
+      "context": "following formula: we adopt the disjunctive graph [48] to effectively model the\nFJSSP. This methodologic"
+    },
+    {
+      "text": "[49]",
+      "ref_ids": [
+        "49"
+      ],
+      "position": 25283,
+      "context": "average\nA two-layer graph attention network (GAT) [49] is em- completiontimeofalljobsincuot r, ri entsta"
+    },
+    {
+      "text": "[50]",
+      "ref_ids": [
+        "50"
+      ],
+      "position": 26415,
+      "context": "s the ReLU denotes the multi-head attention layer [50], and s represents\ni\nactivationfunction,D =A∪E ist"
+    },
+    {
+      "text": "[9]",
+      "ref_ids": [
+        "9"
+      ],
+      "position": 28015,
+      "context": "Given the NP-hard nature of the FJSSP\n12: end for\n[9], the optimal scheduling scheme π∗ shares the same"
+    },
+    {
+      "text": "[51]",
+      "ref_ids": [
+        "51"
+      ],
+      "position": 28958,
+      "context": "stages.\nwhereFNNdenotesthefeedforwardneuralnetwork[51].Sub-\nsequently,thesez\ni\n∈Raretransformedintoproba"
+    },
+    {
+      "text": "[53]",
+      "ref_ids": [
+        "53"
+      ],
+      "position": 29963,
+      "context": "te 30000 instances as the training set\nbyfollowing[53].Thesize(m×n)ofthetrainingsetincludes\n10×10, 15×10"
+    },
+    {
+      "text": "[54]",
+      "ref_ids": [
+        "54"
+      ],
+      "position": 30591,
+      "context": "ring π∗ itself relies on select 9 benchmarks from [54], and generate 2 benchmarks\nhaving a well-tuned θ."
+    },
+    {
+      "text": "[54]",
+      "ref_ids": [
+        "54"
+      ],
+      "position": 30689,
+      "context": "ned θ. (20 × 20, 30 × 20) following the method in [54], with each\nTheEMalgorithm[52]providesasolutiontot"
+    },
+    {
+      "text": "[52]",
+      "ref_ids": [
+        "52"
+      ],
+      "position": 30719,
+      "context": "owing the method in [54], with each\nTheEMalgorithm[52]providesasolutiontothisdilemma. benchmark consisti"
+    },
+    {
+      "text": "[55]",
+      "ref_ids": [
+        "55"
+      ],
+      "position": 33237,
+      "context": "ctivation function. We utilize the Adam optimizer [55] for runningtimeastheexperimentalresult.Asevidence"
+    },
+    {
+      "text": "[11]",
+      "ref_ids": [
+        "11"
+      ],
+      "position": 33817,
+      "context": "sed to 512 during the testing stage. According to [11], eter learning. In contrast, evolutionary algorit"
+    },
+    {
+      "text": "[9]",
+      "ref_ids": [
+        "9"
+      ],
+      "position": 34215,
+      "context": "s\ndirect solution methods.\nIn this section, NSODE [9], HADE [12], genetic algorithm Comparison experime"
+    },
+    {
+      "text": "[12]",
+      "ref_ids": [
+        "12"
+      ],
+      "position": 34225,
+      "context": "olution methods.\nIn this section, NSODE [9], HADE [12], genetic algorithm Comparison experiments for fuz"
+    },
+    {
+      "text": "[56]",
+      "ref_ids": [
+        "56"
+      ],
+      "position": 34310,
+      "context": "experiments for fuzzy makespan are presented\n(GA) [56], and particle swarm optimization (PSO) [57] are b"
+    },
+    {
+      "text": "[57]",
+      "ref_ids": [
+        "57"
+      ],
+      "position": 34354,
+      "context": "\n(GA) [56], and particle swarm optimization (PSO) [57] are by Table III, which shows that EMARM outperfo"
+    },
+    {
+      "text": "[58]",
+      "ref_ids": [
+        "58"
+      ],
+      "position": 40482,
+      "context": "5763,6131)\nThisincludesmodelssuchasdiffusionmodels[58],generative [3] F.Zhang,Y.Mei,S.Nguyen,andM.Zhang,"
+    },
+    {
+      "text": "[3]",
+      "ref_ids": [
+        "3"
+      ],
+      "position": 40498,
+      "context": "ncludesmodelssuchasdiffusionmodels[58],generative [3] F.Zhang,Y.Mei,S.Nguyen,andM.Zhang,“Multitaskmulti"
+    },
+    {
+      "text": "[59]",
+      "ref_ids": [
+        "59"
+      ],
+      "position": 40582,
+      "context": "ang,“Multitaskmultiobjective\nadversarial networks [59], and flow-based models [60]. On geneticprogrammin"
+    },
+    {
+      "text": "[60]",
+      "ref_ids": [
+        "60"
+      ],
+      "position": 40610,
+      "context": "\nadversarial networks [59], and flow-based models [60]. On geneticprogrammingforautomatedschedulingheuri"
+    },
+    {
+      "text": "[4]",
+      "ref_ids": [
+        "4"
+      ],
+      "position": 40893,
+      "context": "paper to solve other scheduling problems, such as\n[4] L.He,R.Chiong,W.Li,S.Dhakal,Y.Cao,andY.Zhang,“Mul"
+    },
+    {
+      "text": "[61]",
+      "ref_ids": [
+        "61"
+      ],
+      "position": 41000,
+      "context": "jec-\nthe permutation flow shop scheduling problem [61], hybrid tiveoptimizationofenergy-efficientjob-sho"
+    },
+    {
+      "text": "[62]",
+      "ref_ids": [
+        "62"
+      ],
+      "position": 41106,
+      "context": "chedulingwithdynamic\nflow shop scheduling problem [62], and parallel machine reference point-based fuzzy"
+    },
+    {
+      "text": "[63]",
+      "ref_ids": [
+        "63"
+      ],
+      "position": 41271,
+      "context": "s,vol.18,no.1,pp.600–610,2022.\nscheduling problem [63].\n[5] M. Huang, S. Huang, B. Du, J. Guo, and Y. Li"
+    },
+    {
+      "text": "[5]",
+      "ref_ids": [
+        "5"
+      ],
+      "position": 41277,
+      "context": "18,no.1,pp.600–610,2022.\nscheduling problem [63].\n[5] M. Huang, S. Huang, B. Du, J. Guo, and Y. Li, “Fu"
+    },
+    {
+      "text": "[1]",
+      "ref_ids": [
+        "1"
+      ],
+      "position": 41550,
+      "context": "fuzzytraveltimes,”IEEETransactionsonFuzzySystems,\n[1] Y. Yao, Q. Liu, L. Fu, X. Li, Y. Yu, L. Gao, and "
+    },
+    {
+      "text": "[6]",
+      "ref_ids": [
+        "6"
+      ],
+      "position": 41797,
+      "context": "ed guided vehicles,” IEEE Transactions on Automa- [6] R.Li,W.Gong,andC.Lu,“Self-adaptivemulti-objective"
+    },
+    {
+      "text": "[2]",
+      "ref_ids": [
+        "2"
+      ],
+      "position": 42065,
+      "context": "ters&IndustrialEngineering,vol.168,p.108099,2022.\n[2] Z. Tian, X. Jiang, G. Tian, Z. Li, and W. Liu, “K"
+    },
+    {
+      "text": "[7]",
+      "ref_ids": [
+        "7"
+      ],
+      "position": 42133,
+      "context": "ang, G. Tian, Z. Li, and W. Liu, “Knowledge-based [7] J.Li,Y.Han,K.Gao,X.Xiao,andP.Duan,“Bi-populationb"
+    },
+    {
+      "text": "[8]",
+      "ref_ids": [
+        "8"
+      ],
+      "position": 42576,
+      "context": ".3,pp.4686–4702,2024.\n\nJOURNALOFLATEXCLASSFILES 9\n[8] X. Zhang, S. Liu, Z. Zhao, and S. Yang, “A decomp"
+    },
+    {
+      "text": "[27]",
+      "ref_ids": [
+        "27"
+      ],
+      "position": 42643,
+      "context": "Liu, Z. Zhao, and S. Yang, “A decomposition-based [27] Z. Pan, L. Wang, J. Wang, and J. Lu, “Deep reinfo"
+    },
+    {
+      "text": "[28]",
+      "ref_ids": [
+        "28"
+      ],
+      "position": 43108,
+      "context": ",no.4,pp.983–994,2023.\n10.1109/TEVC.2024.3359120. [28] P.Tassel,M.Gebser,andK.Schekotihin,“Anend-to-endr"
+    },
+    {
+      "text": "[9]",
+      "ref_ids": [
+        "9"
+      ],
+      "position": 43175,
+      "context": "ebser,andK.Schekotihin,“Anend-to-endreinforcement\n[9] D.Gao,G.-G.Wang,andW.Pedrycz,“Solvingfuzzyjob-sho"
+    },
+    {
+      "text": "[29]",
+      "ref_ids": [
+        "29"
+      ],
+      "position": 43554,
+      "context": "anningandScheduling,vol.33,2023,pp.614–622.\n2020. [29] W. Song, X. Chen, Q. Li, and Z. Cao, “Flexible jo"
+    },
+    {
+      "text": "[10]",
+      "ref_ids": [
+        "10"
+      ],
+      "position": 43626,
+      "context": " Q. Li, and Z. Cao, “Flexible job-shop scheduling\n[10] J.-q.Li,Z.-m.Liu,C.Li,andZ.-x.Zheng,“Improvedarti"
+    },
+    {
+      "text": "[30]",
+      "ref_ids": [
+        "30"
+      ],
+      "position": 43972,
+      "context": "tems, vol. 29, no. 11, pp. 3234–3248, 2023.\n2021. [30] C.-L. Liu, C.-J. Tseng, T.-H. Huang, and J.-W. Wa"
+    },
+    {
+      "text": "[11]",
+      "ref_ids": [
+        "11"
+      ],
+      "position": 44039,
+      "context": ".-J. Tseng, T.-H. Huang, and J.-W. Wang, “Dynamic\n[11] L.Sun,L.Lin,M.Gen,andH.Li,“Ahybridcooperativecoev"
+    },
+    {
+      "text": "[12]",
+      "ref_ids": [
+        "12"
+      ],
+      "position": 44354,
+      "context": "Systems,vol.27,no.5,pp.1008–1022,2019. 6804,2023.\n[12] G.-G. Wang, D. Gao, and W. Pedrycz, “Solving mult"
+    },
+    {
+      "text": "[31]",
+      "ref_ids": [
+        "31"
+      ],
+      "position": 44425,
+      "context": "ao, and W. Pedrycz, “Solving multiobjective fuzzy [31] Z.Pan,L.Wang,C.Dong,andJ.-F.Chen,“Aknowledge-guid"
+    },
+    {
+      "text": "[13]",
+      "ref_ids": [
+        "13"
+      ],
+      "position": 44785,
+      "context": "ol.20,\npp.8519–8528,2022. no.2,pp.1853–1861,2024.\n[13] Z. Pan, D. Lei, and L. Wang, “A bi-population evo"
+    },
+    {
+      "text": "[32]",
+      "ref_ids": [
+        "32"
+      ],
+      "position": 44859,
+      "context": " L. Wang, “A bi-population evolutionary algorithm [32] R.Chen,W.Li,andH.Yang,“Adeepreinforcementlearning"
+    },
+    {
+      "text": "[14]",
+      "ref_ids": [
+        "14"
+      ],
+      "position": 45249,
+      "context": ",2022. Informatics,vol.19,no.2,pp.1322–1331,2023.\n[14] R. Li, W. Gong, C. Lu, and L. Wang, “A learning-b"
+    },
+    {
+      "text": "[33]",
+      "ref_ids": [
+        "33"
+      ],
+      "position": 45316,
+      "context": "ng, C. Lu, and L. Wang, “A learning-based memetic [33] Y.Du,J.Li,C.Li,andP.Duan,“Areinforcementlearninga"
+    },
+    {
+      "text": "[15]",
+      "ref_ids": [
+        "15"
+      ],
+      "position": 45708,
+      "context": "3,pp.610–620,2023. vol.35,no.4,pp.5695–5709,2024.\n[15] F.Zhao,S.Di,andL.Wang,“AhyperheuristicwithQ-learn"
+    },
+    {
+      "text": "[34]",
+      "ref_ids": [
+        "34"
+      ],
+      "position": 45772,
+      "context": "Di,andL.Wang,“AhyperheuristicwithQ-learningforthe\n[34] K. Lei, P. Guo, Y. Wang, J. Zhang, X. Meng, and L"
+    },
+    {
+      "text": "[16]",
+      "ref_ids": [
+        "16"
+      ],
+      "position": 46159,
+      "context": "ustrialInformatics,vol.20,no.1,pp.1007–1018,2024.\n[16] L. Deng, Y. Di, and L. Wang, “A reinforcement-lea"
+    },
+    {
+      "text": "[35]",
+      "ref_ids": [
+        "35"
+      ],
+      "position": 46229,
+      "context": " and L. Wang, “A reinforcement-learning-based 3-D\n[35] R.Li,W.Gong,L.Wang,C.Lu,Z.Pan,andX.Zhuang,“Double"
+    },
+    {
+      "text": "[17]",
+      "ref_ids": [
+        "17"
+      ],
+      "position": 46668,
+      "context": "e and Engineering, vol. 21, no. 4, pp. 6550–6562,\n[17] R. Li, W. Gong, L. Wang, C. Lu, and C. Dong, “Co-"
+    },
+    {
+      "text": "[36]",
+      "ref_ids": [
+        "36"
+      ],
+      "position": 46808,
+      "context": "ntlearningforenergy-awaredistributedheterogeneous\n[36] A.Liu,P.B.Luh,K.Sun,M.A.Bragin,andB.Yan,“Integrat"
+    },
+    {
+      "text": "[18]",
+      "ref_ids": [
+        "18"
+      ],
+      "position": 47108,
+      "context": "s on Automation Science and Engineering, vol. 21,\n[18] Z.Shao,W.Shao,J.Chen,andD.Pi,“MQL-MM:Ameta-Q-lear"
+    },
+    {
+      "text": "[37]",
+      "ref_ids": [
+        "37"
+      ],
+      "position": 47261,
+      "context": "emetaheuristicforenergy-efficientdistributedfuzzy\n[37] C.-L. Liu and T.-H. Huang, “Dynamic job-shop sche"
+    },
+    {
+      "text": "[19]",
+      "ref_ids": [
+        "19"
+      ],
+      "position": 47630,
+      "context": "ems, vol. 53,\n4.3399314.\nno.11,pp.6836–6848,2023.\n[19] F. Zhao, T. Jiang, and L. Wang, “A reinforcement "
+    },
+    {
+      "text": "[38]",
+      "ref_ids": [
+        "38"
+      ],
+      "position": 47700,
+      "context": "ng, and L. Wang, “A reinforcement learning driven\n[38] S.Luo,L.Zhang,andY.Fan,“Real-timeschedulingfordyn"
+    },
+    {
+      "text": "[39]",
+      "ref_ids": [
+        "39"
+      ],
+      "position": 48129,
+      "context": ". 7, pp. 8427–8440,\nno.4,pp.3020–3038,2022.\n2023.\n[39] G.-Y. Zhu, C. Ding, and W.-B. Zhang, “Optimal for"
+    },
+    {
+      "text": "[20]",
+      "ref_ids": [
+        "20"
+      ],
+      "position": 48199,
+      "context": "ing, and W.-B. Zhang, “Optimal foraging algorithm\n[20] Z.Pan,L.Wang,J.Zheng,J.-F.Chen,andX.Wang,“Alearni"
+    },
+    {
+      "text": "[40]",
+      "ref_ids": [
+        "40"
+      ],
+      "position": 48625,
+      "context": "tionaryComputation,vol.27,no.6,pp.1590–1603,2023.\n[40] F.-T. Lin, “Fuzzy job-shop scheduling based on ra"
+    },
+    {
+      "text": "[21]",
+      "ref_ids": [
+        "21"
+      ],
+      "position": 48697,
+      "context": " job-shop scheduling based on ranking level (/spl\n[21] H. Li, K. Gao, P.-Y. Duan, J.-Q. Li, and L. Zhang"
+    },
+    {
+      "text": "[41]",
+      "ref_ids": [
+        "41"
+      ],
+      "position": 49059,
+      "context": "ybernetics:Systems,vol.53,no.5,pp.2684–2693,2023. [41] P. Fortemps, “Jobshop scheduling with imprecise d"
+    },
+    {
+      "text": "[22]",
+      "ref_ids": [
+        "22"
+      ],
+      "position": 49131,
+      "context": "shop scheduling with imprecise durations: a fuzzy\n[22] C. Lin, Z. Cao, and M. Zhou, “Learning-based grey"
+    },
+    {
+      "text": "[42]",
+      "ref_ids": [
+        "42"
+      ],
+      "position": 49405,
+      "context": "e and Engineering, vol. 19, no. 4, pp. 3659–3671, [42] H.T.Nguyen,C.Walker,andE.A.Walker,Afirstcourseinf"
+    },
+    {
+      "text": "[23]",
+      "ref_ids": [
+        "23"
+      ],
+      "position": 49501,
+      "context": "ourseinfuzzylogic.\n2022. ChapmanandHall/CRC,2018.\n[23] C.Zhang,W.Song,Z.Cao,J.Zhang,P.S.Tan,andX.Chi,“Le"
+    },
+    {
+      "text": "[43]",
+      "ref_ids": [
+        "43"
+      ],
+      "position": 49562,
+      "context": "g,W.Song,Z.Cao,J.Zhang,P.S.Tan,andX.Chi,“Learning [43] D. Lei, “Fuzzy job shop scheduling problem with a"
+    },
+    {
+      "text": "[44]",
+      "ref_ids": [
+        "44"
+      ],
+      "position": 49849,
+      "context": " systems, vol. 33, 2020, pp. 617,2010.\n1621–1632. [44] M. Sakawa and T. Mori, “An efficient genetic algo"
+    },
+    {
+      "text": "[24]",
+      "ref_ids": [
+        "24"
+      ],
+      "position": 49922,
+      "context": "ori, “An efficient genetic algorithm for job-shop\n[24] J. Kotary, F. Fioretto, and P. Van Hentenryck, “F"
+    },
+    {
+      "text": "[45]",
+      "ref_ids": [
+        "45"
+      ],
+      "position": 50255,
+      "context": "theAAAIConferenceonArtificialIntelligence,vol.36, [45] S. Heilpern, “The expected value of a fuzzy numbe"
+    },
+    {
+      "text": "[25]",
+      "ref_ids": [
+        "25"
+      ],
+      "position": 50387,
+      "context": ",pp.7239–7246. Systems,vol.47,no.1,pp.81–86,1992.\n[25] A.Corsini,A.Porrello,S.Calderara,andM.Dell’Amico,"
+    },
+    {
+      "text": "[46]",
+      "ref_ids": [
+        "46"
+      ],
+      "position": 50456,
+      "context": "rrello,S.Calderara,andM.Dell’Amico,“Self-labeling [46] J. J. Palacios, I. Gonza´lez-Rodr´ıguez, C. R. Ve"
+    },
+    {
+      "text": "[26]",
+      "ref_ids": [
+        "26"
+      ],
+      "position": 50730,
+      "context": "yflexiblejobshop,”FuzzySetsandSystems,vol.278,pp.\n[26] R. Wang, G. Wang, J. Sun, F. Deng, and J. Chen, “"
+    },
+    {
+      "text": "[47]",
+      "ref_ids": [
+        "47"
+      ],
+      "position": 50883,
+      "context": " attention network-based reinforcement learning,” [47] E. B. Tirkolaee, A. Goli, and G.-W. Weber, “Fuzzy"
+    },
+    {
+      "text": "[48]",
+      "ref_ids": [
+        "48"
+      ],
+      "position": 51266,
+      "context": "nsonfuzzysystems,vol.28,no.11,pp.2772–\n2783,2020.\n[48] P.J.VanLaarhoven,E.H.Aarts,andJ.K.Lenstra,“Jobsho"
+    },
+    {
+      "text": "[49]",
+      "ref_ids": [
+        "49"
+      ],
+      "position": 51403,
+      "context": "”Operationsresearch,vol.40,no.1,pp.113–\n125,1992.\n[49] S. Brody, U. Alon, and E. Yahav, “How attentive a"
+    },
+    {
+      "text": "[50]",
+      "ref_ids": [
+        "50"
+      ],
+      "position": 51522,
+      "context": "ion\nnetworks?”arXivpreprintarXiv:2105.14491,2021.\n[50] A.Vaswani,N.Shazeer,N.Parmar,J.Uszkoreit,L.Jones,"
+    },
+    {
+      "text": "[51]",
+      "ref_ids": [
+        "51"
+      ],
+      "position": 51701,
+      "context": "vances\ninNeuralInformationProcessingSystems,2017.\n[51] X. Glorot and Y. Bengio, “Understanding the diffi"
+    },
+    {
+      "text": "[52]",
+      "ref_ids": [
+        "52"
+      ],
+      "position": 51958,
+      "context": "WorkshopandConferenceProceedings,2010,pp.249–256.\n[52] A. P. Dempster, N. M. Laird, and D. B. Rubin, “Ma"
+    },
+    {
+      "text": "[53]",
+      "ref_ids": [
+        "53"
+      ],
+      "position": 52174,
+      "context": "(methodological), vol. 39, no. 1, pp. 1–22,\n1977.\n[53] W. Li, L. He, and Y. Cao, “Many-objective evoluti"
+    },
+    {
+      "text": "[54]",
+      "ref_ids": [
+        "54"
+      ],
+      "position": 52421,
+      "context": " on\nCybernetics,vol.52,no.10,pp.10721–10734,2022.\n[54] S.AbdullahandM.Abdolrazzagh-Nezhad,“Fuzzyjob-shop"
+    },
+    {
+      "text": "[55]",
+      "ref_ids": [
+        "55"
+      ],
+      "position": 52549,
+      "context": "iew,”InformationSciences,vol.278,pp.380–407,2014.\n[55] D. P. Kingma, “Adam: A method for stochastic opti"
+    },
+    {
+      "text": "[56]",
+      "ref_ids": [
+        "56"
+      ],
+      "position": 52650,
+      "context": "ptimization,” arXiv\npreprintarXiv:1412.6980,2014.\n[56] M.Mitchell,Anintroductiontogeneticalgorithms. MIT"
+    },
+    {
+      "text": "[57]",
+      "ref_ids": [
+        "57"
+      ],
+      "position": 52716,
+      "context": "Anintroductiontogeneticalgorithms. MITpress,1998.\n[57] J.KennedyandR.Eberhart,“Particleswarmoptimization"
+    },
+    {
+      "text": "[58]",
+      "ref_ids": [
+        "58"
+      ],
+      "position": 52876,
+      "context": " neural networks, vol. 4.\nieee,1995,pp.1942–1948.\n[58] J.Ho,A.Jain,andP.Abbeel,“Denoisingdiffusionprobab"
+    },
+    {
+      "text": "[59]",
+      "ref_ids": [
+        "59"
+      ],
+      "position": 53020,
+      "context": "ationprocessingsystems,vol.33,2020,pp.\n6840–6851.\n[59] I. Goodfellow, J. Pouget-Abadie, M. Mirza, B. Xu,"
+    },
+    {
+      "text": "[60]",
+      "ref_ids": [
+        "60"
+      ],
+      "position": 53213,
+      "context": "inneuralinformationprocessingsystems,vol.27,2014.\n[60] L. Dinh, D. Krueger, and Y. Bengio, “Nice: Non-li"
+    },
+    {
+      "text": "[61]",
+      "ref_ids": [
+        "61"
+      ],
+      "position": 53341,
+      "context": "ntsestimation,”arXivpreprintarXiv:1410.8516,2014.\n[61] J.Brammer,B.Lutz,andD.Neumann,“Permutationflowsho"
+    },
+    {
+      "text": "[62]",
+      "ref_ids": [
+        "62"
+      ],
+      "position": 53534,
+      "context": "fOperationalResearch,vol.299,no.1,pp.75–86,\n2022.\n[62] Y.-J.Wang,G.-G.Wang,andL.Wang,“Atree-basedmultiob"
+    },
+    {
+      "text": "[63]",
+      "ref_ids": [
+        "63"
+      ],
+      "position": 53769,
+      "context": "arly access, 2024.\ndoi:10.1109/TEVC.2024.3411661.\n[63] P. Wu, Y. Wang, J. Cheng, and Y. Li, “A biobjecti"
+    },
+    {
+      "text": "(FJSSP)",
+      "ref_ids": [
+        "FJSSP"
+      ],
+      "position": 261,
+      "context": " i\nAbstract—The fuzzy job shop scheduling problem (FJSSP) i\nemerges as an innovative extension to the job s"
+    },
+    {
+      "text": "(JSSP)",
+      "ref_ids": [
+        "JSSP"
+      ],
+      "position": 387,
+      "context": " The fuzzy processing time of operation i\nproblem (JSSP), incorporating a layer of uncertainty that aligns"
+    },
+    {
+      "text": "(NCO)",
+      "ref_ids": [
+        "NCO"
+      ],
+      "position": 822,
+      "context": "tic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzifica"
+    },
+    {
+      "text": "(JSSP)",
+      "ref_ids": [
+        "JSSP"
+      ],
+      "position": 1560,
+      "context": "onalgorithm-based THE job shop scheduling problem (JSSP) is a well-\nautoregressive model (EMARM) to addres"
+    },
+    {
+      "text": "(EMARM)",
+      "ref_ids": [
+        "EMARM"
+      ],
+      "position": 1599,
+      "context": "ng problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model alterna"
+    },
+    {
+      "text": "(COP)",
+      "ref_ids": [
+        "COP"
+      ],
+      "position": 1745,
+      "context": "es established combinatorial optimization problem (COP)\nfrom given instances (E-step) and adjusting the a"
+    },
+    {
+      "text": "(FJSSP)",
+      "ref_ids": [
+        "FJSSP"
+      ],
+      "position": 2589,
+      "context": "\napplications in fuzzy scheduling. the fuzzy JSSP (FJSSP) that represents processing times with\nfuzzynumber"
+    },
+    {
+      "text": "(NCO)",
+      "ref_ids": [
+        "NCO"
+      ],
+      "position": 9644,
+      "context": "sk\nvancements in neural combinatorialoptimization (NCO), with\nand introduce an expectation-maximization ("
+    },
+    {
+      "text": "(EM)",
+      "ref_ids": [
+        "EM"
+      ],
+      "position": 9698,
+      "context": "), with\nand introduce an expectation-maximization (EM) algorithm-\na growing trend toward leveraging lear"
+    },
+    {
+      "text": "(EMARM)",
+      "ref_ids": [
+        "EMARM"
+      ],
+      "position": 9799,
+      "context": "earning approaches for\nbased autoregressive model (EMARM) to address it. This\nscheduling problems. Zhang et"
+    },
+    {
+      "text": "(x)",
+      "ref_ids": [
+        "x"
+      ],
+      "position": 12936,
+      "context": "f S is defined as S α = Vmax(A˜)=a +(cid:90) a3 µ (x)dx, (7)\n{x ∈ R : µ (x) ≥ α},α ∈ [0,1], and the sup"
+    },
+    {
+      "text": "(x)",
+      "ref_ids": [
+        "x"
+      ],
+      "position": 12958,
+      "context": "= Vmax(A˜)=a +(cid:90) a3 µ (x)dx, (7)\n{x ∈ R : µ (x) ≥ α},α ∈ [0,1], and the support is S . A 2 A˜\nS 0"
+    },
+    {
+      "text": "(x)",
+      "ref_ids": [
+        "x"
+      ],
+      "position": 13167,
+      "context": "ompact support and a pronounced Vmin(A˜)=a 2− µ A˜(x)dx, (8)\nmodal value, is depicted by closed interva"
+    },
+    {
+      "text": "(TFN)",
+      "ref_ids": [
+        "TFN"
+      ],
+      "position": 13268,
+      "context": "vals N˜ =[n ,n¯ ]. a1\nThe triangular fuzzy number (TFN) [16] isα frequenα tlyα uti- andβ isaweightranging"
+    },
+    {
+      "text": "(x)",
+      "ref_ids": [
+        "x"
+      ],
+      "position": 13837,
+      "context": "iontothewell-definedoperationsmentionedabove,\nµ A˜(x)= 0aa ,33 −− ax 2, i of tha e2 rw< isx e.≤a 3, ("
+    },
+    {
+      "text": "(a)",
+      "ref_ids": [
+        "a"
+      ],
+      "position": 17178,
+      "context": "s and (i,T) for the last operations, representing\n(a) FJSSP instance\nthe directed connections between o"
+    },
+    {
+      "text": "(b)",
+      "ref_ids": [
+        "b"
+      ],
+      "position": 17698,
+      "context": "cted edge (i,j) in E, and the two ways of solving (b) Directed solution\nthe disjunction correspond to t"
+    },
+    {
+      "text": "(a)",
+      "ref_ids": [
+        "a"
+      ],
+      "position": 17812,
+      "context": "ible orientations of Fig.1. Disjunctivegraphmodel.(a)illustratesa3×3FJSSPinstance.The\nthe edge. Therefo"
+    },
+    {
+      "text": "(b)",
+      "ref_ids": [
+        "b"
+      ],
+      "position": 18101,
+      "context": "t to determining the direction of each undirected\n(b)presentsasolutionfor(a),whereallundirectededgeshav"
+    },
+    {
+      "text": "(a)",
+      "ref_ids": [
+        "a"
+      ],
+      "position": 18124,
+      "context": "rection of each undirected\n(b)presentsasolutionfor(a),whereallundirectededgeshavebeendirected.\nedge, re"
+    },
+    {
+      "text": "(b)",
+      "ref_ids": [
+        "b"
+      ],
+      "position": 19700,
+      "context": "whichoperation)needstobeprocessed.Forexample,Fig.1(b) theexistenceofaneuralnetworkp (parameterizedbyθ)t"
+    },
+    {
+      "text": "(M )",
+      "ref_ids": [
+        "M"
+      ],
+      "position": 22962,
+      "context": "owing entries:\ni\nDefuzz(FC(o −1))−Defuzz(cid:0) FC(M )(cid:1) ∈R, (23)\n(cid:80)i Defuzz(cid:0) t˜(cid:1)"
+    },
+    {
+      "text": "(J )",
+      "ref_ids": [
+        "J"
+      ],
+      "position": 23334,
+      "context": "0) nn i=1FC(J i)) ∈R, (25)\nj=Sti j\nDefuzz(Quartile(J ))∈R3, (18) Defuzz(FC(o t,i−1))−Defuzz(Quartile(J))"
+    },
+    {
+      "text": "(J)",
+      "ref_ids": [
+        "J"
+      ],
+      "position": 23384,
+      "context": "(J ))∈R3, (18) Defuzz(FC(o t,i−1))−Defuzz(Quartile(J))∈R3, (26)\ni\n(cid:0) (cid:1)\nDefuzz(Quartile(M i))"
+    },
+    {
+      "text": "(M )",
+      "ref_ids": [
+        "M"
+      ],
+      "position": 23487,
+      "context": "∈R3, (19) Defuzz FC(M ot,i) ∈R, (27)\nDefuzz(max FC(M ))\nDefuzz(cid:0) t˜(cid:1) −Defuzz(Quartile(J ))∈R3"
+    },
+    {
+      "text": "(J )",
+      "ref_ids": [
+        "J"
+      ],
+      "position": 23533,
+      "context": "x FC(M ))\nDefuzz(cid:0) t˜(cid:1) −Defuzz(Quartile(J ))∈R3, (20) i=1,...,m i\nDefuzz(cid:0) t˜\nii\n(cid:1)"
+    },
+    {
+      "text": "(M)",
+      "ref_ids": [
+        "M"
+      ],
+      "position": 23804,
+      "context": "e Defuzz(cid:0) FC(M ot,i)(cid:1) −Defuzz(Quartile(M))∈R3, (29)\nofthefuzzyprocessingtimeforoperationsbe"
+    },
+    {
+      "text": "(GAT)",
+      "ref_ids": [
+        "GAT"
+      ],
+      "position": 25277,
+      "context": "dtotheaverage\nA two-layer graph attention network (GAT) [49] is em- completiontimeofalljobsincuot r, ri e"
+    },
+    {
+      "text": "(x)",
+      "ref_ids": [
+        "x"
+      ],
+      "position": 27680,
+      "context": "-step): Maximize\n8: end for l l E x∼pθ(x|y)[logp θ(x)] to update parameter θ.\n9: // M-step Thisiterativ"
+    },
+    {
+      "text": "(y)",
+      "ref_ids": [
+        "y"
+      ],
+      "position": 31166,
+      "context": " ability of EMARM.\n(cid:90) (cid:90) p (y,x)\nlogp (y)=log p (y,x)dx≥ p (x|y)log θ dx\nθ θ θ p (x|y)\nθ\n(c"
+    },
+    {
+      "text": "(x)",
+      "ref_ids": [
+        "x"
+      ],
+      "position": 31311,
+      "context": "x|y)logp (x|y)dx (32)\nθ θ θ θ\n=E [logp (y|x)+logp (x)−logp (x|y)]≜L(θ).\nx∼pθ(x|y) θ θ θ\n\nJOURNALOFLATEX"
+    },
+    {
+      "text": "(INSECONDS)",
+      "ref_ids": [
+        "INSECONDS"
+      ],
+      "position": 31421,
+      "context": "LES 7\nTABLEI TABLEII\nPARAMETERSETTINGS RUNNINGTIME(INSECONDS)FOREMARM,\nNSODE,HADE,PSO,ANDGA\nAlgorithm Parameter"
+    },
+    {
+      "text": "(GA)",
+      "ref_ids": [
+        "GA"
+      ],
+      "position": 34305,
+      "context": "ison experiments for fuzzy makespan are presented\n(GA) [56], and particle swarm optimization (PSO) [57] "
+    },
+    {
+      "text": "(PSO)",
+      "ref_ids": [
+        "PSO"
+      ],
+      "position": 34348,
+      "context": "sented\n(GA) [56], and particle swarm optimization (PSO) [57] are by Table III, which shows that EMARM out"
+    },
+    {
+      "text": "(methodological)",
+      "ref_ids": [
+        "methodological"
+      ],
+      "position": 52124,
+      "context": "ournal of the royal\nstatistical society: series B (methodological), vol. 39, no. 1, pp. 1–22,\n1977.\n[53] W. Li, L. H"
+    }
+  ],
+  "concepts": [
+    {
+      "text": "FJSSP",
+      "type": "entity",
+      "count": 32,
+      "examples": [
+        {
+          "section": "Functions",
+          "context": "fuzzy makespan\ninformation for the resolution of FJSSP, thereby leveraging the\nadvancements in NCO to en"
+        },
+        {
+          "section": "Functions",
+          "context": "methodolo-\ngies. To achieve this, we approach the FJSSP as a generative I. INTRODUCTION\ntaskandintroducea"
+        },
+        {
+          "section": "Functions",
+          "context": "oblem,generativemodel, Current algorithms for the FJSSP predominantly employ\nneural combinatorial optimiz"
+        }
+      ]
+    },
+    {
+      "text": "EMARM",
+      "type": "entity",
+      "count": 19,
+      "examples": [
+        {
+          "section": "Functions",
+          "context": "g problem (JSSP) is a well-\nautoregressive model (EMARM) to address it. During training,\nour model altern"
+        },
+        {
+          "section": "Functions",
+          "context": "al results\ndemonstrate the superior capability of EMARM in addressing [4] and machine flexibility [5], of"
+        },
+        {
+          "section": "End The last operation of the job that operation",
+          "context": "arning approaches for\nbased autoregressive model (EMARM) to address it. This\nscheduling problems. Zhang e"
+        }
+      ]
+    },
+    {
+      "text": "Eq",
+      "type": "entity",
+      "count": 9,
+      "examples": [
+        {
+          "section": "Fuzzy numbers are used to represent the processing time",
+          "context": "iseprocessingtimesare\ncalculate its Z-value using Eq. (5):\noftenelusiveduetovariablessuchasthediverses"
+        },
+        {
+          "section": "It is evident that the max operation is determined by a",
+          "context": "ions i,j ∈ O with i → j, the\nsecond constraint in Eq. (10) is denoted as a directed edge\n(i,j) in A. S"
+        },
+        {
+          "section": "It is evident that the max operation is determined by a",
+          "context": "i,j ∈ O\n7 8 9\nwith M =M , the third constraint in Eq. (10) is denoted as\ni j\nan undirected edge (i,j)"
+        }
+      ]
+    },
+    {
+      "text": "NCO",
+      "type": "entity",
+      "count": 8,
+      "examples": [
+        {
+          "section": "Functions",
+          "context": "ic scheduling,\nneural combinatorial optimization (NCO) has recently demon- Defuzz(·) Perform defuzzific"
+        },
+        {
+          "section": "Functions",
+          "context": "of FJSSP, thereby leveraging the\nadvancements in NCO to enhance fuzzy scheduling methodolo-\ngies. To a"
+        },
+        {
+          "section": "Functions",
+          "context": "rtain factors, such as human variability\nissue in NCO frameworks. In testing, the experimental results"
+        }
+      ]
+    },
+    {
+      "text": "EM",
+      "type": "entity",
+      "count": 6,
+      "examples": [
+        {
+          "section": "End The last operation of the job that operation",
+          "context": ", with\nand introduce an expectation-maximization (EM) algorithm-\na growing trend toward leveraging lea"
+        },
+        {
+          "section": "It is evident that the max operation is determined by a",
+          "context": "(cid:88)\nground-truth solutions in NCO using the EM algorithm. θ =argmax logp (π∗ |I ). (13)\nθ l l\nθ"
+        },
+        {
+          "section": "It is evident that the max operation is determined by a",
+          "context": "1 i−1\n\nJOURNALOFLATEXCLASSFILES 6\nAlgorithm 1 The EM algorithm-based training strategy maximum likelih"
+        }
+      ]
+    },
+    {
+      "text": "Eqs",
+      "type": "entity",
+      "count": 5,
+      "examples": [
+        {
+          "section": "It is evident that the max operation is determined by a",
+          "context": "l}L\nl=1\nand its scheduling scheme element within Eqs. (12) and (13). In Sections III.B-D, we\n{π }L , w"
+        },
+        {
+          "section": "It is evident that the max operation is determined by a",
+          "context": "ne is idle. Eq. (24) measures\nglobal information. Eqs. (16) and (17) describe how much\nhow close the cu"
+        },
+        {
+          "section": "It is evident that the max operation is determined by a",
+          "context": "r\nmuch is left after processing O , respectively. Eqs. (18) and\ni\nlate the fuzzy completion time of J i"
+        }
+      ]
+    },
+    {
+      "text": "mn",
+      "type": "entity",
+      "count": 4,
+      "examples": [
+        {
+          "section": "It is evident that the max operation is determined by a",
+          "context": "letion time can be calculated\nnumber of jobs, and mn is the length of π . It is evident that\nby s˜ +t˜"
+        },
+        {
+          "section": "It is evident that the max operation is determined by a",
+          "context": "ective of the method proposed in this paper is to\nmn\ndecideonschedulingschemessuchasthisoneandmakethei"
+        },
+        {
+          "section": "It is evident that the max operation is determined by a",
+          "context": "d by iteratively generating π from i = 1 to\nl l,i\nmn.\nIn this section, we begin by formulating the FJS"
+        }
+      ]
+    },
+    {
+      "text": "NSODE",
+      "type": "entity",
+      "count": 4,
+      "examples": [
+        {
+          "section": "TABLEI TABLEII",
+          "context": "PARAMETERSETTINGS RUNNINGTIME(INSECONDS)FOREMARM,\nNSODE,HADE,PSO,ANDGA"
+        },
+        {
+          "section": "Algorithm Parametersettings\nSize EMARM NSODE HADE PSO GA",
+          "context": "orithms\ndirect solution methods.\nIn this section, NSODE [9], HADE [12], genetic algorithm Comparison expe"
+        },
+        {
+          "section": "Algorithm Parametersettings\nSize EMARM NSODE HADE PSO GA",
+          "context": "performs all\nselected for comparison experiments. NSODE and HADE are comparative algorithms in terms of s"
+        }
+      ]
+    },
+    {
+      "text": "TFN",
+      "type": "entity",
+      "count": 3,
+      "examples": [
+        {
+          "section": "Fuzzy numbers are used to represent the processing time",
+          "context": "ection.\nfollowing comparison method [46]: For any TFN, we first\nInmanufacturingenvironments,preciseproc"
+        },
+        {
+          "section": "Fuzzy numbers are used to represent the processing time",
+          "context": "als N˜ =[n ,n¯ ]. a1\nThe triangular fuzzy number (TFN) [16] isα frequenα tlyα uti- andβ isaweightrangin"
+        },
+        {
+          "section": "Fuzzy numbers are used to represent the processing time",
+          "context": "t\nlized in fuzzy scheduling problems. Let A˜ be a TFN denoted the boundary values, and its formula is:"
+        }
+      ]
+    },
+    {
+      "text": "A˜",
+      "type": "entity",
+      "count": 3,
+      "examples": [
+        {
+          "section": "Fuzzy numbers are used to represent the processing time",
+          "context": "µ (x) ≥ α},α ∈ [0,1], and the support is S . A 2 A˜\nS 0 a2\nfuzzy interval is delineated by its α-cuts"
+        },
+        {
+          "section": "Fuzzy numbers are used to represent the processing time",
+          "context": "noted the boundary values, and its formula is:\nas A˜ = (a 1,a 2,a 3), where a 1 and a 3 outline the ra"
+        },
+        {
+          "section": "Fuzzy numbers are used to represent the processing time",
+          "context": "e within this\n2\nrange. The membership function of A˜ is defined as follows: Then, the magnitude of the"
+        }
+      ]
+    },
+    {
+      "text": "PSO",
+      "type": "entity",
+      "count": 3,
+      "examples": [
+        {
+          "section": "TABLEI TABLEII",
+          "context": "TTINGS RUNNINGTIME(INSECONDS)FOREMARM,\nNSODE,HADE,PSO,ANDGA"
+        },
+        {
+          "section": "NSODE is designed to address optimization objectives extendstheJSSPbyemployingfuzzynumberstocharacterize",
+          "context": ". NCO\nwith total fuzzy energy consumption. GA and PSO are repre- is experiencing rapid development and"
+        },
+        {
+          "section": "TABLEIII",
+          "context": "FUZZYMAKESPANFOREMARM,NSODE,HADE,PSO,ANDGA"
+        }
+      ]
+    },
+    {
+      "text": "FC",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Functions",
+          "context": "bridge this gap by investigating the feasibility FC(·) Calculate the fuzzy completion time\nof employi"
+        },
+        {
+          "section": "It is evident that the max operation is determined by a",
+          "context": "ocessingtimeforoperationsbelongingtoJ and\ni\nwhere FC(·) calculates the fuzzy completion time. Eq. (23)"
+        }
+      ]
+    },
+    {
+      "text": "FMS",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Functions",
+          "context": "g neural networks to assimilate and process fuzzy\nFMS(·) Calculate the fuzzy makespan\ninformation for t"
+        },
+        {
+          "section": "It is evident that the max operation is determined by a",
+          "context": "ionabout l\nis a scheduling scheme of instance I , FMS(·) calculates the\nthe FJSSP, with the s generated"
+        }
+      ]
+    },
+    {
+      "text": "GAT",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "It is evident that the max operation is determined by a",
+          "context": "totheaverage\nA two-layer graph attention network (GAT) [49] is em- completiontimeofalljobsincuot r, ri"
+        },
+        {
+          "section": "It is evident that the max operation is determined by a",
+          "context": "network in making\nthe output at each layer of the GAT is concatenated with informed decisions, where d"
+        }
+      ]
+    },
+    {
+      "text": "MHA",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "It is evident that the max operation is determined by a",
+          "context": "i where W and W are learnable parameter matrices, MHA\n1 2\nwhere “∥” is the concatenation operation, σ i"
+        },
+        {
+          "section": "Algorithm Parametersettings\nSize EMARM NSODE HADE PSO GA",
+          "context": "i\nIn the state network, the size of each head in MHA layer usuallyfasterthanPythonforthesametask,sothi"
+        }
+      ]
+    },
+    {
+      "text": "π∗",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "It is evident that the max operation is determined by a",
+          "context": "SP\n12: end for\n[9], the optimal scheduling scheme π∗ shares the same un-\nobservable characteristic as"
+        },
+        {
+          "section": "It is evident that the max operation is determined by a",
+          "context": "gg dilemma: Knowing the optimal scheduling scheme π∗ is to test the performance of EMARM comprehensive"
+        }
+      ]
+    },
+    {
+      "text": "FNN",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "It is evident that the max operation is determined by a",
+          "context": "emesandselecting\n(cid:0)(cid:2) (cid:3)(cid:1)\nz =FNN e ∥s , (31) the best, thereby improving the perfo"
+        },
+        {
+          "section": "Algorithm Parametersettings\nSize EMARM NSODE HADE PSO GA",
+          "context": "nTableII.Duetothesimilarityinrunningtimefor\ni\nthe FNN is implemented by a dense layer of 128 neurons, i"
+        }
+      ]
+    },
+    {
+      "text": "x|y)logp",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Itisaniterativemethoddesignedforestimatingparametersin the benchmarks are not exactly the same size as those in the",
+          "context": "y)log θ dx\nθ θ θ p (x|y)\nθ\n(cid:90) (cid:90)\n= p (x|y)logp (y,x)dx− p (x|y)logp (x|y)dx (32)\nθ θ θ θ\n=E [log"
+        },
+        {
+          "section": "Itisaniterativemethoddesignedforestimatingparametersin the benchmarks are not exactly the same size as those in the",
+          "context": "|y)\nθ\n(cid:90) (cid:90)\n= p (x|y)logp (y,x)dx− p (x|y)logp (x|y)dx (32)\nθ θ θ θ\n=E [logp (y|x)+logp (x)−logp"
+        }
+      ]
+    },
+    {
+      "text": "HADE",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "TABLEI TABLEII",
+          "context": "TERSETTINGS RUNNINGTIME(INSECONDS)FOREMARM,\nNSODE,HADE,PSO,ANDGA"
+        },
+        {
+          "section": "TABLEIII",
+          "context": "FUZZYMAKESPANFOREMARM,NSODE,HADE,PSO,ANDGA"
+        }
+      ]
+    },
+    {
+      "text": "ANDGA",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "TABLEI TABLEII",
+          "context": "GS RUNNINGTIME(INSECONDS)FOREMARM,\nNSODE,HADE,PSO,ANDGA"
+        },
+        {
+          "section": "TABLEIII",
+          "context": "FUZZYMAKESPANFOREMARM,NSODE,HADE,PSO,ANDGA"
+        }
+      ]
+    },
+    {
+      "text": "the fjssp",
+      "type": "technical_term",
+      "count": 14,
+      "examples": []
+    },
+    {
+      "text": "ieee transactions",
+      "type": "technical_term",
+      "count": 11,
+      "examples": []
+    },
+    {
+      "text": "this paper",
+      "type": "technical_term",
+      "count": 7,
+      "examples": []
+    },
+    {
+      "text": "automation science",
+      "type": "technical_term",
+      "count": 6,
+      "examples": []
+    },
+    {
+      "text": "li et al",
+      "type": "technical_term",
+      "count": 5,
+      "examples": []
+    },
+    {
+      "text": "the job",
+      "type": "technical_term",
+      "count": 5,
+      "examples": []
+    },
+    {
+      "text": "the emarm",
+      "type": "technical_term",
+      "count": 5,
+      "examples": []
+    },
+    {
+      "text": "l. wang",
+      "type": "technical_term",
+      "count": 5,
+      "examples": []
+    },
+    {
+      "text": "fuzzy scheduling",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "neural networks",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "the jssp",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "the objective",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "the magnitude",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "this section",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "evolutionary computation",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "deep reinforcement learning",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "graph neural network",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "the relationship",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "the number",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "the method",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "the optimal scheduling scheme",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "the challenge",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "the em algorithm",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "the state network",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "step t",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "current state",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "their outputs",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "” ieee transactions",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    },
+    {
+      "text": "19, no",
+      "type": "technical_term",
+      "count": 3,
+      "examples": []
+    }
+  ],
+  "source_file": "C:\\Users\\Christoph.Hau\\Auto eval rag\\rag-evaluation-dataset\\data\\raw\\2502.00018v1.pdf"
+}

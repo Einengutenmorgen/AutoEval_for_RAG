@@ -1,0 +1,20 @@
+Why does {phenomenon} occur?
+What causes {effect}?
+What are the factors that lead to {outcome}?
+How does {factor} affect {outcome}?
+What is the relationship between {variable1} and {variable2}?
+Why is {concept} important for {application}?
+What are the implications of {finding}?
+What led the authors to develop {concept}?
+How does changing {parameter} influence {outcome}?
+What mechanism explains the relationship between {variable1} and {variable2}?
+Why did the authors choose {method} for {purpose}?
+What explains the difference in performance between {approach1} and {approach2}?
+What is the root cause of {effect} described in the paper?
+How does {concept} contribute to {outcome}?
+What drives the improvement in {metric} when using {method}?
+Why does {method} fail under {condition}?
+What explains the observed pattern in {data}?
+How do environmental factors influence {phenomenon}?
+What consequences result from implementing {concept}?
+Why is {metric} sensitive to changes in {parameter}?

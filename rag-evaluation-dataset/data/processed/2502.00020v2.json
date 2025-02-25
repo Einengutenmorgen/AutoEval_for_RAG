@@ -1,0 +1,1460 @@
+{
+  "paper_id": "2502.00020v2",
+  "metadata": {
+    "title": "3840 Far West Blvd, Austin, TX 78731",
+    "authors": [
+      "Far West Blvd",
+      "Austin"
+    ],
+    "publication_date": null,
+    "journal": "",
+    "abstract": "reasoning. In particular, the problem of temporal projection\nCommonsense temporal reasoning at scale is a core problem (i.e., the persistence of facts) has not received sufficient\nfor cognitive systems. The correct inference of the duration attention in the knowledge-based systems community. For\nfor which fluents hold is required by many tasks, including this reason, many cognitive systems have limited deductive\nnatural language understanding and planning. Many AI\nclosure because existing facts (true at a given time point)\nsystems have limited deductive closure because they cannot\ncannot be extrapolated to answer questions at other time\nextrapolate information correctly regarding existing fluents\nand events. In this study, we discuss the knowledge points. What types of knowledge representation and\nrepresentation and reasoning schemes required for robust reasoning schemes are needed to solve these problems?\ntemporal projection in the Cyc Knowledge Base. We In this study, we use techniques from discrete time\ndiscuss how events can start and end risk periods for fluents.\nsurvival analysis to answer these questions. We discuss\nWe then use discrete survival functions, which represent\nhow events start and end risk periods during which an\nknowledge of the persistence of facts, to extrapolate a given\nfluent. The extrapolated intervals can be truncated by interval for a fluent (a time-varying property of the world)\ntemporal constraints and other types of commonsense could be terminated. After identifying the starting points of\nknowledge. Finally, we present the results of experiments to the risk periods, we use hazard functions to construct an\ndemonstrate that these methods obtain significant\ninterval during which a time-dependent sentence is highly\nimprovements in terms of Q/A performance.\nlikely to be true. These intervals can be truncated by\ntemporal constraints and other types of commonsense\nIntroduction and Motivation knowledge. We discuss how different temporal properties\nof predicates and collections can be used to infer hazard\nModern cognitive systems are expected to reason about a\nfunctions. Next, we explain how time (in)dependent\ncomplex and dynamic world. Commonsense temporal\ncovariates can be specified to scale the parameters of\nreasoning plays an important role in reasoning about a\nhazard functions. The role of event calculus in the context\ncontinuously changing environment. Since even the largest\nof temporal projection is then discussed, which is often\nknowledge bases (KBs) lack complete knowledge of the\nused to maintain correct temporal intervals for fluents in\noutside world, cognitive systems must employ heuristic\ndatabases. However, some of the predictions made by\nreasoning and estimate how long a given state is likely to\nevent calculus might be erroneous if relevant information\npersist. For example, if Fred falls down and sprains his\nabout the expected duration for which fluents hold is not\nankle, he is expected to be in pain for a short while. If\navailable. Thus, we discuss how survival functions can be\nFred’s younger brother was born in 2013, it is to be\nused to alleviate this problem. Next, we explain how the\nexpected that he will start to walk and talk within a few\nparameters of these survival distributions can be learnt\nyears. How can an AI system with incomplete information\nfrom data.\nreason about these events? How long do facts persist? How\nThis paper is organized as follows. We start by\ndo individuals change over time and what factors are\ndiscussing related work. Then we provide a brief\nrelevant for understanding inter-individual differences?\nintroduction to the Cyc Knowledge Base (Cyc KB). Next,\nWhat events are expected to occur and when do they\nwe discuss our temporal projection algorithm and the\noccur? What changes their probabilities of occurrence?\nknowledge representation it requires. We conclude by\nMany knowledge-based systems do not represent time\ndiscussing our experimental results and plans for future\ncorrectly and they do not perform sophisticated temporal\nresearch.\nRelated Work",
+    "keywords": []
+  },
+  "sections": [
+    {
+      "heading": "Temporal Reasoning in AI Systems\nAbhishek Sharma",
+      "level": 1,
+      "content": "3840 Far West Blvd, Austin, TX 78731\nabhishek81@gmail.com\nAbstract reasoning. In particular, the problem of temporal projection\nCommonsense temporal reasoning at scale is a core problem (i.e., the persistence of facts) has not received sufficient\nfor cognitive systems. The correct inference of the duration attention in the knowledge-based systems community. For\nfor which fluents hold is required by many tasks, including this reason, many cognitive systems have limited deductive\nnatural language understanding and planning. Many AI\nclosure because existing facts (true at a given time point)\nsystems have limited deductive closure because they cannot\ncannot be extrapolated to answer questions at other time\nextrapolate information correctly regarding existing fluents\nand events. In this study, we discuss the knowledge points. What types of knowledge representation and\nrepresentation and reasoning schemes required for robust reasoning schemes are needed to solve these problems?\ntemporal projection in the Cyc Knowledge Base. We In this study, we use techniques from discrete time\ndiscuss how events can start and end risk periods for fluents.\nsurvival analysis to answer these questions. We discuss\nWe then use discrete survival functions, which represent\nhow events start and end risk periods during which an\nknowledge of the persistence of facts, to extrapolate a given\nfluent. The extrapolated intervals can be truncated by interval for a fluent (a time-varying property of the world)\ntemporal constraints and other types of commonsense could be terminated. After identifying the starting points of\nknowledge. Finally, we present the results of experiments to the risk periods, we use hazard functions to construct an\ndemonstrate that these methods obtain significant\ninterval during which a time-dependent sentence is highly\nimprovements in terms of Q/A performance.\nlikely to be true. These intervals can be truncated by\ntemporal constraints and other types of commonsense\nIntroduction and Motivation knowledge. We discuss how different temporal properties\nof predicates and collections can be used to infer hazard",
+      "start_offset": 48,
+      "end_offset": 2178
+    },
+    {
+      "heading": "Modern cognitive systems are expected to reason about a",
+      "level": 1,
+      "content": "functions. Next, we explain how time (in)dependent\ncomplex and dynamic world. Commonsense temporal\ncovariates can be specified to scale the parameters of\nreasoning plays an important role in reasoning about a\nhazard functions. The role of event calculus in the context\ncontinuously changing environment. Since even the largest\nof temporal projection is then discussed, which is often\nknowledge bases (KBs) lack complete knowledge of the\nused to maintain correct temporal intervals for fluents in\noutside world, cognitive systems must employ heuristic\ndatabases. However, some of the predictions made by\nreasoning and estimate how long a given state is likely to\nevent calculus might be erroneous if relevant information\npersist. For example, if Fred falls down and sprains his\nabout the expected duration for which fluents hold is not\nankle, he is expected to be in pain for a short while. If\navailable. Thus, we discuss how survival functions can be\nFred’s younger brother was born in 2013, it is to be\nused to alleviate this problem. Next, we explain how the\nexpected that he will start to walk and talk within a few\nparameters of these survival distributions can be learnt\nyears. How can an AI system with incomplete information\nfrom data.\nreason about these events? How long do facts persist? How\nThis paper is organized as follows. We start by\ndo individuals change over time and what factors are\ndiscussing related work. Then we provide a brief\nrelevant for understanding inter-individual differences?\nintroduction to the Cyc Knowledge Base (Cyc KB). Next,",
+      "start_offset": 2233,
+      "end_offset": 3797
+    },
+    {
+      "heading": "What events are expected to occur and when do they\nwe discuss our temporal projection algorithm and the",
+      "level": 1,
+      "content": "occur? What changes their probabilities of occurrence?\nknowledge representation it requires. We conclude by\nMany knowledge-based systems do not represent time\ndiscussing our experimental results and plans for future\ncorrectly and they do not perform sophisticated temporal\nresearch.",
+      "start_offset": 3900,
+      "end_offset": 4184
+    },
+    {
+      "heading": "Related Work",
+      "level": 1,
+      "content": "where the membership changes over time. For example,\nIn AI, the problem of temporal projection has been studied Professor is a time-dependent collection, whereas Integer\nin the context of the frame problem [Hanks & McDermott is not. Similarly, TimeDependentRelation is the collection\n1986]. The use of survival functions for temporal of all relations such that nothing remains in their eternal\nprojection in AI was initiated by [Dean & Kanazawa 1988] extensions. For example, ‘owns’ and ‘likesAsFriend’ are\nand it was extended by other researchers [Tawfik & time-dependent relations. Inference and learning in Cyc-\nNeufeld 2000]. Issues related to temporal abstraction in the based systems can be guided by several heuristics [Sharma\nmedical domain were discussed in [Shahar 1997] and et al 2016, Sharma & Goolsbey 2017, Sharma & Goolsbey\ntemporal-semantic properties were introduced in [Shoham 2019, Sharma & Forbus 2010, Forbus et al 2009].\n1987]. However, none of these addressed the problem in\nthe context of improving Q/A performance of large-scale\nRisk Periods and Discrete-Time Survival\ncognitive systems. The work presented in the present study\nis closest to that discussed by [Lenat 1998] and [Singer & Analysis\nWillet 2003]. Previous studies have developed",
+      "start_offset": 4197,
+      "end_offset": 5465
+    },
+    {
+      "heading": "Let us assume that T was the last time point when fluent P",
+      "level": 1,
+      "content": "probabilistic models for temporal and probabilistic 0\nwas known to be true and no events are known to have\nreasoning [Hanks & McDermott 1993], but few researchers\noccurred that affect the persistence of P2. If we lack perfect\nhave focused on discussing knowledge-representation and\nknowledge, we need to extrapolate and find a reasonable\nreasoning issues that would help large logic-based AI\nassessment of whether P would be true at time T +∆.\nsystems to perform robust temporal projection and answer 0",
+      "start_offset": 5523,
+      "end_offset": 6027
+    },
+    {
+      "heading": "Systems that use probabilistic logic might compute and use",
+      "level": 1,
+      "content": "a wide range of answers.\nProb (holds (P, T +∆)) directly. Other systems that use\n0\ntraditional forward and backward inference might compute",
+      "start_offset": 6085,
+      "end_offset": 6226
+    },
+    {
+      "heading": "Background",
+      "level": 1,
+      "content": "Prob (holds (P, t)) for different values of t, and derive an\nIn this section, we summarize the key conventions used by interval ([T1, T2]) around T in which the fluent P is\n0\nCyc [Lenat & Guha 1990, Matuszek et al. 2006]. Cyc highly likely to be true. If we assert that P is true in [T1,\nrepresents concepts as collections. Each collection is a kind T2], this assertion can participate in forward and backward\nor type of thing, the instances of which share a certain inference in the same manner as any other assertion in the\nproperty, attribute, or feature. For example, Cat is a KB3.\ncollection of all cats, and only cats. Collections are Consider the following sentences:\narranged hierarchically by the genls relation. (genls <sub> (isa Fred BiologicalLivingObject) ... (A1)\n<super>) means that anything that is an instance of <sub> (isa Fred Married) … (A2)\nis also an instance of <super>. Predicates are also arranged (isa Fred MicrosoftEmployee) … (A3)\nin hierarchies. (genlPreds <s> <g>) means that <g> is a Let us assume that A1, A2, and A3 were true in the year\ngeneralization of <s>. The collection Situation is an 1990, and we need to find the likelihood of their being true\nimportant part of Cyc’s ontology. Each instance of in the year 1992. Since the state represented by A1 is\nSituation is a state or event that comprises one or more terminated by a death event, we have to find the\nobjects with certain properties or certain relations with probability of the occurrence of a death event in the time\neach other. Event and StaticSituation are notable interval 1990–1992. Similarly, the likelihood of the truth of\nspecializations of Situation. In Cyc, contexts are A2 in 1992 depends on Fred’s age and on the duration for\nrepresented as microtheories. Each microtheory groups a which he has been married. Therefore, the process of\nset of assertions together that share some common computing these likelihoods involves the following steps.\nassumptions. The time dimension of contexts can be (a) Identification of the starting points of risk periods\nspecified [Lenat 1998]. For example, the following when a state could be terminated: Since states can be\nsentence represents the fact that Tony Greig was a cricketer terminated as soon as they are started, this starting point is\nbetween 1972 and 1977. specified by the event that initiates the state. For example,\nMonadic microtheory1: PeopleDataMt the starting points of the risk periods for A1, A2, and A3\nTime dimension: are given by the birth date, the wedding date, and the\n(TimeIntervalInclusiveFn (YearFn 1972) (YearFn 1977)) hiring date, respectively. This knowledge can be\nSentence: (isa TonyGreig-Cricketer Cricketer)\nIn Cyc, instances of TimeDependentCollection and\nTimeDependentRelation can be used to represent fluents.\nEach instance of TimeDependentCollection is a collection 2 The case when relevant events are known to have occurred is discussed\nin the next section.\n3 Obviously, temporal projection should not be used recursively. When\n1 A monadic microtheory is a temporally or otherwise unqualified contradictory information arrives, the time intervals of these assertions are\nmicrotheory. updated (discussed below).\n\nrepresented in the following format: used to calculate the likelihood that sentences such as A1,\n(eventTypeStartsRolePlayersRiskPeriodForState A2, and A3 persist at the time T 0+∆. An example of such\nEVENT-TYPE ROLE STATE). This states that an event of type survival likelihoods (estimated by Cyc) is shown in Figure\n‘EVENT-TYPE’ starts a risk period in which the individual 1. We see that the professional career of cricketers starts\nwho plays the role ‘ROLE’ in the event4 could become an ending when they are in their mid-30s, and virtually all of\ninstance of ‘STATE’. This information can be used to derive them retire before they are 45 years old. Each instance of\nsentences such as A5. the time-dependent collection and relations will potentially\n(eventStartsRiskPeriodForSentence require different types of distributions and parameter\nWeddingEvent-001 (isa Fred Divorced)) ….(A5) values. Given the type of these distributions and the values\nIf Fred’s wedding event happened on July 1, 1988, then we of their associated parameter values, Cyc will use them\ncan derive A6. automatically to extrapolate fluents. However, some\n(startingPointOfRiskPeriodOfSentence distributions can be specified more easily if we use the\n(isa Fred Divorced) (DayFn 1 (MonthFn July (YearFn 1988)))) ….(A6) following temporal semantic properties. (a) Initial\nAssertions such as A6 can be derived for each of Fred’s Collections: In CycL, an instance, COL, of\nweddings. InitialCollection is defined such that any instance of COL\n(b) Specification of the hazard function: Given the starts as an instance of it, and if the instance changes so it\nstarting point of the risk period, we can calculate the is no longer an instance, it can never become an instance\nprobability that a state-terminating event would occur in a again. “NeverSchooled” and “FemaleInfant” are instances\ngiven time interval. Let us divide continuous time into a of InitialCollection. Thus, if (isa Tom NeverSchooled) was\nsequence of time intervals (0, t ], (t , t ], ..., and so forth, true on January 1, 1980, Cyc would use the property of the\n1 1 2\nand let (t , t] be the jth time interval. Then, if T is the initial collection and assert that Tom was an instance of\nj-1 j\ndiscrete random variable that indicates the time interval that collection from his birth until January 1, 1980. (b)\nduring which a state terminating event occurs, then the Terminal Collection: Similarly, in CycL, an instance,\ndiscrete hazard, h, is the conditional probability that a COL, of TerminalNonInitialCollection, is a collection such\nj\nrandomly selected individual will experience the state- that when a thing becomes an instance of COL, it must\nterminating event in the jth time interval, given that he/she remain so while it exists. The collection “HumanAdult”\nhas not experienced it in preceding time intervals [Singer and “Graduate” are examples of terminal collection. (c)\n& Willett 1993, Singer & Willett 2003]: Bidirectional Projection: In some cases, fluents persist as\nh = Pr ( T = j | T ≥ j) ...(E1) long as the individual exists5 (e.g., FemaleHuman). Cyc’s\nj\nThus, it follows that: temporal projection module uses these properties.\nPr (T > k) = (1-h )(1-h )…(1-h ) How does this analysis change when we know other\n1 2 k\n= ∏ (1-h) ... (E2) facts that affect the persistence of a given sentence? In the\nj\nPr( T = k) = (1-h )(1-h )…(1-h ).h present study, we consider two ways in which this change\n1 2 k-1 k\n= h .∏(1-h) …(E3) might occur.\nk j\n(a) Temporal Constraints: Consider the following\nsentences:\nMicrotheory: PeopleDataMt\nTime Interval: (YearFn 1998)\nSentence: (isa JohnMcCarthy-ComputerScientist Professor) ...(A7)\nMicrotheory: PeopleDataMt\nTime Interval: (YearFn 2001)\nSentence: (isa JohnMcCarthy-ComputerScientist RetiredPerson) ...(A8)\nGiven a sentence such as A7, Cyc’s temporal projection\nmodule would try to extrapolate and construct a time\nFigure 1: Likelihood of truth of sentences of type (isa interval around 1998 during which John McCarthy was a\n<ins> Cricketer) as a function of age. professor. However, a sentence such as A8 suggests that he\nGiven sentences like A6, we will find the last known\nstarting point of risk period. Then expression E2 can be\n5 For simplicity, we ignore the possible occurrence of relatively rare\ngender change events. Temporal projection of sentences of type (isa <ins>\nCOL) where COL is a specialization of BiologicalLivingObject, often\n4 For the sentence A2, we want to state that the wedding event starts a risk involves reasoning about the life expectancy of an individual. This is done\nperiod in which the individual who plays the role “groom” could enter the with the help of hazard functions such as E1, which are calculated using\nstate “Divorced”. A similar sentence would be needed for the bride. mortality rates.\n\nwas not a professor in 2001. We represent this information The last argument in A12 is used to specify the value of\nusing the following sentence. β(i). Similar assertions are used for time-independent\ncovariates.\n(followingStageTypes Professor RetiredPerson)…(A9)",
+      "start_offset": 6236,
+      "end_offset": 14514
+    },
+    {
+      "heading": "Hazard functions can also be used to infer the persistence",
+      "level": 1,
+      "content": "Sentence A9 represents that a person’s life as a professor of time-dependent predicates. However, in some cases, we\nends before his life as a retired person begins6. Let P need an additional vocabulary for plausible inferences.\nrepresent the fluent “John McCarthy is a professor.” Then, Consider the following sentences:\nbased on only A8 and A9, Cyc can infer that John (owns AlbertEinstein Car-780) …(A13)\nMcCarthy was a professor at time point T if the following (owns AlbertEinstein Toothbrush-392) …(A14)\nconditions are met: (a) Prob (P, T) > threshold, and (b) ⌐ The sentences A13 and A14 should have different decay\n(Prob (Q, T) > threshold), where Q is an assertion that is rates. Therefore, we need to specify hazard functions for\nincompatible7 with P. handling sentences where an instance of a certain\ncollection appears in a given argument position in a\n(b) Covariates: Temporal constraints can help us to predicate8. If the known specific conditions are not\nrepresent the incompatibility of two assertions that mainly satisfied for a given assertion, then we must employ\nlimit the time interval during which assertions are deemed generic hazard functions that apply to a given predicate.\nto hold. However, additional information about an\nindividual might change the rate of decay of persistence.",
+      "start_offset": 14572,
+      "end_offset": 15880
+    },
+    {
+      "heading": "Event Calculus in Temporal Projection",
+      "level": 1,
+      "content": "For example, a sentence such as A10 is a time-dependent\ncovariate for A11. The inferences made by the methods discussed above are\nMicrotheory: PeopleDataMt non-monotonic in nature. When contradictory information\nTime interval: 1970 to 1975. arrives, we can use methods based on both event calculus\nSentence: (isa Fred (FrequentPerformerFn Smoking)) ...(A10) and survival analysis to maintain a consistent KB. Let us\nSentence: (isa Fred BiologicalLivingObject) …(A11) start with the basics of event calculus. Briefly, fluents are\nconsidered true at a time point if they have been initiated\nOther covariates (e.g., gender) can be time independent. To by an event previously, but have not been terminated in the\nscale the hazard when such covariates are present, an meantime. Similarly, a fluent is false if it has been\nexpression such as E4 is used. terminated previously but has not been initiated in the\nh(i) ← 1/ (1+e-ɑ(i) e(-Σβ(i)*X(i))) …(E4) meantime [Miller & Shanahan 2002]. In Cyc, domain-\nRecall that h(i) is the hazard for the ith time interval. Here, dependent axioms are written to derive sentences such as\neach X(i) is a Boolean variable that corresponds to a the following, which represent knowledge about situations\ncovariate such as A10. The value of X(i) is 1 if the that start and end time intervals for fluents.\ncovariate is present in the ith time interval, but zero (situationStartsIntervalForSentence s f) …(A15)\notherwise. The parameters β(i) represent the strengths of (situationEndsIntervalForSentence t g) …(A16)\nthe covariates. When a sentence such as A11 is true in an The first sentence above denotes that situation s starts a\ninterval i, the value of h(i) increases, which leads to a time interval during which the fluent f holds. The core\nsharper decline in the probability of the persistence of persistence axiom employed in simplified event calculus is\nA11. When all of the values of X(i) are zero, the hazard as follows [Sadri & Kowalski 1995].\nfunction for the ith time interval reduces to E5.\nh(i) ←1/ (1+ e-ɑ(i)) …(E5) Holds(P, T) ← Happens (E1, T1) and Initiates (E1, P) and\nExpression E5 represents the baseline hazard function, T1 < T and ~∃E2, T2 (Happens (E2, T2) and\nwhich is determined by the parameter ɑ(i). Information Terminates (E2, P) and T1 < T2 < T) … (A17)\nabout covariates can be represented by assertions such as\nthe following. However, the original event calculus description [Kowalski\n(timeDependentCovariateForCollection BiologicalLivingObject & Sergot 1986] suggested that extra application-specific\n(FrequentPerformerFn Smoking) 0.3) …(A12) rules can be added to infer whether an interval for a fluent\nhas been broken if the known events are too far apart for it\nto hold continuously. This problem can be solved if we\n6 In CycL, the collection RetiredPerson is the collection of people who combine the event calculus with the survival analysis-\nhave retired permanently. based methods discussed above. In step 1a of the algorithm\n7 In this case, sentences such as “John McCarthy is a retired person.” and\n“John McCarthy is an infant.” are incompatible with P. Such\nincompatibility can often be inferred by using ‘disjointWith’ assertions. 8 For A13, the relevant hazard function represents our knowledge of how\nFor instance, (disjointWith HumanInfant Professor) holds. long automobiles are owned.\n\nshown in Figure 2, we use A17 to construct an interval These assertions are derived from domain-specific axioms\n[T1, T2] for a fluent P. However, the intervals created in (e.g., axioms about presidential inauguration) and they are\nstep 1b are preferred9 if they are subsumed by [T1, T2]. treated as default statements. They can be overridden when\nSince hazard functions represent knowledge about how contradictory information10 is available and assertions such\nlong states persist, this helps us to avoid the error caused as A16 are derived.\nwhen excessively wide time intervals are produced due to\nAlgorithm: TemporallyProject\nincomplete knowledge of the outside world. Since many\nInput: A Knowledge Base, KB\nevents that start/end intervals for P might be known to us,\nA fluent, P, true during a time interval, T.\nwe create a timeline of events and choose E1 and E2 such A likelihood threshold, ɑ.\nthat following condition is satisfied. Output: A time interval [T1, T2] that subsumes T, such\nhappens (E1, T1), happens (E2, T2), T1 < T < T2, that if T3 ɛ [T1, T2], then Prob (P, T3) > ɑ.\nInitiates(E1, P), Terminates (E2, P), 1. If events E1 and E2 exist such that they start and end\n~∃E3 such that (happens(E3, T3), Initiates (E3, P), intervals for P respectively and satisfy condition C1,\nT1 < T3 < T < T2) , ~∃E4 such that (happens(E4, T4), then execute 1a–1c, else goto step 2.\nTerminates (E4, P), T1 < T < T4< T2) …(C1) (1a) Use A17 to construct an interval [T1, T2] that\nsubsumes T for P.\nIn step 2, when all known events start time intervals for P, (1b) Use the hazard function for P to construct another\nwe use C2 to choose an event E1, and use the hazard interval [T3, T4] for P.\nfunction to create an interval that extends forward from E1. (1c) If [T1, T2] subsumes [T3, T4], then return [T3,\nT4], else return [T1, T2].\nhappens(E1, T1), Initiates (E1, P) and ~∃E2 such that 2. If all known events start intervals for P, use condition\n(happens (E2, T2) and T1 < T2 < T and Initiates (E2, P)) C2 to choose an event, and use the relevant hazard\n…(C2) function to create an interval [T5, T6] that extends\nhappens(E1, T1), Terminates (E1, P) and ~∃E2 such that forward from the event. If T is subsumed by [T5, T6]\n(happens (E2, T2) and T < T2 < T1 and Terminates (E2, P)). t h e n return [T5, T6] else goto step 4\n…(C3) 3. If all known events terminate intervals for P, use\nConditions C1, C2 and C3 help us identify events that are condition C3 to choose an event and use the relevant\nmost temporally proximate to P. When all known events hazard function to create an interval [T5, T6] that\nend intervals for the given fluent, we use C3 to choose the extends backward from the event. If T is subsumed by\nclosest event and create an interval that extends backwards [T5, T6] then return [T5, T6] else goto step 4.\nfrom it (step 3). If the intervals created by these events do 4. Use hazard functions to create a time interval [T5, T6]\nnot subsume T, then the truth of P at T is unlikely to be that subsumes T.\nrelated to their occurrence and step 4 is executed. In step 4, 5. If applicable, use temporal constraints to truncate [T5,\nwe use the hazard functions and create a time interval [T5, T6]. Return the resulting time interval.\nT6]. In step 5, we look at different constraints that might\nFigure 2: Algorithm used for temporal projection.\nbe applicable and we truncate the interval if necessary.\nNon-survival Analysis-related Vocabulary: Although\nsurvival analysis provides a natural framework for Learning: How can we learn the parameters of the\ntemporal projection, some fluents are less amenable to probability distributions discussed above? We recall that\nmonotonically decreasing persistence likelihoods. For the definitions of hazard functions are reliant on\nexample, consider the following sentence: identifying the time interval during which the state\n(isa BillClinton UnitedStatesPresident) …(A17) terminating event occurs. Therefore, the task of learning\nIt is plausible to infer that a sentence such as A17 would be the hazard functions requires information in the following\ntrue for four years from the inauguration date of the format [Singer & Willet 2003].\npresident. To handle these cases, we can derive sentences (i) A time period variable, j: We need to divide the time\nsuch as A17. period since the start of the risk period into intervals with a\n(statePersistsForDurationFromDate suitable length. The time period variable specifies the time\n(isa BillClinton UnitedStatesPresident) period j of the record. For example, let us consider\n(DayFn 21 (MonthFn January (YearFn 1993))) (YearsDuration 4)) (A17) sentence A11. Fred’s birth event starts the risk period and\nintervals with a length of one year are suitable for\nestimating the likelihood of its persistence. Therefore, the\n9 In Figure 2, the intervals created by hazard functions are such that if T\nlies in the interval then Prob(holds(P, T)) > ɑ, where ɑ is an input to the 10 For fluents involving US presidents, assassination, impeachment or\nalgorithm. resignation events will terminate intervals for sentences such as A17.\n\nfourth year of Fred’s life would correspond to the fourth reasoning done in mode M1, we enabled temporal\ntime interval in our dataset. (ii) Values of covariates in projection methods discussed in this paper. The results of\neach time interval: For each time interval, j, we need to these experiments are shown in Table 1. We see that there\nobtain the value of the covariate (i.e., the truth of sentences has been significant improvement in Q/A performance in\nsuch as A10) in that time interval for the given individual. all query sets13. The overall improvement in performance\n(iii) Value of EVENT(i, j): The variable EVENT(i, j) with respect to M1 is 49%. The results are statistically\nindicates whether the state terminating event for individual significant (p < 0.05).\ni occurred during the time period j. Given a set of such\nrecords, the likelihood of observing the data is given as",
+      "start_offset": 15917,
+      "end_offset": 25267
+    },
+    {
+      "heading": "Conclusions and Discussion",
+      "level": 1,
+      "content": "follows.\nL = ∏ i ∏ j h(t ij) EVENT(i,j) (1-h(t ij)) (1-EVENT(i, j)) Commonsense temporal reasoning is a core problem for\nThe values of the hazard functions can be calculated by cognitive systems. To improve commonsense reasoning in\nminimizing L. general and Q/A performance in particular, modern AI\nsystems must find better ways to reason about how long\n#Queries Improvement\nQuery set Mode % Correct facts persist. In this study, we proposed different types of\nw.r.t. Mode 1\nknowledge representation schemes, which may help such\n1 M1 100 28% -\nsystems to perform robust temporal projection. The\nM2 100 56% 100% specification of risk periods and hazard functions\n2 M1 3661 39% - facilitates the calculation of plausible intervals for fluents.\nM2 3661 57% 46% Temporal constraints help to limit intervals and the\n3 M1 423 29% - presence of covariates can scale the parameters of the\nM2 423 70% 141% hazard functions. Event calculus can be integrated with\n4 M1 2616 43% - survival analysis to alleviate some of the problems caused\nby incomplete knowledge. Experiments on a set of over\nM2 2616 63% 47%\n7000 queries shows that the methods proposed here lead to\n5 M1 533 26%\n49% improvement in Q/A performance on average.\nM2 533 34% 31%",
+      "start_offset": 25293,
+      "end_offset": 26525
+    },
+    {
+      "heading": "Our results suggest the following future areas of",
+      "level": 1,
+      "content": "Total M1 7333 39%\nresearch. First, we have found that in the case of many\nM2 7333 58% 49%\ntime dependent collections (e.g., Entertainer, Singer), once\npeople enter these states; the fluent persists until the end of\nTable 1: Experimental Results their active life. Therefore, we would like to reason about\nwhen individuals are likely to enter a given state, and how",
+      "start_offset": 26574,
+      "end_offset": 26940
+    },
+    {
+      "heading": "Experimental Evaluation",
+      "level": 1,
+      "content": "they might make transitions among states. Previous\nresearch into multi-state processes might be relevant in this\nTo assess the validity of these concepts, we conducted a set context [Crowder 2012]. Second, we would like to extend\nof experiments. Five query sets were selected based on the this research to ensure that we can reason about recurrent\navailability of temporally qualified ground facts and their and periodic events (e.g., sleeping or going to a grocery\nrelevance to temporal projection. Every query was in the store). Finally, the capability to reason about probabilistic\nform: “Sentence s was (will be) true at time T”11, where s effects of events, and estimating the likelihood of event\nwas a fully bound fluent of the type ‘(isa <ins> <col>)’. occurrence in a given time interval would be very useful\nFor each of these query sets, we measured the Q/A for further improving the results shown in Table 1.\nperformance in two modes, as follows. Mode M1: In this\nmode, we aimed to simulate the performance of a",
+      "start_offset": 26963,
+      "end_offset": 27986
+    },
+    {
+      "heading": "References\ntraditional reasoning system with no temporal projection",
+      "level": 1,
+      "content": "module. In addition to simply looking up the KB and using Crowder, M. 2012. Multivariate Survival Analysis and Competing\nthe predicate generalization hierarchy, the inference engine Risks. CRC Press.\nperformed a temporal subsumption12 test during reasoning. Dean, T. and Kanazawa, K.. 1988. Probabilistic Temporal\nReasoning, Proceedings of AAAI, pp. 524-528.\nMode M2: In the second mode, in addition to the\nHanks, S. and McDermott, D. 1986. Default Reasoning,\nNonmonotonic logics and the Frame Problem, Proceedings of the\n11 We included a query only when it could not be answered easily by AAAI, pp. 328-334.\nconsidering the lifespan of individuals. For instance, a query like “Was\nJohn McCarthy a professor in the year 1850?” would be excluded from\nour experiments. On the other hand, a query like “Was Marvin Minsky a\nprofessor in the year 1984?” would be included in our query sets. 13 The number of queries in query sets is different due to non-uniform\n12 A sentence s is considered true during interval T1 if it is known to be distribution of facts in KB. For example, Cyc KB knows much more\ntrue during interval T2, and T2 subsumes T1. about movie actors than about cricketers.\n\nHanks, S. and McDermott, D. 1993. Modeling a Dynamic and\nUncertain World I: Symbolic and Probabilistic Reasoning about\nChange. Artificial Intelligence, Vol. 43.\nKowalski, R. 1992. Database Updates in the Event Calculus.\nJournal of Logic Programming, 12, pp. 12-146.\nKowalski, R. and Sergot, M. 1986. A Logic-based Calculus of\nEvents, New Generation Computing, Vol. 4, pp. 67-94.\nLenat D. and Guha, R. V. 1990 Building Large Knowledge-Based\nSystems: Representation and Inference in the Cyc Project.\nAddison Wesley.\nLenat, D. 1998. The Dimensions of Context Space. Available at\nwww.cyc.com.\nMatuszek, C., Witbrock, M., De Olivieira, J., 2006. An\nIntroduction to the Syntax and Content of Cyc. AAAI Spring\nSymposium, pp. 44-49.\nMiller, R. and Shanahan, M. 2002. Some Alternative\nFormulations of the Event Calculus, LNAI, Vol 2408, Springer.\nMcDermott, D. 1982. A Temporal Logic for Reasoning About\nProcesses and Plans. Cognitive Science, 6, pp. 101-155.\nSadri, F. and Kowalski, R. 1995. Variants of the Event Calculus.\nProc. of ICLP.\nShahar, Y. 1997. A Framework for Knowledge-Based Temporal\nAbstraction, Artificial Intelligence, 90 (1-2), pp. 79-133.\nShoham, Y. 1987. Temporal Logics in AI: Semantical and\nOntological Considerations, Artif. Intell., 33(1), pp. 89-104.\nSinger, J. D. and Willett, J. B., 1993. It’s about time: Using\nDiscrete-Time Survival Analysis to Study Duration and Timing\nof Events, Jl. of Educational Statistics, pp. 155-195.\nSinger, J. D. and Willett, J. B., 2003. Applied Longitudinal Data\nAnalysis: Modeling Change and Event Occurrence. Oxford\nUniversity Press.\nSharma, A. and Forbus, K. D.. 2010. Modeling the Evolution of\nKnowledge and Reasoning in Learning Systems, AAAI Fall\nSymposium Series.\nSharma, A. and Forbus, K. D. 2010 Graph-based reasoning and\nreinforcement learning for improving Q/A performance in large\nknowledge-based systems, AAAI Fall Symposium Series\nSharma, A. and Goolsbey, K. 2017 Identifying useful inference\npaths in large commonsense knowledge bases by retrograde\nanalysis, Proceedings of the AAAI Conference on Artificial\nIntelligence, 31(1).\nForbus, K. D., Lockwood, K., Sharma, A. , Tomai, E. 2009 Steps\ntowards a 2nd generation learning by reading system, AAAI\nSpring Symposium on Learning by Reading, Spring.\nSharma, A. Witbrock, M. Goolsbey, K. 2016. Controlling search\nin very large commonsense knowledge bases: a machine learning\napproach, arXiv preprint arXiv:1603.04402\nTawfik, A. Y. and Neufeld, E. M. 2000. Temporal Reasoning\nand Bayesian Networks. Computational Intelligence, 16 (3), pp.\n349-374.",
+      "start_offset": 28053,
+      "end_offset": 31799
+    }
+  ],
+  "figures": [
+    {
+      "figure_id": "fig_2",
+      "caption": "Figure 2: Algorithm used for temporal projection.",
+      "image_path": null,
+      "reference_count": 2
+    },
+    {
+      "figure_id": "fig_2",
+      "caption": "Figure 2: Algorithm used for temporal projection.",
+      "image_path": null,
+      "reference_count": 2
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "table_1",
+      "caption": "Table 1: Experimental Results their active life.",
+      "data": [
+        {
+          "Query set": "1",
+          "Mode": "M1",
+          "#Queries": "100",
+          "% Correct": "28%",
+          "Improvement\nw.r.t. Mode 1": "-"
+        },
+        {
+          "Query set": "",
+          "Mode": "M2",
+          "#Queries": "100",
+          "% Correct": "56%",
+          "Improvement\nw.r.t. Mode 1": "100%"
+        },
+        {
+          "Query set": "2",
+          "Mode": "M1",
+          "#Queries": "3661",
+          "% Correct": "39%",
+          "Improvement\nw.r.t. Mode 1": "-"
+        },
+        {
+          "Query set": "",
+          "Mode": "M2",
+          "#Queries": "3661",
+          "% Correct": "57%",
+          "Improvement\nw.r.t. Mode 1": "46%"
+        },
+        {
+          "Query set": "3",
+          "Mode": "M1",
+          "#Queries": "423",
+          "% Correct": "29%",
+          "Improvement\nw.r.t. Mode 1": "-"
+        },
+        {
+          "Query set": "",
+          "Mode": "M2",
+          "#Queries": "423",
+          "% Correct": "70%",
+          "Improvement\nw.r.t. Mode 1": "141%"
+        },
+        {
+          "Query set": "4",
+          "Mode": "M1",
+          "#Queries": "2616",
+          "% Correct": "43%",
+          "Improvement\nw.r.t. Mode 1": "-"
+        },
+        {
+          "Query set": "",
+          "Mode": "M2",
+          "#Queries": "2616",
+          "% Correct": "63%",
+          "Improvement\nw.r.t. Mode 1": "47%"
+        },
+        {
+          "Query set": "5",
+          "Mode": "M1",
+          "#Queries": "533",
+          "% Correct": "26%",
+          "Improvement\nw.r.t. Mode 1": ""
+        },
+        {
+          "Query set": "",
+          "Mode": "M2",
+          "#Queries": "533",
+          "% Correct": "34%",
+          "Improvement\nw.r.t. Mode 1": "31%"
+        },
+        {
+          "Query set": "Total",
+          "Mode": "M1",
+          "#Queries": "7333",
+          "% Correct": "39%",
+          "Improvement\nw.r.t. Mode 1": ""
+        },
+        {
+          "Query set": "",
+          "Mode": "M2",
+          "#Queries": "7333",
+          "% Correct": "58%",
+          "Improvement\nw.r.t. Mode 1": "49%"
+        }
+      ],
+      "reference_count": 2
+    },
+    {
+      "table_id": "table_1",
+      "caption": "Table 1.\nperformance in two modes, as follows.",
+      "data": null,
+      "reference_count": 2
+    }
+  ],
+  "references": [
+    {
+      "id": "1",
+      "text": "Reasoning, Proceedings of AAAI, pp. 524-528.\nMode M2: In the second mode, in addition to the",
+      "parsed": {
+        "authors": [
+          "Reasoning",
+          "Proceedings of AAAI",
+          "pp"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "2",
+      "text": "Hanks, S. and McDermott, D. 1986. Default Reasoning,\nNonmonotonic logics and the Frame Problem, Proceedings of the\n11 We included a query only when it could not be answered easily by AAAI, pp. 328-334.\nconsidering the lifespan of individuals. For instance, a query like “Was\nJohn McCarthy a professor in the year 1850?” would be excluded from\nour experiments. On the other hand, a query like “Was Marvin Minsky a\nprofessor in the year 1984?” would be included in our query sets. 13 The number of queries in query sets is different due to non-uniform\n12 A sentence s is considered true during interval T1 if it is known to be distribution of facts in KB. For example, Cyc KB knows much more\ntrue during interval T2, and T2 subsumes T1. about movie actors than about cricketers.",
+      "parsed": {
+        "authors": [
+          "Hanks",
+          "S"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "3",
+      "text": "Hanks, S. and McDermott, D. 1993. Modeling a Dynamic and\nUncertain World I: Symbolic and Probabilistic Reasoning about\nChange. Artificial Intelligence, Vol. 43.",
+      "parsed": {
+        "authors": [
+          "Hanks",
+          "S"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "4",
+      "text": "Kowalski, R. and Sergot, M. 1986. A Logic-based Calculus of",
+      "parsed": {
+        "authors": [
+          "Kowalski",
+          "R"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "5",
+      "text": "Events, New Generation Computing, Vol. 4, pp. 67-94.\nLenat D. and Guha, R. V. 1990 Building Large Knowledge-Based\nSystems: Representation and Inference in the Cyc Project.\nAddison Wesley.",
+      "parsed": {
+        "authors": [
+          "Events",
+          "New Generation Computing",
+          "Vol"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "6",
+      "text": "Matuszek, C., Witbrock, M., De Olivieira, J., 2006. An\nIntroduction to the Syntax and Content of Cyc. AAAI Spring",
+      "parsed": {
+        "authors": [],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "7",
+      "text": "Miller, R. and Shanahan, M. 2002. Some Alternative\nFormulations of the Event Calculus, LNAI, Vol 2408, Springer.",
+      "parsed": {
+        "authors": [
+          "Miller",
+          "R"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "8",
+      "text": "Sadri, F. and Kowalski, R. 1995. Variants of the Event Calculus.\nProc. of ICLP.",
+      "parsed": {
+        "authors": [
+          "Sadri",
+          "F"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "9",
+      "text": "Abstraction, Artificial Intelligence, 90 (1-2), pp. 79-133.",
+      "parsed": {
+        "authors": [
+          "Abstraction",
+          "Artificial Intelligence",
+          "90 (1-2)",
+          "pp"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "10",
+      "text": "Singer, J. D. and Willett, J. B., 1993. It’s about time: Using\nDiscrete-Time Survival Analysis to Study Duration and Timing\nof Events, Jl. of Educational Statistics, pp. 155-195.",
+      "parsed": {
+        "authors": [
+          "Singer",
+          "J"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "11",
+      "text": "Singer, J. D. and Willett, J. B., 2003. Applied Longitudinal Data\nAnalysis: Modeling Change and Event Occurrence. Oxford\nUniversity Press.",
+      "parsed": {
+        "authors": [
+          "Singer",
+          "J"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "12",
+      "text": "Sharma, A. and Forbus, K. D.. 2010. Modeling the Evolution of\nKnowledge and Reasoning in Learning Systems, AAAI Fall\nSymposium Series.",
+      "parsed": {
+        "authors": [
+          "Sharma",
+          "A"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "13",
+      "text": "Sharma, A. and Forbus, K. D. 2010 Graph-based reasoning and\nreinforcement learning for improving Q/A performance in large\nknowledge-based systems, AAAI Fall Symposium Series",
+      "parsed": {
+        "authors": [
+          "Sharma",
+          "A"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "14",
+      "text": "Sharma, A. and Goolsbey, K. 2017 Identifying useful inference\npaths in large commonsense knowledge bases by retrograde",
+      "parsed": {
+        "authors": [
+          "Sharma",
+          "A"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "15",
+      "text": "analysis, Proceedings of the AAAI Conference on Artificial\nIntelligence, 31(1).",
+      "parsed": {
+        "authors": [],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "16",
+      "text": "Forbus, K. D., Lockwood, K., Sharma, A. , Tomai, E. 2009 Steps\ntowards a 2nd generation learning by reading system, AAAI\nSpring Symposium on Learning by Reading, Spring.",
+      "parsed": {
+        "authors": [
+          "Forbus",
+          "K"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "17",
+      "text": "Sharma, A. Witbrock, M. Goolsbey, K. 2016. Controlling search\nin very large commonsense knowledge bases: a machine learning",
+      "parsed": {
+        "authors": [
+          "Sharma",
+          "A"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "18",
+      "text": "Tawfik, A. Y. and Neufeld, E. M. 2000. Temporal Reasoning\nand Bayesian Networks. Computational Intelligence, 16 (3), pp.\n349-374.",
+      "parsed": {
+        "authors": [
+          "Tawfik",
+          "A"
+        ],
+        "year": null,
+        "title": "",
+        "journal": "",
+        "volume": "",
+        "issue": "",
+        "pages": "",
+        "doi": "",
+        "url": ""
+      }
+    }
+  ],
+  "citations": [
+    {
+      "text": "(in)",
+      "ref_ids": [
+        "in"
+      ],
+      "position": 2271,
+      "context": "ason about a\nfunctions. Next, we explain how time (in)dependent\ncomplex and dynamic world. Commonsense t"
+    },
+    {
+      "text": "(KBs)",
+      "ref_ids": [
+        "KBs"
+      ],
+      "position": 2634,
+      "context": "is then discussed, which is often\nknowledge bases (KBs) lack complete knowledge of the\nused to maintain c"
+    },
+    {
+      "text": "(a)",
+      "ref_ids": [
+        "a"
+      ],
+      "position": 8240,
+      "context": "ssumptions. The time dimension of contexts can be (a) Identification of the starting points of risk per"
+    },
+    {
+      "text": "(a)",
+      "ref_ids": [
+        "a"
+      ],
+      "position": 10765,
+      "context": ")) ….(A6) following temporal semantic properties. (a) Initial\nAssertions such as A6 can be derived for "
+    },
+    {
+      "text": "(b)",
+      "ref_ids": [
+        "b"
+      ],
+      "position": 10945,
+      "context": "llection is defined such that any instance of COL\n(b) Specification of the hazard function: Given the s"
+    },
+    {
+      "text": "(b)",
+      "ref_ids": [
+        "b"
+      ],
+      "position": 11773,
+      "context": " collection from his birth until January 1, 1980. (b)\nduring which a state terminating event occurs, th"
+    },
+    {
+      "text": "(c)",
+      "ref_ids": [
+        "c"
+      ],
+      "position": 12344,
+      "context": "d “Graduate” are examples of terminal collection. (c)\n& Willett 1993, Singer & Willett 2003]: Bidirecti"
+    },
+    {
+      "text": "(a)",
+      "ref_ids": [
+        "a"
+      ],
+      "position": 12921,
+      "context": "ange\n1 2 k-1 k\n= h .∏(1-h) …(E3) might occur.\nk j\n(a) Temporal Constraints: Consider the following\nsent"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 14397,
+      "context": "ecify the value of\nusing the following sentence. β(i). Similar assertions are used for time-independent"
+    },
+    {
+      "text": "(a)",
+      "ref_ids": [
+        "a"
+      ],
+      "position": 15102,
+      "context": "nstein Toothbrush-392) …(A14)\nconditions are met: (a) Prob (P, T) > threshold, and (b) ⌐ The sentences "
+    },
+    {
+      "text": "(b)",
+      "ref_ids": [
+        "b"
+      ],
+      "position": 15135,
+      "context": "ditions are met: (a) Prob (P, T) > threshold, and (b) ⌐ The sentences A13 and A14 should have different"
+    },
+    {
+      "text": "(b)",
+      "ref_ids": [
+        "b"
+      ],
+      "position": 15437,
+      "context": "lection appears in a given argument position in a\n(b) Covariates: Temporal constraints can help us to p"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 16823,
+      "context": "ted previously but has not been initiated in the\nh(i) ← 1/ (1+e-ɑ(i) e(-Σβ(i)*X(i))) …(E4) meantime [Mi"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 16838,
+      "context": "but has not been initiated in the\nh(i) ← 1/ (1+e-ɑ(i) e(-Σβ(i)*X(i))) …(E4) meantime [Miller & Shanahan"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 16847,
+      "context": "ot been initiated in the\nh(i) ← 1/ (1+e-ɑ(i) e(-Σβ(i)*X(i))) …(E4) meantime [Miller & Shanahan 2002]. I"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 16852,
+      "context": "en initiated in the\nh(i) ← 1/ (1+e-ɑ(i) e(-Σβ(i)*X(i))) …(E4) meantime [Miller & Shanahan 2002]. In Cyc"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 16928,
+      "context": "er & Shanahan 2002]. In Cyc, domain-\nRecall that h(i) is the hazard for the ith time interval. Here, de"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 17042,
+      "context": "oms are written to derive sentences such as\neach X(i) is a Boolean variable that corresponds to a the f"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 17185,
+      "context": "t situations\ncovariate such as A10. The value of X(i) is 1 if the that start and end time intervals for"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 17379,
+      "context": "orSentence s f) …(A15)\notherwise. The parameters β(i) represent the strengths of (situationEndsInterval"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 17599,
+      "context": "at situation s starts a\ninterval i, the value of h(i) increases, which leads to a time interval during "
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 17835,
+      "context": "event calculus is\nA11. When all of the values of X(i) are zero, the hazard as follows [Sadri & Kowalski"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 17947,
+      "context": "unction for the ith time interval reduces to E5.\nh(i) ←1/ (1+ e-ɑ(i)) …(E5) Holds(P, T) ← Happens (E1, "
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 17962,
+      "context": " ith time interval reduces to E5.\nh(i) ←1/ (1+ e-ɑ(i)) …(E5) Holds(P, T) ← Happens (E1, T1) and Initiat"
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 18165,
+      "context": "E2, T2) and\nwhich is determined by the parameter ɑ(i). Information Terminates (E2, P) and T1 < T2 < T) "
+    },
+    {
+      "text": "(i)",
+      "ref_ids": [
+        "i"
+      ],
+      "position": 23511,
+      "context": "t. To handle these cases, we can derive sentences (i) A time period variable, j: We need to divide the "
+    },
+    {
+      "text": "(ii)",
+      "ref_ids": [
+        "ii"
+      ],
+      "position": 24516,
+      "context": "we enabled temporal\ntime interval in our dataset. (ii) Values of covariates in projection methods discus"
+    },
+    {
+      "text": "(iii)",
+      "ref_ids": [
+        "iii"
+      ],
+      "position": 24957,
+      "context": "ry sets13. The overall improvement in performance\n(iii) Value of EVENT(i, j): The variable EVENT(i, j) wi"
+    }
+  ],
+  "concepts": [
+    {
+      "text": "T2",
+      "type": "entity",
+      "count": 14,
+      "examples": [
+        {
+          "section": "Background",
+          "context": "marize the key conventions used by interval ([T1, T2]) around T in which the fluent P is\n0\nCyc [Lenat"
+        },
+        {
+          "section": "Background",
+          "context": "oncepts as collections. Each collection is a kind T2], this assertion can participate in forward and b"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "ts the baseline hazard function, T1 < T and ~∃E2, T2 (Happens (E2, T2) and\nwhich is determined by the"
+        }
+      ]
+    },
+    {
+      "text": "E1",
+      "type": "entity",
+      "count": 9,
+      "examples": [
+        {
+          "section": "Background",
+          "context": "ter the with the help of hazard functions such as E1, which are calculated using\nstate “Divorced”. A s"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "h(i) ←1/ (1+ e-ɑ(i)) …(E5) Holds(P, T) ← Happens (E1, T1) and Initiates (E1, P) and\nExpression E5 repr"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "val, T.\nwe create a timeline of events and choose E1 and E2 such A likelihood threshold, ɑ.\nthat follo"
+        }
+      ]
+    },
+    {
+      "text": "T5",
+      "type": "entity",
+      "count": 8,
+      "examples": [
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "vant hazard\n…(C2) function to create an interval [T5, T6] that extends\nhappens(E1, T1), Terminates (E1"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "that forward from the event. If T is subsumed by [T5, T6]\n(happens (E2, T2) and T < T2 < T1 and Termin"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "T2 < T1 and Terminates (E2, P)). t h e n return [T5, T6] else goto step 4\n…(C3) 3. If all known event"
+        }
+      ]
+    },
+    {
+      "text": "T1",
+      "type": "entity",
+      "count": 7,
+      "examples": [
+        {
+          "section": "Background",
+          "context": "summarize the key conventions used by interval ([T1, T2]) around T in which the fluent P is\n0\nCyc [Le"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "←1/ (1+ e-ɑ(i)) …(E5) Holds(P, T) ← Happens (E1, T1) and Initiates (E1, P) and\nExpression E5 represen"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "erval [T1, T2] that subsumes T, such\nhappens (E1, T1), happens (E2, T2), T1 < T < T2, that if T3 ɛ [T1"
+        }
+      ]
+    },
+    {
+      "text": "T6",
+      "type": "entity",
+      "count": 7,
+      "examples": [
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "hazard\n…(C2) function to create an interval [T5, T6] that extends\nhappens(E1, T1), Terminates (E1, P)"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "forward from the event. If T is subsumed by [T5, T6]\n(happens (E2, T2) and T < T2 < T1 and Terminates"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "< T1 and Terminates (E2, P)). t h e n return [T5, T6] else goto step 4\n…(C3) 3. If all known events te"
+        }
+      ]
+    },
+    {
+      "text": "A2",
+      "type": "entity",
+      "count": 6,
+      "examples": [
+        {
+          "section": "Background",
+          "context": "hat is an instance of <sub> (isa Fred Married) … (A2)\nis also an instance of <super>. Predicates are a"
+        },
+        {
+          "section": "Background",
+          "context": "> <g>) means that <g> is a Let us assume that A1, A2, and A3 were true in the year\ngeneralization of <"
+        },
+        {
+          "section": "Background",
+          "context": "pecializations of Situation. In Cyc, contexts are A2 in 1992 depends on Fred’s age and on the duration"
+        }
+      ]
+    },
+    {
+      "text": "T3",
+      "type": "entity",
+      "count": 6,
+      "examples": [
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "(E1, T1), happens (E2, T2), T1 < T < T2, that if T3 ɛ [T1, T2], then Prob (P, T3) > ɑ.\nInitiates(E1,"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "T1 < T < T2, that if T3 ɛ [T1, T2], then Prob (P, T3) > ɑ.\nInitiates(E1, P), Terminates (E2, P), 1. If"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "at they start and end\n~∃E3 such that (happens(E3, T3), Initiates (E3, P), intervals for P respectively"
+        }
+      ]
+    },
+    {
+      "text": "Prob",
+      "type": "entity",
+      "count": 5,
+      "examples": [
+        {
+          "section": "Systems that use probabilistic logic might compute and use",
+          "context": "a wide range of answers.\nProb (holds (P, T +∆)) directly. Other systems that us"
+        },
+        {
+          "section": "Background",
+          "context": "Prob (holds (P, t)) for different values of t, and der"
+        },
+        {
+          "section": "Hazard functions can also be used to infer the persistence",
+          "context": "in Toothbrush-392) …(A14)\nconditions are met: (a) Prob (P, T) > threshold, and (b) ⌐ The sentences A13 a"
+        }
+      ]
+    },
+    {
+      "text": "A1",
+      "type": "entity",
+      "count": 5,
+      "examples": [
+        {
+          "section": "Background",
+          "context": "enls <sub> (isa Fred BiologicalLivingObject) ... (A1)\n<super>) means that anything that is an instance"
+        },
+        {
+          "section": "Background",
+          "context": "s <s> <g>) means that <g> is a Let us assume that A1, A2, and A3 were true in the year\ngeneralization"
+        },
+        {
+          "section": "Background",
+          "context": "in the year 1992. Since the state represented by A1 is\nSituation is a state or event that comprises o"
+        }
+      ]
+    },
+    {
+      "text": "Cyc",
+      "type": "entity",
+      "count": 5,
+      "examples": [
+        {
+          "section": "Background",
+          "context": "likelihood of their being true\nimportant part of Cyc’s ontology. Each instance of in the year 1992. Si"
+        },
+        {
+          "section": "Background",
+          "context": "88, then we of their associated parameter values, Cyc will use them\ncan derive A6. automatically to ext"
+        },
+        {
+          "section": "Background",
+          "context": "t ], ..., and so forth, true on January 1, 1980, Cyc would use the property of the\n1 1 2\nand let (t ,"
+        }
+      ]
+    },
+    {
+      "text": "COL",
+      "type": "entity",
+      "count": 4,
+      "examples": [
+        {
+          "section": "Background",
+          "context": "each of Fred’s Collections: In CycL, an instance, COL, of\nweddings. InitialCollection is defined such t"
+        },
+        {
+          "section": "Background",
+          "context": "alCollection is defined such that any instance of COL\n(b) Specification of the hazard function: Given t"
+        },
+        {
+          "section": "Background",
+          "context": "e state- that when a thing becomes an instance of COL, it must\nterminating event in the jth time interv"
+        }
+      ]
+    },
+    {
+      "text": "A10",
+      "type": "entity",
+      "count": 4,
+      "examples": [
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "For example, a sentence such as A10 is a time-dependent\ncovariate for A11. The infere"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "nce: (isa Fred (FrequentPerformerFn Smoking)) ...(A10) and survival analysis to maintain a consistent K"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "sent knowledge about situations\ncovariate such as A10. The value of X(i) is 1 if the that start and end"
+        }
+      ]
+    },
+    {
+      "text": "M1",
+      "type": "entity",
+      "count": 4,
+      "examples": [
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "d correspond to the fourth reasoning done in mode M1, we enabled temporal\ntime interval in our dataset"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "T(i, j): The variable EVENT(i, j) with respect to M1 is 49%. The results are statistically\nindicates w"
+        },
+        {
+          "section": "Conclusions and Discussion",
+          "context": "unctions. Event calculus can be integrated with\n4 M1 2616 43% - survival analysis to alleviate some of"
+        }
+      ]
+    },
+    {
+      "text": "A6",
+      "type": "entity",
+      "count": 3,
+      "examples": [
+        {
+          "section": "Background",
+          "context": "ed parameter values, Cyc will use them\ncan derive A6. automatically to extrapolate fluents. However, s"
+        },
+        {
+          "section": "Background",
+          "context": "mantic properties. (a) Initial\nAssertions such as A6 can be derived for each of Fred’s Collections: In"
+        },
+        {
+          "section": "Background",
+          "context": "such as A8 suggests that he\nGiven sentences like A6, we will find the last known\nstarting point of ri"
+        }
+      ]
+    },
+    {
+      "text": "CycL",
+      "type": "entity",
+      "count": 3,
+      "examples": [
+        {
+          "section": "Background",
+          "context": "can be derived for each of Fred’s Collections: In CycL, an instance, COL, of\nweddings. InitialCollection"
+        },
+        {
+          "section": "Background",
+          "context": "curs, then the Terminal Collection: Similarly, in CycL, an instance,\ndiscrete hazard, h, is the conditio"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "ntinuously. This problem can be solved if we\n6 In CycL, the collection RetiredPerson is the collection o"
+        }
+      ]
+    },
+    {
+      "text": "A17",
+      "type": "entity",
+      "count": 3,
+      "examples": [
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "automobiles are owned.\n\nshown in Figure 2, we use A17 to construct an interval These assertions are der"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "It is plausible to infer that a sentence such as A17 would be the hazard functions requires informatio"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "d variable, j: We need to divide the time\nsuch as A17. period since the start of the risk period into i"
+        }
+      ]
+    },
+    {
+      "text": "T4",
+      "type": "entity",
+      "count": 3,
+      "examples": [
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": ",\nT1 < T3 < T < T2) , ~∃E4 such that (happens(E4, T4), then execute 1a–1c, else goto step 2.\nTerminate"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "ose an event E1, and use the hazard interval [T3, T4] for P.\nfunction to create an interval that exten"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "s forward from E1. (1c) If [T1, T2] subsumes [T3, T4], then return [T3,\nT4], else return [T1, T2].\nhap"
+        }
+      ]
+    },
+    {
+      "text": "C3",
+      "type": "entity",
+      "count": 3,
+      "examples": [
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "minate intervals for P, use\nConditions C1, C2 and C3 help us identify events that are condition C3 to"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "and C3 help us identify events that are condition C3 to choose an event and use the relevant\nmost temp"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "] that\nend intervals for the given fluent, we use C3 to choose the extends backward from the event. If"
+        }
+      ]
+    },
+    {
+      "text": "AI",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Related Work",
+          "context": "the membership changes over time. For example,\nIn AI, the problem of temporal projection has been stud"
+        },
+        {
+          "section": "Related Work",
+          "context": "at nothing remains in their eternal\nprojection in AI was initiated by [Dean & Kanazawa 1988] extension"
+        }
+      ]
+    },
+    {
+      "text": "Hanks & McDermott",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Related Work",
+          "context": "reas Integer\nin the context of the frame problem [Hanks & McDermott is not. Similarly, TimeDependentRelation is the c"
+        },
+        {
+          "section": "Let us assume that T was the last time point when fluent P",
+          "context": "e true and no events are known to have\nreasoning [Hanks & McDermott 1993], but few researchers\noccurred that affect t"
+        }
+      ]
+    },
+    {
+      "text": "Sharma & Goolsbey",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Related Work",
+          "context": "n were discussed in [Shahar 1997] and et al 2016, Sharma & Goolsbey 2017, Sharma & Goolsbey\ntemporal-semantic propert"
+        },
+        {
+          "section": "Related Work",
+          "context": "har 1997] and et al 2016, Sharma & Goolsbey 2017, Sharma & Goolsbey\ntemporal-semantic properties were introduced in ["
+        }
+      ]
+    },
+    {
+      "text": "A3",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Background",
+          "context": "eans that <g> is a Let us assume that A1, A2, and A3 were true in the year\ngeneralization of <s>. The"
+        },
+        {
+          "section": "Background",
+          "context": "ntTypeStartsRolePlayersRiskPeriodForState A2, and A3 persist at the time T 0+∆. An example of such\nEVE"
+        }
+      ]
+    },
+    {
+      "text": "InitialCollection",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Background",
+          "context": "lections: In CycL, an instance, COL, of\nweddings. InitialCollection is defined such that any instance of COL\n(b) Spec"
+        },
+        {
+          "section": "Background",
+          "context": "interval. Let us divide continuous time into a of InitialCollection. Thus, if (isa Tom NeverSchooled) was\nsequence of"
+        }
+      ]
+    },
+    {
+      "text": "∏",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Background",
+          "context": "s this analysis change when we know other\n1 2 k\n= ∏ (1-h) ... (E2) facts that affect the persistence"
+        },
+        {
+          "section": "Conclusions and Discussion",
+          "context": "follows.\nL = ∏ i ∏ j h(t ij) EVENT(i,j) (1-h(t ij)) (1-EVENT(i,"
+        }
+      ]
+    },
+    {
+      "text": "E3",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Background",
+          "context": "ways in which this change\n1 2 k-1 k\n= h .∏(1-h) …(E3) might occur.\nk j\n(a) Temporal Constraints: Consi"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "d end\n~∃E3 such that (happens(E3, T3), Initiates (E3, P), intervals for P respectively and satisfy con"
+        }
+      ]
+    },
+    {
+      "text": "A7",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Background",
+          "context": "isa JohnMcCarthy-ComputerScientist Professor) ...(A7)\nMicrotheory: PeopleDataMt\nTime Interval: (YearFn"
+        },
+        {
+          "section": "Background",
+          "context": "t RetiredPerson) ...(A8)\nGiven a sentence such as A7, Cyc’s temporal projection\nmodule would try to ex"
+        }
+      ]
+    },
+    {
+      "text": "A8",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Background",
+          "context": "JohnMcCarthy-ComputerScientist RetiredPerson) ...(A8)\nGiven a sentence such as A7, Cyc’s temporal proj"
+        },
+        {
+          "section": "Background",
+          "context": "on of age. professor. However, a sentence such as A8 suggests that he\nGiven sentences like A6, we will"
+        }
+      ]
+    },
+    {
+      "text": "A9",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Hazard functions can also be used to infer the persistence",
+          "context": "Sentence A9 represents that a person’s life as a professor of"
+        },
+        {
+          "section": "Hazard functions can also be used to infer the persistence",
+          "context": "der the following sentences:\nbased on only A8 and A9, Cyc can infer that John (owns AlbertEinstein Car"
+        }
+      ]
+    },
+    {
+      "text": "A13",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Hazard functions can also be used to infer the persistence",
+          "context": "Prob (P, T) > threshold, and (b) ⌐ The sentences A13 and A14 should have different decay\n(Prob (Q, T)"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "nferred by using ‘disjointWith’ assertions. 8 For A13, the relevant hazard function represents our know"
+        }
+      ]
+    },
+    {
+      "text": "E4",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "fluent is false if it has been\nexpression such as E4 is used. terminated previously but has not been i"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "then execute 1a–1c, else goto step 2.\nTerminates (E4, P), T1 < T < T4< T2) …(C1) (1a) Use A17 to const"
+        }
+      ]
+    },
+    {
+      "text": "E5",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "5].\nfunction for the ith time interval reduces to E5.\nh(i) ←1/ (1+ e-ɑ(i)) …(E5) Holds(P, T) ← Happens"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "me interval reduces to E5.\nh(i) ←1/ (1+ e-ɑ(i)) …(E5) Holds(P, T) ← Happens (E1, T1) and Initiates (E1"
+        }
+      ]
+    },
+    {
+      "text": "Initiates",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "ey start and end\n~∃E3 such that (happens(E3, T3), Initiates (E3, P), intervals for P respectively and satisfy"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "e condition\n(happens (E2, T2) and T1 < T2 < T and Initiates (E2, P)) C2 to choose an event, and use the relev"
+        }
+      ]
+    },
+    {
+      "text": "C2",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "hazard function for P to construct another\nwe use C2 to choose an event E1, and use the hazard interva"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "nts terminate intervals for P, use\nConditions C1, C2 and C3 help us identify events that are condition"
+        }
+      ]
+    },
+    {
+      "text": "T6]",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "hazard functions and create a time interval [T5, T6]. Return the resulting time interval.\nT6]. In step"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "val [T5, T6]. Return the resulting time interval.\nT6]. In step 5, we look at different constraints that"
+        }
+      ]
+    },
+    {
+      "text": "isa BillClinton UnitedStatesPresident",
+      "type": "entity",
+      "count": 2,
+      "examples": [
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "tifying the time interval during which the state\n(isa BillClinton UnitedStatesPresident) …(A17) terminating event occurs. Therefore, the"
+        },
+        {
+          "section": "Event Calculus in Temporal Projection",
+          "context": "gth. The time period variable specifies the time\n(isa BillClinton UnitedStatesPresident) period j of the record. For example, let us cons"
+        }
+      ]
+    },
+    {
+      "text": "hazard functions",
+      "type": "technical_term",
+      "count": 9,
+      "examples": []
+    },
+    {
+      "text": "an instance",
+      "type": "technical_term",
+      "count": 8,
+      "examples": []
+    },
+    {
+      "text": "an interval",
+      "type": "technical_term",
+      "count": 7,
+      "examples": []
+    },
+    {
+      "text": "temporal projection",
+      "type": "technical_term",
+      "count": 6,
+      "examples": []
+    },
+    {
+      "text": "the persistence",
+      "type": "technical_term",
+      "count": 5,
+      "examples": []
+    },
+    {
+      "text": "the likelihood",
+      "type": "technical_term",
+      "count": 5,
+      "examples": []
+    },
+    {
+      "text": "a sentence",
+      "type": "technical_term",
+      "count": 5,
+      "examples": []
+    },
+    {
+      "text": "a professor",
+      "type": "technical_term",
+      "count": 5,
+      "examples": []
+    },
+    {
+      "text": "a time interval",
+      "type": "technical_term",
+      "count": 5,
+      "examples": []
+    },
+    {
+      "text": "risk periods",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "temporal constraints",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "the results",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "q/a performance",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "the parameters",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    },
+    {
+      "text": "event calculus",
+      "type": "technical_term",
+      "count": 4,
+      "examples": []
+    }
+  ],
+  "source_file": "C:\\Users\\Christoph.Hau\\Auto eval rag\\rag-evaluation-dataset\\data\\raw\\2502.00020v2.pdf"
+}

@@ -1,0 +1,672 @@
+[
+  {
+    "question_id": "q_395907957b0d",
+    "question": "When was A13 first introduced?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L2",
+      "special_categories": [
+        "temporal"
+      ],
+      "template": "When was {concept} first introduced?",
+      "template_slots": {
+        "concept": "A13"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Hazard functions can also be used to infer the persistence",
+        "text": "Let P need an additional vocabulary for plausible inferences.\nrepresent the fluent “John McCarthy is a professor.” Then, Consider the following sentences:\nbased on only A8 and A9, Cyc can infer that John (owns AlbertEinstein Car-780) …(A13)\nMcCarthy was a professor at time point T if the following (owns AlbertEinstein Toothbrush-392) …(A14)\nconditions are met: (a) Prob (P, T) > threshold, and (b) ⌐ The sentences A13 and A14 should have different decay\n(Prob (Q, T) > threshold), where Q is an assertion that is rates."
+      }
+    ]
+  },
+  {
+    "question_id": "q_e099a3055f89",
+    "question": "What is AI?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L2",
+      "special_categories": [
+        "impossible"
+      ],
+      "template": "What is {entity}?",
+      "template_slots": {
+        "entity": "AI"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Temporal Reasoning in AI Systems\nAbhishek Sharma",
+        "text": "The correct inference of the duration attention in the knowledge-based systems community. For\nfor which fluents hold is required by many tasks, including this reason, many cognitive systems have limited deductive\nnatural language understanding and planning. Many AI\nclosure because existing facts (true at a given time point)\nsystems have limited deductive closure because they cannot\ncannot be extrapolated to answer questions at other time\nextrapolate information correctly regarding existing fluents\nand events."
+      }
+    ]
+  },
+  {
+    "question_id": "q_e725753a2bc1",
+    "question": "Who developed A7?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "Who developed {concept}?",
+      "template_slots": {
+        "concept": "A7"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Background",
+        "text": "∏(1-h) …(E3) might occur.\nk j\n(a) Temporal Constraints: Consider the following\nsentences:\nMicrotheory: PeopleDataMt\nTime Interval: (YearFn 1998)\nSentence: (isa JohnMcCarthy-ComputerScientist Professor) ...(A7)\nMicrotheory: PeopleDataMt\nTime Interval: (YearFn 2001)\nSentence: (isa JohnMcCarthy-ComputerScientist RetiredPerson) ...(A8)\nGiven a sentence such as A7, Cyc’s temporal projection\nmodule would try to extrapolate and construct a time\nFigure 1: Likelihood of truth of sentences of type (isa interval around 1998 during which John McCarthy was a\n<ins> Cricketer) as a function of age."
+      }
+    ]
+  },
+  {
+    "question_id": "q_c061c6cf5fc5",
+    "question": "Which approach is used in the described framework?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "Which {category} is used in {context}?",
+      "template_slots": {
+        "category": "approach",
+        "context": "the described framework"
+      }
+    },
+    "contexts": [
+      {
+        "section": "References\ntraditional reasoning system with no temporal projection",
+        "text": "2009 Steps\ntowards a 2nd generation learning by reading system, AAAI\nSpring Symposium on Learning by Reading, Spring.\nSharma, A. Witbrock, M. Goolsbey, K. 2016. Controlling search\nin very large commonsense knowledge bases: a machine learning\napproach, arXiv preprint arXiv:1603.04402\nTawfik, A. Y. and Neufeld, E. M. 2000. Temporal Reasoning\nand Bayesian Networks. Computational Intelligence, 16 (3), pp.\n349-374."
+      }
+    ]
+  },
+  {
+    "question_id": "q_79215e9b54b9",
+    "question": "Where is E5 typically used?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "Where is {entity} typically used?",
+      "template_slots": {
+        "entity": "E5"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Event Calculus in Temporal Projection",
+        "text": "The core\nsharper decline in the probability of the persistence of persistence axiom employed in simplified event calculus is\nA11. When all of the values of X(i) are zero, the hazard as follows [Sadri & Kowalski 1995].\nfunction for the ith time interval reduces to E5.\nh(i) ←1/ (1+ e-ɑ(i)) …(E5) Holds(P, T) ← Happens (E1, T1) and Initiates (E1, P) and\nExpression E5 represents the baseline hazard function, T1 < T and ~∃E2, T2 (Happens (E2, T2) and\nwhich is determined by the parameter ɑ(i)."
+      }
+    ]
+  },
+  {
+    "question_id": "q_b6bceac88d79",
+    "question": "When was a professor first introduced?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L2",
+      "special_categories": [
+        "temporal"
+      ],
+      "template": "When was {concept} first introduced?",
+      "template_slots": {
+        "concept": "a professor"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Background",
+        "text": "This is done\nperiod in which the individual who plays the role “groom” could enter the with the help of hazard functions such as E1, which are calculated using\nstate “Divorced”. A similar sentence would be needed for the bride. mortality rates.\n\nwas not a professor in 2001. We represent this information The last argument in A12 is used to specify the value of\nusing the following sentence. β(i). Similar assertions are used for time-independent\ncovariates.\n(followingStageTypes Professor RetiredPerson)…(A9)"
+      }
+    ]
+  },
+  {
+    "question_id": "q_55a5994cb8ff",
+    "question": "How would you explain a sentence to someone new to the field?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "How would you explain {concept} to someone new to the field?",
+      "template_slots": {
+        "concept": "a sentence"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Definition",
+        "text": " Interval: (YearFn 2001)\nSentence: (isa JohnMcCarthy-ComputerScientist RetiredPerson) ...(A8)\nGiven a sentence such as A7, Cyc’s temporal projection\nmodule would try to extrapolate and construct a time\nFigure 1: Likelihood of truth of sentences of type (isa interval around 1998 during which John McC"
+      }
+    ]
+  },
+  {
+    "question_id": "q_43a1429b5dd9",
+    "question": "What are the key characteristics of E1?",
+    "answer": "Based on the information provided in the paper, it is not possible to answer this question definitively.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "What are the key characteristics of {concept}?",
+      "template_slots": {
+        "concept": "E1"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Definition",
+        "text": "lett 2003]: Bidirectional Projection: In some cases, fluents persist as\nh = Pr ( T = j | T ≥ j) ...(E1) long as the individual exists5 (e.g., FemaleHuman)."
+      }
+    ]
+  },
+  {
+    "question_id": "q_34da19282997",
+    "question": "What does A8 mean?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "What does {concept} mean?",
+      "template_slots": {
+        "concept": "A8"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Definition",
+        "text": "ataMt\nTime Interval: (YearFn 2001)\nSentence: (isa JohnMcCarthy-ComputerScientist RetiredPerson) ...(A8)\nGiven a sentence such as A7, Cyc’s temporal projection\nmodule would try to extrapolate and construct a time\nFigure 1: Likelihood of truth of sentences of type (isa interval around 1998 during whic"
+      }
+    ]
+  },
+  {
+    "question_id": "q_71d5816303a7",
+    "question": "What does Hanks & McDermott mean?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "What does {concept} mean?",
+      "template_slots": {
+        "concept": "Hanks & McDermott"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Definition",
+        "text": "For example,\nIn AI, the problem of temporal projection has been studied Professor is a time-dependent collection, whereas Integer\nin the context of the frame problem [Hanks & McDermott is not."
+      }
+    ]
+  },
+  {
+    "question_id": "q_8ee9165f2716",
+    "question": "How is A3 implemented?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "procedural",
+      "complexity": "L2",
+      "special_categories": [
+        "impossible"
+      ],
+      "template": "How is {concept} implemented?",
+      "template_slots": {
+        "concept": "A3"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "reasoning. In particular, the problem of temporal projection\nCommonsense temporal reasoning at scale is a core problem (i.e., the persistence of facts) has not received sufficient\nfor cognitive systems. The correct inference of the duration attention in the knowledge-based systems community. For\nfor which fluents hold is required by many tasks, including this reason, many cognitive systems have limited deductive\nnatural language understanding and planning. Many AI\nclosure because existing facts (true at a given time point)\nsystems have limited deductive closure because they cannot\ncannot be extrapolated to answer questions at other time\nextrapolate information correctly regarding existing fluents\nand events. In this study, we discuss the knowledge points. What types of knowledge representation and\nrepresentation and reasoning schemes required for robust reasoning schemes are needed to solve these problems?\ntemporal projection in the Cyc Knowledge Base. We In this study, we use techniques from discrete time\ndiscuss how events can start and end risk periods for fluents.\nsurvival analysis to answer these questions. We discuss\nWe then use discrete survival functions, which represent\nhow events start and end risk periods during which an\nknowledge of the persistence of facts, to extrapolate a given\nfluent. The extrapolated intervals can be truncated by interval for a fluent (a time-varying property of the world)\ntemporal constraints and other types of commonsense could be terminated. After identifying the starting points of\nknowledge. Finally, we present the results of experiments to the risk periods, we use hazard functions to construct an\ndemonstrate that these methods obtain significant\ninterval during which a time-dependent sentence is highly\nimprovements in terms of Q/A performance.\nlikely to be true. These intervals can be truncated by\ntemporal constraints and other types of commonsense\nIntroduction and Motivation knowledge. We discuss how different temporal properties\nof predicates and collections can be used to infer hazard\nModern cognitive systems are expected to reason about a\nfunctions. Next, we explain how time (in)dependent\ncomplex and dynamic world. Commonsense temporal\ncovariates can be specified to scale the parameters of\nreasoning plays an important role in reasoning about a\nhazard functions. The role of event calculus in the context\ncontinuously changing environment. Since even the largest\nof temporal projection is then discussed, which is often\nknowledge bases (KBs) lack complete knowledge of the\nused to maintain correct temporal intervals for fluents in\noutside world, cognitive systems must employ heuristic\ndatabases. However, some of the predictions made by\nreasoning and estimate how long a given state is likely to\nevent calculus might be erroneous if relevant information\npersist. For example, if Fred falls down and sprains his\nabout the expected duration for which fluents hold is not\nankle, he is expected to be in pain for a short while. If\navailable. Thus, we discuss how survival functions can be\nFred’s younger brother was born in 2013, it is to be\nused to alleviate this problem. Next, we explain how the\nexpected that he will start to walk and talk within a few\nparameters of these survival distributions can be learnt\nyears. How can an AI system with incomplete information\nfrom data.\nreason about these events? How long do facts persist? How\nThis paper is organized as follows. We start by\ndo individuals change over time and what factors are\ndiscussing related work. Then we provide a brief\nrelevant for understanding inter-individual differences?\nintroduction to the Cyc Knowledge Base (Cyc KB). Next,\nWhat events are expected to occur and when do they\nwe discuss our temporal projection algorithm and the\noccur? What changes their probabilities of occurrence?\nknowledge representation it requires. We conclude by\nMany knowledge-based systems do not represent time\ndiscussing our experimental results and plans for future\ncorrectly and they do not perform sophisticated temporal\nresearch.\nRelated Work"
+      }
+    ]
+  },
+  {
+    "question_id": "q_ef7a1f83e9e5",
+    "question": "What is the difference between T6 and A17?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "comparative",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What is the difference between {concept1} and {concept2}?",
+      "template_slots": {
+        "concept1": "T6",
+        "concept2": "A17"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Comparison",
+        "text": "If all known events start intervals for P, use condition\n(happens (E2, T2) and T1 < T2 < T and Initiates (E2, P)) C2 to choose an event, and use the relevant hazard\n…(C2) function to create an interval [T5, T6] that extends\nhappens(E1, T1), Terminates (E1, P) and ~∃E2 such that forward from the event. If T is subsumed by [T5, T6]\n(happens (E2, T2) and T < T2 < T1 and Terminates (E2, P)). [...] h(i) ←1/ (1+ e-ɑ(i)) …(E5) Holds(P, T) ← Happens (E1, T1) and Initiates (E1, P) and\nExpression E5 represents the baseline hazard function, T1 < T and ~∃E2, T2 (Happens (E2, T2) and\nwhich is determined by the parameter ɑ(i). Information Terminates (E2, P) and T1 < T2 < T) … (A17)\nabout covariates can be represented by assertions such as\nthe following. However, the original event calculus description [Kowalski\n(timeDependentCovariateForCollection BiologicalLivingObject & Sergot 1986] suggested that extra application-specific\n(FrequentPerformerFn Smoking) 0."
+      }
+    ]
+  },
+  {
+    "question_id": "q_1ee001501257",
+    "question": "What is the difference between A9 and InitialCollection?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "comparative",
+      "complexity": "L3",
+      "special_categories": [
+        "impossible"
+      ],
+      "template": "What is the difference between {concept1} and {concept2}?",
+      "template_slots": {
+        "concept1": "A9",
+        "concept2": "InitialCollection"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Comparison",
+        "text": "Similar assertions are used for time-independent\ncovariates.\n(followingStageTypes Professor RetiredPerson)…(A9) [...] (a) Initial\nAssertions such as A6 can be derived for each of Fred’s Collections: In CycL, an instance, COL, of\nweddings. InitialCollection is defined such that any instance of COL\n(b) Specification of the hazard function: Given the starts as an instance of it, and if the instance changes so it\nstarting point of the risk period, we can calculate the is no longer an instance, it can never become an instance\nprobability that a state-terminating event would occur in a again."
+      }
+    ]
+  },
+  {
+    "question_id": "q_f7a77272ecb9",
+    "question": "What is the difference between the results and the parameters?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "comparative",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "What is the difference between {concept1} and {concept2}?",
+      "template_slots": {
+        "concept1": "the results",
+        "concept2": "the parameters"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Comparison",
+        "text": "fourth year of Fred’s life would correspond to the fourth reasoning done in mode M1, we enabled temporal\ntime interval in our dataset. (ii) Values of covariates in projection methods discussed in this paper. The results of\neach time interval: For each time interval, j, we need to these experiments are shown in Table 1. [...] Non-survival Analysis-related Vocabulary: Although\nsurvival analysis provides a natural framework for Learning: How can we learn the parameters of the\ntemporal projection, some fluents are less amenable to probability distributions discussed above?"
+      }
+    ]
+  },
+  {
+    "question_id": "q_4d11837fafc0",
+    "question": "What is the difference between Initiates and A9?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "comparative",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "What is the difference between {concept1} and {concept2}?",
+      "template_slots": {
+        "concept1": "Initiates",
+        "concept2": "A9"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Comparison",
+        "text": "For example, the following when a state could be terminated: Since states can be\nsentence represents the fact that Tony Greig was a cricketer terminated as soon as they are started, this starting point is\nbetween 1972 and 1977. specified by the event that initiates the state. For example,\nMonadic microtheory1: PeopleDataMt the starting points of the risk periods for A1, A2, and A3\nTime dimension: are given by the birth date, the wedding date, and the\n(TimeIntervalInclusiveFn (YearFn 1972) (YearFn 1977)) hiring date, respectively. [...] Similar assertions are used for time-independent\ncovariates.\n(followingStageTypes Professor RetiredPerson)…(A9)"
+      }
+    ]
+  },
+  {
+    "question_id": "q_f55bc602445e",
+    "question": "What is the difference between Hanks & McDermott and Cyc?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "comparative",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "What is the difference between {concept1} and {concept2}?",
+      "template_slots": {
+        "concept1": "Hanks & McDermott",
+        "concept2": "Cyc"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Comparison",
+        "text": "in the context of the frame problem [Hanks & McDermott is not. Similarly, TimeDependentRelation is the collection\n1986]. The use of survival functions for temporal of all relations such that nothing remains in their eternal\nprojection in AI was initiated by [Dean & Kanazawa 1988] extensions. For example, ‘owns’ and ‘likesAsFriend’ are\nand it was extended by other researchers [Tawfik & time-dependent relations. Inference and learning in Cyc-"
+      }
+    ]
+  },
+  {
+    "question_id": "q_30fb714eedfc",
+    "question": "What are the implications of occurrence in a given time interval would be very useful\nFor each of these query sets, we measured the Q/A for further improving the results shown in Table 1.\nperformance in two modes, as follows.?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "causal",
+      "complexity": "L3",
+      "special_categories": [
+        "temporal"
+      ],
+      "template": "What are the implications of {finding}?",
+      "template_slots": {
+        "finding": "occurrence in a given time interval would be very useful\nFor each of these query sets, we measured the Q/A for further improving the results shown in Table 1.\nperformance in two modes, as follows."
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "reasoning. In particular, the problem of temporal projection\nCommonsense temporal reasoning at scale is a core problem (i.e., the persistence of facts) has not received sufficient\nfor cognitive systems. The correct inference of the duration attention in the knowledge-based systems community. For\nfor which fluents hold is required by many tasks, including this reason, many cognitive systems have limited deductive\nnatural language understanding and planning. Many AI\nclosure because existing facts (true at a given time point)\nsystems have limited deductive closure because they cannot\ncannot be extrapolated to answer questions at other time\nextrapolate information correctly regarding existing fluents\nand events. In this study, we discuss the knowledge points. What types of knowledge representation and\nrepresentation and reasoning schemes required for robust reasoning schemes are needed to solve these problems?\ntemporal projection in the Cyc Knowledge Base. We In this study, we use techniques from discrete time\ndiscuss how events can start and end risk periods for fluents.\nsurvival analysis to answer these questions. We discuss\nWe then use discrete survival functions, which represent\nhow events start and end risk periods during which an\nknowledge of the persistence of facts, to extrapolate a given\nfluent. The extrapolated intervals can be truncated by interval for a fluent (a time-varying property of the world)\ntemporal constraints and other types of commonsense could be terminated. After identifying the starting points of\nknowledge. Finally, we present the results of experiments to the risk periods, we use hazard functions to construct an\ndemonstrate that these methods obtain significant\ninterval during which a time-dependent sentence is highly\nimprovements in terms of Q/A performance.\nlikely to be true. These intervals can be truncated by\ntemporal constraints and other types of commonsense\nIntroduction and Motivation knowledge. We discuss how different temporal properties\nof predicates and collections can be used to infer hazard\nModern cognitive systems are expected to reason about a\nfunctions. Next, we explain how time (in)dependent\ncomplex and dynamic world. Commonsense temporal\ncovariates can be specified to scale the parameters of\nreasoning plays an important role in reasoning about a\nhazard functions. The role of event calculus in the context\ncontinuously changing environment. Since even the largest\nof temporal projection is then discussed, which is often\nknowledge bases (KBs) lack complete knowledge of the\nused to maintain correct temporal intervals for fluents in\noutside world, cognitive systems must employ heuristic\ndatabases. However, some of the predictions made by\nreasoning and estimate how long a given state is likely to\nevent calculus might be erroneous if relevant information\npersist. For example, if Fred falls down and sprains his\nabout the expected duration for which fluents hold is not\nankle, he is expected to be in pain for a short while. If\navailable. Thus, we discuss how survival functions can be\nFred’s younger brother was born in 2013, it is to be\nused to alleviate this problem. Next, we explain how the\nexpected that he will start to walk and talk within a few\nparameters of these survival distributions can be learnt\nyears. How can an AI system with incomplete information\nfrom data.\nreason about these events? How long do facts persist? How\nThis paper is organized as follows. We start by\ndo individuals change over time and what factors are\ndiscussing related work. Then we provide a brief\nrelevant for understanding inter-individual differences?\nintroduction to the Cyc Knowledge Base (Cyc KB). Next,\nWhat events are expected to occur and when do they\nwe discuss our temporal projection algorithm and the\noccur? What changes their probabilities of occurrence?\nknowledge representation it requires. We conclude by\nMany knowledge-based systems do not represent time\ndiscussing our experimental results and plans for future\ncorrectly and they do not perform sophisticated temporal\nresearch.\nRelated Work"
+      },
+      {
+        "section": "Conclusions and Discussion",
+        "text": "follows. L = ∏ i ∏ j h(t ij) EVENT(i,j) (1-h(t ij)) (1-EVENT(i, j)) Commonsense temporal reasoning is a core problem for\nThe values of the hazard functions can be calculated by cognitive systems. To improve commonsense reasoning in\nminimizing L. general and Q/A performance in particular, modern AI\nsystems must find better ways to reason about how long\n#Queries Improvement\nQuery set Mode % Correct facts persist. In this study, we proposed different types of\nw.r.t."
+      }
+    ]
+  },
+  {
+    "question_id": "q_60887eda1081",
+    "question": "Why is A9 important for practical applications?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "causal",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "Why is {concept} important for {application}?",
+      "template_slots": {
+        "concept": "A9",
+        "application": "practical applications"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "reasoning. In particular, the problem of temporal projection\nCommonsense temporal reasoning at scale is a core problem (i.e., the persistence of facts) has not received sufficient\nfor cognitive systems. The correct inference of the duration attention in the knowledge-based systems community. For\nfor which fluents hold is required by many tasks, including this reason, many cognitive systems have limited deductive\nnatural language understanding and planning. Many AI\nclosure because existing facts (true at a given time point)\nsystems have limited deductive closure because they cannot\ncannot be extrapolated to answer questions at other time\nextrapolate information correctly regarding existing fluents\nand events. In this study, we discuss the knowledge points. What types of knowledge representation and\nrepresentation and reasoning schemes required for robust reasoning schemes are needed to solve these problems?\ntemporal projection in the Cyc Knowledge Base. We In this study, we use techniques from discrete time\ndiscuss how events can start and end risk periods for fluents.\nsurvival analysis to answer these questions. We discuss\nWe then use discrete survival functions, which represent\nhow events start and end risk periods during which an\nknowledge of the persistence of facts, to extrapolate a given\nfluent. The extrapolated intervals can be truncated by interval for a fluent (a time-varying property of the world)\ntemporal constraints and other types of commonsense could be terminated. After identifying the starting points of\nknowledge. Finally, we present the results of experiments to the risk periods, we use hazard functions to construct an\ndemonstrate that these methods obtain significant\ninterval during which a time-dependent sentence is highly\nimprovements in terms of Q/A performance.\nlikely to be true. These intervals can be truncated by\ntemporal constraints and other types of commonsense\nIntroduction and Motivation knowledge. We discuss how different temporal properties\nof predicates and collections can be used to infer hazard\nModern cognitive systems are expected to reason about a\nfunctions. Next, we explain how time (in)dependent\ncomplex and dynamic world. Commonsense temporal\ncovariates can be specified to scale the parameters of\nreasoning plays an important role in reasoning about a\nhazard functions. The role of event calculus in the context\ncontinuously changing environment. Since even the largest\nof temporal projection is then discussed, which is often\nknowledge bases (KBs) lack complete knowledge of the\nused to maintain correct temporal intervals for fluents in\noutside world, cognitive systems must employ heuristic\ndatabases. However, some of the predictions made by\nreasoning and estimate how long a given state is likely to\nevent calculus might be erroneous if relevant information\npersist. For example, if Fred falls down and sprains his\nabout the expected duration for which fluents hold is not\nankle, he is expected to be in pain for a short while. If\navailable. Thus, we discuss how survival functions can be\nFred’s younger brother was born in 2013, it is to be\nused to alleviate this problem. Next, we explain how the\nexpected that he will start to walk and talk within a few\nparameters of these survival distributions can be learnt\nyears. How can an AI system with incomplete information\nfrom data.\nreason about these events? How long do facts persist? How\nThis paper is organized as follows. We start by\ndo individuals change over time and what factors are\ndiscussing related work. Then we provide a brief\nrelevant for understanding inter-individual differences?\nintroduction to the Cyc Knowledge Base (Cyc KB). Next,\nWhat events are expected to occur and when do they\nwe discuss our temporal projection algorithm and the\noccur? What changes their probabilities of occurrence?\nknowledge representation it requires. We conclude by\nMany knowledge-based systems do not represent time\ndiscussing our experimental results and plans for future\ncorrectly and they do not perform sophisticated temporal\nresearch.\nRelated Work"
+      },
+      {
+        "section": "Conclusions and Discussion",
+        "text": "follows. L = ∏ i ∏ j h(t ij) EVENT(i,j) (1-h(t ij)) (1-EVENT(i, j)) Commonsense temporal reasoning is a core problem for\nThe values of the hazard functions can be calculated by cognitive systems. To improve commonsense reasoning in\nminimizing L. general and Q/A performance in particular, modern AI\nsystems must find better ways to reason about how long\n#Queries Improvement\nQuery set Mode % Correct facts persist. In this study, we proposed different types of\nw.r.t."
+      }
+    ]
+  },
+  {
+    "question_id": "q_5d76c127da0c",
+    "question": "What is the statistical significance of occurrence in a given time interval would be very useful\nFor each of these query sets, we measured the Q/A for further improving the results shown in Table 1.\nperformance in two modes, as follows.?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "quantitative",
+      "complexity": "L2",
+      "special_categories": [
+        "temporal"
+      ],
+      "template": "What is the statistical significance of {finding}?",
+      "template_slots": {
+        "finding": "occurrence in a given time interval would be very useful\nFor each of these query sets, we measured the Q/A for further improving the results shown in Table 1.\nperformance in two modes, as follows."
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "reasoning. In particular, the problem of temporal projection\nCommonsense temporal reasoning at scale is a core problem (i.e., the persistence of facts) has not received sufficient\nfor cognitive systems. The correct inference of the duration attention in the knowledge-based systems community. For\nfor which fluents hold is required by many tasks, including this reason, many cognitive systems have limited deductive\nnatural language understanding and planning. Many AI\nclosure because existing facts (true at a given time point)\nsystems have limited deductive closure because they cannot\ncannot be extrapolated to answer questions at other time\nextrapolate information correctly regarding existing fluents\nand events. In this study, we discuss the knowledge points. What types of knowledge representation and\nrepresentation and reasoning schemes required for robust reasoning schemes are needed to solve these problems?\ntemporal projection in the Cyc Knowledge Base. We In this study, we use techniques from discrete time\ndiscuss how events can start and end risk periods for fluents.\nsurvival analysis to answer these questions. We discuss\nWe then use discrete survival functions, which represent\nhow events start and end risk periods during which an\nknowledge of the persistence of facts, to extrapolate a given\nfluent. The extrapolated intervals can be truncated by interval for a fluent (a time-varying property of the world)\ntemporal constraints and other types of commonsense could be terminated. After identifying the starting points of\nknowledge. Finally, we present the results of experiments to the risk periods, we use hazard functions to construct an\ndemonstrate that these methods obtain significant\ninterval during which a time-dependent sentence is highly\nimprovements in terms of Q/A performance.\nlikely to be true. These intervals can be truncated by\ntemporal constraints and other types of commonsense\nIntroduction and Motivation knowledge. We discuss how different temporal properties\nof predicates and collections can be used to infer hazard\nModern cognitive systems are expected to reason about a\nfunctions. Next, we explain how time (in)dependent\ncomplex and dynamic world. Commonsense temporal\ncovariates can be specified to scale the parameters of\nreasoning plays an important role in reasoning about a\nhazard functions. The role of event calculus in the context\ncontinuously changing environment. Since even the largest\nof temporal projection is then discussed, which is often\nknowledge bases (KBs) lack complete knowledge of the\nused to maintain correct temporal intervals for fluents in\noutside world, cognitive systems must employ heuristic\ndatabases. However, some of the predictions made by\nreasoning and estimate how long a given state is likely to\nevent calculus might be erroneous if relevant information\npersist. For example, if Fred falls down and sprains his\nabout the expected duration for which fluents hold is not\nankle, he is expected to be in pain for a short while. If\navailable. Thus, we discuss how survival functions can be\nFred’s younger brother was born in 2013, it is to be\nused to alleviate this problem. Next, we explain how the\nexpected that he will start to walk and talk within a few\nparameters of these survival distributions can be learnt\nyears. How can an AI system with incomplete information\nfrom data.\nreason about these events? How long do facts persist? How\nThis paper is organized as follows. We start by\ndo individuals change over time and what factors are\ndiscussing related work. Then we provide a brief\nrelevant for understanding inter-individual differences?\nintroduction to the Cyc Knowledge Base (Cyc KB). Next,\nWhat events are expected to occur and when do they\nwe discuss our temporal projection algorithm and the\noccur? What changes their probabilities of occurrence?\nknowledge representation it requires. We conclude by\nMany knowledge-based systems do not represent time\ndiscussing our experimental results and plans for future\ncorrectly and they do not perform sophisticated temporal\nresearch.\nRelated Work"
+      },
+      {
+        "section": "Our results suggest the following future areas of",
+        "text": "Total M1 7333 39%\nresearch. First, we have found that in the case of many\nM2 7333 58% 49%\ntime dependent collections (e.g., Entertainer, Singer), once\npeople enter these states; the fluent persists until the end of\nTable 1: Experimental Results their active life. Therefore, we would like to reason about\nwhen individuals are likely to enter a given state, and how"
+      }
+    ]
+  },
+  {
+    "question_id": "q_2549b434ee42",
+    "question": "When was a time interval first introduced?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L2",
+      "special_categories": [
+        "temporal"
+      ],
+      "template": "When was {concept} first introduced?",
+      "template_slots": {
+        "concept": "a time interval"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Event Calculus in Temporal Projection",
+        "text": "The parameters β(i) represent the strengths of (situationEndsIntervalForSentence t g) …(A16)\nthe covariates. When a sentence such as A11 is true in an The first sentence above denotes that situation s starts a\ninterval i, the value of h(i) increases, which leads to a time interval during which the fluent f holds. The core\nsharper decline in the probability of the persistence of persistence axiom employed in simplified event calculus is\nA11. When all of the values of X(i) are zero, the hazard as follows [Sadri & Kowalski 1995]."
+      }
+    ]
+  },
+  {
+    "question_id": "q_b696560ee779",
+    "question": "How is Cyc implemented?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "procedural",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "How is {concept} implemented?",
+      "template_slots": {
+        "concept": "Cyc"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "reasoning. In particular, the problem of temporal projection\nCommonsense temporal reasoning at scale is a core problem (i.e., the persistence of facts) has not received sufficient\nfor cognitive systems. The correct inference of the duration attention in the knowledge-based systems community. For\nfor which fluents hold is required by many tasks, including this reason, many cognitive systems have limited deductive\nnatural language understanding and planning. Many AI\nclosure because existing facts (true at a given time point)\nsystems have limited deductive closure because they cannot\ncannot be extrapolated to answer questions at other time\nextrapolate information correctly regarding existing fluents\nand events. In this study, we discuss the knowledge points. What types of knowledge representation and\nrepresentation and reasoning schemes required for robust reasoning schemes are needed to solve these problems?\ntemporal projection in the Cyc Knowledge Base. We In this study, we use techniques from discrete time\ndiscuss how events can start and end risk periods for fluents.\nsurvival analysis to answer these questions. We discuss\nWe then use discrete survival functions, which represent\nhow events start and end risk periods during which an\nknowledge of the persistence of facts, to extrapolate a given\nfluent. The extrapolated intervals can be truncated by interval for a fluent (a time-varying property of the world)\ntemporal constraints and other types of commonsense could be terminated. After identifying the starting points of\nknowledge. Finally, we present the results of experiments to the risk periods, we use hazard functions to construct an\ndemonstrate that these methods obtain significant\ninterval during which a time-dependent sentence is highly\nimprovements in terms of Q/A performance.\nlikely to be true. These intervals can be truncated by\ntemporal constraints and other types of commonsense\nIntroduction and Motivation knowledge. We discuss how different temporal properties\nof predicates and collections can be used to infer hazard\nModern cognitive systems are expected to reason about a\nfunctions. Next, we explain how time (in)dependent\ncomplex and dynamic world. Commonsense temporal\ncovariates can be specified to scale the parameters of\nreasoning plays an important role in reasoning about a\nhazard functions. The role of event calculus in the context\ncontinuously changing environment. Since even the largest\nof temporal projection is then discussed, which is often\nknowledge bases (KBs) lack complete knowledge of the\nused to maintain correct temporal intervals for fluents in\noutside world, cognitive systems must employ heuristic\ndatabases. However, some of the predictions made by\nreasoning and estimate how long a given state is likely to\nevent calculus might be erroneous if relevant information\npersist. For example, if Fred falls down and sprains his\nabout the expected duration for which fluents hold is not\nankle, he is expected to be in pain for a short while. If\navailable. Thus, we discuss how survival functions can be\nFred’s younger brother was born in 2013, it is to be\nused to alleviate this problem. Next, we explain how the\nexpected that he will start to walk and talk within a few\nparameters of these survival distributions can be learnt\nyears. How can an AI system with incomplete information\nfrom data.\nreason about these events? How long do facts persist? How\nThis paper is organized as follows. We start by\ndo individuals change over time and what factors are\ndiscussing related work. Then we provide a brief\nrelevant for understanding inter-individual differences?\nintroduction to the Cyc Knowledge Base (Cyc KB). Next,\nWhat events are expected to occur and when do they\nwe discuss our temporal projection algorithm and the\noccur? What changes their probabilities of occurrence?\nknowledge representation it requires. We conclude by\nMany knowledge-based systems do not represent time\ndiscussing our experimental results and plans for future\ncorrectly and they do not perform sophisticated temporal\nresearch.\nRelated Work"
+      }
+    ]
+  },
+  {
+    "question_id": "q_6941f80b3b62",
+    "question": "How is the persistence implemented?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "procedural",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "How is {concept} implemented?",
+      "template_slots": {
+        "concept": "the persistence"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "reasoning. In particular, the problem of temporal projection\nCommonsense temporal reasoning at scale is a core problem (i.e., the persistence of facts) has not received sufficient\nfor cognitive systems. The correct inference of the duration attention in the knowledge-based systems community. For\nfor which fluents hold is required by many tasks, including this reason, many cognitive systems have limited deductive\nnatural language understanding and planning. Many AI\nclosure because existing facts (true at a given time point)\nsystems have limited deductive closure because they cannot\ncannot be extrapolated to answer questions at other time\nextrapolate information correctly regarding existing fluents\nand events. In this study, we discuss the knowledge points. What types of knowledge representation and\nrepresentation and reasoning schemes required for robust reasoning schemes are needed to solve these problems?\ntemporal projection in the Cyc Knowledge Base. We In this study, we use techniques from discrete time\ndiscuss how events can start and end risk periods for fluents.\nsurvival analysis to answer these questions. We discuss\nWe then use discrete survival functions, which represent\nhow events start and end risk periods during which an\nknowledge of the persistence of facts, to extrapolate a given\nfluent. The extrapolated intervals can be truncated by interval for a fluent (a time-varying property of the world)\ntemporal constraints and other types of commonsense could be terminated. After identifying the starting points of\nknowledge. Finally, we present the results of experiments to the risk periods, we use hazard functions to construct an\ndemonstrate that these methods obtain significant\ninterval during which a time-dependent sentence is highly\nimprovements in terms of Q/A performance.\nlikely to be true. These intervals can be truncated by\ntemporal constraints and other types of commonsense\nIntroduction and Motivation knowledge. We discuss how different temporal properties\nof predicates and collections can be used to infer hazard\nModern cognitive systems are expected to reason about a\nfunctions. Next, we explain how time (in)dependent\ncomplex and dynamic world. Commonsense temporal\ncovariates can be specified to scale the parameters of\nreasoning plays an important role in reasoning about a\nhazard functions. The role of event calculus in the context\ncontinuously changing environment. Since even the largest\nof temporal projection is then discussed, which is often\nknowledge bases (KBs) lack complete knowledge of the\nused to maintain correct temporal intervals for fluents in\noutside world, cognitive systems must employ heuristic\ndatabases. However, some of the predictions made by\nreasoning and estimate how long a given state is likely to\nevent calculus might be erroneous if relevant information\npersist. For example, if Fred falls down and sprains his\nabout the expected duration for which fluents hold is not\nankle, he is expected to be in pain for a short while. If\navailable. Thus, we discuss how survival functions can be\nFred’s younger brother was born in 2013, it is to be\nused to alleviate this problem. Next, we explain how the\nexpected that he will start to walk and talk within a few\nparameters of these survival distributions can be learnt\nyears. How can an AI system with incomplete information\nfrom data.\nreason about these events? How long do facts persist? How\nThis paper is organized as follows. We start by\ndo individuals change over time and what factors are\ndiscussing related work. Then we provide a brief\nrelevant for understanding inter-individual differences?\nintroduction to the Cyc Knowledge Base (Cyc KB). Next,\nWhat events are expected to occur and when do they\nwe discuss our temporal projection algorithm and the\noccur? What changes their probabilities of occurrence?\nknowledge representation it requires. We conclude by\nMany knowledge-based systems do not represent time\ndiscussing our experimental results and plans for future\ncorrectly and they do not perform sophisticated temporal\nresearch.\nRelated Work"
+      }
+    ]
+  },
+  {
+    "question_id": "q_0936d01d90ed",
+    "question": "Who developed C3?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "Who developed {concept}?",
+      "template_slots": {
+        "concept": "C3"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Event Calculus in Temporal Projection",
+        "text": "If all known events start intervals for P, use condition\n(happens (E2, T2) and T1 < T2 < T and Initiates (E2, P)) C2 to choose an event, and use the relevant hazard\n…(C2) function to create an interval [T5, T6] that extends\nhappens(E1, T1), Terminates (E1, P) and ~∃E2 such that forward from the event. If T is subsumed by [T5, T6]\n(happens (E2, T2) and T < T2 < T1 and Terminates (E2, P)). t h e n return [T5, T6] else goto step 4\n…(C3) 3. If all known events terminate intervals for P, use\nConditions C1, C2 and C3 help us identify events that are condition C3 to choose an event and use the relevant\nmost temporally proximate to P. When all known events hazard function to create an interval [T5, T6] that\nend intervals for the given fluent, we use C3 to choose the extends backward from the event."
+      }
+    ]
+  },
+  {
+    "question_id": "q_ffe7dee806e9",
+    "question": "Who developed T4?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "Who developed {concept}?",
+      "template_slots": {
+        "concept": "T4"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Event Calculus in Temporal Projection",
+        "text": "If events E1 and E2 exist such that they start and end\n~∃E3 such that (happens(E3, T3), Initiates (E3, P), intervals for P respectively and satisfy condition C1,\nT1 < T3 < T < T2) , ~∃E4 such that (happens(E4, T4), then execute 1a–1c, else goto step 2.\nTerminates (E4, P), T1 < T < T4< T2) …(C1) (1a) Use A17 to construct an interval [T1, T2] that\nsubsumes T for P.\nIn step 2, when all known events start time intervals for P, (1b) Use the hazard function for P to construct another\nwe use C2 to choose an event E1, and use the hazard interval [T3, T4] for P."
+      }
+    ]
+  },
+  {
+    "question_id": "q_f67d1e5bcf33",
+    "question": "What is Cyc?",
+    "answer": "Based on the information provided in the paper, it is not possible to answer this question definitively.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "What is {entity}?",
+      "template_slots": {
+        "entity": "Cyc"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Temporal Reasoning in AI Systems\nAbhishek Sharma",
+        "text": "In this study, we discuss the knowledge points. What types of knowledge representation and\nrepresentation and reasoning schemes required for robust reasoning schemes are needed to solve these problems?\ntemporal projection in the Cyc Knowledge Base. We In this study, we use techniques from discrete time\ndiscuss how events can start and end risk periods for fluents.\nsurvival analysis to answer these questions. We discuss\nWe then use discrete survival functions, which represent\nhow events start and end risk periods during which an\nknowledge of the persistence of facts, to extrapolate a given\nfluent."
+      }
+    ]
+  },
+  {
+    "question_id": "q_51740742f508",
+    "question": "What is the difference between T6 and E3?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "comparative",
+      "complexity": "L3",
+      "special_categories": [],
+      "template": "What is the difference between {concept1} and {concept2}?",
+      "template_slots": {
+        "concept1": "T6",
+        "concept2": "E3"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Comparison",
+        "text": "If all known events start intervals for P, use condition\n(happens (E2, T2) and T1 < T2 < T and Initiates (E2, P)) C2 to choose an event, and use the relevant hazard\n…(C2) function to create an interval [T5, T6] that extends\nhappens(E1, T1), Terminates (E1, P) and ~∃E2 such that forward from the event. If T is subsumed by [T5, T6]\n(happens (E2, T2) and T < T2 < T1 and Terminates (E2, P)). [...] Initiates(E1, P), Terminates (E2, P), 1. If events E1 and E2 exist such that they start and end\n~∃E3 such that (happens(E3, T3), Initiates (E3, P), intervals for P respectively and satisfy condition C1,\nT1 < T3 < T < T2) , ~∃E4 such that (happens(E4, T4), then execute 1a–1c, else goto step 2."
+      }
+    ]
+  },
+  {
+    "question_id": "q_9b4c74ccf43e",
+    "question": "What is the difference between AI and risk periods?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "comparative",
+      "complexity": "L3",
+      "special_categories": [
+        "temporal",
+        "impossible"
+      ],
+      "template": "What is the difference between {concept1} and {concept2}?",
+      "template_slots": {
+        "concept1": "AI",
+        "concept2": "risk periods"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Comparison",
+        "text": "Finally, we present the results of experiments to the risk periods, we use hazard functions to construct an\ndemonstrate that these methods obtain significant\ninterval during which a time-dependent sentence is highly\nimprovements in terms of Q/A performance."
+      }
+    ]
+  },
+  {
+    "question_id": "q_a515a70ad85a",
+    "question": "What constitutes a A10?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "What constitutes a {concept}?",
+      "template_slots": {
+        "concept": "A10"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Definition",
+        "text": "For example, a sentence such as A10 is a time-dependent\ncovariate for A11."
+      }
+    ]
+  },
+  {
+    "question_id": "q_6bce927885de",
+    "question": "What does A10 mean?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "definitional",
+      "complexity": "L1",
+      "special_categories": [],
+      "template": "What does {concept} mean?",
+      "template_slots": {
+        "concept": "A10"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Definition",
+        "text": "For example, a sentence such as A10 is a time-dependent\ncovariate for A11."
+      }
+    ]
+  },
+  {
+    "question_id": "q_6c4d8c126ed4",
+    "question": "Who developed CycL?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00020v2",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L2",
+      "special_categories": [],
+      "template": "Who developed {concept}?",
+      "template_slots": {
+        "concept": "CycL"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Background",
+        "text": "However, some\n(startingPointOfRiskPeriodOfSentence distributions can be specified more easily if we use the\n(isa Fred Divorced) (DayFn 1 (MonthFn July (YearFn 1988)))) ….(A6) following temporal semantic properties. (a) Initial\nAssertions such as A6 can be derived for each of Fred’s Collections: In CycL, an instance, COL, of\nweddings. InitialCollection is defined such that any instance of COL\n(b) Specification of the hazard function: Given the starts as an instance of it, and if the instance changes so it\nstarting point of the risk period, we can calculate the is no longer an instance, it can never become an instance\nprobability that a state-terminating event would occur in a again."
+      }
+    ]
+  }
+]
