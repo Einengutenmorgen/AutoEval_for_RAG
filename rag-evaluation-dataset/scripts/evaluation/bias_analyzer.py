@@ -30,6 +30,20 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+class NumpyEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        if isinstance(obj, np.floating):
+            return float(obj)
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        if isinstance(obj, np.bool_):
+            return bool(obj)
+        if hasattr(obj, 'get_system_info'):  # For RAGConnector
+            return obj.get_system_info()
+        return super().default(obj)
+
 
 class RAGBiasAnalyzer:
     """Tool for detecting and analyzing biases in RAG evaluation."""
@@ -465,7 +479,7 @@ class RAGBiasAnalyzer:
             
             # Save JSON report only
             with open(output_file, 'w', encoding='utf-8') as f:
-                json.dump(self.dataset_analysis, f, indent=2, ensure_ascii=False)
+                json.dump(self.dataset_analysis, f, indent=2, ensure_ascii=False, cls=NumpyEncoder)
             
             logger.info(f"Dataset analysis saved to {output_file}")
             return
@@ -475,7 +489,7 @@ class RAGBiasAnalyzer:
         
         # Save JSON report
         with open(f"{output_base}.json", 'w', encoding='utf-8') as f:
-            json.dump(self.dataset_analysis, f, indent=2, ensure_ascii=False)
+            json.dump(self.dataset_analysis, f, indent=2, ensure_ascii=False, cls=NumpyEncoder)
         
         # Create visualizations
         try:
@@ -535,9 +549,13 @@ class RAGBiasAnalyzer:
             values = []
             
             for key, data in self.dataset_analysis["correlations"].items():
-                field1, field2 = key.split('_')
-                fields.append((field1, field2))
-                values.append(data["cramers_v"])
+                logger.info(f"Ky {key}: {data}")
+                if isinstance(data, dict) and "field1_values" in data and "field2_values" in data and "cramers_v" in data:
+                    field1, field2 = key.split('_', 1)  # More robust splitting, by limiting the amount 
+                    fields.append((field1, field2))
+                    values.append(data["cramers_v"])
+                else:
+                    logger.warning(f"Skipping malformed correlation data for {key}")
             
             # Create unique list of all fields
             all_fields = sorted(set([f for pair in fields for f in pair]))
@@ -892,7 +910,9 @@ class RAGBiasAnalyzer:
         
         Args:
             output_file: Path to save the report
+        
         """
+        output_base = str(Path(output_file).with_suffix(''))
         # Check if matplotlib is available
         try:
             import matplotlib
@@ -901,8 +921,8 @@ class RAGBiasAnalyzer:
             logger.warning("Matplotlib not available for visualizations")
             
             # Save JSON report only
-            with open(output_file, 'w', encoding='utf-8') as f:
-                json.dump(self.performance_analysis, f, indent=2, ensure_ascii=False)
+            with open(f"{output_base}.json", 'w', encoding='utf-8') as f:
+                json.dump(self.performance_analysis, f, indent=2, ensure_ascii=False, cls=NumpyEncoder)
             
             logger.info(f"Performance analysis saved to {output_file}")
             return
@@ -912,7 +932,7 @@ class RAGBiasAnalyzer:
         
         # Save JSON report
         with open(f"{output_base}.json", 'w', encoding='utf-8') as f:
-            json.dump(self.performance_analysis, f, indent=2, ensure_ascii=False)
+            json.dump(self.performance_analysis, f, indent=2, ensure_ascii=False, cls=NumpyEncoder)
         
         # Create visualizations
         try:

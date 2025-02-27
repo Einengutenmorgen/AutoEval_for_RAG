@@ -1,0 +1,176 @@
+[
+  {
+    "question_id": "q_698feef5879a_imp",
+    "question": "What classified information about was Stockmeyer?",
+    "answer": "Based on the information provided in the paper, it is not possible to answer this question definitively.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L2",
+      "special_categories": [
+        "temporal",
+        "impossible"
+      ],
+      "template": "When was {concept} first introduced?",
+      "template_slots": {
+        "concept": "Stockmeyer"
+      },
+      "adversarial": {
+        "technique": "impossible",
+        "original_id": "q_698feef5879a",
+        "original_text": "When was Stockmeyer first introduced?"
+      }
+    },
+    "contexts": [
+      {
+        "section": "2 Preliminaries",
+        "text": "For a\npropositional formula F, we abbreviate by vars(F) the variables that occur in F and by Mod(F) the\nset of all models of F and the number of models by #(F):=|Mod(F)|.\nComputational Complexity We follow standard terminology in computational complexity [Pa-\npadimitriou,1994]andthePolynomialHierarchy(PH)[StockmeyerandMeyer,1973;Stockmeyer,1976;\nWrathall,1976]. ThecomplexityclassDP capturesthe(independent)combinationofanNPandacoNP\nproblem, i.e., DP := {L ∩L | L ∈ NP,L ∈ coNP} [Papadimitriou and Yannakakis, 1982]."
+      }
+    ],
+    "gold_answer": {
+      "text": "This question cannot be answered based on the information provided in the paper.",
+      "is_validated": true,
+      "supporting_passages": []
+    }
+  },
+  {
+    "question_id": "q_fb885579d4bb_imp",
+    "question": "Who developed Darwiche according to unpublished data?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [
+        "impossible",
+        "impossible"
+      ],
+      "template": "Who developed {concept}?",
+      "template_slots": {
+        "concept": "Darwiche"
+      },
+      "adversarial": {
+        "technique": "impossible",
+        "original_id": "q_fb885579d4bb",
+        "original_text": "Who developed Darwiche?"
+      }
+    },
+    "contexts": [
+      {
+        "section": "1 Introduction",
+        "text": "speck@unibas.ch, hecher@cril.fr, daniel.gnad@liu.se, johannes.fichte@liu.se,\naugusto.blaascorrea@chch.ox.ac.uk\n1\n\nmodel exists (SAT), it also allows for automated reasoning about the solution space [Darwiche, 2001a;\nDarwiche and Marquis, 2002]. Recent competitions illustrate that, despite high computational com-\nplexity, state-of-the-art solvers are effective in practice [Fichte et al., 2021]. Due favorable reasoning\npower and vast applications, counting techniques have been extended to other fields [Aziz et al."
+      }
+    ],
+    "gold_answer": {
+      "text": "This question cannot be answered based on the information provided in the paper.",
+      "is_validated": true,
+      "supporting_passages": []
+    }
+  },
+  {
+    "question_id": "q_208348e75e10_imp",
+    "question": "What proprietary details of was [speck?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L2",
+      "special_categories": [
+        "temporal",
+        "impossible"
+      ],
+      "template": "When was {concept} first introduced?",
+      "template_slots": {
+        "concept": "[speck et al"
+      },
+      "adversarial": {
+        "technique": "impossible",
+        "original_id": "q_208348e75e10",
+        "original_text": "When was [speck et al first introduced?"
+      }
+    },
+    "contexts": [
+      {
+        "section": "Abstract",
+        "text": "Classical planning asks for a sequence of operators reaching a given goal. While the most\ncommon case is to computea plan, many scenarios require more than that. However, quantitative\nreasoning on theplan space remains mostly unexplored. A fundamentalproblem is to count plans,\nwhichrelatestotheconditionalprobabilityontheplanspace. Indeed,qualitativeandquantitative\napproaches are well-established in various other areas of automated reasoning.\nWe present the first study to quantitative and qualitative reasoning on the plan space. In\nparticular,wefocusonpolynomiallyboundedplans. Onthetheoreticalside,westudyitscomplexity,\nwhich givesrisetorichreasoning modes. Sincecountingishard ingeneral, weintroducetheeasier\nnotion of facets, which enables understanding the significance of operators. On the practical side,\nwe implement quantitative reasoning for planning. Thereby, we transform a planning task into\na propositional formula and use knowledge compilation to count different plans. This framework\nscales well to large plan spaces, while enabling rich reasoning capabilities such as learning pruning\nfunctions and explainable planning.\n1 Introduction\nThe overarching objective of classical planning is to find a plan, i.e., a sequence of operators, that\ntransforms the current state into a goal state. While in some scenarios a single plan is sufficient, in\nothers, it may not be clear which plan is preferable based on the description of the planning task. To\naddressthis,solverslike top-kortop-qualityplannershavebeen developedto enumeratethe k shortest\nplans or all plans up to a certain length bound allowing for post hoc consideration of the plan space\nandselection[Katzet al.,2018;KatzandSohrabi,2020;Specket al.,2020;vonTschammeret al.,2022;\nChakrabortiet al., 2024]. Although this paradigmhas been successfully applied in practicalareassuch\nas malware detection [Boddy et al., 2005] and scenario planning for risk management [Sohrabi et al.,\n2018], it remains an indirect method for reasoning about the plan space of a planning task.\nConsidering fundamental problems in computer science, such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are anchored around counting. The most prominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula. While #SAT is considered computationally harder than asking whether a single\n∗Thisisanauthor self-archivedandextended versionofapaperthathasbeenaccepted forpublicationatAAAI’25.\n(cid:0)\n: davidjakob.speck@unibas.ch, hecher@cril.fr, daniel.gnad@liu.se, johannes.fichte@liu.se,\naugusto.blaascorrea@chch.ox.ac.uk\n1"
+      },
+      {
+        "section": "1 Introduction",
+        "text": "The overarching objective of classical planning is to find a plan, i.e., a sequence of operators, that\ntransforms the current state into a goal state. While in some scenarios a single plan is sufficient, in\nothers, it may not be clear which plan is preferable based on the description of the planning task."
+      }
+    ],
+    "gold_answer": {
+      "text": "This question cannot be answered based on the information provided in the paper.",
+      "is_validated": true,
+      "supporting_passages": []
+    }
+  },
+  {
+    "question_id": "q_de49041f7612_imp",
+    "question": "What unreported aspects of technique is?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [
+        "impossible"
+      ],
+      "template": "Which {category} is used in {context}?",
+      "template_slots": {
+        "category": "technique",
+        "context": "this paper"
+      },
+      "adversarial": {
+        "technique": "impossible",
+        "original_id": "q_de49041f7612",
+        "original_text": "Which technique is used in this paper?"
+      }
+    },
+    "contexts": [
+      {
+        "section": "1 Introduction",
+        "text": "Recent competitions illustrate that, despite high computational com-\nplexity, state-of-the-art solvers are effective in practice [Fichte et al., 2021]. Due favorable reasoning\npower and vast applications, counting techniques have been extended to other fields [Aziz et al., 2015;\nFichte et al., 2017; Hahn et al., 2022; Eiter et al., 2024b].\nInthispaper,webridgethegapbetweenmodelcountingandclassicalplanningbyintroducinganew\nframeworkfor reasoningand analyzing plan space."
+      }
+    ],
+    "gold_answer": {
+      "text": "This question cannot be answered based on the information provided in the paper.",
+      "is_validated": true,
+      "supporting_passages": []
+    }
+  },
+  {
+    "question_id": "q_fecd20c578d4_imp",
+    "question": "What will be the future impact of model is?",
+    "answer": "This is a placeholder answer. In a full implementation, this would extract relevant information from the paper.",
+    "paper_id": "2502.00145v1",
+    "metadata": {
+      "query_type": "factoid",
+      "complexity": "L1",
+      "special_categories": [
+        "impossible"
+      ],
+      "template": "Which {category} is used in {context}?",
+      "template_slots": {
+        "category": "model",
+        "context": "this study"
+      },
+      "adversarial": {
+        "technique": "impossible",
+        "original_id": "q_fecd20c578d4",
+        "original_text": "Which model is used in this study?"
+      }
+    },
+    "contexts": [
+      {
+        "section": "1 Introduction",
+        "text": "Considering fundamental problems in computer science, such as the propositional satisfiability\nproblem (SAT), answer set programming (ASP), and constraint satisfaction problems (CSP), more\ndirected reasoning schemes exist that are anchored around counting. The most prominent and canon-\nical counting problem is #SAT, also called model counting, which asks to compute the number of\nmodels of a formula. While #SAT is considered computationally harder than asking whether a single\n∗Thisisanauthor self-archivedandextended versionofapaperthathasbeenaccepted forpublicationatAAAI’25."
+      }
+    ],
+    "gold_answer": {
+      "text": "This question cannot be answered based on the information provided in the paper.",
+      "is_validated": true,
+      "supporting_passages": []
+    }
+  }
+]

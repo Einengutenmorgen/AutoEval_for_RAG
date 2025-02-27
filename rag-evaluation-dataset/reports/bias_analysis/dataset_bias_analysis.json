@@ -1,0 +1,245 @@
+{
+  "dataset_size": 35,
+  "distributions": {
+    "query_type": {
+      "factoid": {
+        "count": 15,
+        "percentage": 0.42857142857142855
+      },
+      "definitional": {
+        "count": 5,
+        "percentage": 0.14285714285714285
+      },
+      "procedural": {
+        "count": 4,
+        "percentage": 0.11428571428571428
+      },
+      "comparative": {
+        "count": 4,
+        "percentage": 0.11428571428571428
+      },
+      "causal": {
+        "count": 4,
+        "percentage": 0.11428571428571428
+      },
+      "open_ended": {
+        "count": 2,
+        "percentage": 0.05714285714285714
+      },
+      "quantitative": {
+        "count": 1,
+        "percentage": 0.02857142857142857
+      }
+    },
+    "complexity": {
+      "L2": {
+        "count": 13,
+        "percentage": 0.37142857142857144
+      },
+      "L1": {
+        "count": 14,
+        "percentage": 0.4
+      },
+      "L3": {
+        "count": 8,
+        "percentage": 0.22857142857142856
+      }
+    },
+    "special_categories": {
+      "temporal": {
+        "count": 5,
+        "percentage": 0.13157894736842105
+      },
+      "impossible": {
+        "count": 8,
+        "percentage": 0.21052631578947367
+      },
+      "none": {
+        "count": 24,
+        "percentage": 0.631578947368421
+      },
+      "ambiguous": {
+        "count": 1,
+        "percentage": 0.02631578947368421
+      }
+    },
+    "paper_id": {
+      "2502.00145v1": {
+        "count": 35,
+        "percentage": 1.0
+      }
+    }
+  },
+  "correlations": {
+    "query_type_complexity": {
+      "contingency_table": [
+        [
+          1.0,
+          3.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0,
+          2.0
+        ],
+        [
+          2.0,
+          2.0,
+          1.0
+        ],
+        [
+          9.0,
+          5.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          2.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "field1_values": [
+        "causal",
+        "comparative",
+        "definitional",
+        "factoid",
+        "open_ended",
+        "procedural",
+        "quantitative"
+      ],
+      "field2_values": [
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "cramers_v": 0.4511127877291302
+    },
+    "query_type_paper_id": {
+      "contingency_table": [
+        [
+          4.0
+        ],
+        [
+          4.0
+        ],
+        [
+          5.0
+        ],
+        [
+          15.0
+        ],
+        [
+          2.0
+        ],
+        [
+          4.0
+        ],
+        [
+          1.0
+        ]
+      ],
+      "field1_values": [
+        "causal",
+        "comparative",
+        "definitional",
+        "factoid",
+        "open_ended",
+        "procedural",
+        "quantitative"
+      ],
+      "field2_values": [
+        "2502.00145v1"
+      ],
+      "cramers_v": 0
+    },
+    "complexity_paper_id": {
+      "contingency_table": [
+        [
+          14.0
+        ],
+        [
+          13.0
+        ],
+        [
+          8.0
+        ]
+      ],
+      "field1_values": [
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "field2_values": [
+        "2502.00145v1"
+      ],
+      "cramers_v": 0
+    }
+  },
+  "diversity": {
+    "query_type_evenness": 0.8478942787026135,
+    "complexity_evenness": 0.975529530533018,
+    "paper_id_evenness": 1.0
+  },
+  "potential_biases": [],
+  "text_characteristics": {
+    "averages": {
+      "question_length_chars": 41.05714285714286,
+      "question_length_words": 6.485714285714286
+    },
+    "distributions": {
+      "question_length_chars": {
+        "min": 16,
+        "max": 86,
+        "median": 41.0,
+        "std_dev": 15.311886805714716
+      },
+      "question_length_words": {
+        "min": 3,
+        "max": 13,
+        "median": 7.0,
+        "std_dev": 2.430419464929913
+      }
+    },
+    "by_category": {
+      "factoid": {
+        "avg_length_chars": 33.4,
+        "avg_length_words": 5.466666666666667
+      },
+      "definitional": {
+        "avg_length_chars": 34.2,
+        "avg_length_words": 5.4
+      },
+      "procedural": {
+        "avg_length_chars": 31.5,
+        "avg_length_words": 4.25
+      },
+      "comparative": {
+        "avg_length_chars": 50.5,
+        "avg_length_words": 8.75
+      },
+      "causal": {
+        "avg_length_chars": 56.5,
+        "avg_length_words": 8.5
+      },
+      "open_ended": {
+        "avg_length_chars": 62.5,
+        "avg_length_words": 9.5
+      },
+      "quantitative": {
+        "avg_length_chars": 86.0,
+        "avg_length_words": 13.0
+      }
+    }
+  }
+}

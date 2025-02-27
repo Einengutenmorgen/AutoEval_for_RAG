@@ -160,3 +160,783 @@ Traceback (most recent call last):
   File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 356, in raw_decode
     raise JSONDecodeError("Expecting value", s, err.value) from None
 json.decoder.JSONDecodeError: Expecting value: line 6 column 18 (char 157)
+2025-02-27 09:18:34,811 - __main__ - INFO - Loaded configuration from config/phase3_config.json
+2025-02-27 09:18:34,838 - evaluation.evaluation_framework - INFO - Loaded configuration from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\config\evaluation_config.yaml
+2025-02-27 09:18:36,897 - absl - INFO - Using default tokenizer.
+2025-02-27 09:18:56,547 - __main__ - INFO - Loaded connector for system: default_rag
+2025-02-27 09:18:56,562 - evaluation.evaluation_framework - INFO - Evaluating system: default_rag
+2025-02-27 09:18:56,575 - evaluation.evaluation_framework - INFO - Loaded 30 questions for evaluation
+2025-02-27 09:19:00,640 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1645F0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:00,640 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE164CB0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:00,640 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE165790>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:00,640 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE166FF0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:05,686 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE191850>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:05,688 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE167020>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:05,702 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE191430>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:05,732 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE190FB0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:11,749 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE192A80>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:11,749 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE191E20>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:11,763 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1921E0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:11,809 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE193350>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:11,813 - evaluation.evaluation_framework - INFO - Completed question 1/30
+2025-02-27 09:19:11,813 - evaluation.evaluation_framework - INFO - Completed question 2/30
+2025-02-27 09:19:11,814 - evaluation.evaluation_framework - INFO - Completed question 3/30
+2025-02-27 09:19:11,814 - evaluation.evaluation_framework - INFO - Completed question 4/30
+2025-02-27 09:19:15,800 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1DD1F0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:15,833 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1DCE00>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:15,862 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1DDAC0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:15,900 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE18A390>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:20,858 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE164950>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:20,905 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1DDF40>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:20,935 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1DEB40>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:20,965 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE167E90>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:26,934 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1886B0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:26,935 - evaluation.evaluation_framework - INFO - Completed question 5/30
+2025-02-27 09:19:26,989 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE201310>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:26,990 - evaluation.evaluation_framework - INFO - Completed question 6/30
+2025-02-27 09:19:27,005 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE201E20>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:27,006 - evaluation.evaluation_framework - INFO - Completed question 7/30
+2025-02-27 09:19:27,039 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE2026C0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:27,039 - evaluation.evaluation_framework - INFO - Completed question 8/30
+2025-02-27 09:19:30,981 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1DE870>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:31,053 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE2001A0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:31,071 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE193200>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:31,072 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE2028D0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:36,056 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1920C0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:36,134 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE203E90>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:36,135 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE200950>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:36,135 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE203A40>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:42,115 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE192B70>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:42,117 - evaluation.evaluation_framework - INFO - Completed question 9/30
+2025-02-27 09:19:42,193 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE222D50>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:42,194 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE222930>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:42,194 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE223170>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:42,194 - evaluation.evaluation_framework - INFO - Completed question 10/30
+2025-02-27 09:19:42,196 - evaluation.evaluation_framework - INFO - Completed question 11/30
+2025-02-27 09:19:42,197 - evaluation.evaluation_framework - INFO - Completed question 12/30
+2025-02-27 09:19:46,180 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE203F80>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:46,259 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE2201D0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:46,259 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1DEC00>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:46,259 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE223680>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:51,265 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1DF710>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:51,326 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE200080>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:51,327 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE200C80>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:51,327 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1DE330>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:57,310 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1DD6D0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:57,310 - evaluation.evaluation_framework - INFO - Completed question 13/30
+2025-02-27 09:19:57,356 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE190B60>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:57,373 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE190740>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:57,373 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1908F0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:19:57,374 - evaluation.evaluation_framework - INFO - Completed question 14/30
+2025-02-27 09:19:57,376 - evaluation.evaluation_framework - INFO - Completed question 15/30
+2025-02-27 09:19:57,377 - evaluation.evaluation_framework - INFO - Completed question 16/30
+2025-02-27 09:20:01,382 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE192180>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:01,414 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1DCFE0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:01,444 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE164D70>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:01,461 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1DE780>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:06,434 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE193920>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:06,449 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE193470>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:06,511 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1658E0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:06,527 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE201010>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:12,501 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE190D40>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:12,501 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE220650>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:12,613 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE2230B0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:12,614 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE221970>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:16,554 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE2905C0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:16,554 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE290200>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:16,645 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE291790>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:16,659 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE291370>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:21,606 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE190320>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:21,625 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE191280>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:21,719 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE291940>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:21,740 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE291CD0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:27,659 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE2011C0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:27,709 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE291160>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:27,772 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE292C90>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:27,773 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE290A70>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:31,730 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE2007D0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:31,767 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE291280>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:31,833 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE290F20>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:31,833 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE290AD0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:36,801 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE220EC0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:36,835 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE290980>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:36,883 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE290920>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:36,897 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE291370>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:42,878 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE290350>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:42,900 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE200D10>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:42,933 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE200C50>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:42,966 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE2984A0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:46,910 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE292600>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:46,973 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE202BD0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:51,956 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE2202C0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:52,030 - evaluation.rag_system_connector - WARNING - Request failed (attempt 2/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE2029C0>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:58,004 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE292E70>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:20:58,099 - evaluation.rag_system_connector - WARNING - Request failed (attempt 3/3): HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025ACE1DFD70>: Failed to establish a new connection: [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte'))
+2025-02-27 09:27:15,979 - __main__ - INFO - Loaded configuration from config/phase3_config.json
+2025-02-27 09:27:15,995 - evaluation.evaluation_framework - INFO - Loaded configuration from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\config\evaluation_config.yaml
+2025-02-27 09:27:17,698 - absl - INFO - Using default tokenizer.
+2025-02-27 09:27:36,429 - __main__ - INFO - Loaded connector for system: default_rag
+2025-02-27 09:27:36,435 - evaluation.evaluation_framework - INFO - Evaluating system: default_rag
+2025-02-27 09:27:36,436 - evaluation.evaluation_framework - INFO - Loaded 30 questions for evaluation
+2025-02-27 09:27:38,688 - evaluation.evaluation_framework - INFO - Completed question 1/30
+2025-02-27 09:27:38,689 - evaluation.evaluation_framework - INFO - Completed question 2/30
+2025-02-27 09:27:39,422 - evaluation.evaluation_framework - INFO - Completed question 3/30
+2025-02-27 09:27:40,005 - evaluation.evaluation_framework - INFO - Completed question 4/30
+2025-02-27 09:27:41,442 - evaluation.evaluation_framework - INFO - Completed question 5/30
+2025-02-27 09:27:43,254 - evaluation.evaluation_framework - INFO - Completed question 6/30
+2025-02-27 09:27:43,839 - evaluation.evaluation_framework - INFO - Completed question 7/30
+2025-02-27 09:27:44,386 - evaluation.evaluation_framework - INFO - Completed question 8/30
+2025-02-27 09:27:45,865 - evaluation.evaluation_framework - INFO - Completed question 9/30
+2025-02-27 09:27:46,425 - evaluation.evaluation_framework - INFO - Completed question 10/30
+2025-02-27 09:27:48,398 - evaluation.evaluation_framework - INFO - Completed question 11/30
+2025-02-27 09:27:49,057 - evaluation.evaluation_framework - INFO - Completed question 12/30
+2025-02-27 09:27:49,677 - evaluation.evaluation_framework - INFO - Completed question 13/30
+2025-02-27 09:27:51,502 - evaluation.evaluation_framework - INFO - Completed question 14/30
+2025-02-27 09:27:53,408 - evaluation.evaluation_framework - INFO - Completed question 15/30
+2025-02-27 09:27:53,944 - evaluation.evaluation_framework - INFO - Completed question 16/30
+2025-02-27 09:27:54,781 - evaluation.evaluation_framework - INFO - Completed question 17/30
+2025-02-27 09:27:56,345 - evaluation.evaluation_framework - INFO - Completed question 18/30
+2025-02-27 09:27:57,901 - evaluation.evaluation_framework - INFO - Completed question 19/30
+2025-02-27 09:27:59,507 - evaluation.evaluation_framework - INFO - Completed question 20/30
+2025-02-27 09:28:01,124 - evaluation.evaluation_framework - INFO - Completed question 21/30
+2025-02-27 09:28:01,799 - evaluation.evaluation_framework - INFO - Completed question 22/30
+2025-02-27 09:28:02,852 - evaluation.evaluation_framework - INFO - Completed question 23/30
+2025-02-27 09:28:04,464 - evaluation.evaluation_framework - INFO - Completed question 24/30
+2025-02-27 09:28:06,072 - evaluation.evaluation_framework - INFO - Completed question 25/30
+2025-02-27 09:28:08,041 - evaluation.evaluation_framework - INFO - Completed question 26/30
+2025-02-27 09:28:09,883 - evaluation.evaluation_framework - INFO - Completed question 27/30
+2025-02-27 09:28:11,787 - evaluation.evaluation_framework - INFO - Completed question 28/30
+2025-02-27 09:28:13,177 - evaluation.evaluation_framework - INFO - Completed question 29/30
+2025-02-27 09:28:14,833 - evaluation.evaluation_framework - INFO - Completed question 30/30
+2025-02-27 09:28:14,834 - evaluation.evaluation_framework - INFO - Calculating evaluation metrics
+2025-02-27 09:28:14,843 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,843 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,844 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,844 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,845 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,845 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,845 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,846 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,846 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,847 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,848 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,849 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,849 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,849 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,850 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,850 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,850 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,850 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,851 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,851 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,851 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,852 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,852 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,852 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,852 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,853 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,853 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,853 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,853 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:14,853 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 09:28:25,539 - evaluation.evaluation_framework - INFO - Metrics calculation complete
+2025-02-27 09:28:25,544 - __main__ - ERROR - Error evaluating default_rag: Object of type RESTAPIConnector is not JSON serializable
+Traceback (most recent call last):
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\phase3_runner.py", line 285, in _run_evaluation
+    results = self.framework.evaluate_system(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\evaluation\evaluation_framework.py", line 313, in evaluate_system
+    json.dump(self.results[evaluation_id], f, indent=2, ensure_ascii=False)
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+                 ^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type RESTAPIConnector is not JSON serializable
+2025-02-27 09:28:25,585 - evaluation.bias_analyzer - INFO - Loaded 0 questions in total
+2025-02-27 09:28:25,602 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250225_140706.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 09:28:25,606 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_092736.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 09:28:25,607 - evaluation.bias_analyzer - INFO - Loaded results for 0 systems in total
+2025-02-27 09:28:25,613 - __main__ - ERROR - Error generating reports for default_rag: Expecting value: line 6 column 18 (char 157)
+Traceback (most recent call last):
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\phase3_runner.py", line 390, in _generate_reports
+    results = json.load(f)
+              ^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 6 column 18 (char 157)
+2025-02-27 10:31:03,317 - __main__ - INFO - Loaded configuration from config/phase3_config.json
+2025-02-27 10:31:03,321 - evaluation.evaluation_framework - INFO - Loaded configuration from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\config\evaluation_config.yaml
+2025-02-27 10:31:05,115 - absl - INFO - Using default tokenizer.
+2025-02-27 10:31:23,885 - __main__ - INFO - Loaded connector for system: default_rag
+2025-02-27 10:31:23,888 - __main__ - ERROR - Error evaluating default_rag: 'RESTAPIConnector' object has no attribute 'endpoint'
+Traceback (most recent call last):
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\phase3_runner.py", line 226, in _run_evaluation
+    system_info = self.connectors[system_name].get_system_info()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\evaluation\rag_system_connector.py", line 210, in get_system_info
+    "endpoint": self.endpoint,
+                ^^^^^^^^^^^^^
+AttributeError: 'RESTAPIConnector' object has no attribute 'endpoint'
+2025-02-27 10:31:23,890 - evaluation.bias_analyzer - INFO - Loaded 0 questions in total
+2025-02-27 10:31:23,891 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250225_140706.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 10:31:23,891 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_092736.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 10:31:23,891 - evaluation.bias_analyzer - INFO - Loaded results for 0 systems in total
+2025-02-27 10:31:23,895 - __main__ - ERROR - Error generating reports for default_rag: Expecting value: line 6 column 18 (char 157)
+Traceback (most recent call last):
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\phase3_runner.py", line 390, in _generate_reports
+    results = json.load(f)
+              ^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 6 column 18 (char 157)
+2025-02-27 11:21:05,205 - evaluation.evaluation_framework - INFO - Loaded configuration from config/evaluation_config.yaml
+2025-02-27 11:21:06,943 - absl - INFO - Using default tokenizer.
+2025-02-27 11:21:24,552 - __main__ - INFO - Loaded connector for system: default_rag
+2025-02-27 11:21:24,568 - evaluation.evaluation_framework - INFO - Evaluating system: default_rag
+2025-02-27 11:21:24,576 - __main__ - ERROR - Error evaluating default_rag: No questions loaded for evaluation
+Traceback (most recent call last):
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\phase3_runner.py", line 285, in _run_evaluation
+    results = self.framework.evaluate_system(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\evaluation\evaluation_framework.py", line 291, in evaluate_system
+    raise ValueError("No questions loaded for evaluation")
+ValueError: No questions loaded for evaluation
+2025-02-27 11:21:24,578 - evaluation.bias_analyzer - INFO - Loaded 0 questions in total
+2025-02-27 11:21:24,589 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250225_140706.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 11:21:24,591 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_092736.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 11:21:24,592 - evaluation.bias_analyzer - INFO - Loaded results for 0 systems in total
+2025-02-27 11:21:24,597 - __main__ - ERROR - Error generating reports for default_rag: Expecting value: line 6 column 18 (char 157)
+Traceback (most recent call last):
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\phase3_runner.py", line 390, in _generate_reports
+    results = json.load(f)
+              ^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 6 column 18 (char 157)
+2025-02-27 11:32:13,095 - evaluation.evaluation_framework - INFO - Loaded configuration from config/evaluation_config.yaml
+2025-02-27 11:32:14,809 - absl - INFO - Using default tokenizer.
+2025-02-27 11:32:33,361 - __main__ - INFO - Loaded connector for system: default_rag
+2025-02-27 11:32:33,377 - evaluation.evaluation_framework - INFO - Evaluating system: default_rag
+2025-02-27 11:32:33,393 - evaluation.evaluation_framework - INFO - Loaded 30 questions for evaluation
+2025-02-27 11:32:35,503 - evaluation.evaluation_framework - INFO - Completed question 1/30
+2025-02-27 11:32:35,503 - evaluation.evaluation_framework - INFO - Completed question 2/30
+2025-02-27 11:32:36,491 - evaluation.evaluation_framework - INFO - Completed question 3/30
+2025-02-27 11:32:37,040 - evaluation.evaluation_framework - INFO - Completed question 4/30
+2025-02-27 11:32:37,705 - evaluation.evaluation_framework - INFO - Completed question 5/30
+2025-02-27 11:32:38,300 - evaluation.evaluation_framework - INFO - Completed question 6/30
+2025-02-27 11:32:39,022 - evaluation.evaluation_framework - INFO - Completed question 7/30
+2025-02-27 11:32:40,735 - evaluation.evaluation_framework - INFO - Completed question 8/30
+2025-02-27 11:32:41,286 - evaluation.evaluation_framework - INFO - Completed question 9/30
+2025-02-27 11:32:42,103 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): 500 Server Error: Internal Server Error for url: http://localhost:8000/query
+2025-02-27 11:32:49,290 - evaluation.evaluation_framework - INFO - Completed question 10/30
+2025-02-27 11:32:49,291 - evaluation.evaluation_framework - INFO - Completed question 11/30
+2025-02-27 11:32:49,291 - evaluation.evaluation_framework - INFO - Completed question 12/30
+2025-02-27 11:32:49,292 - evaluation.evaluation_framework - INFO - Completed question 13/30
+2025-02-27 11:32:49,292 - evaluation.evaluation_framework - INFO - Completed question 14/30
+2025-02-27 11:32:51,087 - evaluation.evaluation_framework - INFO - Completed question 15/30
+2025-02-27 11:32:52,378 - evaluation.evaluation_framework - INFO - Completed question 16/30
+2025-02-27 11:32:53,529 - evaluation.evaluation_framework - INFO - Completed question 17/30
+2025-02-27 11:32:54,305 - evaluation.evaluation_framework - INFO - Completed question 18/30
+2025-02-27 11:32:54,963 - evaluation.evaluation_framework - INFO - Completed question 19/30
+2025-02-27 11:32:55,948 - evaluation.evaluation_framework - INFO - Completed question 20/30
+2025-02-27 11:32:57,357 - evaluation.evaluation_framework - INFO - Completed question 21/30
+2025-02-27 11:32:59,315 - evaluation.evaluation_framework - INFO - Completed question 22/30
+2025-02-27 11:33:01,112 - evaluation.evaluation_framework - INFO - Completed question 23/30
+2025-02-27 11:33:03,083 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): 500 Server Error: Internal Server Error for url: http://localhost:8000/query
+2025-02-27 11:33:10,043 - evaluation.evaluation_framework - INFO - Completed question 24/30
+2025-02-27 11:33:10,043 - evaluation.evaluation_framework - INFO - Completed question 25/30
+2025-02-27 11:33:10,043 - evaluation.evaluation_framework - INFO - Completed question 26/30
+2025-02-27 11:33:10,043 - evaluation.evaluation_framework - INFO - Completed question 27/30
+2025-02-27 11:33:10,043 - evaluation.evaluation_framework - INFO - Completed question 28/30
+2025-02-27 11:33:11,225 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): 500 Server Error: Internal Server Error for url: http://localhost:8000/query
+2025-02-27 11:33:13,465 - evaluation.evaluation_framework - INFO - Completed question 29/30
+2025-02-27 11:33:13,467 - evaluation.evaluation_framework - INFO - Completed question 30/30
+2025-02-27 11:33:13,467 - evaluation.evaluation_framework - INFO - Calculating evaluation metrics
+2025-02-27 11:33:13,477 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,477 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,477 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,478 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,478 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,478 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,479 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,479 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,480 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,480 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,480 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,481 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,481 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,481 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,482 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,482 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,482 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,483 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,483 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,483 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,483 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,484 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,484 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,484 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,485 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,485 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,485 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,485 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,486 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:13,486 - evaluation.evaluation_framework - WARNING - Error calculating BLEU score: name 'sentence_bleu' is not defined
+2025-02-27 11:33:26,686 - evaluation.evaluation_framework - INFO - Metrics calculation complete
+2025-02-27 11:33:26,707 - __main__ - ERROR - Error evaluating default_rag: Object of type RESTAPIConnector is not JSON serializable
+Traceback (most recent call last):
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\phase3_runner.py", line 285, in _run_evaluation
+    results = self.framework.evaluate_system(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\evaluation\evaluation_framework.py", line 324, in evaluate_system
+    json.dump(self.results[evaluation_id], f, indent=2, ensure_ascii=False)
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+                 ^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type RESTAPIConnector is not JSON serializable
+2025-02-27 11:33:26,793 - evaluation.bias_analyzer - INFO - Loaded 30 questions from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\2502.00145v1_questions_with_gold.json
+2025-02-27 11:33:26,795 - evaluation.bias_analyzer - INFO - Loaded 30 questions in total
+2025-02-27 11:33:26,834 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250225_140706.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 11:33:26,838 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_092736.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 11:33:26,868 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_113233.json: Expecting value: line 6 column 18 (char 116)
+2025-02-27 11:33:26,870 - evaluation.bias_analyzer - INFO - Loaded results for 0 systems in total
+2025-02-27 11:33:26,879 - evaluation.bias_analyzer - INFO - Analyzing dataset bias...
+2025-02-27 11:33:27,392 - evaluation.bias_analyzer - ERROR - Error creating visualizations: too many values to unpack (expected 2)
+2025-02-27 11:33:27,393 - evaluation.bias_analyzer - INFO - Dataset bias analysis complete
+2025-02-27 11:33:27,395 - evaluation.bias_analyzer - INFO - Generating adversarial examples...
+2025-02-27 11:33:27,395 - evaluation.bias_analyzer - INFO - Found vulnerable categories: {}
+2025-02-27 11:33:27,395 - evaluation.bias_analyzer - INFO - Generated 5 adversarial examples
+2025-02-27 11:33:27,396 - evaluation.bias_analyzer - INFO - Adversarial examples saved to C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\adversarial_examples.json
+2025-02-27 11:33:27,399 - __main__ - ERROR - Error generating reports for default_rag: Expecting value: line 6 column 18 (char 116)
+Traceback (most recent call last):
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\phase3_runner.py", line 390, in _generate_reports
+    results = json.load(f)
+              ^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 6 column 18 (char 116)
+2025-02-27 12:00:44,287 - evaluation.evaluation_framework - INFO - Loaded configuration from config/evaluation_config.yaml
+2025-02-27 12:00:44,308 - absl - INFO - Using default tokenizer.
+2025-02-27 12:01:06,018 - __main__ - INFO - Loaded connector for system: default_rag
+2025-02-27 12:01:06,032 - evaluation.evaluation_framework - INFO - Evaluating system: default_rag
+2025-02-27 12:01:06,047 - evaluation.evaluation_framework - INFO - Loaded 30 questions for evaluation
+2025-02-27 12:01:09,396 - evaluation.evaluation_framework - INFO - Completed question 1/30
+2025-02-27 12:01:10,904 - evaluation.evaluation_framework - INFO - Completed question 2/30
+2025-02-27 12:01:10,905 - evaluation.evaluation_framework - INFO - Completed question 3/30
+2025-02-27 12:01:10,906 - evaluation.evaluation_framework - INFO - Completed question 4/30
+2025-02-27 12:01:12,097 - evaluation.evaluation_framework - INFO - Completed question 5/30
+2025-02-27 12:01:12,919 - evaluation.evaluation_framework - INFO - Completed question 6/30
+2025-02-27 12:01:14,644 - evaluation.evaluation_framework - INFO - Completed question 7/30
+2025-02-27 12:01:16,148 - evaluation.evaluation_framework - INFO - Completed question 8/30
+2025-02-27 12:01:17,496 - evaluation.evaluation_framework - INFO - Completed question 9/30
+2025-02-27 12:01:18,955 - evaluation.evaluation_framework - INFO - Completed question 10/30
+2025-02-27 12:01:19,593 - evaluation.evaluation_framework - INFO - Completed question 11/30
+2025-02-27 12:01:20,610 - evaluation.evaluation_framework - INFO - Completed question 12/30
+2025-02-27 12:01:22,563 - evaluation.evaluation_framework - INFO - Completed question 13/30
+2025-02-27 12:01:23,453 - evaluation.evaluation_framework - INFO - Completed question 14/30
+2025-02-27 12:01:25,076 - evaluation.evaluation_framework - INFO - Completed question 15/30
+2025-02-27 12:01:26,258 - evaluation.evaluation_framework - INFO - Completed question 16/30
+2025-02-27 12:01:27,810 - evaluation.evaluation_framework - INFO - Completed question 17/30
+2025-02-27 12:01:29,749 - evaluation.evaluation_framework - INFO - Completed question 18/30
+2025-02-27 12:01:31,537 - evaluation.evaluation_framework - INFO - Completed question 19/30
+2025-02-27 12:01:32,627 - evaluation.evaluation_framework - INFO - Completed question 20/30
+2025-02-27 12:01:33,794 - evaluation.evaluation_framework - INFO - Completed question 21/30
+2025-02-27 12:01:35,380 - evaluation.evaluation_framework - INFO - Completed question 22/30
+2025-02-27 12:01:36,654 - evaluation.evaluation_framework - INFO - Completed question 23/30
+2025-02-27 12:01:38,052 - evaluation.evaluation_framework - INFO - Completed question 24/30
+2025-02-27 12:01:38,889 - evaluation.evaluation_framework - INFO - Completed question 25/30
+2025-02-27 12:01:40,229 - evaluation.evaluation_framework - INFO - Completed question 26/30
+2025-02-27 12:01:41,543 - evaluation.evaluation_framework - INFO - Completed question 27/30
+2025-02-27 12:01:43,342 - evaluation.evaluation_framework - INFO - Completed question 28/30
+2025-02-27 12:01:44,468 - evaluation.evaluation_framework - INFO - Completed question 29/30
+2025-02-27 12:01:46,167 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): 500 Server Error: Internal Server Error for url: http://localhost:8000/query
+2025-02-27 12:01:49,149 - evaluation.evaluation_framework - INFO - Completed question 30/30
+2025-02-27 12:01:49,150 - evaluation.evaluation_framework - INFO - Calculating evaluation metrics
+2025-02-27 12:02:03,628 - evaluation.evaluation_framework - INFO - Metrics calculation complete
+2025-02-27 12:02:03,651 - evaluation.evaluation_framework - INFO - Evaluation complete. Results saved to C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_120106.json
+2025-02-27 12:02:03,661 - evaluation.bias_analyzer - INFO - Loaded 30 questions from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\2502.00145v1_questions_with_gold.json
+2025-02-27 12:02:03,686 - evaluation.bias_analyzer - INFO - Loaded 5 questions from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\adversarial_examples.json
+2025-02-27 12:02:03,686 - evaluation.bias_analyzer - INFO - Loaded 35 questions in total
+2025-02-27 12:02:03,709 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250225_140706.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 12:02:03,715 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_092736.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 12:02:03,740 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_113233.json: Expecting value: line 6 column 18 (char 116)
+2025-02-27 12:02:03,772 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_120106.json
+2025-02-27 12:02:03,773 - evaluation.bias_analyzer - INFO - Loaded results for 1 systems in total
+2025-02-27 12:02:03,777 - evaluation.bias_analyzer - INFO - Analyzing dataset bias...
+2025-02-27 12:02:04,399 - evaluation.bias_analyzer - ERROR - Error creating visualizations: too many values to unpack (expected 2)
+2025-02-27 12:02:04,400 - evaluation.bias_analyzer - INFO - Dataset bias analysis complete
+2025-02-27 12:02:04,402 - evaluation.bias_analyzer - INFO - Analyzing performance bias...
+2025-02-27 12:02:04,408 - __main__ - ERROR - Error running Phase 3 pipeline: Object of type bool is not JSON serializable
+Traceback (most recent call last):
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\phase3_runner.py", line 546, in <module>
+    runner.run_pipeline()
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\phase3_runner.py", line 193, in run_pipeline
+    self._run_bias_analysis()
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\phase3_runner.py", line 349, in _run_bias_analysis
+    self.bias_analyzer.analyze_performance_bias(str(performance_output_file))
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\evaluation\bias_analyzer.py", line 755, in analyze_performance_bias
+    self._generate_performance_report(output_file)
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\evaluation\bias_analyzer.py", line 915, in _generate_performance_report
+    json.dump(self.performance_analysis, f, indent=2, ensure_ascii=False)
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+                 ^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 1 more time]
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool is not JSON serializable
+2025-02-27 12:12:12,965 - evaluation.evaluation_framework - INFO - Loaded configuration from config/evaluation_config.yaml
+2025-02-27 12:12:12,982 - absl - INFO - Using default tokenizer.
+2025-02-27 12:12:16,315 - __main__ - INFO - Loaded connector for system: default_rag
+2025-02-27 12:12:16,322 - evaluation.evaluation_framework - INFO - Evaluating system: default_rag
+2025-02-27 12:12:16,323 - evaluation.evaluation_framework - INFO - Loaded 30 questions for evaluation
+2025-02-27 12:12:18,127 - evaluation.evaluation_framework - INFO - Completed question 1/30
+2025-02-27 12:12:18,910 - evaluation.evaluation_framework - INFO - Completed question 2/30
+2025-02-27 12:12:19,452 - evaluation.evaluation_framework - INFO - Completed question 3/30
+2025-02-27 12:12:19,966 - evaluation.evaluation_framework - INFO - Completed question 4/30
+2025-02-27 12:12:21,807 - evaluation.evaluation_framework - INFO - Completed question 5/30
+2025-02-27 12:12:23,562 - evaluation.evaluation_framework - INFO - Completed question 6/30
+2025-02-27 12:12:24,827 - evaluation.evaluation_framework - INFO - Completed question 7/30
+2025-02-27 12:12:25,957 - evaluation.evaluation_framework - INFO - Completed question 8/30
+2025-02-27 12:12:27,786 - evaluation.evaluation_framework - INFO - Completed question 9/30
+2025-02-27 12:12:29,755 - evaluation.evaluation_framework - INFO - Completed question 10/30
+2025-02-27 12:12:31,178 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): 500 Server Error: Internal Server Error for url: http://localhost:8000/query
+2025-02-27 12:12:34,026 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): 500 Server Error: Internal Server Error for url: http://localhost:8000/query
+2025-02-27 12:12:34,754 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): 500 Server Error: Internal Server Error for url: http://localhost:8000/query
+2025-02-27 12:12:35,673 - evaluation.evaluation_framework - INFO - Completed question 11/30
+2025-02-27 12:12:35,674 - evaluation.evaluation_framework - INFO - Completed question 12/30
+2025-02-27 12:12:35,674 - evaluation.evaluation_framework - INFO - Completed question 13/30
+2025-02-27 12:12:37,682 - evaluation.evaluation_framework - INFO - Completed question 14/30
+2025-02-27 12:12:39,005 - evaluation.evaluation_framework - INFO - Completed question 15/30
+2025-02-27 12:12:39,005 - evaluation.evaluation_framework - INFO - Completed question 16/30
+2025-02-27 12:12:39,006 - evaluation.evaluation_framework - INFO - Completed question 17/30
+2025-02-27 12:12:39,870 - evaluation.evaluation_framework - INFO - Completed question 18/30
+2025-02-27 12:12:41,154 - evaluation.evaluation_framework - INFO - Completed question 19/30
+2025-02-27 12:12:42,193 - evaluation.evaluation_framework - INFO - Completed question 20/30
+2025-02-27 12:12:44,065 - evaluation.evaluation_framework - INFO - Completed question 21/30
+2025-02-27 12:12:44,733 - evaluation.evaluation_framework - INFO - Completed question 22/30
+2025-02-27 12:12:45,554 - evaluation.evaluation_framework - INFO - Completed question 23/30
+2025-02-27 12:12:47,162 - evaluation.evaluation_framework - INFO - Completed question 24/30
+2025-02-27 12:12:47,899 - evaluation.evaluation_framework - INFO - Completed question 25/30
+2025-02-27 12:12:48,455 - evaluation.evaluation_framework - INFO - Completed question 26/30
+2025-02-27 12:12:49,753 - evaluation.evaluation_framework - INFO - Completed question 27/30
+2025-02-27 12:12:50,879 - evaluation.evaluation_framework - INFO - Completed question 28/30
+2025-02-27 12:12:52,034 - evaluation.evaluation_framework - INFO - Completed question 29/30
+2025-02-27 12:12:52,648 - evaluation.evaluation_framework - INFO - Completed question 30/30
+2025-02-27 12:12:52,649 - evaluation.evaluation_framework - INFO - Calculating evaluation metrics
+2025-02-27 12:13:03,166 - evaluation.evaluation_framework - INFO - Metrics calculation complete
+2025-02-27 12:13:03,172 - evaluation.evaluation_framework - INFO - Evaluation complete. Results saved to C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_121216.json
+2025-02-27 12:13:03,213 - evaluation.bias_analyzer - INFO - Loaded 30 questions from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\2502.00145v1_questions_with_gold.json
+2025-02-27 12:13:03,240 - evaluation.bias_analyzer - INFO - Loaded 5 questions from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\adversarial_examples.json
+2025-02-27 12:13:03,242 - evaluation.bias_analyzer - INFO - Loaded 35 questions in total
+2025-02-27 12:13:03,266 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250225_140706.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 12:13:03,270 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_092736.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 12:13:03,297 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_113233.json: Expecting value: line 6 column 18 (char 116)
+2025-02-27 12:13:03,327 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_120106.json
+2025-02-27 12:13:03,345 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_121216.json
+2025-02-27 12:13:03,346 - evaluation.bias_analyzer - INFO - Loaded results for 1 systems in total
+2025-02-27 12:13:03,349 - evaluation.bias_analyzer - INFO - Analyzing dataset bias...
+2025-02-27 12:13:03,811 - evaluation.bias_analyzer - ERROR - Error creating visualizations: too many values to unpack (expected 2)
+2025-02-27 12:13:03,827 - evaluation.bias_analyzer - INFO - Dataset bias analysis complete
+2025-02-27 12:13:03,827 - evaluation.bias_analyzer - INFO - Analyzing performance bias...
+2025-02-27 12:13:03,827 - __main__ - ERROR - Error running Phase 3 pipeline: Object of type bool is not JSON serializable
+Traceback (most recent call last):
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\phase3_runner.py", line 546, in <module>
+    runner.run_pipeline()
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\phase3_runner.py", line 193, in run_pipeline
+    self._run_bias_analysis()
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\phase3_runner.py", line 349, in _run_bias_analysis
+    self.bias_analyzer.analyze_performance_bias(str(performance_output_file))
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\evaluation\bias_analyzer.py", line 755, in analyze_performance_bias
+    self._generate_performance_report(output_file)
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\evaluation\bias_analyzer.py", line 915, in _generate_performance_report
+    json.dump(self.performance_analysis, f, indent=2, ensure_ascii=False)
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+                 ^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 1 more time]
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool is not JSON serializable
+2025-02-27 13:02:43,358 - evaluation.evaluation_framework - INFO - Loaded configuration from config/evaluation_config.yaml
+2025-02-27 13:02:43,378 - absl - INFO - Using default tokenizer.
+2025-02-27 13:03:05,542 - __main__ - INFO - Loaded connector for system: default_rag
+2025-02-27 13:03:05,559 - evaluation.evaluation_framework - INFO - Evaluating system: default_rag
+2025-02-27 13:03:05,583 - evaluation.evaluation_framework - INFO - Loaded 30 questions for evaluation
+2025-02-27 13:03:10,469 - evaluation.evaluation_framework - INFO - Completed question 1/30
+2025-02-27 13:03:10,469 - evaluation.evaluation_framework - INFO - Completed question 2/30
+2025-02-27 13:03:10,470 - evaluation.evaluation_framework - INFO - Completed question 3/30
+2025-02-27 13:03:10,471 - evaluation.evaluation_framework - INFO - Completed question 4/30
+2025-02-27 13:03:11,341 - evaluation.evaluation_framework - INFO - Completed question 5/30
+2025-02-27 13:03:12,652 - evaluation.evaluation_framework - INFO - Completed question 6/30
+2025-02-27 13:03:14,521 - evaluation.evaluation_framework - INFO - Completed question 7/30
+2025-02-27 13:03:16,436 - evaluation.evaluation_framework - INFO - Completed question 8/30
+2025-02-27 13:03:18,106 - evaluation.evaluation_framework - INFO - Completed question 9/30
+2025-02-27 13:03:19,958 - evaluation.evaluation_framework - INFO - Completed question 10/30
+2025-02-27 13:03:21,313 - evaluation.evaluation_framework - INFO - Completed question 11/30
+2025-02-27 13:03:22,960 - evaluation.evaluation_framework - INFO - Completed question 12/30
+2025-02-27 13:03:23,654 - evaluation.evaluation_framework - INFO - Completed question 13/30
+2025-02-27 13:03:25,115 - evaluation.evaluation_framework - INFO - Completed question 14/30
+2025-02-27 13:03:25,997 - evaluation.evaluation_framework - INFO - Completed question 15/30
+2025-02-27 13:03:27,140 - evaluation.evaluation_framework - INFO - Completed question 16/30
+2025-02-27 13:03:27,873 - evaluation.evaluation_framework - INFO - Completed question 17/30
+2025-02-27 13:03:29,498 - evaluation.evaluation_framework - INFO - Completed question 18/30
+2025-02-27 13:03:30,695 - evaluation.evaluation_framework - INFO - Completed question 19/30
+2025-02-27 13:03:32,057 - evaluation.evaluation_framework - INFO - Completed question 20/30
+2025-02-27 13:03:34,008 - evaluation.evaluation_framework - INFO - Completed question 21/30
+2025-02-27 13:03:34,512 - evaluation.evaluation_framework - INFO - Completed question 22/30
+2025-02-27 13:03:36,045 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): 500 Server Error: Internal Server Error for url: http://localhost:8000/query
+2025-02-27 13:03:43,314 - evaluation.evaluation_framework - INFO - Completed question 23/30
+2025-02-27 13:03:43,315 - evaluation.evaluation_framework - INFO - Completed question 24/30
+2025-02-27 13:03:43,315 - evaluation.evaluation_framework - INFO - Completed question 25/30
+2025-02-27 13:03:43,315 - evaluation.evaluation_framework - INFO - Completed question 26/30
+2025-02-27 13:03:43,315 - evaluation.evaluation_framework - INFO - Completed question 27/30
+2025-02-27 13:03:44,004 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): 500 Server Error: Internal Server Error for url: http://localhost:8000/query
+2025-02-27 13:03:46,690 - evaluation.rag_system_connector - WARNING - Request failed (attempt 1/3): 500 Server Error: Internal Server Error for url: http://localhost:8000/query
+2025-02-27 13:03:48,314 - evaluation.evaluation_framework - INFO - Completed question 28/30
+2025-02-27 13:03:48,315 - evaluation.evaluation_framework - INFO - Completed question 29/30
+2025-02-27 13:03:49,756 - evaluation.evaluation_framework - INFO - Completed question 30/30
+2025-02-27 13:03:49,757 - evaluation.evaluation_framework - INFO - Calculating evaluation metrics
+2025-02-27 13:04:02,897 - evaluation.evaluation_framework - INFO - Metrics calculation complete
+2025-02-27 13:04:02,930 - evaluation.evaluation_framework - INFO - Evaluation complete. Results saved to C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_130305.json
+2025-02-27 13:04:02,956 - evaluation.bias_analyzer - INFO - Loaded 30 questions from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\2502.00145v1_questions_with_gold.json
+2025-02-27 13:04:02,992 - evaluation.bias_analyzer - INFO - Loaded 5 questions from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\adversarial_examples.json
+2025-02-27 13:04:02,992 - evaluation.bias_analyzer - INFO - Loaded 35 questions in total
+2025-02-27 13:04:03,014 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250225_140706.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 13:04:03,016 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_092736.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 13:04:03,031 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_113233.json: Expecting value: line 6 column 18 (char 116)
+2025-02-27 13:04:03,058 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_120106.json
+2025-02-27 13:04:03,077 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_121216.json
+2025-02-27 13:04:03,095 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_130305.json
+2025-02-27 13:04:03,095 - evaluation.bias_analyzer - INFO - Loaded results for 1 systems in total
+2025-02-27 13:04:03,098 - evaluation.bias_analyzer - INFO - Analyzing dataset bias...
+2025-02-27 13:04:03,482 - evaluation.bias_analyzer - ERROR - Error creating visualizations: too many values to unpack (expected 2)
+2025-02-27 13:04:03,483 - evaluation.bias_analyzer - INFO - Dataset bias analysis complete
+2025-02-27 13:04:03,485 - evaluation.bias_analyzer - INFO - Analyzing performance bias...
+2025-02-27 13:04:03,489 - __main__ - ERROR - Error running Phase 3 pipeline: Object of type bool is not JSON serializable
+Traceback (most recent call last):
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\phase3_runner.py", line 546, in <module>
+    runner.run_pipeline()
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\phase3_runner.py", line 193, in run_pipeline
+    self._run_bias_analysis()
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\phase3_runner.py", line 349, in _run_bias_analysis
+    self.bias_analyzer.analyze_performance_bias(str(performance_output_file))
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\evaluation\bias_analyzer.py", line 769, in analyze_performance_bias
+    self._generate_performance_report(output_file)
+  File "C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\scripts\evaluation\bias_analyzer.py", line 931, in _generate_performance_report
+    json.dump(self.performance_analysis, f, indent=2, ensure_ascii=False)
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+                 ^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 1 more time]
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Users\Christoph.Hau\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool is not JSON serializable
+2025-02-27 13:16:39,171 - evaluation.evaluation_framework - INFO - Loaded configuration from config/evaluation_config.yaml
+2025-02-27 13:16:39,188 - absl - INFO - Using default tokenizer.
+2025-02-27 13:16:41,895 - __main__ - INFO - Loaded connector for system: default_rag
+2025-02-27 13:16:41,898 - evaluation.bias_analyzer - INFO - Loaded 30 questions from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\2502.00145v1_questions_with_gold.json
+2025-02-27 13:16:41,898 - evaluation.bias_analyzer - INFO - Loaded 5 questions from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\adversarial_examples.json
+2025-02-27 13:16:41,898 - evaluation.bias_analyzer - INFO - Loaded 35 questions in total
+2025-02-27 13:16:41,899 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250225_140706.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 13:16:41,899 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_092736.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 13:16:41,899 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_113233.json: Expecting value: line 6 column 18 (char 116)
+2025-02-27 13:16:41,900 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_120106.json
+2025-02-27 13:16:41,902 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_121216.json
+2025-02-27 13:16:41,903 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_130305.json
+2025-02-27 13:16:41,903 - evaluation.bias_analyzer - INFO - Loaded results for 1 systems in total
+2025-02-27 13:16:41,905 - evaluation.bias_analyzer - INFO - Analyzing dataset bias...
+2025-02-27 13:16:42,110 - evaluation.bias_analyzer - ERROR - Error creating visualizations: too many values to unpack (expected 2)
+2025-02-27 13:16:42,111 - evaluation.bias_analyzer - INFO - Dataset bias analysis complete
+2025-02-27 13:16:42,113 - evaluation.bias_analyzer - INFO - Analyzing performance bias...
+2025-02-27 13:16:42,340 - evaluation.bias_analyzer - INFO - Performance analysis and visualizations saved to C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\reports\bias_analysis\performance_bias_analysis.*
+2025-02-27 13:16:42,341 - evaluation.bias_analyzer - INFO - Performance bias analysis complete
+2025-02-27 13:16:42,343 - evaluation.bias_analyzer - INFO - Generating adversarial examples...
+2025-02-27 13:16:42,343 - evaluation.bias_analyzer - INFO - Found vulnerable categories: {}
+2025-02-27 13:16:42,343 - evaluation.bias_analyzer - INFO - Generated 5 adversarial examples
+2025-02-27 13:16:42,345 - evaluation.bias_analyzer - INFO - Adversarial examples saved to C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\adversarial_examples.json
+2025-02-27 13:25:12,886 - evaluation.evaluation_framework - INFO - Loaded configuration from config/evaluation_config.yaml
+2025-02-27 13:25:12,900 - absl - INFO - Using default tokenizer.
+2025-02-27 13:25:15,630 - __main__ - INFO - Loaded connector for system: default_rag
+2025-02-27 13:25:15,636 - evaluation.bias_analyzer - INFO - Loaded 30 questions from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\2502.00145v1_questions_with_gold.json
+2025-02-27 13:25:15,637 - evaluation.bias_analyzer - INFO - Loaded 5 questions from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\adversarial_examples.json
+2025-02-27 13:25:15,637 - evaluation.bias_analyzer - INFO - Loaded 35 questions in total
+2025-02-27 13:25:15,638 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250225_140706.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 13:25:15,638 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_092736.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 13:25:15,639 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_113233.json: Expecting value: line 6 column 18 (char 116)
+2025-02-27 13:25:15,640 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_120106.json
+2025-02-27 13:25:15,641 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_121216.json
+2025-02-27 13:25:15,642 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_130305.json
+2025-02-27 13:25:15,642 - evaluation.bias_analyzer - INFO - Loaded results for 1 systems in total
+2025-02-27 13:25:15,644 - evaluation.bias_analyzer - INFO - Analyzing dataset bias...
+2025-02-27 13:25:15,959 - evaluation.bias_analyzer - INFO - query_type_complexity: {'contingency_table': [[1.0, 3.0, 0.0], [1.0, 1.0, 2.0], [2.0, 2.0, 1.0], [9.0, 5.0, 1.0], [0.0, 1.0, 1.0], [1.0, 1.0, 2.0], [0.0, 0.0, 1.0]], 'field1_values': ['causal', 'comparative', 'definitional', 'factoid', 'open_ended', 'procedural', 'quantitative'], 'field2_values': ['L1', 'L2', 'L3'], 'cramers_v': np.float64(0.4511127877291302)}
+2025-02-27 13:25:15,960 - evaluation.bias_analyzer - ERROR - Error creating visualizations: too many values to unpack (expected 2)
+2025-02-27 13:25:15,960 - evaluation.bias_analyzer - INFO - Dataset bias analysis complete
+2025-02-27 13:25:15,963 - evaluation.bias_analyzer - INFO - Analyzing performance bias...
+2025-02-27 13:25:16,278 - evaluation.bias_analyzer - INFO - Performance analysis and visualizations saved to C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\reports\bias_analysis\performance_bias_analysis.*
+2025-02-27 13:25:16,279 - evaluation.bias_analyzer - INFO - Performance bias analysis complete
+2025-02-27 13:25:16,281 - evaluation.bias_analyzer - INFO - Generating adversarial examples...
+2025-02-27 13:25:16,281 - evaluation.bias_analyzer - INFO - Found vulnerable categories: {}
+2025-02-27 13:25:16,281 - evaluation.bias_analyzer - INFO - Generated 5 adversarial examples
+2025-02-27 13:25:16,282 - evaluation.bias_analyzer - INFO - Adversarial examples saved to C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\adversarial_examples.json
+2025-02-27 13:32:18,861 - evaluation.evaluation_framework - INFO - Loaded configuration from config/evaluation_config.yaml
+2025-02-27 13:32:18,877 - absl - INFO - Using default tokenizer.
+2025-02-27 13:32:40,387 - __main__ - INFO - Loaded connector for system: default_rag
+2025-02-27 13:32:40,410 - evaluation.bias_analyzer - INFO - Loaded 30 questions from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\2502.00145v1_questions_with_gold.json
+2025-02-27 13:32:40,427 - evaluation.bias_analyzer - INFO - Loaded 5 questions from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\adversarial_examples.json
+2025-02-27 13:32:40,428 - evaluation.bias_analyzer - INFO - Loaded 35 questions in total
+2025-02-27 13:32:40,441 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250225_140706.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 13:32:40,443 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_092736.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 13:32:40,456 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_113233.json: Expecting value: line 6 column 18 (char 116)
+2025-02-27 13:32:40,473 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_120106.json
+2025-02-27 13:32:40,491 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_121216.json
+2025-02-27 13:32:40,512 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_130305.json
+2025-02-27 13:32:40,513 - evaluation.bias_analyzer - INFO - Loaded results for 1 systems in total
+2025-02-27 13:32:40,517 - evaluation.bias_analyzer - INFO - Analyzing dataset bias...
+2025-02-27 13:32:41,108 - evaluation.bias_analyzer - INFO - Ky query_type_complexity: {'contingency_table': [[1.0, 3.0, 0.0], [1.0, 1.0, 2.0], [2.0, 2.0, 1.0], [9.0, 5.0, 1.0], [0.0, 1.0, 1.0], [1.0, 1.0, 2.0], [0.0, 0.0, 1.0]], 'field1_values': ['causal', 'comparative', 'definitional', 'factoid', 'open_ended', 'procedural', 'quantitative'], 'field2_values': ['L1', 'L2', 'L3'], 'cramers_v': np.float64(0.4511127877291302)}
+2025-02-27 13:32:41,109 - evaluation.bias_analyzer - ERROR - Error creating visualizations: too many values to unpack (expected 2)
+2025-02-27 13:32:41,110 - evaluation.bias_analyzer - INFO - Dataset bias analysis complete
+2025-02-27 13:32:41,112 - evaluation.bias_analyzer - INFO - Analyzing performance bias...
+2025-02-27 13:32:41,514 - evaluation.bias_analyzer - INFO - Performance analysis and visualizations saved to C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\reports\bias_analysis\performance_bias_analysis.*
+2025-02-27 13:32:41,515 - evaluation.bias_analyzer - INFO - Performance bias analysis complete
+2025-02-27 13:32:41,518 - evaluation.bias_analyzer - INFO - Generating adversarial examples...
+2025-02-27 13:32:41,519 - evaluation.bias_analyzer - INFO - Found vulnerable categories: {}
+2025-02-27 13:32:41,519 - evaluation.bias_analyzer - INFO - Generated 5 adversarial examples
+2025-02-27 13:32:41,521 - evaluation.bias_analyzer - INFO - Adversarial examples saved to C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\adversarial_examples.json
+2025-02-27 13:35:15,740 - evaluation.evaluation_framework - INFO - Loaded configuration from config/evaluation_config.yaml
+2025-02-27 13:35:15,759 - absl - INFO - Using default tokenizer.
+2025-02-27 13:35:19,195 - __main__ - INFO - Loaded connector for system: default_rag
+2025-02-27 13:35:19,200 - evaluation.bias_analyzer - INFO - Loaded 30 questions from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\2502.00145v1_questions_with_gold.json
+2025-02-27 13:35:19,200 - evaluation.bias_analyzer - INFO - Loaded 5 questions from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\adversarial_examples.json
+2025-02-27 13:35:19,201 - evaluation.bias_analyzer - INFO - Loaded 35 questions in total
+2025-02-27 13:35:19,202 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250225_140706.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 13:35:19,202 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_092736.json: Expecting value: line 6 column 18 (char 157)
+2025-02-27 13:35:19,203 - evaluation.bias_analyzer - ERROR - Error loading results from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_113233.json: Expecting value: line 6 column 18 (char 116)
+2025-02-27 13:35:19,204 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_120106.json
+2025-02-27 13:35:19,205 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_121216.json
+2025-02-27 13:35:19,206 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_130305.json
+2025-02-27 13:35:19,206 - evaluation.bias_analyzer - INFO - Loaded results for 1 systems in total
+2025-02-27 13:35:19,208 - evaluation.bias_analyzer - INFO - Analyzing dataset bias...
+2025-02-27 13:35:19,533 - evaluation.bias_analyzer - INFO - Ky query_type_complexity: {'contingency_table': [[1.0, 3.0, 0.0], [1.0, 1.0, 2.0], [2.0, 2.0, 1.0], [9.0, 5.0, 1.0], [0.0, 1.0, 1.0], [1.0, 1.0, 2.0], [0.0, 0.0, 1.0]], 'field1_values': ['causal', 'comparative', 'definitional', 'factoid', 'open_ended', 'procedural', 'quantitative'], 'field2_values': ['L1', 'L2', 'L3'], 'cramers_v': np.float64(0.4511127877291302)}
+2025-02-27 13:35:19,534 - evaluation.bias_analyzer - ERROR - Error creating visualizations: too many values to unpack (expected 2)
+2025-02-27 13:35:19,534 - evaluation.bias_analyzer - INFO - Dataset bias analysis complete
+2025-02-27 13:35:19,537 - evaluation.bias_analyzer - INFO - Analyzing performance bias...
+2025-02-27 13:35:19,835 - evaluation.bias_analyzer - INFO - Performance analysis and visualizations saved to C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\reports\bias_analysis\performance_bias_analysis.*
+2025-02-27 13:35:19,835 - evaluation.bias_analyzer - INFO - Performance bias analysis complete
+2025-02-27 13:35:19,836 - evaluation.bias_analyzer - INFO - Generating adversarial examples...
+2025-02-27 13:35:19,837 - evaluation.bias_analyzer - INFO - Found vulnerable categories: {}
+2025-02-27 13:35:19,837 - evaluation.bias_analyzer - INFO - Generated 5 adversarial examples
+2025-02-27 13:35:19,838 - evaluation.bias_analyzer - INFO - Adversarial examples saved to C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\adversarial_examples.json
+2025-02-27 13:42:59,461 - evaluation.evaluation_framework - INFO - Loaded configuration from config/evaluation_config.yaml
+2025-02-27 13:42:59,476 - absl - INFO - Using default tokenizer.
+2025-02-27 13:43:02,416 - __main__ - INFO - Loaded connector for system: default_rag
+2025-02-27 13:43:02,421 - evaluation.bias_analyzer - INFO - Loaded 30 questions from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\2502.00145v1_questions_with_gold.json
+2025-02-27 13:43:02,423 - evaluation.bias_analyzer - INFO - Loaded 5 questions from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\adversarial_examples.json
+2025-02-27 13:43:02,423 - evaluation.bias_analyzer - INFO - Loaded 35 questions in total
+2025-02-27 13:43:02,425 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_120106.json
+2025-02-27 13:43:02,426 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_121216.json
+2025-02-27 13:43:02,428 - evaluation.bias_analyzer - INFO - Loaded results for system 'default_rag' from C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\evaluation\results\default_rag_results_20250227_130305.json
+2025-02-27 13:43:02,428 - evaluation.bias_analyzer - INFO - Loaded results for 1 systems in total
+2025-02-27 13:43:02,430 - evaluation.bias_analyzer - INFO - Analyzing dataset bias...
+2025-02-27 13:43:02,766 - evaluation.bias_analyzer - INFO - Ky query_type_complexity: {'contingency_table': [[1.0, 3.0, 0.0], [1.0, 1.0, 2.0], [2.0, 2.0, 1.0], [9.0, 5.0, 1.0], [0.0, 1.0, 1.0], [1.0, 1.0, 2.0], [0.0, 0.0, 1.0]], 'field1_values': ['causal', 'comparative', 'definitional', 'factoid', 'open_ended', 'procedural', 'quantitative'], 'field2_values': ['L1', 'L2', 'L3'], 'cramers_v': np.float64(0.4511127877291302)}
+2025-02-27 13:43:02,767 - evaluation.bias_analyzer - INFO - Ky query_type_paper_id: {'contingency_table': [[4.0], [4.0], [5.0], [15.0], [2.0], [4.0], [1.0]], 'field1_values': ['causal', 'comparative', 'definitional', 'factoid', 'open_ended', 'procedural', 'quantitative'], 'field2_values': ['2502.00145v1'], 'cramers_v': 0}
+2025-02-27 13:43:02,767 - evaluation.bias_analyzer - INFO - Ky complexity_paper_id: {'contingency_table': [[14.0], [13.0], [8.0]], 'field1_values': ['L1', 'L2', 'L3'], 'field2_values': ['2502.00145v1'], 'cramers_v': 0}
+2025-02-27 13:43:03,113 - evaluation.bias_analyzer - INFO - Dataset analysis and visualizations saved to C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\reports\bias_analysis\dataset_bias_analysis.*
+2025-02-27 13:43:03,114 - evaluation.bias_analyzer - INFO - Dataset bias analysis complete
+2025-02-27 13:43:03,116 - evaluation.bias_analyzer - INFO - Analyzing performance bias...
+2025-02-27 13:43:03,378 - evaluation.bias_analyzer - INFO - Performance analysis and visualizations saved to C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\reports\bias_analysis\performance_bias_analysis.*
+2025-02-27 13:43:03,378 - evaluation.bias_analyzer - INFO - Performance bias analysis complete
+2025-02-27 13:43:03,380 - evaluation.bias_analyzer - INFO - Generating adversarial examples...
+2025-02-27 13:43:03,380 - evaluation.bias_analyzer - INFO - Found vulnerable categories: {}
+2025-02-27 13:43:03,381 - evaluation.bias_analyzer - INFO - Generated 5 adversarial examples
+2025-02-27 13:43:03,382 - evaluation.bias_analyzer - INFO - Adversarial examples saved to C:\Users\Christoph.Hau\Auto eval rag\rag-evaluation-dataset\question_sets\gold_answers\adversarial_examples.json

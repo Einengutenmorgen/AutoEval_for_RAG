@@ -24,6 +24,9 @@ import re
 from collections import defaultdict
 import hashlib
 import traceback
+import json
+from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
+
 
 # Initialize logging
 logging.basicConfig(
@@ -35,6 +38,20 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
+
+class EvalResultEncoder(json.JSONEncoder):
+    def default(self, obj):
+        # Handle objects with get_system_info method
+        if hasattr(obj, 'get_system_info'):
+            try:
+                return obj.get_system_info()
+            except AttributeError:
+                # Fallback for objects with missing attributes
+                return {"type": obj.__class__.__name__, "info": "serialization_failed"}
+        # Handle other non-serializable objects
+        elif hasattr(obj, '__class__'):
+            return f"{obj.__class__.__name__}_instance"
+        return super().default(obj)
 
 
 class RAGEvaluationFramework:
@@ -213,7 +230,6 @@ class RAGEvaluationFramework:
                 # Import only when needed
                 import nltk
                 from rouge_score import rouge_scorer
-                from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
                 
                 # Download NLTK resources if needed
                 try:
@@ -310,7 +326,7 @@ class RAGEvaluationFramework:
             results_file = self.results_dir / f"{system_name}_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
         
         with open(results_file, 'w', encoding='utf-8') as f:
-            json.dump(self.results[evaluation_id], f, indent=2, ensure_ascii=False)
+            json.dump(self.results[evaluation_id], f, indent=2, ensure_ascii=False, cls=EvalResultEncoder)
         
         logger.info(f"Evaluation complete. Results saved to {results_file}")
         
@@ -1110,7 +1126,7 @@ class RAGEvaluationFramework:
             if fmt == "json":
                 report_file = f"{output_file}.json"
                 with open(report_file, 'w', encoding='utf-8') as f:
-                    json.dump(results, f, indent=2, ensure_ascii=False)
+                    json.dump(results, f, indent=2, ensure_ascii=False, cls=EvalResultEncoder)
                 report_files["json"] = report_file
             
             elif fmt == "csv":

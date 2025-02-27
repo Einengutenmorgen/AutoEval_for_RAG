@@ -203,25 +203,26 @@ class RESTAPIConnector(RAGConnector):
         
         return result
     
-    def get_system_info(self) -> Dict[str, Any]:
-        """
-        Get information about the RAG system.
-        
-        Returns:
-            System information dictionary
-        """
-        return {
-            "name": self.name,
-            "description": self.description,
-            "api_endpoint": self.api_endpoint,
-            "request_format": self.request_format,
-            "authentication": {
-                "type": self.authentication["type"],
-                # Don't include actual auth tokens for security
-                **({"header_name": self.authentication.get("header_name")} 
-                   if self.authentication["type"] == "api_key" else {})
-            }
+    def get_system_info(self):
+        """Return a serializable representation of this connector."""
+        # Create a basic info dictionary with only attributes that exist
+        info = {
+            "type": "RESTAPIConnector"
         }
+        
+        # Add attributes that actually exist on this object
+        for attr in ["url", "endpoint", "base_url", "api_url", "headers", "timeout"]:
+            if hasattr(self, attr):
+                value = getattr(self, attr)
+                # Filter sensitive info from headers
+                if attr == "headers" and isinstance(value, dict):
+                    filtered_headers = {k: v for k, v in value.items() 
+                                    if k.lower() not in ['authorization', 'api-key', 'token']}
+                    info[attr] = filtered_headers
+                else:
+                    info[attr] = value
+        
+        return info
 
 
 class LangChainConnector(RAGConnector):
